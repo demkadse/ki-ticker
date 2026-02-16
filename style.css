@@ -109,6 +109,41 @@ input[type="text"]:focus {
   margin-top: 20px;
 }
 
+/* Hero Section */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 40px;
+    border: 1px solid var(--border);
+    min-height: 350px;
+}
+.hero-image { 
+    background-size: cover; 
+    background-position: center; 
+    background-color: var(--border);
+    min-height: 250px;
+}
+.hero-content { 
+    padding: 40px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    gap: 15px; 
+}
+.hero h1 { margin: 0; font-size: 32px; line-height: 1.2; }
+.hero h1 a { color: var(--text); text-decoration: none; }
+.hero h1 a:hover { color: var(--acc); }
+.hero p { color: var(--muted); font-size: 18px; margin: 0; }
+
+@media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-content { padding: 20px; }
+    .hero h1 { font-size: 24px; }
+}
+
 /* Kategorien */
 .category-title {
   margin: 40px 0 20px;
