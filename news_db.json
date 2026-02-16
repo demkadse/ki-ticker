@@ -4,7 +4,6 @@
     "title": "Have money, will travel: a16z’s hunt for the next European unicorn",
     "url": "https://techcrunch.com/2026/02/16/have-money-will-travel-a16zs-hunt-for-the-next-european-unicorn/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-16T18:53:56+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -30,7 +29,6 @@
     "title": "New SemiAnalysis InferenceX Data Shows NVIDIA Blackwell Ultra Delivers up to 50x Better Performance and 35x Lower Costs for Agentic AI",
     "url": "https://blogs.nvidia.com/blog/data-blackwell-ultra-performance-lower-cost-agentic-ai/",
     "source": "NVIDIA Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-16T17:00:40+00:00",
     "domain": "blogs.nvidia.com",
     "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/inference-charts-inferencemax-v1.5-perf-charts-4753570-r12_1-alt-scaled.png"
@@ -40,7 +38,6 @@
     "title": "How Ricursive Intelligence raised $335M at a $4B valuation in 4 months",
     "url": "https://techcrunch.com/2026/02/16/how-ricursive-intelligence-raised-335m-at-a-4b-valuation-in-4-months/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-16T17:00:00+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -63,7 +60,6 @@
     "title": "Flapping Airplanes on the future of AI: ‘We want to try really radically different things’",
     "url": "https://techcrunch.com/2026/02/16/flapping-airplanes-on-the-future-of-ai-we-want-to-try-really-radically-different-things/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-16T14:00:00+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -73,7 +69,6 @@
     "title": "After all the hype, some AI experts don’t think OpenClaw is all that exciting",
     "url": "https://techcrunch.com/2026/02/16/after-all-the-hype-some-ai-experts-dont-think-openclaw-is-all-that-exciting/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-16T13:15:00+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -83,7 +78,6 @@
     "title": "Fractal Analytics’ muted IPO debut signals persistent AI fears in India",
     "url": "https://techcrunch.com/2026/02/16/fractal-analytics-muted-ipo-debut-signals-persistent-ai-fears-in-india/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-16T11:51:25+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -106,7 +100,6 @@
     "title": "All the important news from the ongoing India AI Impact Summit",
     "url": "https://techcrunch.com/2026/02/16/all-the-important-news-from-the-ongoing-india-ai-summit/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-16T11:20:27+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -116,7 +109,6 @@
     "title": "GT-HarmBench: Benchmarking AI Safety Risks Through the Lens of Game Theory",
     "url": "https://arxiv.org/abs/2602.12316",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -126,7 +118,6 @@
     "title": "A Theoretical Framework for Adaptive Utility-Weighted Benchmarking",
     "url": "https://arxiv.org/abs/2602.12356",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -136,7 +127,6 @@
     "title": "Evolving Beyond Snapshots: Harmonizing Structure and Sequence via Entity State Tuning for Temporal Knowledge Graph Forecasting",
     "url": "https://arxiv.org/abs/2602.12389",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -146,7 +136,6 @@
     "title": "Intent-Driven Smart Manufacturing Integrating Knowledge Graphs and Large Language Models",
     "url": "https://arxiv.org/abs/2602.12419",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -156,7 +145,6 @@
     "title": "Scaling Web Agent Training through Automatic Data Generation and Fine-grained Evaluation",
     "url": "https://arxiv.org/abs/2602.12544",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -166,7 +154,6 @@
     "title": "To Mix or To Merge: Toward Multi-Domain Reinforcement Learning for Large Language Models",
     "url": "https://arxiv.org/abs/2602.12566",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -176,7 +163,6 @@
     "title": "Can I Have Your Order? Monte-Carlo Tree Search for Slot Filling Ordering in Diffusion Language Models",
     "url": "https://arxiv.org/abs/2602.12586",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -186,7 +172,6 @@
     "title": "GeoAgent: Learning to Geolocate Everywhere with Reinforced Geographic Characteristics",
     "url": "https://arxiv.org/abs/2602.12617",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -196,7 +181,6 @@
     "title": "AI Agents for Inventory Control: Human-LLM-OR Complementarity",
     "url": "https://arxiv.org/abs/2602.12631",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -206,7 +190,6 @@
     "title": "Think Fast and Slow: Step-Level Cognitive Depth Adaptation for LLM Agents",
     "url": "https://arxiv.org/abs/2602.12662",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -216,7 +199,6 @@
     "title": "Evaluating Robustness of Reasoning Models on Parameterized Logical Problems",
     "url": "https://arxiv.org/abs/2602.12665",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -226,7 +208,6 @@
     "title": "SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks",
     "url": "https://arxiv.org/abs/2602.12670",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -236,7 +217,6 @@
     "title": "X-SYS: A Reference Architecture for Interactive Explanation Systems",
     "url": "https://arxiv.org/abs/2602.12748",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -246,7 +226,6 @@
     "title": "WebClipper: Efficient Evolution of Web Agents with Graph-based Trajectory Pruning",
     "url": "https://arxiv.org/abs/2602.12852",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -256,7 +235,6 @@
     "title": "BrowseComp-$V^3$: A Visual, Vertical, and Verifiable Benchmark for Multimodal Browsing Agents",
     "url": "https://arxiv.org/abs/2602.12876",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -266,7 +244,6 @@
     "title": "Information-theoretic analysis of world models in optimal reward maximizers",
     "url": "https://arxiv.org/abs/2602.12963",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -276,7 +253,6 @@
     "title": "Consistency of Large Reasoning Models Under Multi-Turn Attacks",
     "url": "https://arxiv.org/abs/2602.13093",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -286,7 +262,6 @@
     "title": "Constrained Assumption-Based Argumentation Frameworks",
     "url": "https://arxiv.org/abs/2602.13135",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -296,7 +271,6 @@
     "title": "Optimal Take-off under Fuzzy Clearances",
     "url": "https://arxiv.org/abs/2602.13166",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -306,7 +280,6 @@
     "title": "Language-Guided Invariance Probing of Vision-Language Models",
     "url": "https://arxiv.org/abs/2511.13494",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -316,7 +289,6 @@
     "title": "Peak + Accumulation: A Proxy-Level Scoring Formula for Multi-Turn LLM Attack Detection",
     "url": "https://arxiv.org/abs/2602.11247",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -326,7 +298,6 @@
     "title": "A Lightweight LLM Framework for Disaster Humanitarian Information Classification",
     "url": "https://arxiv.org/abs/2602.12284",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -336,7 +307,6 @@
     "title": "From Biased Chatbots to Biased Agents: Examining Role Assignment Effects on LLM Agent Robustness",
     "url": "https://arxiv.org/abs/2602.12285",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -346,7 +316,6 @@
     "title": "Retrieval-Augmented Self-Taught Reasoning Model with Adaptive Chain-of-Thought for ASR Named Entity Correction",
     "url": "https://arxiv.org/abs/2602.12287",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -356,7 +325,6 @@
     "title": "Energy-Aware Reinforcement Learning for Robotic Manipulation of Articulated Components in Infrastructure Operation and Maintenance",
     "url": "https://arxiv.org/abs/2602.12288",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -366,7 +334,6 @@
     "title": "Adaptive traffic signal control optimization using a novel road partition and multi-channel state representation method",
     "url": "https://arxiv.org/abs/2602.12296",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -376,7 +343,6 @@
     "title": "OmniCustom: Sync Audio-Video Customization Via Joint Audio-Video Generation Model",
     "url": "https://arxiv.org/abs/2602.12304",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -386,7 +352,6 @@
     "title": "OptiML: An End-to-End Framework for Program Synthesis and CUDA Kernel Optimization",
     "url": "https://arxiv.org/abs/2602.12305",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -396,7 +361,6 @@
     "title": "Quantum walk inspired JPEG compression of images",
     "url": "https://arxiv.org/abs/2602.12306",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -406,7 +370,6 @@
     "title": "Perceptual Self-Reflection in Agentic Physics Simulation Code Generation",
     "url": "https://arxiv.org/abs/2602.12311",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -416,7 +379,6 @@
     "title": "Visible and Hyperspectral Imaging for Quality Assessment of Milk: Property Characterisation and Identification",
     "url": "https://arxiv.org/abs/2602.12313",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -426,7 +388,6 @@
     "title": "AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping",
     "url": "https://arxiv.org/abs/2602.12315",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -436,7 +397,6 @@
     "title": "Free Lunch in Medical Image Foundation Model Pre-training via Randomized Synthesis and Disentanglement",
     "url": "https://arxiv.org/abs/2602.12317",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -446,7 +406,6 @@
     "title": "ForeAct: Steering Your VLA with Efficient Visual Foresight Planning",
     "url": "https://arxiv.org/abs/2602.12322",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -456,7 +415,6 @@
     "title": "Intrinsic Credit Assignment for Long Horizon Interaction",
     "url": "https://arxiv.org/abs/2602.12342",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -466,7 +424,6 @@
     "title": "Policy4OOD: A Knowledge-Guided World Model for Policy Intervention Simulation against the Opioid Overdose Crisis",
     "url": "https://arxiv.org/abs/2602.12373",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -476,7 +433,6 @@
     "title": "Value Bonuses using Ensemble Errors for Exploration in Reinforcement Learning",
     "url": "https://arxiv.org/abs/2602.12375",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -486,7 +442,6 @@
     "title": "TFT-ACB-XML: Decision-Level Integration of Customized Temporal Fusion Transformer and Attention-BiLSTM with XGBoost Meta-Learner for BTC Price Forecasting",
     "url": "https://arxiv.org/abs/2602.12380",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -496,7 +451,6 @@
     "title": "Why Deep Jacobian Spectra Separate: Depth-Induced Scaling and Singular-Vector Alignment",
     "url": "https://arxiv.org/abs/2602.12384",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -506,7 +460,6 @@
     "title": "Rational Neural Networks have Expressivity Advantages",
     "url": "https://arxiv.org/abs/2602.12390",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -516,7 +469,6 @@
     "title": "Reproducing DragDiffusion: Interactive Point-Based Editing with Diffusion Models",
     "url": "https://arxiv.org/abs/2602.12393",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -526,7 +478,6 @@
     "title": "What does RL improve for Visual Reasoning? A Frankenstein-Style Analysis",
     "url": "https://arxiv.org/abs/2602.12395",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -536,7 +487,6 @@
     "title": "AstRL: Analog and Mixed-Signal Circuit Synthesis with Deep Reinforcement Learning",
     "url": "https://arxiv.org/abs/2602.12402",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -546,7 +496,6 @@
     "title": "Soft Contamination Means Benchmarks Test Shallow Generalization",
     "url": "https://arxiv.org/abs/2602.12413",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -556,7 +505,6 @@
     "title": "CacheMind: From Miss Rates to Why -- Natural-Language, Trace-Grounded Reasoning for Cache Replacement",
     "url": "https://arxiv.org/abs/2602.12422",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -566,7 +514,6 @@
     "title": "RankLLM: Weighted Ranking of LLMs by Quantifying Question Difficulty",
     "url": "https://arxiv.org/abs/2602.12424",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -576,7 +523,6 @@
     "title": "Agent Skills for Large Language Models: Architecture, Acquisition, Security, and the Path Forward",
     "url": "https://arxiv.org/abs/2602.12430",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -586,7 +532,6 @@
     "title": "Safe Reinforcement Learning via Recovery-based Shielding with Gaussian Process Dynamics Models",
     "url": "https://arxiv.org/abs/2602.12444",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -596,7 +541,6 @@
     "title": "Correctness, Artificial Intelligence, and the Epistemic Value of Mathematical Proof",
     "url": "https://arxiv.org/abs/2602.12463",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -606,7 +550,6 @@
     "title": "Designing RNAs with Language Models",
     "url": "https://arxiv.org/abs/2602.12470",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -616,7 +559,6 @@
     "title": "Not a Silver Bullet for Loneliness: How Attachment and Age Shape Intimacy with AI Companions",
     "url": "https://arxiv.org/abs/2602.12476",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -626,7 +568,6 @@
     "title": "A Lightweight and Explainable DenseNet-121 Framework for Grape Leaf Disease Classification",
     "url": "https://arxiv.org/abs/2602.12484",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -636,7 +577,6 @@
     "title": "Human-Like Coarse Object Representations in Vision Models",
     "url": "https://arxiv.org/abs/2602.12486",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -646,7 +586,6 @@
     "title": "Favia: Forensic Agent for Vulnerability-fix Identification and Analysis",
     "url": "https://arxiv.org/abs/2602.12500",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -656,7 +595,6 @@
     "title": "Monocular Reconstruction of Neural Tactile Fields",
     "url": "https://arxiv.org/abs/2602.12508",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -666,7 +604,6 @@
     "title": "Bench-MFG: A Benchmark Suite for Learning in Stationary Mean Field Games",
     "url": "https://arxiv.org/abs/2602.12517",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -676,7 +613,6 @@
     "title": "Exploring Accurate and Transparent Domain Adaptation in Predictive Healthcare via Concept-Grounded Orthogonal Inference",
     "url": "https://arxiv.org/abs/2602.12542",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -686,7 +622,6 @@
     "title": "Decoder-only Conformer with Modality-aware Sparse Mixtures of Experts for ASR",
     "url": "https://arxiv.org/abs/2602.12546",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -696,7 +631,6 @@
     "title": "A consequence of failed sequential learning: A computational account of developmental amnesia",
     "url": "https://arxiv.org/abs/2602.12547",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -706,7 +640,6 @@
     "title": "SD-MoE: Spectral Decomposition for Effective Expert Specialization",
     "url": "https://arxiv.org/abs/2602.12556",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -716,7 +649,6 @@
     "title": "Monte Carlo Tree Search with Reasoning Path Refinement for Small Language Models in Conversational Text-to-NoSQL",
     "url": "https://arxiv.org/abs/2602.12574",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -726,7 +658,6 @@
     "title": "VI-CuRL: Stabilizing Verifier-Independent RL Reasoning via Confidence-Guided Variance Reduction",
     "url": "https://arxiv.org/abs/2602.12579",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -736,7 +667,6 @@
     "title": "Power Interpretable Causal ODE Networks: A Unified Model for Explainable Anomaly Detection and Root Cause Analysis in Power Systems",
     "url": "https://arxiv.org/abs/2602.12592",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -746,7 +676,6 @@
     "title": "RQ-GMM: Residual Quantized Gaussian Mixture Model for Multimodal Semantic Discretization in CTR Prediction",
     "url": "https://arxiv.org/abs/2602.12593",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -756,7 +685,6 @@
     "title": "HyperMLP: An Integrated Perspective for Sequence Modeling",
     "url": "https://arxiv.org/abs/2602.12601",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -766,7 +694,6 @@
     "title": "QuEPT: Quantized Elastic Precision Transformers with One-Shot Calibration for Multi-Bit Switching",
     "url": "https://arxiv.org/abs/2602.12609",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -776,7 +703,6 @@
     "title": "Self-EvolveRec: Self-Evolving Recommender Systems with LLM-based Directional Feedback",
     "url": "https://arxiv.org/abs/2602.12612",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -786,7 +712,6 @@
     "title": "Vision Token Reduction via Attention-Driven Self-Compression for Efficient Multimodal Large Language Models",
     "url": "https://arxiv.org/abs/2602.12618",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -796,7 +721,6 @@
     "title": "TensorCommitments: A Lightweight Verifiable Inference for Language Models",
     "url": "https://arxiv.org/abs/2602.12630",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -806,7 +730,6 @@
     "title": "Unleashing Low-Bit Inference on Ascend NPUs: A Comprehensive Evaluation of HiFloat Formats",
     "url": "https://arxiv.org/abs/2602.12635",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -816,7 +739,6 @@
     "title": "Artic: AI-oriented Real-time Communication for MLLM Video Assistant",
     "url": "https://arxiv.org/abs/2602.12641",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -826,7 +748,6 @@
     "title": "Beyond Normalization: Rethinking the Partition Function as a Difficulty Scheduler for RLVR",
     "url": "https://arxiv.org/abs/2602.12642",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -836,7 +757,6 @@
     "title": "Unifying Model-Free Efficiency and Model-Based Representations via Latent Dynamics",
     "url": "https://arxiv.org/abs/2602.12643",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -846,7 +766,6 @@
     "title": "Multi-Task Learning with Additive U-Net for Image Denoising and Classification",
     "url": "https://arxiv.org/abs/2602.12649",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -856,7 +775,6 @@
     "title": "PMG: Parameterized Motion Generator for Human-like Locomotion Control",
     "url": "https://arxiv.org/abs/2602.12656",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -866,7 +784,6 @@
     "title": "IndicFairFace: Balanced Indian Face Dataset for Auditing and Mitigating Geographical Bias in Vision-Language Models",
     "url": "https://arxiv.org/abs/2602.12659",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -876,7 +793,6 @@
     "title": "SLA2: Sparse-Linear Attention with Learnable Routing and QAT",
     "url": "https://arxiv.org/abs/2602.12675",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -886,7 +802,6 @@
     "title": "Trust the uncertain teacher: distilling dark knowledge via calibrated uncertainty",
     "url": "https://arxiv.org/abs/2602.12687",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -896,7 +811,6 @@
     "title": "ALOE: Action-Level Off-Policy Evaluation for Vision-Language-Action Model Post-Training",
     "url": "https://arxiv.org/abs/2602.12691",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -906,7 +820,6 @@
     "title": "MedXIAOHE: A Comprehensive Recipe for Building Medical MLLMs",
     "url": "https://arxiv.org/abs/2602.12705",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -916,7 +829,6 @@
     "title": "VineetVC: Adaptive Video Conferencing Under Severe Bandwidth Constraints Using Audio-Driven Talking-Head Reconstruction",
     "url": "https://arxiv.org/abs/2602.12758",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -926,7 +838,6 @@
     "title": "\"Not Human, Funnier\": How Machine Identity Shapes Humor Perception in Online AI Stand-up Comedy",
     "url": "https://arxiv.org/abs/2602.12763",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -936,7 +847,6 @@
     "title": "SQuTR: A Robustness Benchmark for Spoken Query to Text Retrieval under Acoustic Noise",
     "url": "https://arxiv.org/abs/2602.12783",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -946,7 +856,6 @@
     "title": "Can Neural Networks Provide Latent Embeddings for Telemetry-Aware Greedy Routing?",
     "url": "https://arxiv.org/abs/2602.12798",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -956,7 +865,6 @@
     "title": "RAT-Bench: A Comprehensive Benchmark for Text Anonymization",
     "url": "https://arxiv.org/abs/2602.12806",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -966,7 +874,6 @@
     "title": "Left-right asymmetry in predicting brain activity from LLMs' representations emerges with their formal linguistic competence",
     "url": "https://arxiv.org/abs/2602.12811",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -976,7 +883,6 @@
     "title": "GRAIL: Geometry-Aware Retrieval-Augmented Inference with LLMs over Hyperbolic Representations of Patient Trajectories",
     "url": "https://arxiv.org/abs/2602.12828",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -986,7 +892,6 @@
     "title": "FLAC: Maximum Entropy RL via Kinetic Energy Regularized Bridge Matching",
     "url": "https://arxiv.org/abs/2602.12829",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -996,7 +901,6 @@
     "title": "TRACE: Temporal Reasoning via Agentic Context Evolution for Streaming Electronic Health Records (EHRs)",
     "url": "https://arxiv.org/abs/2602.12833",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1006,7 +910,6 @@
     "title": "Amortized Reasoning Tree Search: Decoupling Proposal and Decision in Large Language Models",
     "url": "https://arxiv.org/abs/2602.12846",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1016,7 +919,6 @@
     "title": "Chimera: Neuro-Symbolic Attention Primitives for Trustworthy Dataplane Intelligence",
     "url": "https://arxiv.org/abs/2602.12851",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1026,7 +928,6 @@
     "title": "X-VORTEX: Spatio-Temporal Contrastive Learning for Wake Vortex Trajectory Forecasting",
     "url": "https://arxiv.org/abs/2602.12869",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1036,7 +937,6 @@
     "title": "Knowledge-Based Design Requirements for Generative Social Robots in Higher Education",
     "url": "https://arxiv.org/abs/2602.12873",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1046,7 +946,6 @@
     "title": "A Microservice-Based Platform for Sustainable and Intelligent SLO Fulfilment and Service Management",
     "url": "https://arxiv.org/abs/2602.12875",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1056,7 +955,6 @@
     "title": "RADAR: Revealing Asymmetric Development of Abilities in MLLM Pre-training",
     "url": "https://arxiv.org/abs/2602.12892",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1066,7 +964,6 @@
     "title": "Robustness of Object Detection of Autonomous Vehicles in Adverse Weather Conditions",
     "url": "https://arxiv.org/abs/2602.12902",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1076,7 +973,6 @@
     "title": "Ultrasound-Guided Real-Time Spinal Motion Visualization for Spinal Instability Assessment",
     "url": "https://arxiv.org/abs/2602.12917",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1086,7 +982,6 @@
     "title": "EPRBench: A High-Quality Benchmark Dataset for Event Stream Based Visual Place Recognition",
     "url": "https://arxiv.org/abs/2602.12919",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1096,7 +991,6 @@
     "title": "Never say never: Exploring the effects of available knowledge on agent persuasiveness in controlled physiotherapy motivation dialogues",
     "url": "https://arxiv.org/abs/2602.12924",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1106,7 +1000,6 @@
     "title": "Deep-Learning Atlas Registration for Melanoma Brain Metastases: Preserving Pathology While Enabling Cohort-Level Analyses",
     "url": "https://arxiv.org/abs/2602.12933",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1116,7 +1009,6 @@
     "title": "Transporting Task Vectors across Different Architectures without Training",
     "url": "https://arxiv.org/abs/2602.12952",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1126,7 +1018,6 @@
     "title": "TriGen: NPU Architecture for End-to-End Acceleration of Large Language Models based on SW-HW Co-Design",
     "url": "https://arxiv.org/abs/2602.12962",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1136,7 +1027,6 @@
     "title": "RGAlign-Rec: Ranking-Guided Alignment for Latent Query Reasoning in Recommendation Systems",
     "url": "https://arxiv.org/abs/2602.12968",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1146,7 +1036,6 @@
     "title": "Extending confidence calibration to generalised measures of variation",
     "url": "https://arxiv.org/abs/2602.12975",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1156,7 +1045,6 @@
     "title": "Drift-Aware Variational Autoencoder-based Anomaly Detection with Two-level Ensembling",
     "url": "https://arxiv.org/abs/2602.12976",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1166,7 +1054,6 @@
     "title": "Learning Native Continuation for Action Chunking Flow Policies",
     "url": "https://arxiv.org/abs/2602.12978",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1176,7 +1063,6 @@
     "title": "Detecting Object Tracking Failure via Sequential Hypothesis Testing",
     "url": "https://arxiv.org/abs/2602.12983",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1186,7 +1072,6 @@
     "title": "Know More, Know Clearer: A Meta-Cognitive Framework for Knowledge Augmentation in Large Language Models",
     "url": "https://arxiv.org/abs/2602.12996",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1196,7 +1081,6 @@
     "title": "Synaptic Activation and Dual Liquid Dynamics for Interpretable Bio-Inspired Models",
     "url": "https://arxiv.org/abs/2602.13017",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1206,7 +1090,6 @@
     "title": "Prior-Guided Symbolic Regression: Towards Scientific Consistency in Equation Discovery",
     "url": "https://arxiv.org/abs/2602.13021",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1216,7 +1099,6 @@
     "title": "Buy versus Build an LLM: A Decision Framework for Governments",
     "url": "https://arxiv.org/abs/2602.13033",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1226,7 +1108,6 @@
     "title": "Look Inward to Explore Outward: Learning Temperature Policy from LLM Internal States via Hierarchical RL",
     "url": "https://arxiv.org/abs/2602.13035",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1236,7 +1117,6 @@
     "title": "Geometric Manifold Rectification for Imbalanced Learning",
     "url": "https://arxiv.org/abs/2602.13045",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1246,7 +1126,6 @@
     "title": "Can we trust AI to detect healthy multilingual English speakers among the cognitively impaired cohort in the UK? An investigation using real-world conversational speech",
     "url": "https://arxiv.org/abs/2602.13047",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1256,7 +1135,6 @@
     "title": "Curriculum-DPO++: Direct Preference Optimization via Data and Model Curricula for Text-to-Image Generation",
     "url": "https://arxiv.org/abs/2602.13055",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1266,7 +1144,6 @@
     "title": "Diverging Flows: Detecting Extrapolations in Conditional Generation",
     "url": "https://arxiv.org/abs/2602.13061",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1276,7 +1153,6 @@
     "title": "Bus-Conditioned Zero-Shot Trajectory Generation via Task Arithmetic",
     "url": "https://arxiv.org/abs/2602.13071",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1286,7 +1162,6 @@
     "title": "EXCODER: EXplainable Classification Of DiscretE time series Representations",
     "url": "https://arxiv.org/abs/2602.13087",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1296,7 +1171,6 @@
     "title": "How cyborg propaganda reshapes collective action",
     "url": "https://arxiv.org/abs/2602.13088",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1306,7 +1180,6 @@
     "title": "Which Algorithms Can Graph Neural Networks Learn?",
     "url": "https://arxiv.org/abs/2602.13106",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1316,7 +1189,6 @@
     "title": "SCOPE: Selective Conformal Optimized Pairwise LLM Judging",
     "url": "https://arxiv.org/abs/2602.13110",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1326,7 +1198,6 @@
     "title": "In-Context Autonomous Network Incident Response: An End-to-End Large Language Model Agent Approach",
     "url": "https://arxiv.org/abs/2602.13156",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1336,7 +1207,6 @@
     "title": "Asynchronous Verified Semantic Caching for Tiered LLM Architectures",
     "url": "https://arxiv.org/abs/2602.13165",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1346,7 +1216,6 @@
     "title": "CoPE-VideoLM: Codec Primitives For Efficient Video Language Models",
     "url": "https://arxiv.org/abs/2602.13191",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1356,7 +1225,6 @@
     "title": "Semantic Chunking and the Entropy of Natural Language",
     "url": "https://arxiv.org/abs/2602.13194",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1366,7 +1234,6 @@
     "title": "SaVe-TAG: LLM-based Interpolation for Long-Tailed Text-Attributed Graphs",
     "url": "https://arxiv.org/abs/2410.16882",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1376,7 +1243,6 @@
     "title": "Mathematics and Machine Creativity: A Survey on Bridging Mathematics with AI",
     "url": "https://arxiv.org/abs/2412.16543",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1386,7 +1252,6 @@
     "title": "The Epistemic Asymmetry of Consciousness Self-Reports: A Formal Analysis of AI Consciousness Denial",
     "url": "https://arxiv.org/abs/2501.05454",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1396,7 +1261,6 @@
     "title": "SCAN: Semantic Document Layout Analysis for Textual and Visual Retrieval-Augmented Generation",
     "url": "https://arxiv.org/abs/2505.14381",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1406,7 +1270,6 @@
     "title": "AutoGPS: Automated Geometry Problem Solving via Multimodal Formalization and Deductive Reasoning",
     "url": "https://arxiv.org/abs/2505.23381",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1416,7 +1279,6 @@
     "title": "How to Train Your LLM Web Agent: A Statistical Diagnosis",
     "url": "https://arxiv.org/abs/2507.04103",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1426,7 +1288,6 @@
     "title": "A Survey on Hypergame Theory: Modeling Misaligned Perceptions and Nested Beliefs for Multi-agent Systems",
     "url": "https://arxiv.org/abs/2507.19593",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1436,7 +1297,6 @@
     "title": "Invert4TVG: A Temporal Video Grounding Framework with Inversion Tasks Preserving Action Understanding Ability",
     "url": "https://arxiv.org/abs/2508.07388",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1446,7 +1306,6 @@
     "title": "EvoCut: Strengthening Integer Programs via Evolution-Guided Language Models",
     "url": "https://arxiv.org/abs/2508.11850",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1456,7 +1315,6 @@
     "title": "Difficulty-Aware Agentic Orchestration for Query-Specific Multi-Agent Workflows",
     "url": "https://arxiv.org/abs/2509.11079",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1466,7 +1324,6 @@
     "title": "Batch-CAM: Introduction to better reasoning in convolutional deep learning models",
     "url": "https://arxiv.org/abs/2510.00664",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1476,7 +1333,6 @@
     "title": "The Conditions of Physical Embodiment Enable Generalization and Care",
     "url": "https://arxiv.org/abs/2510.07117",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1486,7 +1342,6 @@
     "title": "VoiceAgentBench: Are Voice Assistants ready for agentic tasks?",
     "url": "https://arxiv.org/abs/2510.07978",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1496,7 +1351,6 @@
     "title": "RLIE: Rule Generation with Logistic Regression, Iterative Refinement, and Evaluation for Large Language Models",
     "url": "https://arxiv.org/abs/2510.19698",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1506,7 +1360,6 @@
     "title": "Agentic AI Security: Threats, Defenses, Evaluation, and Open Challenges",
     "url": "https://arxiv.org/abs/2510.23883",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1516,7 +1369,6 @@
     "title": "Impact of Data-Oriented and Object-Oriented Design on Performance and Cache Utilization with Artificial Intelligence Algorithms in Multi-Threaded CPUs",
     "url": "https://arxiv.org/abs/2512.07841",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1526,7 +1378,6 @@
     "title": "TA-KAND: Two-stage Attention Triple Enhancement and U-KAN based Diffusion For Few-shot Knowledge Graph Completion",
     "url": "https://arxiv.org/abs/2512.12182",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1536,7 +1387,6 @@
     "title": "Understanding Chain-of-Thought in Large Language Models via Topological Data Analysis",
     "url": "https://arxiv.org/abs/2512.19135",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1546,7 +1396,6 @@
     "title": "Finetuning Large Language Models for Automated Depression Screening in Nigerian Pidgin English: GENSCORE Pilot Study",
     "url": "https://arxiv.org/abs/2601.00004",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1556,7 +1405,6 @@
     "title": "Panning for Gold: Expanding Domain-Specific Knowledge Graphs with General Knowledge",
     "url": "https://arxiv.org/abs/2601.10485",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1566,7 +1414,6 @@
     "title": "Preventing the Collapse of Peer Review Requires Verification-First AI",
     "url": "https://arxiv.org/abs/2601.16909",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1576,7 +1423,6 @@
     "title": "Quantifying Model Uniqueness in Heterogeneous AI Ecosystems",
     "url": "https://arxiv.org/abs/2601.22977",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1586,7 +1432,6 @@
     "title": "ATLAS : Adaptive Self-Evolutionary Research Agent with Task-Distributed Multi-LLM Supporters",
     "url": "https://arxiv.org/abs/2602.02709",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1596,7 +1441,6 @@
     "title": "WideSeek-R1: Exploring Width Scaling for Broad Information Seeking via Multi-Agent Reinforcement Learning",
     "url": "https://arxiv.org/abs/2602.04634",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1606,7 +1450,6 @@
     "title": "FiMI: A Domain-Specific Language Model for Indian Finance Ecosystem",
     "url": "https://arxiv.org/abs/2602.05794",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1616,7 +1459,6 @@
     "title": "PuYun-LDM: A Latent Diffusion Model for High-Resolution Ensemble Weather Forecasts",
     "url": "https://arxiv.org/abs/2602.11807",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1626,7 +1468,6 @@
     "title": "When Should LLMs Be Less Specific? Selective Abstraction for Reliable Long-Form Text Generation",
     "url": "https://arxiv.org/abs/2602.11908",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1636,7 +1477,6 @@
     "title": "CATP: Cross-Attention Token Pruning for Accuracy Preserved Multimodal Model Inference",
     "url": "https://arxiv.org/abs/2404.08567",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1646,7 +1486,6 @@
     "title": "Compressible Dynamics in Deep Overparameterized Low-Rank Learning & Adaptation",
     "url": "https://arxiv.org/abs/2406.04112",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1656,7 +1495,6 @@
     "title": "LTSM-Bundle: A Toolbox and Benchmark on Large Language Models for Time Series Forecasting",
     "url": "https://arxiv.org/abs/2406.14045",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1666,7 +1504,6 @@
     "title": "Pixel-Based Similarities as an Alternative to Neural Data for Improving Convolutional Neural Network Adversarial Robustness",
     "url": "https://arxiv.org/abs/2410.03952",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1676,7 +1513,6 @@
     "title": "Explaining and Mitigating the Modality Gap in Contrastive Multimodal Learning",
     "url": "https://arxiv.org/abs/2412.07909",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1686,7 +1522,6 @@
     "title": "Hierarchical Retrieval at Scale: Bridging Transparency and Efficiency",
     "url": "https://arxiv.org/abs/2502.07971",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1696,7 +1531,6 @@
     "title": "Data-Driven Worker Activity Recognition and Efficiency Estimation in Manual Fruit Harvesting",
     "url": "https://arxiv.org/abs/2503.22809",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1706,7 +1540,6 @@
     "title": "Redefining Evaluation Standards: A Unified Framework for Evaluating the Korean Capabilities of Language Models",
     "url": "https://arxiv.org/abs/2503.22968",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1716,7 +1549,6 @@
     "title": "PlanetServe: A Decentralized, Scalable, and Privacy-Preserving Overlay for Democratizing Large Language Model Serving",
     "url": "https://arxiv.org/abs/2504.20101",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1726,7 +1558,6 @@
     "title": "Discovering Hierarchy-Grounded Domains with Adaptive Granularity for Clinical Domain Generalization",
     "url": "https://arxiv.org/abs/2506.06977",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1736,7 +1567,6 @@
     "title": "Holistic Continual Learning under Concept Drift with Adaptive Memory Realignment",
     "url": "https://arxiv.org/abs/2507.02310",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1746,7 +1576,6 @@
     "title": "Investigating Redundancy in Multimodal Large Language Models with Multiple Vision Encoders",
     "url": "https://arxiv.org/abs/2507.03262",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1756,7 +1585,6 @@
     "title": "Multimodal Coordinated Online Behavior: Trade-offs and Strategies",
     "url": "https://arxiv.org/abs/2507.12108",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1766,7 +1594,6 @@
     "title": "FISHER: A Foundation Model for Multi-Modal Industrial Signal Comprehensive Representation",
     "url": "https://arxiv.org/abs/2507.16696",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1776,7 +1603,6 @@
     "title": "R-Zero: Self-Evolving Reasoning LLM from Zero Data",
     "url": "https://arxiv.org/abs/2508.05004",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1786,7 +1612,6 @@
     "title": "MLLM-CTBench: A Benchmark for Continual Instruction Tuning with Reasoning Process Diagnosis",
     "url": "https://arxiv.org/abs/2508.08275",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1796,7 +1621,6 @@
     "title": "ToolACE-MT: Non-Autoregressive Generation for Agentic Multi-Turn Interaction",
     "url": "https://arxiv.org/abs/2508.12685",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1806,7 +1630,6 @@
     "title": "EEG-FM-Bench: A Comprehensive Benchmark for the Systematic Evaluation of EEG Foundation Models",
     "url": "https://arxiv.org/abs/2508.17742",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1816,7 +1639,6 @@
     "title": "MetaSeal: Defending Against Image Attribution Forgery Through Content-Dependent Cryptographic Watermarks",
     "url": "https://arxiv.org/abs/2509.10766",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1826,7 +1648,6 @@
     "title": "Diffusion-Based Scenario Tree Generation for Multivariate Time Series Prediction and Multistage Stochastic Optimization",
     "url": "https://arxiv.org/abs/2509.14832",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1836,7 +1657,6 @@
     "title": "Eliminating stability hallucinations in llm-based tts models via attention guidance",
     "url": "https://arxiv.org/abs/2509.19852",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1846,7 +1666,6 @@
     "title": "Provable Training Data Identification for Large Language Models",
     "url": "https://arxiv.org/abs/2510.09717",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1856,7 +1675,6 @@
     "title": "Low-Resource Dialect Adaptation of Large Language Models: A French Dialect Case-Study",
     "url": "https://arxiv.org/abs/2510.22747",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1866,7 +1684,6 @@
     "title": "MASPRM: Multi-Agent System Process Reward Model",
     "url": "https://arxiv.org/abs/2510.24803",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1876,7 +1693,6 @@
     "title": "Non-Convex Over-the-Air Heterogeneous Federated Learning: A Bias-Variance Trade-off",
     "url": "https://arxiv.org/abs/2510.26722",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1886,7 +1702,6 @@
     "title": "Watermarking Discrete Diffusion Language Models",
     "url": "https://arxiv.org/abs/2511.02083",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1896,7 +1711,6 @@
     "title": "Reasoning about Intent for Ambiguous Requests",
     "url": "https://arxiv.org/abs/2511.10453",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1906,7 +1720,6 @@
     "title": "SGM: Safety Glasses for Multimodal Large Language Models via Neuron-Level Detoxification",
     "url": "https://arxiv.org/abs/2512.15052",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1916,7 +1729,6 @@
     "title": "Dynamical Mechanisms for Coordinating Long-term Working Memory Based on the Precision of Spike-timing in Cortical Neurons",
     "url": "https://arxiv.org/abs/2512.15891",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1926,7 +1738,6 @@
     "title": "From Prompt to Product: A Human-Centered Benchmark of Agentic App Generation Systems",
     "url": "https://arxiv.org/abs/2512.18080",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1936,7 +1747,6 @@
     "title": "Tuberculosis Screening from Cough Audio: Baseline Models, Clinical Variables, and Uncertainty Quantification",
     "url": "https://arxiv.org/abs/2601.07969",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1946,7 +1756,6 @@
     "title": "Sim2real Image Translation Enables Viewpoint-Robust Policies from Fixed-Camera Datasets",
     "url": "https://arxiv.org/abs/2601.09605",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1956,7 +1765,6 @@
     "title": "SimpleMatch: A Simple and Strong Baseline for Semantic Correspondence",
     "url": "https://arxiv.org/abs/2601.12357",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1966,7 +1774,6 @@
     "title": "Enhancing guidance for missing data in diffusion-based sequential recommendation",
     "url": "https://arxiv.org/abs/2601.15673",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1976,7 +1783,6 @@
     "title": "Privacy in Human-AI Romantic Relationships: Concerns, Boundaries, and Agency",
     "url": "https://arxiv.org/abs/2601.16824",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1986,7 +1792,6 @@
     "title": "SAGE: Sequence-level Adaptive Gradient Evolution for Generative Recommendation",
     "url": "https://arxiv.org/abs/2601.21452",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -1996,7 +1801,6 @@
     "title": "Beyond Static Question Banks: Dynamic Knowledge Expansion via LLM-Automated Graph Construction and Adaptive Generation",
     "url": "https://arxiv.org/abs/2602.00020",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2006,7 +1810,6 @@
     "title": "Pareto-Conditioned Diffusion Models for Offline Multi-Objective Optimization",
     "url": "https://arxiv.org/abs/2602.00737",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2016,7 +1819,6 @@
     "title": "Deep Time-Series Models Meet Volatility: Multi-Horizon Electricity Price Forecasting in the Australian National Electricity Market",
     "url": "https://arxiv.org/abs/2602.01157",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2026,7 +1828,6 @@
     "title": "Dispelling the Curse of Singularities in Neural Network Optimizations",
     "url": "https://arxiv.org/abs/2602.01308",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2036,7 +1837,6 @@
     "title": "Exploring AI-Augmented Sensemaking of Patient-Generated Health Data: A Mixed-Method Study with Healthcare Professionals in Cardiac Risk Reduction",
     "url": "https://arxiv.org/abs/2602.05687",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2046,7 +1846,6 @@
     "title": "AEGIS: Adversarial Target-Guided Retention-Data-Free Robust Concept Erasure from Diffusion Models",
     "url": "https://arxiv.org/abs/2602.06771",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2056,7 +1855,6 @@
     "title": "Principled Synthetic Data Enables the First Scaling Laws for LLMs in Recommendation",
     "url": "https://arxiv.org/abs/2602.07298",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2066,7 +1864,6 @@
     "title": "Learnable Chernoff Baselines for Inference-Time Alignment",
     "url": "https://arxiv.org/abs/2602.07738",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2076,7 +1873,6 @@
     "title": "Bielik Guard: Efficient Polish Language Safety Classifiers for LLM Content Moderation",
     "url": "https://arxiv.org/abs/2602.07954",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2086,7 +1882,6 @@
     "title": "GISA: A Benchmark for General Information-Seeking Assistant",
     "url": "https://arxiv.org/abs/2602.08543",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2096,7 +1891,6 @@
     "title": "LLaDA2.1: Speeding Up Text Diffusion via Token Editing",
     "url": "https://arxiv.org/abs/2602.08676",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2106,7 +1900,6 @@
     "title": "Predicting Open Source Software Sustainability with Deep Temporal Neural Hierarchical Architectures and Explainable AI",
     "url": "https://arxiv.org/abs/2602.09064",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2116,7 +1909,6 @@
     "title": "The Critical Horizon: Inspection Design Principles for Multi-Stage Operations and Deep Reasoning",
     "url": "https://arxiv.org/abs/2602.09394",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2126,7 +1918,6 @@
     "title": "EVA: Towards a universal model of the immune system",
     "url": "https://arxiv.org/abs/2602.10168",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2136,7 +1927,6 @@
     "title": "Transforming Policy-Car Swerving for Mitigating Stop-and-Go Traffic Waves: A Practice-Oriented Jam-Absorption Driving Strategy",
     "url": "https://arxiv.org/abs/2602.10234",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2146,7 +1936,6 @@
     "title": "Less is Enough: Synthesizing Diverse Data in Feature Space of LLMs",
     "url": "https://arxiv.org/abs/2602.10388",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2156,7 +1945,6 @@
     "title": "A Unified Theory of Random Projection for Influence Functions",
     "url": "https://arxiv.org/abs/2602.10449",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2166,7 +1954,6 @@
     "title": "Low-Dimensional Execution Manifolds in Transformer Learning Dynamics: Evidence from Modular Arithmetic Tasks",
     "url": "https://arxiv.org/abs/2602.10496",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2176,7 +1963,6 @@
     "title": "Blind Gods and Broken Screens: Architecting a Secure, Intent-Centric Mobile Agent Operating System",
     "url": "https://arxiv.org/abs/2602.10915",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2186,7 +1972,6 @@
     "title": "Computational Phenomenology of Temporal Experience in Autism: Quantifying the Emotional and Narrative Characteristics of Lived Unpredictability",
     "url": "https://arxiv.org/abs/2602.10947",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2196,7 +1981,6 @@
     "title": "HiFloat4 Format for Language Model Inference",
     "url": "https://arxiv.org/abs/2602.11287",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2206,7 +1990,6 @@
     "title": "Variation-aware Flexible 3D Gaussian Editing",
     "url": "https://arxiv.org/abs/2602.11638",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2216,7 +1999,6 @@
     "title": "Choose Your Agent: Tradeoffs in Adopting AI Advisors, Coaches, and Delegates in Multi-Party Negotiation",
     "url": "https://arxiv.org/abs/2602.12089",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -2226,7 +2008,6 @@
     "title": "DeepGen 1.0: A Lightweight Unified Multimodal Model for Advancing Image Generation and Editing",
     "url": "https://arxiv.org/abs/2602.12205",
     "source": "arXiv cs.AI",
-    "category": "Forschung",
     "published_iso": "2026-02-16T05:00:00+00:00",
     "domain": "arxiv.org",
     "image": ""
@@ -3098,7 +2879,6 @@
     "title": "As AI data centers hit power limits, Peak XV backs Indian startup C2i to fix the bottleneck",
     "url": "https://techcrunch.com/2026/02/15/as-ai-data-centers-hit-power-limits-peak-xv-backs-indian-startup-c2i-to-fix-the-bottleneck/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-16T01:00:00+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3108,7 +2888,6 @@
     "title": "Blackstone backs Neysa in up to $1.2B financing as India pushes to build domestic AI infrastructure",
     "url": "https://techcrunch.com/2026/02/15/blackstone-backs-neysa-in-up-to-1-2b-financing-as-india-pushes-to-build-domestic-ai-compute/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-16T00:30:00+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3134,7 +2913,6 @@
     "title": "OpenClaw creator Peter Steinberger joins OpenAI",
     "url": "https://techcrunch.com/2026/02/15/openclaw-creator-peter-steinberger-joins-openai/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-15T22:28:02+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3144,7 +2922,6 @@
     "title": "Longtime NPR host David Greene sues Google over NotebookLM voice",
     "url": "https://techcrunch.com/2026/02/15/longtime-npr-host-david-greene-sues-google-over-notebooklm-voice/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-15T22:07:51+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3154,7 +2931,6 @@
     "title": "Anthropic and the Pentagon are reportedly arguing over Claude usage",
     "url": "https://techcrunch.com/2026/02/15/anthropic-and-the-pentagon-are-reportedly-arguing-over-claude-usage/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-15T21:11:28+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3164,7 +2940,6 @@
     "title": "India has 100M weekly active ChatGPT users, Sam Altman says",
     "url": "https://techcrunch.com/2026/02/15/india-has-100m-weekly-active-chatgpt-users-sam-altman-says/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-15T18:00:00+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3174,7 +2949,6 @@
     "title": "The enterprise AI land grab is on. Glean is building the layer beneath the interface.",
     "url": "https://techcrunch.com/2026/02/15/the-enterprise-ai-land-grab-is-on-glean-is-building-the-layer-beneath-the-interface/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-15T17:30:00+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3184,7 +2958,6 @@
     "title": "Hollywood isn’t happy about the new Seedance 2.0 video generator",
     "url": "https://techcrunch.com/2026/02/15/hollywood-isnt-happy-about-the-new-seedance-2-0-video-generator/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-15T15:41:16+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3220,7 +2993,6 @@
     "title": "The great computer science exodus (and where students are going instead)",
     "url": "https://techcrunch.com/2026/02/15/the-great-computer-science-exodus-and-where-students-are-going-instead/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-15T08:40:27+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3230,7 +3002,6 @@
     "title": "Is safety ‘dead’ at xAI?",
     "url": "https://techcrunch.com/2026/02/14/is-safety-is-dead-at-xai/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-14T21:55:44+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3240,7 +3011,6 @@
     "title": "India doubles down on state-backed venture capital, approving $1.1B fund",
     "url": "https://techcrunch.com/2026/02/14/india-doubles-down-on-state-backed-venture-capital-approving-1-1b-fund/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-14T16:23:22+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3263,7 +3033,6 @@
     "title": "Airbnb plans to bake in AI features for search, discovery and support",
     "url": "https://techcrunch.com/2026/02/13/airbnb-plans-to-bake-in-ai-features-for-search-discovery-and-support/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-14T02:40:42+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3288,7 +3057,6 @@
     "title": "Airbnb says a third of its customer support is now handled by AI in the US and Canada",
     "url": "https://techcrunch.com/2026/02/13/airbnb-says-a-third-of-its-customer-support-is-now-handled-by-ai-in-the-u-s-and-canada/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-13T22:12:26+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3298,7 +3066,6 @@
     "title": "Why top talent is walking away from OpenAI and xAI",
     "url": "https://techcrunch.com/video/why-top-talent-is-walking-away-from-openai-and-xai/",
     "source": "TechCrunch AI",
-    "category": "News & Trends",
     "published_iso": "2026-02-13T21:00:00+00:00",
     "domain": "techcrunch.com",
     "image": ""
@@ -3349,7 +3116,6 @@
     "title": "GPT-5.2 derives a new result in theoretical physics",
     "url": "https://openai.com/index/new-result-theoretical-physics",
     "source": "OpenAI Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-13T11:00:00+00:00",
     "domain": "openai.com",
     "image": ""
@@ -3359,7 +3125,6 @@
     "title": "Introducing Lockdown Mode and Elevated Risk labels in ChatGPT",
     "url": "https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt",
     "source": "OpenAI Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-13T10:00:00+00:00",
     "domain": "openai.com",
     "image": ""
@@ -3369,7 +3134,6 @@
     "title": "Beyond rate limits: scaling access to Codex and Sora",
     "url": "https://openai.com/index/beyond-rate-limits",
     "source": "OpenAI Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-13T09:00:00+00:00",
     "domain": "openai.com",
     "image": ""
@@ -3379,7 +3143,6 @@
     "title": "Scaling social science research",
     "url": "https://openai.com/index/scaling-social-science-research",
     "source": "OpenAI Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-13T09:00:00+00:00",
     "domain": "openai.com",
     "image": ""
@@ -3389,7 +3152,6 @@
     "title": "Code, Compute and Connection: Inside the Inaugural NVIDIA AI Day São Paulo",
     "url": "https://blogs.nvidia.com/blog/ai-day-sao-paulo/",
     "source": "NVIDIA Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-12T22:00:58+00:00",
     "domain": "blogs.nvidia.com",
     "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/sao-paulo-featured-1920x1080-2.jpg"
@@ -3440,7 +3202,6 @@
     "title": "Gemini 3 Deep Think: Advancing science, research and engineering",
     "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/",
     "source": "Google AI",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-12T16:13:00+00:00",
     "domain": "blog.google",
     "image": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3_deep-think_keyword_hea.max-600x600.format-webp.webp"
@@ -3450,7 +3211,6 @@
     "title": "Leading Inference Providers Cut AI Costs by up to 10x With Open Source Models on NVIDIA Blackwell",
     "url": "https://blogs.nvidia.com/blog/inference-open-source-models-blackwell-reduce-cost-per-token/",
     "source": "NVIDIA Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-12T16:00:46+00:00",
     "domain": "blogs.nvidia.com",
     "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/inference-press-moe-x-tokenomics-think-smart-blog-4779150-1280x680-1.jpg"
@@ -3460,7 +3220,6 @@
     "title": "NVIDIA DGX Spark Powers Big Projects in Higher Education",
     "url": "https://blogs.nvidia.com/blog/dgx-spark-higher-education/",
     "source": "NVIDIA Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-12T15:00:23+00:00",
     "domain": "blogs.nvidia.com",
     "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/dgx-spark-higher-ed-featured-1280x680-1.jpg"
@@ -3470,7 +3229,6 @@
     "title": "GeForce NOW Turns Screens Into a Gaming Machine",
     "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-amazon-fire-tv-app/",
     "source": "NVIDIA Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-12T14:00:58+00:00",
     "domain": "blogs.nvidia.com",
     "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/gfn-thursday-ecosystem-nv-blog-1280x680-logo.jpg"
@@ -3480,7 +3238,6 @@
     "title": "Introducing GPT-5.3-Codex-Spark",
     "url": "https://openai.com/index/introducing-gpt-5-3-codex-spark",
     "source": "OpenAI Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-12T10:00:00+00:00",
     "domain": "openai.com",
     "image": ""
@@ -3546,7 +3303,6 @@
     "title": "Harness engineering: leveraging Codex in an agent-first world",
     "url": "https://openai.com/index/harness-engineering",
     "source": "OpenAI Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-11T09:00:00+00:00",
     "domain": "openai.com",
     "image": ""
@@ -3599,7 +3355,6 @@
     "title": "9 fun questions to try asking Google Photos",
     "url": "https://blog.google/products-and-platforms/products/photos/ask-button-ask-photos-tips/",
     "source": "Google AI",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-10T17:00:00+00:00",
     "domain": "blog.google",
     "image": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/2025-Travel-Trends_hero.max-600x600.format-webp.webp"
@@ -3609,7 +3364,6 @@
     "title": "Helping kids and teens learn and grow online on Safer Internet Day",
     "url": "https://blog.google/innovation-and-ai/technology/safety-security/safer-internet-day-2026-kids-teens/",
     "source": "Google AI",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-10T02:30:00+00:00",
     "domain": "blog.google",
     "image": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Helpingkidsteens_Hero.max-600x600.format-webp.webp"
