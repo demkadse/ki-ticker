@@ -21,8 +21,8 @@ from bs4 import BeautifulSoup
 SITE_TITLE = "KI‑Ticker – Aktuelle KI‑News"
 SITE_DESC = "Automatisierte Übersicht zu KI, Machine Learning und LLMs."
 SITE_URL = "https://ki-ticker.boehmonline.space"
-[cite_start]ADSENSE_PUB = "pub-2616688648278798" [cite: 1]
-ADSENSE_SLOT = "8395864605" # Deine neue Slot-ID
+ADSENSE_PUB = "pub-2616688648278798"
+ADSENSE_SLOT = "8395864605"
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
@@ -140,7 +140,6 @@ def render_index(items):
     display_items = items[1:]
     trends_html = "".join([f'<button class="trend-tag" onclick="setSearch(\'{kw}\')">#{kw}</button>' for kw in get_top_keywords(items)])
     
-    # AdSense Block
     ad_block = f"""
     <div class="ad-container">
         <ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins>
@@ -178,7 +177,6 @@ def render_index(items):
             img_html = f'<div class="img-container"><img src="{it["image"]}" loading="lazy" alt=""></div>' if it.get("image") else ""
             badges = "".join([f'<span class="badge">{t}</span>' for t in it.get("tags", [])])
             fav = f"https://www.google.com/s2/favicons?domain={it['domain']}&sz=32"
-            
             html_content += f"""
             <article class="card" data-id="{it["id"]}" data-content="{it["title"].lower()} {it["summary"].lower()}">
               {img_html}
@@ -268,8 +266,8 @@ def render_index(items):
         }}
         document.getElementById('searchInput').oninput = (e) => filterNews(e.target.value);
         function setSearch(t) {{ document.getElementById('searchInput').value=t; filterNews(t); }}
-        window.onscroll = () => document.getElementById("backToTop").style.display = window.scrollY > 500 ? "block" : "none";
-        document.getElementById("backToTop").onclick = () => window.scrollTo({{top:0, behavior:'smooth'}});
+        window.onscroll = () => document.getElementById(\"backToTop\").style.display = window.scrollY > 500 ? \"block\" : \"none\";
+        document.getElementById(\"backToTop\").onclick = () => window.scrollTo({{top:0, behavior:'smooth'}});
         function copyToClipboard(t) {{ navigator.clipboard.writeText(t).then(() => alert('Link kopiert!')); }}
         updateBookmarkUI();
     </script>
