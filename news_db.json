@@ -3041,16 +3041,10 @@
     "id": "a77fd95bde1f",
     "title": "Customize AI agent browsing with proxies, profiles, and extensions in Amazon Bedrock AgentCore Browser",
     "url": "https://aws.amazon.com/blogs/machine-learning/customize-ai-agent-browsing-with-proxies-profiles-and-extensions-in-amazon-bedrock-agentcore-browser/",
-    "summary": "Today, we are announcing three new capabilities that address these requirements: proxy configuration, browser profiles, and browser extensions. Together, these features give you fine-grained control over how your AI agents interact with the web. This...",
     "source": "AWS ML Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-13T22:57:34+00:00",
     "domain": "aws.amazon.com",
-    "image": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/02/13/ml-20506-1120x630.png",
-    "reading_time": 1,
-    "tags": [
-      "Agents"
-    ]
+    "image": ""
   },
   {
     "id": "0ad6028255b6",
@@ -3160,29 +3154,19 @@
     "id": "63297c2e71c4",
     "title": "AI meets HR: Transforming talent acquisition with Amazon Bedrock",
     "url": "https://aws.amazon.com/blogs/machine-learning/ai-meets-hr-transforming-talent-acquisition-with-amazon-bedrock/",
-    "summary": "In this post, we show how to create an AI-powered recruitment system using Amazon Bedrock, Amazon Bedrock Knowledge Bases, AWS Lambda, and other AWS services to enhance job description creation, candidate communication, and interview preparation whil...",
     "source": "AWS ML Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-12T20:18:58+00:00",
     "domain": "aws.amazon.com",
-    "image": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/02/12/ml-19274-1120x630.png",
-    "reading_time": 1,
-    "tags": []
+    "image": ""
   },
   {
     "id": "b41a02bb3a55",
     "title": "Build long-running MCP servers on Amazon Bedrock AgentCore with Strands Agents integration",
     "url": "https://aws.amazon.com/blogs/machine-learning/build-long-running-mcp-servers-on-amazon-bedrock-agentcore-with-strands-agents-integration/",
-    "summary": "In this post, we provide you with a comprehensive approach to achieve this. First, we introduce a context message strategy that maintains continuous communication between servers and clients during extended operations. Next, we develop an asynchronou...",
     "source": "AWS ML Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-12T20:16:20+00:00",
     "domain": "aws.amazon.com",
-    "image": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/02/12/ml-19560-1120x630.png",
-    "reading_time": 1,
-    "tags": [
-      "Agents"
-    ]
+    "image": ""
   },
   {
     "id": "314969850031",
@@ -3246,57 +3230,37 @@
     "id": "d71f8bb7385f",
     "title": "NVIDIA Nemotron 3 Nano 30B MoE model is now available in Amazon SageMaker JumpStart",
     "url": "https://aws.amazon.com/blogs/machine-learning/nvidia-nemotron-3-nano-30b-is-now-available-in-amazon-sagemaker-jumpstart/",
-    "summary": "Today we’re excited to announce that the NVIDIA Nemotron 3 Nano 30B model with  3B active parameters is now generally available in the Amazon SageMaker JumpStart model catalog. You can accelerate innovation and deliver tangible business value with Ne...",
     "source": "AWS ML Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-11T19:38:47+00:00",
     "domain": "aws.amazon.com",
-    "image": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/02/11/ml-20374-1120x630.png",
-    "reading_time": 1,
-    "tags": [
-      "Hardware"
-    ]
+    "image": ""
   },
   {
     "id": "a907074aa26b",
     "title": "Mastering Amazon Bedrock throttling and service availability: A comprehensive guide",
     "url": "https://aws.amazon.com/blogs/machine-learning/mastering-amazon-bedrock-throttling-and-service-availability-a-comprehensive-guide/",
-    "summary": "This post shows you how to implement robust error handling strategies that can help improve application reliability and user experience when using Amazon Bedrock. We'll dive deep into strategies for optimizing performances for the application with th...",
     "source": "AWS ML Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-11T15:52:54+00:00",
     "domain": "aws.amazon.com",
-    "image": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/02/11/ml-20306-1-1120x630.png",
-    "reading_time": 1,
-    "tags": []
+    "image": ""
   },
   {
     "id": "9dcd441a904a",
     "title": "Swann provides Generative AI to millions of IoT Devices using Amazon Bedrock",
     "url": "https://aws.amazon.com/blogs/machine-learning/swann-provides-generative-ai-to-millions-of-iot-devices-using-amazon-bedrock/",
-    "summary": "This post shows you how to implement intelligent notification filtering using Amazon Bedrock and its gen-AI capabilities. You'll learn model selection strategies, cost optimization techniques, and architectural patterns for deploying gen-AI at IoT sc...",
     "source": "AWS ML Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-11T15:48:15+00:00",
     "domain": "aws.amazon.com",
-    "image": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/02/11/ml-19700-1120x630.png",
-    "reading_time": 1,
-    "tags": []
+    "image": ""
   },
   {
     "id": "3b54a792a939",
     "title": "How LinqAlpha assesses investment theses using Devil’s Advocate on Amazon Bedrock",
     "url": "https://aws.amazon.com/blogs/machine-learning/how-linqalpha-assesses-investment-theses-using-devils-advocate-on-amazon-bedrock/",
-    "summary": "LinqAlpha is a Boston-based multi-agent AI system built specifically for institutional investors. The system supports and streamlines agentic workflows across company screening, primer generation, stock price catalyst mapping, and now, pressure-testi...",
     "source": "AWS ML Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-11T15:45:30+00:00",
     "domain": "aws.amazon.com",
-    "image": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/02/11/ml-18403-1120x630.png",
-    "reading_time": 1,
-    "tags": [
-      "Agents"
-    ]
+    "image": ""
   },
   {
     "id": "118cb8ef5426",
@@ -3311,44 +3275,28 @@
     "id": "e125cb1140ff",
     "title": "How Amazon uses Amazon Nova models to automate operational readiness testing for new fulfillment centers",
     "url": "https://aws.amazon.com/blogs/machine-learning/how-amazon-uses-amazon-nova-models-to-automate-operational-readiness-testing-for-new-fulfillment-centers/",
-    "summary": "In this post, we discuss how Amazon Nova in Amazon Bedrock can be used to implement an AI-powered image recognition solution that automates the detection and validation of module components, significantly reducing manual verification efforts and impr...",
     "source": "AWS ML Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-10T18:34:09+00:00",
     "domain": "aws.amazon.com",
-    "image": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/02/10/ml-19222-1120x630.png",
-    "reading_time": 1,
-    "tags": []
+    "image": ""
   },
   {
     "id": "177e6cdec73a",
     "title": "Iberdrola enhances IT operations using Amazon Bedrock AgentCore",
     "url": "https://aws.amazon.com/blogs/machine-learning/iberdrola-enhances-it-operations-using-amazon-bedrock-agentcore/",
-    "summary": "Iberdrola, one of the world’s largest utility companies, has embraced cutting-edge AI technology to revolutionize its IT operations in ServiceNow. Through its partnership with AWS, Iberdrola implemented different agentic architectures using Amazon Be...",
     "source": "AWS ML Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-10T18:31:57+00:00",
     "domain": "aws.amazon.com",
-    "image": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/02/10/ml-19959-1120x630.png",
-    "reading_time": 1,
-    "tags": [
-      "Agents"
-    ]
+    "image": ""
   },
   {
     "id": "f0cc9530f5e8",
     "title": "Building real-time voice assistants with Amazon Nova Sonic compared to cascading architectures",
     "url": "https://aws.amazon.com/blogs/machine-learning/building-real-time-voice-assistants-with-amazon-nova-sonic-compared-to-cascading-architectures/",
-    "summary": "Amazon Nova Sonic delivers real-time, human-like voice conversations through the bidirectional streaming interface. In this post, you learn how Amazon Nova Sonic can solve some of the challenges faced by cascaded approaches, simplify building voice A...",
     "source": "AWS ML Blog",
-    "category": "Unternehmen & Cloud",
     "published_iso": "2026-02-10T18:29:05+00:00",
     "domain": "aws.amazon.com",
-    "image": "https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2026/02/10/ml-19206-1120x630.png",
-    "reading_time": 1,
-    "tags": [
-      "Agents"
-    ]
+    "image": ""
   },
   {
     "id": "35caebc0ee7b",
