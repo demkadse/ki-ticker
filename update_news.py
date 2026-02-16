@@ -19,25 +19,15 @@ DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
 
 FEEDS = [
-    ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
+    ("The Verge", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
     ("MIT Tech Review", "https://www.technologyreview.com/feed/tag/artificial-intelligence/"),
-    ("VentureBeat AI", "https://venturebeat.com/category/ai/feed/"),
-    ("TechCrunch AI", "https://techcrunch.com/category/artificial-intelligence/feed/"),
+    ("VentureBeat", "https://venturebeat.com/category/ai/feed/"),
+    ("TechCrunch", "https://techcrunch.com/category/artificial-intelligence/feed/"),
     ("Heise KI", "https://www.heise.de/thema/KI/rss.xml"),
-    ("arXiv cs.AI", "https://export.arxiv.org/rss/cs.AI"),
-    ("OpenAI Blog", "https://openai.com/news/rss.xml"),
+    ("arXiv", "https://export.arxiv.org/rss/cs.AI"),
+    ("OpenAI", "https://openai.com/news/rss.xml"),
     ("Google AI", "https://blog.google/technology/ai/rss/"),
-    ("NVIDIA Blog", "https://blogs.nvidia.com/feed/"),
 ]
-
-STOP_WORDS = {"and", "the", "for", "with", "how", "from", "what", "this", "der", "die", "das", "und", "für", "mit", "von", "den", "auf", "ist", "ki-ticker", "ai", "ki"}
-
-def get_top_keywords(items, limit=8):
-    words = []
-    for it in items:
-        found = re.findall(r'\w+', it['title'].lower())
-        words.extend([w for w in found if len(w) > 3 and w not in STOP_WORDS])
-    return [word for word, count in Counter(words).most_common(limit)]
 
 def load_db():
     if os.path.exists(DB_FILE):
@@ -52,6 +42,7 @@ def save_db(data):
     with open(DB_FILE, "w", encoding="utf-8") as f: json.dump(filtered[:500], f, ensure_ascii=False, indent=2)
 
 def extract_image(e):
+    # Sucht in verschiedenen Tags nach Bildern
     media = e.get("media_content") or e.get("media_thumbnail") or []
     if media and isinstance(media, list) and media[0].get("url"): return media[0]["url"]
     if isinstance(media, dict) and media.get("url"): return media["url"]
@@ -68,9 +59,11 @@ def fetch_feed(feed_info):
             if not link: continue
             ts = e.get("published_parsed") or e.get("updated_parsed")
             dt = datetime.datetime.fromtimestamp(time.mktime(ts), datetime.timezone.utc) if ts else datetime.datetime.now(datetime.timezone.utc)
+            # Titel säubern (HTML-Tags entfernen)
+            clean_title = BeautifulSoup(e.get("title", ""), "html.parser").get_text()
             out.append({
                 "id": hashlib.md5(link.encode()).hexdigest()[:12],
-                "title": e.get("title", "").strip(), 
+                "title": clean_title, 
                 "url": link, "source": name, "published_iso": dt.isoformat(),
                 "domain": urlparse(link).netloc.replace("www.", ""),
                 "image": extract_image(e)
@@ -80,12 +73,11 @@ def fetch_feed(feed_info):
 
 def render_index(items):
     now = datetime.datetime.now(datetime.timezone.utc)
-    trends_html = "".join([f'<button class="trend-tag" onclick="setSearch(\'{kw}\')">#{kw}</button>' for kw in get_top_keywords(items)])
-    ad_block = f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
+    ad_block = f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
 
     html_content = ""
     for idx, it in enumerate(items[:100]):
-        img_url = it.get("image") if it.get("image") else DEFAULT_IMG
+        img_url = it.get("image") if it.get("image") and "http" in it.get("image") else DEFAULT_IMG
         dt = datetime.datetime.fromisoformat(it["published_iso"])
         
         html_content += f"""
@@ -97,7 +89,7 @@ def render_index(items):
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain={it["domain"]}&sz=32" class="source-icon">
-                    {it["source"]} • {dt.strftime("%d.%m. %H:%M")}
+                    {it["source"]} • {dt.strftime("%H:%M")}
                 </div>
                 <h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3>
             </div>
@@ -106,7 +98,7 @@ def render_index(items):
             </div>
           </div>
         </article>"""
-        if (idx + 1) % 8 == 0: html_content += ad_block
+        if (idx + 1) % 10 == 0: html_content += ad_block
 
     return f"""<!doctype html>
 <html lang="de">
@@ -114,33 +106,26 @@ def render_index(items):
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v={int(time.time())}">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script>
 </head>
 <body class="dark-mode">
     <header class="header">
         <h1>KI‑Ticker</h1>
-        <div class="controls"><input type="text" id="searchInput" placeholder="Suchen..."><button class="btn-toggle" id="themeToggle">🌓</button></div>
-        <div class="trends">{trends_html}</div>
+        <div class="controls"><input type="text" id="searchInput" placeholder="Suchen..."></div>
     </header>
-    <main class="container">{html_content}</main>
+    <main class="container" id="news-container">{html_content}</main>
     <footer class="footer">
-        <p>&copy; {now.year} KI‑Ticker | <a href="impressum.html" style="color:var(--muted)">Impressum</a> | <a href="datenschutz.html" style="color:var(--muted)">Datenschutz</a></p>
+        <p>&copy; {now.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
     </footer>
     <script>
-        const body = document.body;
-        if (localStorage.getItem('theme') === 'light') body.classList.remove('dark-mode');
-        document.getElementById('themeToggle').onclick = () => {{
-            body.classList.toggle('dark-mode');
-            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-        }};
         function filterNews(t) {{
+            const val = t.toLowerCase();
             document.querySelectorAll('.card').forEach(el => {{
-                el.style.display = el.getAttribute('data-content').includes(t.toLowerCase()) ? '' : 'none';
+                el.style.display = el.getAttribute('data-content').includes(val) ? 'flex' : 'none';
             }});
         }}
         document.getElementById('searchInput').oninput = (e) => filterNews(e.target.value);
-        function setSearch(t) {{ document.getElementById('searchInput').value=t; filterNews(t); }}
         function copyToClipboard(t) {{ navigator.clipboard.writeText(t).then(() => alert('Link kopiert!')); }}
     </script>
 </body>
