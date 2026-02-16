@@ -62,8 +62,7 @@ def get_top_keywords(items, limit=8):
     for it in items:
         found = re.findall(r'\w+', it['title'].lower())
         words.extend([w for w in found if len(w) > 3 and w not in STOP_WORDS])
-    most_common = Counter(words).most_common(limit)
-    return [word for word, count in most_common]
+    return [word for word, count in Counter(words).most_common(limit)]
 
 def load_db():
     if os.path.exists(DB_FILE):
@@ -81,42 +80,22 @@ def save_db(data):
 
 def is_ai_related(title, summary):
     text = f"{title} {summary}".lower()
-    AI_KEYWORDS = ["ki", "ai", "intelligence", "llm", "gpt", "model", "training", "robot", "nvidia", "openai", "claude", "gemini", "machine learning"]
-    return any(kw in text for kw in AI_KEYWORDS)
+    kw = ["ki", "ai", "intelligence", "llm", "gpt", "model", "training", "robot", "nvidia", "openai", "claude", "gemini"]
+    return any(k in text for k in kw)
 
 def get_fallback_image(url):
-    """Versucht ein Vorschaubild direkt von der Webseite zu scrapen."""
     try:
         resp = requests.get(url, headers=HEADERS, timeout=5)
         if resp.status_code == 200:
             soup = BeautifulSoup(resp.content, "html.parser")
-            # Suche nach OpenGraph Image
-            og_img = soup.find("meta", property="og:image")
-            if og_img and og_img.get("content"):
-                return og_img["content"]
-            # Suche nach Twitter Image
-            tw_img = soup.find("meta", name="twitter:image")
-            if tw_img and tw_img.get("content"):
-                return tw_img["content"]
-    except:
-        pass
+            og = soup.find("meta", property="og:image")
+            return og["content"] if og else None
+    except: pass
     return None
 
 def extract_image(e, link):
-    # 1. Media Content aus Feed
     media = e.get("media_content") or []
-    if media and isinstance(media, list) and media[0].get("url"):
-        return media[0]["url"]
-    
-    # 2. BeautifulSoup im Content des Feeds suchen
-    content = e.get("summary", "") + e.get("description", "")
-    if content:
-        soup = BeautifulSoup(content, "html.parser")
-        img = soup.find("img")
-        if img and img.get("src"): 
-            return img["src"]
-            
-    # 3. Fallback: Webseite direkt scrapen
+    if media and isinstance(media, list) and media[0].get("url"): return media[0]["url"]
     return get_fallback_image(link)
 
 def fetch_feed(feed_info):
@@ -131,86 +110,73 @@ def fetch_feed(feed_info):
             raw_summary = e.get("summary") or e.get("description") or ""
             clean_summary = BeautifulSoup(raw_summary, "html.parser").get_text(" ", strip=True)
             if not link or not is_ai_related(title, clean_summary): continue
-
             ts = e.get("published_parsed") or e.get("updated_parsed")
             dt = datetime.datetime.fromtimestamp(time.mktime(ts), datetime.timezone.utc) if ts else datetime.datetime.now(datetime.timezone.utc)
-
             out.append({
                 "id": hashlib.md5(link.encode()).hexdigest()[:12],
-                "title": title,
-                "url": link,
-                "summary": clean_summary[:250] + "...",
-                "source": name,
-                "category": category,
-                "published_iso": dt.isoformat(),
+                "title": title, "url": link, "summary": clean_summary[:250] + "...",
+                "source": name, "category": category, "published_iso": dt.isoformat(),
                 "domain": urlparse(link).netloc.replace("www.", ""),
-                "image": extract_image(e, link),
-                "reading_time": get_reading_time(clean_summary),
+                "image": extract_image(e, link), "reading_time": get_reading_time(clean_summary),
                 "tags": get_tags(title, clean_summary)
             })
         return out
-    except Exception as ex:
-        print(f"[ERROR] {name}: {ex}")
-        return []
+    except: return []
 
 def render_index(items):
     now = datetime.datetime.now(datetime.timezone.utc)
-    if not items: return "Keine News gefunden."
-    
     top_story = items[0]
     display_items = items[1:]
-    top_keywords = get_top_keywords(items)
-    trends_html = "".join([f'<button class="trend-tag" onclick="setSearch(\'{kw}\')">#{kw}</button>' for kw in top_keywords])
+    trends_html = "".join([f'<button class="trend-tag" onclick="setSearch(\'{kw}\')">#{kw}</button>' for kw in get_top_keywords(items)])
     
     dt_hero = datetime.datetime.fromisoformat(top_story["published_iso"])
     hero_img = f'style="background-image: url(\'{top_story["image"]}\')"' if top_story.get("image") else ""
     hero_html = f"""
-    <section class="hero" data-content="{top_story["title"].lower()}">
+    <section class="hero" data-id="{top_story["id"]}" data-content="{top_story["title"].lower()}">
         <div class="hero-image" {hero_img}></div>
         <div class="hero-content">
-            <span class="badge" style="background:var(--acc); color:white;">Top Story</span>
+            <span class="badge" style="background:var(--acc); color:white;">🔥 Top Story</span>
             <div class="meta">{top_story["source"]} • {dt_hero.strftime("%d.%m. %H:%M")}</div>
             <h1><a href="{top_story["url"]}" target="_blank">{top_story["title"]}</a></h1>
             <p>{top_story["summary"]}</p>
+            <div class="share-bar">
+                <button onclick="toggleBookmark('{top_story["id"]}')" class="btn-bookmark" title="Merken">🔖</button>
+            </div>
         </div>
-    </section>
-    """
+    </section>"""
 
     categories = ["News & Trends", "Forschung", "Unternehmen & Cloud"]
-    html_content = ""
+    nav_html = '<nav class="cat-nav"><button class="nav-btn active" onclick="filterCat(\'all\')">Alle</button>'
+    for cat in categories: nav_html += f'<button class="nav-btn" onclick="filterCat(\'{cat}\')">{cat}</button>'
+    nav_html += '<button class="nav-btn" onclick="filterCat(\'bookmarks\')" style="color:var(--acc)">⭐ Merkliste</button></nav>'
 
+    html_content = ""
     for cat in categories:
         cat_items = [i for i in display_items if i["category"] == cat][:ITEMS_PER_CATEGORY]
         if not cat_items: continue
-        
-        html_content += f'<h2 class="category-title">{cat}</h2>'
-        html_content += '<section class="grid">'
+        html_content += f'<div class="cat-section" data-category="{cat}"><h2 class="category-title">{cat}</h2><section class="grid">'
         for it in cat_items:
             dt = datetime.datetime.fromisoformat(it["published_iso"])
             img_html = f'<div class="img-container"><img src="{it["image"]}" loading="lazy" alt=""></div>' if it.get("image") else ""
             badges = "".join([f'<span class="badge">{t}</span>' for t in it.get("tags", [])])
-            
-            encoded_title = urllib.parse.quote(it["title"])
-            encoded_url = urllib.parse.quote(it["url"])
-            share_x = f"https://twitter.com/intent/tweet?text={encoded_title}&url={encoded_url}"
-            share_li = f"https://www.linkedin.com/sharing/share-offsite/?url={encoded_url}"
-            
+            fav = f"https://www.google.com/s2/favicons?domain={it['domain']}&sz=32"
+            share_x = f"https://twitter.com/intent/tweet?text={urllib.parse.quote(it['title'])}&url={urllib.parse.quote(it['url'])}"
             html_content += f"""
-            <article class="card" data-content="{it["title"].lower()} {it["summary"].lower()}">
+            <article class="card" data-id="{it["id"]}" data-content="{it["title"].lower()} {it["summary"].lower()}">
               {img_html}
               <div class="card-body">
                 <div class="badge-container">{badges}</div>
-                <div class="meta">{it["source"]} • {dt.strftime("%d.%m. %H:%M")} • {it["reading_time"]} Min.</div>
+                <div class="meta"><img src="{fav}" class="source-icon"> {it["source"]} • {dt.strftime("%d.%m. %H:%M")}</div>
                 <h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3>
                 <p>{it["summary"]}</p>
                 <div class="share-bar">
-                    <a href="{share_x}" target="_blank" title="Auf X teilen">𝕏</a>
-                    <a href="{share_li}" target="_blank" title="Auf LinkedIn teilen">in</a>
-                    <button onclick="copyToClipboard('{it["url"]}')" title="Link kopieren">🔗</button>
+                    <a href="{share_x}" target="_blank">𝕏</a>
+                    <button onclick="toggleBookmark('{it["id"]}')" class="btn-bookmark">🔖</button>
+                    <button onclick="copyToClipboard('{it["url"]}')">🔗</button>
                 </div>
               </div>
             </article>"""
-        html_content += '</section>'
+        html_content += '</section></div>'
 
     return f"""<!doctype html>
 <html lang="de">
@@ -228,72 +194,64 @@ def render_index(items):
             <input type="text" id="searchInput" placeholder="News durchsuchen...">
             <button class="btn-toggle" id="themeToggle">🌓</button>
         </div>
-        <div class="trends">
-            <span style="font-size:12px; color:var(--muted); margin-right:10px;">Trends:</span>
-            {trends_html}
-        </div>
-        <p class="tagline">Update: {now.strftime("%d.%m.%Y %H:%M")} UTC</p>
+        <div class="trends">{trends_html}</div>
+        {nav_html}
     </header>
-    <main class="container">
-        {hero_html}
-        {html_content}
-    </main>
+    <main class="container">{hero_html}{html_content}</main>
+    <button id="backToTop">↑</button>
     <footer class="footer">&copy; {now.year} KI‑Ticker</footer>
-
     <script>
-        const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
         if (localStorage.getItem('theme') === 'light') body.classList.remove('dark-mode');
-
-        themeToggle.addEventListener('click', () => {{
+        document.getElementById('themeToggle').onclick = () => {{
             body.classList.toggle('dark-mode');
             localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-        }});
-
-        const searchInput = document.getElementById('searchInput');
+        }};
         function filterNews(term) {{
-            const search = term.toLowerCase();
             document.querySelectorAll('.card, .hero').forEach(el => {{
-                const content = el.getAttribute('data-content') || "";
-                el.style.display = content.includes(search) ? '' : 'none';
-            }});
-            document.querySelectorAll('.category-title').forEach(title => {{
-                const section = title.nextElementSibling;
-                const hasVisible = section && Array.from(section.querySelectorAll('.card')).some(c => c.style.display !== 'none');
-                title.style.display = hasVisible ? '' : 'none';
+                el.style.display = el.getAttribute('data-content').includes(term.toLowerCase()) ? '' : 'none';
             }});
         }}
-
-        searchInput.addEventListener('input', (e) => filterNews(e.target.value));
-
-        function setSearch(term) {{
-            searchInput.value = term;
-            filterNews(term);
-            window.scrollTo({{ top: 0, behavior: 'smooth' }});
+        function filterCat(cat) {{
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            document.querySelectorAll('.cat-section').forEach(s => s.style.display = (cat==='all' || s.dataset.category===cat) ? '' : 'none');
+            document.querySelector('.hero').style.display = (cat==='all') ? '' : 'none';
+            if(cat==='bookmarks') {{
+                document.querySelectorAll('.cat-section').forEach(s => s.style.display = '');
+                document.querySelectorAll('.card, .hero').forEach(c => c.style.display = bookmarks.includes(c.dataset.id) ? '' : 'none');
+            }}
         }}
-
-        function copyToClipboard(text) {{
-            navigator.clipboard.writeText(text).then(() => {{
-                alert('Link kopiert!');
+        function toggleBookmark(id) {{
+            let b = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            if(b.includes(id)) b = b.filter(i => i!==id); else b.push(id);
+            localStorage.setItem('bookmarks', JSON.stringify(b));
+            updateBookmarkUI();
+        }}
+        function updateBookmarkUI() {{
+            const b = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            document.querySelectorAll('.btn-bookmark').forEach(btn => {{
+                const id = btn.closest('[data-id]').dataset.id;
+                btn.style.color = b.includes(id) ? 'var(--acc)' : '';
             }});
         }}
+        document.getElementById('searchInput').oninput = (e) => filterNews(e.target.value);
+        function setSearch(t) {{ document.getElementById('searchInput').value=t; filterNews(t); }}
+        window.onscroll = () => document.getElementById("backToTop").style.display = window.scrollY > 500 ? "block" : "none";
+        document.getElementById("backToTop").onclick = () => window.scrollTo({{top:0, behavior:'smooth'}});
+        function copyToClipboard(t) {{ navigator.clipboard.writeText(t).then(() => alert('Kopiert!')); }}
+        updateBookmarkUI();
     </script>
 </body>
 </html>"""
 
 def main():
-    old_data = load_db()
-    with ThreadPoolExecutor(max_workers=7) as executor:
-        results = executor.map(fetch_feed, FEEDS)
-    
-    new_items = [item for sublist in results for item in sublist]
-    combined = {item['url']: item for item in (old_data + new_items)}.values()
-    sorted_items = sorted(combined, key=lambda x: x["published_iso"], reverse=True)
-    
-    save_db(list(sorted_items))
-    with open("index.html", "w", encoding="utf-8") as f:
-        f.write(render_index(list(sorted_items)))
-    print("[OK] Build abgeschlossen.")
+    db = load_db()
+    with ThreadPoolExecutor(max_workers=7) as ex: res = list(ex.map(fetch_feed, FEEDS))
+    items = [i for r in res for i in r]
+    all_data = sorted({{i['url']: i for i in (db + items)}}.values(), key=lambda x: x["published_iso"], reverse=True)
+    save_db(all_data)
+    with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(all_data))
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": main()
