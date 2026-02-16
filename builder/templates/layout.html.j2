@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}" />
+
+  {# ------------------------------------------------------------
+     Canonical für SEO
+  ------------------------------------------------------------ #}
+  {{ site.url }}
+
+  {# ------------------------------------------------------------
+     OpenGraph Social Tags
+  ------------------------------------------------------------ #}
+  <meta property="og:title" content="{{ site.title }}" />
+  <meta property="og:description" content="{{ site.description }}" />
+  <meta property="og:url" content="{{ site.url }}" />
+  <meta property="og:image" content="{{ site.image }}" />
+  <meta property="og:type" content="website" />
+
+  {# ------------------------------------------------------------
+     Twitter Cards
+  ------------------------------------------------------------ #}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ site.title }}" />
+  <meta name="twitter:description" content="{{ site.description }}" />
+  <meta name="twitter:image" content="{{ site.image }}" />
+
+  {# ------------------------------------------------------------
+     Stylesheet
+  ------------------------------------------------------------ #}
+  /assets/styles.css
+
+  {# ------------------------------------------------------------
+     AdSense (automatisch)
+  ------------------------------------------------------------ #}
+  {% if adsense.enabled %}
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbyense.publisher_id }}</script>
+  {% endif %}
+</head>
+
+
+<body>
+
+  {# ------------------------------------------------------------
+     Header + Navigation
+  ------------------------------------------------------------ #}
+  <header class="header">
+    /
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6"
+          stroke="#5b9cff" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round"/></svg>
+      <h1>KI‑Ticker</h1>
+    </a>
+
+    <nav class="nav-links">
+      <a hrefeite</a>
+      /page/2/Neuere Beiträge</a>
+      /about.htmlÜber</a>
+      /sources.htmlQuellen</a>
+      <a href="/impressumessum</a>
+      /datenschutz.htmlDatenschutz</a>
+    </nav>
+  </header>
+
+
+
+  {# ------------------------------------------------------------
+     Main Content Block
+  ------------------------------------------------------------ #}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+
+
+  {# ------------------------------------------------------------
+     Footer
+  ------------------------------------------------------------ #}
+  <footer class="footer">
+    <p>
+      &copy; {{ now.year }} KI‑Ticker • Automatisch generierte KI‑News  
+      • <a href="/sitemap.xmla> • <a href="/SS‑Feed</a>
+    </p>
+
+    <p>
+      /impressum.htmlImpressum</a> •
+      /datenschutz.htmlDatenschutz</a>
+    </p>
+
+    <p class="build-info">
+      Zuletzt aktualisiert: {{ last_updated }}
+    </p>
+  </footer>
+
+
+  {# ------------------------------------------------------------
+     Structured Data (JSON‑LD wird in index.html eingebettet)
+  ------------------------------------------------------------ #}
+  {% block structured_data %}{% endblock %}
+
+</body>
+</html>
