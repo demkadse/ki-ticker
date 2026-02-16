@@ -8,14 +8,14 @@
     <img
       src="{{ item.image }}"
       loading="lazy"
-      alt="Bild zum Artikel {{ item.title | e }}"
-
+     --------------------------------------------
      Titel
   ------------------------------------------------------------ #}
   <h3>
-    <a href="{{ item.url }}" target="_blank" rela>
+    {{ item.url }}
+      {{ item.title }}
+    </a>
   </h3>
-
 
   {# ------------------------------------------------------------
      Metadaten
@@ -24,7 +24,6 @@
     {{ item.source }} • {{ item.domain }} •
     {{ item.published.strftime("%d.%m.%Y %H:%M") }} UTC
   </div>
-
 
   {# ------------------------------------------------------------
      Summary / Beschreibung
