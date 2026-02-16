@@ -1,9 +1,15 @@
 <article class="card">
 
   {% if item.image %}
-  <a href="{{ item   <img
-      src="{{ item.image }}"
-      loading=" <a href="{{ item.url }}" target="_blank"  </a>
+  {{ item.url }}
+    {{ item.image }}
+  </a>
+  {% endif %}
+
+  <h3>
+    {{ item.url }}
+      {{ item.title }}
+    </a>
   </h3>
 
   <div class="meta">
