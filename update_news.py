@@ -13,7 +13,6 @@ SITE_TITLE = "KI‑Ticker – Aktuelle KI‑News"
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
-# Professionelles Fallback-Bild
 DEFAULT_IMG = "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop"
 
 DB_FILE = "news_db.json"
@@ -96,7 +95,6 @@ def render_index(items):
             </div>
           </div>
         </article>"""
-        # Alle 12 Karten eine Anzeige einbauen
         if (idx + 1) % 12 == 0: html_content += ad_block
 
     return f"""<!doctype html>
@@ -112,7 +110,7 @@ def render_index(items):
     <main class="container">
         <header class="header">
             <h1>KI‑Ticker</h1>
-            <div class="controls"><input type="text" id="searchInput" placeholder="News durchsuchen..."></div>
+            <div class="controls"><input type="text" id="searchInput" placeholder="Suchen..."></div>
         </header>
         {html_content}
         <footer class="footer">
