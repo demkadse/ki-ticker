@@ -3,12 +3,20 @@
     <meta name="description" content="Dein stündliches Update zu Künstlicher Intelligenz und Tech-Trends.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta property="og:title" content="KI‑Ticker – Aktuelle KI‑News"><meta property="og:description" content="Dein stündliches Update zu Künstlicher Intelligenz und Tech-Trends."><meta property="og:image" content="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1280"><meta property="og:url" content="https://ki-ticker.boehmonline.space/"><meta property="og:type" content="website">
-    <link rel="stylesheet" href="style.css?v=1771281453"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2616688648278798" crossorigin="anonymous"></script></head>
+    <link rel="stylesheet" href="style.css?v=1771281618"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2616688648278798" crossorigin="anonymous"></script></head>
     <body class="dark-mode"><main class="container">
         <header class="header">
-            <h1>KI‑Ticker</h1>
-            <div class="controls"><input type="text" id="searchInput" placeholder="Suchen..."></div>
-            <div class="category-bar"><button class="cat-btn active" onclick="filterCat('all')">Alle</button><button class="cat-btn" onclick="filterCat('AWS ML Blog')">AWS ML Blog</button><button class="cat-btn" onclick="filterCat('Google AI')">Google AI</button><button class="cat-btn" onclick="filterCat('NVIDIA Blog')">NVIDIA Blog</button><button class="cat-btn" onclick="filterCat('OpenAI')">OpenAI</button><button class="cat-btn" onclick="filterCat('TechCrunch')">TechCrunch</button><button class="cat-btn" onclick="filterCat('TechCrunch AI')">TechCrunch AI</button><button class="cat-btn" onclick="filterCat('The Verge AI')">The Verge AI</button><button class="cat-btn" onclick="filterCat('VentureBeat')">VentureBeat</button><button class="cat-btn" onclick="filterCat('arXiv')">arXiv</button><button class="cat-btn" onclick="filterCat('arXiv cs.CL')">arXiv cs.CL</button></div>
+            <div class="hero-section">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1280" alt="KI Banner" class="hero-img">
+                <div class="hero-overlay">
+                    <h1>KI‑Ticker</h1>
+                    <p>Echtzeit-Updates aus der Welt der KI</p>
+                </div>
+            </div>
+            <div class="controls">
+                <input type="text" id="searchInput" placeholder="News durchsuchen...">
+                <div class="category-bar"><button class="cat-btn active" onclick="filterCat('all', this)">Alle</button><button class="cat-btn" onclick="filterCat('AWS ML Blog', this)">AWS ML Blog</button><button class="cat-btn" onclick="filterCat('Google AI', this)">Google AI</button><button class="cat-btn" onclick="filterCat('NVIDIA Blog', this)">NVIDIA Blog</button><button class="cat-btn" onclick="filterCat('OpenAI', this)">OpenAI</button><button class="cat-btn" onclick="filterCat('TechCrunch', this)">TechCrunch</button><button class="cat-btn" onclick="filterCat('TechCrunch AI', this)">TechCrunch AI</button><button class="cat-btn" onclick="filterCat('The Verge AI', this)">The Verge AI</button><button class="cat-btn" onclick="filterCat('VentureBeat', this)">VentureBeat</button><button class="cat-btn" onclick="filterCat('arXiv', this)">arXiv</button><button class="cat-btn" onclick="filterCat('arXiv cs.CL', this)">arXiv cs.CL</button></div>
+            </div>
         </header>
         
         <article class="card" data-source="TechCrunch" data-content="have money, will travel: a16z’s hunt for the next european unicorn">
@@ -973,9 +981,9 @@
         </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
         <footer class="footer"><p>&copy; 2026 KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main>
     <script>
-        function filterCat(cat) {
+        function filterCat(cat, btn) {
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-            if (event) event.target.classList.add('active');
+            btn.classList.add('active');
             document.querySelectorAll('.card').forEach(el => {
                 el.style.display = (cat === 'all' || el.getAttribute('data-source') === cat) ? 'flex' : 'none';
             });
