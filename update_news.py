@@ -28,6 +28,7 @@ ITEMS_PER_CATEGORY = 20
 
 HEADERS = {"User-Agent": "KI-TickerBot/1.0 (+https://ki-ticker.boehmonline.space)"}
 
+# Kategorisierte Feeds
 FEEDS = [
     ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", "News & Trends"),
     ("MIT Tech Review", "https://www.technologyreview.com/feed/tag/artificial-intelligence/", "News & Trends"),
@@ -38,6 +39,7 @@ FEEDS = [
     ("OpenAI Blog", "https://openai.com/news/rss.xml", "Unternehmen & Cloud"),
 ]
 
+# Mapping für Auto-Tags und Trends
 STOP_WORDS = {"and", "the", "for", "with", "how", "from", "what", "this", "der", "die", "das", "und", "für", "mit", "von", "den", "auf", "ist", "ki-ticker", "new", "news", "ai", "ki"}
 TAG_MAPPING = {
     "nvidia": "Hardware", "gpu": "Hardware", "openai": "LLM", "gpt": "LLM", 
@@ -60,10 +62,8 @@ def get_tags(title, summary):
 def get_top_keywords(items, limit=8):
     words = []
     for it in items:
-        # Nur Wörter mit mehr als 3 Buchstaben, die keine Stopwords sind
         found = re.findall(r'\w+', it['title'].lower())
         words.extend([w for w in found if len(w) > 3 and w not in STOP_WORDS])
-    
     most_common = Counter(words).most_common(limit)
     return [word for word, count in most_common]
 
@@ -134,8 +134,6 @@ def fetch_feed(feed_info):
 def render_index(items):
     now = datetime.datetime.now(datetime.timezone.utc)
     top_keywords = get_top_keywords(items)
-    
-    # Trends HTML
     trends_html = "".join([f'<button class="trend-tag" onclick="setSearch(\'{kw}\')">#{kw}</button>' for kw in top_keywords])
     
     categories = ["News & Trends", "Forschung", "Unternehmen & Cloud"]
@@ -233,7 +231,7 @@ def render_index(items):
 
         function copyToClipboard(text) {{
             navigator.clipboard.writeText(text).then(() => {{
-                alert('Link kopieren: Erfolg!');
+                alert('Link kopiert!');
             }});
         }}
     </script>
@@ -252,6 +250,7 @@ def main():
     save_db(list(sorted_items))
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(render_index(list(sorted_items)))
+    print("[OK] Build abgeschlossen.")
 
 if __name__ == "__main__":
     main()
