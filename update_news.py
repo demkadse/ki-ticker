@@ -28,7 +28,6 @@ ITEMS_PER_CATEGORY = 20
 
 HEADERS = {"User-Agent": "KI-TickerBot/1.0 (+https://ki-ticker.boehmonline.space)"}
 
-# Kategorisierte Feeds
 FEEDS = [
     ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", "News & Trends"),
     ("MIT Tech Review", "https://www.technologyreview.com/feed/tag/artificial-intelligence/", "News & Trends"),
@@ -39,7 +38,6 @@ FEEDS = [
     ("OpenAI Blog", "https://openai.com/news/rss.xml", "Unternehmen & Cloud"),
 ]
 
-# Mapping für Auto-Tags und Trends
 STOP_WORDS = {"and", "the", "for", "with", "how", "from", "what", "this", "der", "die", "das", "und", "für", "mit", "von", "den", "auf", "ist", "ki-ticker", "new", "news", "ai", "ki"}
 TAG_MAPPING = {
     "nvidia": "Hardware", "gpu": "Hardware", "openai": "LLM", "gpt": "LLM", 
@@ -86,16 +84,40 @@ def is_ai_related(title, summary):
     AI_KEYWORDS = ["ki", "ai", "intelligence", "llm", "gpt", "model", "training", "robot", "nvidia", "openai", "claude", "gemini", "machine learning"]
     return any(kw in text for kw in AI_KEYWORDS)
 
-def extract_image(e):
+def get_fallback_image(url):
+    """Versucht ein Vorschaubild direkt von der Webseite zu scrapen."""
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=5)
+        if resp.status_code == 200:
+            soup = BeautifulSoup(resp.content, "html.parser")
+            # Suche nach OpenGraph Image
+            og_img = soup.find("meta", property="og:image")
+            if og_img and og_img.get("content"):
+                return og_img["content"]
+            # Suche nach Twitter Image
+            tw_img = soup.find("meta", name="twitter:image")
+            if tw_img and tw_img.get("content"):
+                return tw_img["content"]
+    except:
+        pass
+    return None
+
+def extract_image(e, link):
+    # 1. Media Content aus Feed
     media = e.get("media_content") or []
     if media and isinstance(media, list) and media[0].get("url"):
         return media[0]["url"]
+    
+    # 2. BeautifulSoup im Content des Feeds suchen
     content = e.get("summary", "") + e.get("description", "")
     if content:
         soup = BeautifulSoup(content, "html.parser")
         img = soup.find("img")
-        if img and img.get("src"): return img["src"]
-    return None
+        if img and img.get("src"): 
+            return img["src"]
+            
+    # 3. Fallback: Webseite direkt scrapen
+    return get_fallback_image(link)
 
 def fetch_feed(feed_info):
     name, url, category = feed_info
@@ -122,7 +144,7 @@ def fetch_feed(feed_info):
                 "category": category,
                 "published_iso": dt.isoformat(),
                 "domain": urlparse(link).netloc.replace("www.", ""),
-                "image": extract_image(e),
+                "image": extract_image(e, link),
                 "reading_time": get_reading_time(clean_summary),
                 "tags": get_tags(title, clean_summary)
             })
@@ -133,14 +155,32 @@ def fetch_feed(feed_info):
 
 def render_index(items):
     now = datetime.datetime.now(datetime.timezone.utc)
+    if not items: return "Keine News gefunden."
+    
+    top_story = items[0]
+    display_items = items[1:]
     top_keywords = get_top_keywords(items)
     trends_html = "".join([f'<button class="trend-tag" onclick="setSearch(\'{kw}\')">#{kw}</button>' for kw in top_keywords])
     
+    dt_hero = datetime.datetime.fromisoformat(top_story["published_iso"])
+    hero_img = f'style="background-image: url(\'{top_story["image"]}\')"' if top_story.get("image") else ""
+    hero_html = f"""
+    <section class="hero" data-content="{top_story["title"].lower()}">
+        <div class="hero-image" {hero_img}></div>
+        <div class="hero-content">
+            <span class="badge" style="background:var(--acc); color:white;">Top Story</span>
+            <div class="meta">{top_story["source"]} • {dt_hero.strftime("%d.%m. %H:%M")}</div>
+            <h1><a href="{top_story["url"]}" target="_blank">{top_story["title"]}</a></h1>
+            <p>{top_story["summary"]}</p>
+        </div>
+    </section>
+    """
+
     categories = ["News & Trends", "Forschung", "Unternehmen & Cloud"]
     html_content = ""
 
     for cat in categories:
-        cat_items = [i for i in items if i["category"] == cat][:ITEMS_PER_CATEGORY]
+        cat_items = [i for i in display_items if i["category"] == cat][:ITEMS_PER_CATEGORY]
         if not cat_items: continue
         
         html_content += f'<h2 class="category-title">{cat}</h2>'
@@ -194,7 +234,8 @@ def render_index(items):
         </div>
         <p class="tagline">Update: {now.strftime("%d.%m.%Y %H:%M")} UTC</p>
     </header>
-    <main class="container" id="newsContainer">
+    <main class="container">
+        {hero_html}
         {html_content}
     </main>
     <footer class="footer">&copy; {now.year} KI‑Ticker</footer>
@@ -211,12 +252,14 @@ def render_index(items):
 
         const searchInput = document.getElementById('searchInput');
         function filterNews(term) {{
-            document.querySelectorAll('.card').forEach(card => {{
-                card.style.display = card.getAttribute('data-content').includes(term.toLowerCase()) ? '' : 'none';
+            const search = term.toLowerCase();
+            document.querySelectorAll('.card, .hero').forEach(el => {{
+                const content = el.getAttribute('data-content') || "";
+                el.style.display = content.includes(search) ? '' : 'none';
             }});
             document.querySelectorAll('.category-title').forEach(title => {{
                 const section = title.nextElementSibling;
-                const hasVisible = Array.from(section.querySelectorAll('.card')).some(c => c.style.display !== 'none');
+                const hasVisible = section && Array.from(section.querySelectorAll('.card')).some(c => c.style.display !== 'none');
                 title.style.display = hasVisible ? '' : 'none';
             }});
         }}
