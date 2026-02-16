@@ -43,6 +43,16 @@ def save_db(data):
     filtered = [i for i in data if datetime.datetime.fromisoformat(i["published_iso"]) > cutoff]
     with open(DB_FILE, "w", encoding="utf-8") as f: json.dump(filtered[:500], f, ensure_ascii=False, indent=2)
 
+def generate_sitemap(items):
+    """Erzeugt eine sitemap.xml für die Google Search Console"""
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    sitemap += f'  <url><loc>{SITE_URL}/</loc><priority>1.0</priority></url>\n'
+    for it in items[:150]: # Die neuesten 150 Links in die Sitemap
+        sitemap += f'  <url><loc>{it["url"]}</loc></url>\n'
+    sitemap += '</urlset>'
+    with open("sitemap.xml", "w", encoding="utf-8") as f:
+        f.write(sitemap)
+
 def extract_image(e):
     media = e.get("media_content") or e.get("media_thumbnail") or []
     if media and isinstance(media, list) and media[0].get("url"): return media[0]["url"]
@@ -110,7 +120,7 @@ def render_index(items):
     <main class="container">
         <header class="header">
             <h1>KI‑Ticker</h1>
-            <div class="controls"><input type="text" id="searchInput" placeholder="Suchen..."></div>
+            <div class="controls"><input type="text" id="searchInput" placeholder="News durchsuchen..."></div>
         </header>
         {html_content}
         <footer class="footer">
@@ -136,6 +146,7 @@ def main():
     items = [i for r in res for i in r]
     all_data = sorted({i['url']: i for i in (db + items)}.values(), key=lambda x: x["published_iso"], reverse=True)
     save_db(all_data)
+    generate_sitemap(all_data)
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(all_data))
 
 if __name__ == "__main__": main()
