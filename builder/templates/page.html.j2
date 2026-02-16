@@ -1,0 +1,75 @@
+{% extends "layout.html.j2" %}
+
+{% block content %}
+
+{# ------------------------------------------------------------
+   Page Heading
+------------------------------------------------------------ #}
+<section class="hero">
+  <h2>Weitere KI‑News – Seite {{ pagination.current_page }}</h2>
+  <p>
+    Dies ist Seite {{ pagination.current_page }} des KI‑Tickers.
+    Hier findest du ältere, aber weiterhin relevante Meldungen.
+  </p>
+</section>
+
+
+{# ------------------------------------------------------------
+   Article Grid
+------------------------------------------------------------ #}
+<section class="grid">
+  {% for item in items %}
+    {% include "article_card.html.j2" %}
+  {% endfor %}
+</section>
+
+
+{# ------------------------------------------------------------
+   Pagination Navigation
+------------------------------------------------------------ #}
+<nav class="pagination">
+
+  {% if pagination.prev %}
+    {{ pagination.prev }}← Neuere Beiträge</a>
+  {% endif %}
+
+  {% if pagination.next %}
+    {{ pagination.next }}Ältere Beiträge →</a>
+  {% endif %}
+
+</nav>
+
+{% endblock %}
+
+
+
+{% block structured_data %}
+{# ------------------------------------------------------------
+   JSON-LD Structured Data
+------------------------------------------------------------ #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "KI‑Ticker – KI‑News Seite {{ pagination.current_page }}",
+  "description": "Weitere ältere KI‑Nachrichten, automatisch aggregiert vom KI‑Ticker.",
+  "url": "{{ pagination.page_url }}",
+  "itemListElement": [
+    {% for item in items %}
+    {
+      "@type": "NewsArticle",
+      "position": {{ loop.index }},
+      "headline": {{ item.title | tojson }},
+      "url": {{ item.url | tojson }},
+      "datePublished": "{{ item.published_iso }}",
+      "description": {{ item.summary | tojson }},
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ item.source | tojson }}
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
