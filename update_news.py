@@ -16,8 +16,7 @@ from bs4 import BeautifulSoup
 # --- KONFIGURATION ---
 SITE_TITLE = "KI‑Ticker – Aktuelle KI‑News"
 SITE_DESC = "Automatisierte Übersicht zu KI, Machine Learning und LLMs."
-SITE_URL = "https://ki-ticker.boehmonline.space"
-ADSENSE_PUB = "pub-2616688648278798"
+[cite_start]ADSENSE_PUB = "pub-2616688648278798" # [cite: 1]
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
@@ -25,7 +24,6 @@ ITEMS_PER_CATEGORY = 20
 
 HEADERS = {"User-Agent": "KI-TickerBot/1.0 (+https://ki-ticker.boehmonline.space)"}
 
-# Kategorisierte Feeds: (Name, URL, Kategorie)
 FEEDS = [
     ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", "News & Trends"),
     ("MIT Tech Review", "https://www.technologyreview.com/feed/tag/artificial-intelligence/", "News & Trends"),
@@ -69,7 +67,6 @@ def extract_image(e):
 
 def fetch_feed(feed_info):
     name, url, category = feed_info
-    print(f"[INFO] Lade {name}...")
     try:
         resp = requests.get(url, headers=HEADERS, timeout=15)
         fp = feedparser.parse(resp.content)
@@ -114,7 +111,7 @@ def render_index(items):
             dt = datetime.datetime.fromisoformat(it["published_iso"])
             img_html = f'<div class="img-container"><img src="{it["image"]}" loading="lazy" alt=""></div>' if it.get("image") else ""
             html_content += f"""
-            <article class="card">
+            <article class="card" data-content="{it["title"].lower()} {it["summary"].lower()}">
               {img_html}
               <div class="card-body">
                 <div class="meta">{it["source"]} • {dt.strftime("%d.%m. %H:%M")}</div>
@@ -130,19 +127,58 @@ def render_index(items):
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title>
-    <meta name="description" content="{SITE_DESC}">
     <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_PUB}"></script>
 </head>
 <body>
     <header class="header">
         <h1>KI‑Ticker</h1>
-        <p class="tagline">Update: {now.strftime("%d.%m.%Y %H:%M")} UTC</p>
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="News durchsuchen...">
+            <button class="btn-toggle" id="themeToggle">Modus wechseln</button>
+        </div>
+        <p class="tagline">Letztes Update: {now.strftime("%d.%m.%Y %H:%M")} UTC</p>
     </header>
-    <main class="container">
+    <main class="container" id="newsContainer">
         {html_content}
     </main>
     <footer class="footer">&copy; {now.year} KI‑Ticker</footer>
+
+    <script>
+        // Dark Mode Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'dark') {{
+            body.classList.add('dark-mode');
+        }}
+
+        themeToggle.addEventListener('click', () => {{
+            body.classList.toggle('dark-mode');
+            const mode = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', mode);
+        }});
+
+        // Search Logic
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {{
+            const term = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+            const titles = document.querySelectorAll('.category-title');
+
+            cards.forEach(card => {{
+                const content = card.getAttribute('data-content');
+                card.style.display = content.includes(term) ? '' : 'none';
+            }});
+
+            // Verstecke Kategorienamen, wenn keine Karten sichtbar sind
+            titles.forEach(title => {{
+                const section = title.nextElementSibling;
+                const hasVisibleCards = Array.from(section.querySelectorAll('.card')).some(c => c.style.display !== 'none');
+                title.style.display = hasVisibleCards ? '' : 'none';
+            }});
+        }});
+    </script>
 </body>
 </html>"""
 
@@ -158,7 +194,6 @@ def main():
     save_db(list(sorted_items))
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(render_index(list(sorted_items)))
-    print("[OK] Build abgeschlossen.")
 
 if __name__ == "__main__":
     main()
