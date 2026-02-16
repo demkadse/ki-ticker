@@ -2,8 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://ki-ticker.boehmonline.space/</loc><priority>1.0</priority></url>
   <url><loc>https://aws.amazon.com/blogs/machine-learning/supercharge-regulated-workloads-with-claude-code-and-amazon-bedrock/</loc></url>
+  <url><loc>https://blogs.nvidia.com/blog/data-blackwell-ultra-performance-lower-cost-agentic-ai/</loc></url>
+  <url><loc>https://techcrunch.com/2026/02/16/how-ricursive-intelligence-raised-335m-at-a-4b-valuation-in-4-months/</loc></url>
   <url><loc>https://www.theverge.com/podcast/879203/ring-search-party-super-bowl-ai-surveillance-privacy-security</loc></url>
+  <url><loc>https://techcrunch.com/2026/02/16/flapping-airplanes-on-the-future-of-ai-we-want-to-try-really-radically-different-things/</loc></url>
+  <url><loc>https://techcrunch.com/2026/02/16/after-all-the-hype-some-ai-experts-dont-think-openclaw-is-all-that-exciting/</loc></url>
+  <url><loc>https://techcrunch.com/2026/02/16/fractal-analytics-muted-ipo-debut-signals-persistent-ai-fears-in-india/</loc></url>
   <url><loc>https://www.theverge.com/ai-artificial-intelligence/879644/bytedance-seedance-safeguards-ai-video-copyright-infringement</loc></url>
+  <url><loc>https://techcrunch.com/2026/02/16/all-the-important-news-from-the-ongoing-india-ai-summit/</loc></url>
   <url><loc>https://arxiv.org/abs/2602.12316</loc></url>
   <url><loc>https://arxiv.org/abs/2602.12356</loc></url>
   <url><loc>https://arxiv.org/abs/2602.12389</loc></url>
@@ -95,10 +101,4 @@
   <url><loc>https://arxiv.org/abs/2602.12833</loc></url>
   <url><loc>https://arxiv.org/abs/2602.12846</loc></url>
   <url><loc>https://arxiv.org/abs/2602.12851</loc></url>
-  <url><loc>https://arxiv.org/abs/2602.12869</loc></url>
-  <url><loc>https://arxiv.org/abs/2602.12873</loc></url>
-  <url><loc>https://arxiv.org/abs/2602.12875</loc></url>
-  <url><loc>https://arxiv.org/abs/2602.12892</loc></url>
-  <url><loc>https://arxiv.org/abs/2602.12902</loc></url>
-  <url><loc>https://arxiv.org/abs/2602.12917</loc></url>
 </urlset>

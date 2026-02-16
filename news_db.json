@@ -16,6 +16,35 @@
     ]
   },
   {
+    "id": "22fec2704805",
+    "title": "New SemiAnalysis InferenceX Data Shows NVIDIA Blackwell Ultra Delivers up to 50x Better Performance and 35x Lower Costs for Agentic AI",
+    "url": "https://blogs.nvidia.com/blog/data-blackwell-ultra-performance-lower-cost-agentic-ai/",
+    "summary": "The NVIDIA Blackwell platform has been widely adopted by leading inference providers such as Baseten, DeepInfra, Fireworks AI and Together AI to reduce cost per token by up to 10x. Now, the NVIDIA Blackwell Ultra platform is taking this momentum furt...",
+    "source": "NVIDIA Blog",
+    "category": "Unternehmen & Cloud",
+    "published_iso": "2026-02-16T17:00:40+00:00",
+    "domain": "blogs.nvidia.com",
+    "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/inference-charts-inferencemax-v1.5-perf-charts-4753570-r12_1-alt-scaled.png",
+    "reading_time": 1,
+    "tags": [
+      "Hardware",
+      "Agents"
+    ]
+  },
+  {
+    "id": "e16702401246",
+    "title": "How Ricursive Intelligence raised $335M at a $4B valuation in 4 months",
+    "url": "https://techcrunch.com/2026/02/16/how-ricursive-intelligence-raised-335m-at-a-4b-valuation-in-4-months/",
+    "summary": "The reason why this nascent startup had VCs lining up is the founders.They are so famed in the AI world, everyone tried to hire them....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-16T17:00:00+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2026/02/Ricursive-Intelligence-founders.png?resize=1200,943",
+    "reading_time": 1,
+    "tags": []
+  },
+  {
     "id": "df83a2b4b699",
     "title": "Let&#8217;s talk about Ring, lost dogs, and the surveillance state",
     "url": "https://www.theverge.com/podcast/879203/ring-search-party-super-bowl-ai-surveillance-privacy-security",
@@ -25,6 +54,45 @@
     "published_iso": "2026-02-16T15:00:00+00:00",
     "domain": "theverge.com",
     "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/02/ring_eye_illo.gif?quality=90&strip=all&crop=0%2C10.717639621171%2C100%2C78.564720757659&w=1200",
+    "reading_time": 1,
+    "tags": []
+  },
+  {
+    "id": "443656579a99",
+    "title": "Flapping Airplanes on the future of AI: ‘We want to try really radically different things’",
+    "url": "https://techcrunch.com/2026/02/16/flapping-airplanes-on-the-future-of-ai-we-want-to-try-really-radically-different-things/",
+    "summary": "\"We're exploring a different set of tradeoffs.\"...",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-16T14:00:00+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2026/02/Flapping-Airplanes-founders-photo.jpg?resize=1200,821",
+    "reading_time": 1,
+    "tags": []
+  },
+  {
+    "id": "52600766b309",
+    "title": "After all the hype, some AI experts don’t think OpenClaw is all that exciting",
+    "url": "https://techcrunch.com/2026/02/16/after-all-the-hype-some-ai-experts-dont-think-openclaw-is-all-that-exciting/",
+    "summary": "\"From an AI research perspective, this is nothing novel,\" one expert told TechCrunch....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-16T13:15:00+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2026/02/GettyImages-1388444972.jpg?resize=1200,839",
+    "reading_time": 1,
+    "tags": []
+  },
+  {
+    "id": "9ce78c899c01",
+    "title": "Fractal Analytics’ muted IPO debut signals persistent AI fears in India",
+    "url": "https://techcrunch.com/2026/02/16/fractal-analytics-muted-ipo-debut-signals-persistent-ai-fears-in-india/",
+    "summary": "As India's first AI company to IPO, Fractal Analytics didn't have a stellar first day on the public markets, as enthusiasm for the technology collided with jittery investors in the wake of a sell-off in Indian software stocks....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-16T11:51:25+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2026/02/fractal-analytics.jpg?resize=1200,800",
     "reading_time": 1,
     "tags": []
   },
@@ -40,6 +108,22 @@
     "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/02/gettyimages-2221026706.jpg?quality=90&strip=all&crop=0%2C10.705478127883%2C100%2C78.589043744234&w=1200",
     "reading_time": 1,
     "tags": []
+  },
+  {
+    "id": "e9152958c003",
+    "title": "All the important news from the ongoing India AI Impact Summit",
+    "url": "https://techcrunch.com/2026/02/16/all-the-important-news-from-the-ongoing-india-ai-summit/",
+    "summary": "India is hosting a four-day AI Summit this week that will be attended by executives from major AI labs and Big Tech, including OpenAI, Anthropic, Nvidia, Microsoft, Google, and Cloudflare, as well as heads of state....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-16T11:20:27+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2024/06/india-ai.jpg?w=1200",
+    "reading_time": 1,
+    "tags": [
+      "Hardware",
+      "LLM"
+    ]
   },
   {
     "id": "ea061aa862bb",
@@ -564,9 +648,7 @@
     "domain": "arxiv.org",
     "image": "/static/browse/0.3.4/images/arxiv-logo-fb.png",
     "reading_time": 2,
-    "tags": [
-      "Big Tech"
-    ]
+    "tags": []
   },
   {
     "id": "d1031ffbeb5e",
@@ -1196,9 +1278,7 @@
     "domain": "arxiv.org",
     "image": "/static/browse/0.3.4/images/arxiv-logo-fb.png",
     "reading_time": 2,
-    "tags": [
-      "Big Tech"
-    ]
+    "tags": []
   },
   {
     "id": "8b559a913f1c",
@@ -1405,9 +1485,7 @@
     "domain": "arxiv.org",
     "image": "/static/browse/0.3.4/images/arxiv-logo-fb.png",
     "reading_time": 2,
-    "tags": [
-      "Big Tech"
-    ]
+    "tags": []
   },
   {
     "id": "91bc4102ec98",
@@ -1513,9 +1591,7 @@
     "domain": "arxiv.org",
     "image": "/static/browse/0.3.4/images/arxiv-logo-fb.png",
     "reading_time": 1,
-    "tags": [
-      "Big Tech"
-    ]
+    "tags": []
   },
   {
     "id": "f1e7ce50652e",
@@ -1634,9 +1710,7 @@
     "domain": "arxiv.org",
     "image": "/static/browse/0.3.4/images/arxiv-logo-fb.png",
     "reading_time": 1,
-    "tags": [
-      "Big Tech"
-    ]
+    "tags": []
   },
   {
     "id": "33d5631996e7",
@@ -1980,9 +2054,7 @@
     "domain": "arxiv.org",
     "image": "/static/browse/0.3.4/images/arxiv-logo-fb.png",
     "reading_time": 1,
-    "tags": [
-      "Big Tech"
-    ]
+    "tags": []
   },
   {
     "id": "42d65338a089",
@@ -2369,9 +2441,7 @@
     "domain": "arxiv.org",
     "image": "/static/browse/0.3.4/images/arxiv-logo-fb.png",
     "reading_time": 1,
-    "tags": [
-      "Big Tech"
-    ]
+    "tags": []
   },
   {
     "id": "6ae429cf044c",
@@ -2531,9 +2601,7 @@
     "domain": "arxiv.org",
     "image": "/static/browse/0.3.4/images/arxiv-logo-fb.png",
     "reading_time": 1,
-    "tags": [
-      "Big Tech"
-    ]
+    "tags": []
   },
   {
     "id": "260b2a2c1eab",
@@ -2877,9 +2945,7 @@
     "domain": "arxiv.org",
     "image": "/static/browse/0.3.4/images/arxiv-logo-fb.png",
     "reading_time": 1,
-    "tags": [
-      "Big Tech"
-    ]
+    "tags": []
   },
   {
     "id": "1461bdd09baa",
@@ -3785,6 +3851,36 @@
     "tags": []
   },
   {
+    "id": "f7275eb23931",
+    "title": "As AI data centers hit power limits, Peak XV backs Indian startup C2i to fix the bottleneck",
+    "url": "https://techcrunch.com/2026/02/15/as-ai-data-centers-hit-power-limits-peak-xv-backs-indian-startup-c2i-to-fix-the-bottleneck/",
+    "summary": "C2i has raised $15 million as it tests a grid-to-GPU approach to reducing power losses in AI data centers....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-16T01:00:00+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2024/02/GettyImages-1195233690.jpg?resize=1200,775",
+    "reading_time": 1,
+    "tags": [
+      "Hardware"
+    ]
+  },
+  {
+    "id": "2bd2cc215ebd",
+    "title": "Blackstone backs Neysa in up to $1.2B financing as India pushes to build domestic AI infrastructure",
+    "url": "https://techcrunch.com/2026/02/15/blackstone-backs-neysa-in-up-to-1-2b-financing-as-india-pushes-to-build-domestic-ai-compute/",
+    "summary": "Neysa is targeting deployments of more than 20,000 GPUs over time as demand for local AI compute accelerates....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-16T00:30:00+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2021/07/GettyImages-1156074432.jpg?resize=1200,800",
+    "reading_time": 1,
+    "tags": [
+      "Hardware"
+    ]
+  },
+  {
     "id": "45a51ffa8d53",
     "title": "OpenClaw founder Peter Steinberger is joining OpenAI",
     "url": "https://www.theverge.com/ai-artificial-intelligence/879623/openclaw-founder-peter-steinberger-joins-openai",
@@ -3799,6 +3895,77 @@
       "LLM",
       "Agents"
     ]
+  },
+  {
+    "id": "0aae42736e23",
+    "title": "OpenClaw creator Peter Steinberger joins OpenAI",
+    "url": "https://techcrunch.com/2026/02/15/openclaw-creator-peter-steinberger-joins-openai/",
+    "summary": "OpenAI said OpenClaw will live on as an open source project....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-15T22:28:02+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2026/01/GettyImages-1396827010.jpg?resize=1200,839",
+    "reading_time": 1,
+    "tags": [
+      "LLM"
+    ]
+  },
+  {
+    "id": "a76fcbc8453b",
+    "title": "Anthropic and the Pentagon are reportedly arguing over Claude usage",
+    "url": "https://techcrunch.com/2026/02/15/anthropic-and-the-pentagon-are-reportedly-arguing-over-claude-usage/",
+    "summary": "The apparent issue: whether Claude can be used for mass domestic surveillance and autonomous weapons....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-15T21:11:28+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2023/07/GettyImages-1252170580.jpg?resize=1200,800",
+    "reading_time": 1,
+    "tags": [
+      "LLM"
+    ]
+  },
+  {
+    "id": "a1d106db9329",
+    "title": "India has 100M weekly active ChatGPT users, Sam Altman says",
+    "url": "https://techcrunch.com/2026/02/15/india-has-100m-weekly-active-chatgpt-users-sam-altman-says/",
+    "summary": "OpenAI CEO Sam Altman says India has the largest number of student users of ChatGPT worldwide....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-15T18:00:00+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2025/04/chatgpt-india.jpg?resize=1200,800",
+    "reading_time": 1,
+    "tags": [
+      "LLM"
+    ]
+  },
+  {
+    "id": "ddf7d0d5afc3",
+    "title": "The enterprise AI land grab is on. Glean is building the layer beneath the interface.",
+    "url": "https://techcrunch.com/2026/02/15/the-enterprise-ai-land-grab-is-on-glean-is-building-the-layer-beneath-the-interface/",
+    "summary": "In this week's episode of the Equity podcast, Glean CEO Arvind Jain explains the company's shift from enterprise search tool to middleware layer for enterprise AI....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-15T17:30:00+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2026/02/GettyImages-2259183688.jpg?w=1024",
+    "reading_time": 1,
+    "tags": []
+  },
+  {
+    "id": "34808182f28a",
+    "title": "Hollywood isn’t happy about the new Seedance 2.0 video generator",
+    "url": "https://techcrunch.com/2026/02/15/hollywood-isnt-happy-about-the-new-seedance-2-0-video-generator/",
+    "summary": "Hollywood organizations are pushing back against a new AI video model called Seedance 2.0, which they say has quickly become a tool for “blatant” copyright infringement....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-15T15:41:16+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2020/08/GettyImages-1263876301.jpeg?w=1024",
+    "reading_time": 1,
+    "tags": []
   },
   {
     "id": "bcab9ead64bc",
@@ -3827,6 +3994,32 @@
     "tags": []
   },
   {
+    "id": "1ff8d564698c",
+    "title": "The great computer science exodus (and where students are going instead)",
+    "url": "https://techcrunch.com/2026/02/15/the-great-computer-science-exodus-and-where-students-are-going-instead/",
+    "summary": "Students are losing some interest in computer science broadly but gaining interest in AI-specific majors and courses....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-15T08:40:27+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2019/10/GettyImages-827810708.jpg?resize=1200,801",
+    "reading_time": 1,
+    "tags": []
+  },
+  {
+    "id": "a7380418621b",
+    "title": "Is safety ‘dead’ at xAI?",
+    "url": "https://techcrunch.com/2026/02/14/is-safety-is-dead-at-xai/",
+    "summary": "Elon Musk is “actively” working to make xAI’s Grok chatbot “more unhinged, according to a former employee....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-14T21:55:44+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2025/07/GettyImages-2207699717.jpg?resize=1200,800",
+    "reading_time": 1,
+    "tags": []
+  },
+  {
     "id": "a1208ff1a38c",
     "title": "My uncanny AI valentines",
     "url": "https://www.theverge.com/report/879327/eva-ai-cafe-dating-ai-companions",
@@ -3836,6 +4029,19 @@
     "published_iso": "2026-02-14T15:00:00+00:00",
     "domain": "theverge.com",
     "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/02/268345_Cafe_AI_Date_AKrales_0039.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200",
+    "reading_time": 1,
+    "tags": []
+  },
+  {
+    "id": "17c51e07c3de",
+    "title": "Airbnb plans to bake in AI features for search, discovery and support",
+    "url": "https://techcrunch.com/2026/02/13/airbnb-plans-to-bake-in-ai-features-for-search-discovery-and-support/",
+    "summary": "Airbnb CEO Brian Chesky said the company wants to increase its use of large language models for customer discovery, support and engineering....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-14T02:40:42+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2025/08/brian-chesky-GettyImages-2217178973.jpg?w=1024",
     "reading_time": 1,
     "tags": []
   },
@@ -3852,6 +4058,49 @@
     "reading_time": 1,
     "tags": [
       "Agents"
+    ]
+  },
+  {
+    "id": "0ad6028255b6",
+    "title": "Airbnb says a third of its customer support is now handled by AI in the US and Canada",
+    "url": "https://techcrunch.com/2026/02/13/airbnb-says-a-third-of-its-customer-support-is-now-handled-by-ai-in-the-u-s-and-canada/",
+    "summary": "Airbnb was poised to introduce an app that doesn't just search for you, but one that \"knows you.\" CEO Brian Chesky said, \"It will help guests plan their entire trip, help hosts better run their businesses, and help the company operate more efficientl...",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-13T22:12:26+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2025/05/Airbnb-Summer-feat.jpg?resize=1200,675",
+    "reading_time": 1,
+    "tags": []
+  },
+  {
+    "id": "51e6b7a7c78f",
+    "title": "Why top talent is walking away from OpenAI and xAI",
+    "url": "https://techcrunch.com/video/why-top-talent-is-walking-away-from-openai-and-xai/",
+    "summary": "AI companies have been hemorrhaging talent the past few weeks. Half of xAI’s founding team has left the company — some on their own, others through “restructuring” — while OpenAI is facing its own shakeups, from the disbanding of its mission alignmen...",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-13T21:00:00+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2026/02/GettyImages-2236544077.jpg?resize=1200,800",
+    "reading_time": 1,
+    "tags": [
+      "LLM"
+    ]
+  },
+  {
+    "id": "86bfc01751d9",
+    "title": "OpenAI removes access to sycophancy-prone GPT-4o model",
+    "url": "https://techcrunch.com/2026/02/13/openai-removes-access-to-sycophancy-prone-gpt-4o-model/",
+    "summary": "The model is known for its overly sycophantic nature and its role in several lawsuits involving users' unhealthy relationships with the chatbot....",
+    "source": "TechCrunch AI",
+    "category": "News & Trends",
+    "published_iso": "2026-02-13T18:10:00+00:00",
+    "domain": "techcrunch.com",
+    "image": "https://techcrunch.com/wp-content/uploads/2025/02/GettyImages-2195918462.jpg?w=1024",
+    "reading_time": 1,
+    "tags": [
+      "LLM"
     ]
   },
   {
@@ -3878,9 +4127,7 @@
     "domain": "theverge.com",
     "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2025/10/257980_Meta_Ray-Ban_Display_AKrales_0640.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200",
     "reading_time": 1,
-    "tags": [
-      "Big Tech"
-    ]
+    "tags": []
   },
   {
     "id": "f01e7b0996ca",
@@ -3943,6 +4190,21 @@
     ]
   },
   {
+    "id": "f4dc5c26b5b8",
+    "title": "Code, Compute and Connection: Inside the Inaugural NVIDIA AI Day São Paulo",
+    "url": "https://blogs.nvidia.com/blog/ai-day-sao-paulo/",
+    "summary": "The worldwide tour of NVIDIA AI Days — bringing together AI enthusiasts, developers, researchers and startups — made its latest stop in São Paulo, Brazil....",
+    "source": "NVIDIA Blog",
+    "category": "Unternehmen & Cloud",
+    "published_iso": "2026-02-12T22:00:58+00:00",
+    "domain": "blogs.nvidia.com",
+    "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/sao-paulo-featured-1920x1080-2.jpg",
+    "reading_time": 1,
+    "tags": [
+      "Hardware"
+    ]
+  },
+  {
     "id": "63297c2e71c4",
     "title": "AI meets HR: Transforming talent acquisition with Amazon Bedrock",
     "url": "https://aws.amazon.com/blogs/machine-learning/ai-meets-hr-transforming-talent-acquisition-with-amazon-bedrock/",
@@ -3982,6 +4244,67 @@
     "image": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/02/g_100nit_r709_1.388.1.jpg?quality=90&strip=all&crop=0%2C5.0850545614944%2C100%2C89.829890877011&w=1200",
     "reading_time": 1,
     "tags": []
+  },
+  {
+    "id": "e795181f01f6",
+    "title": "Gemini 3 Deep Think: Advancing science, research and engineering",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/",
+    "summary": "Gemini 3 Deep Think logo...",
+    "source": "Google AI",
+    "category": "Unternehmen & Cloud",
+    "published_iso": "2026-02-12T16:13:00+00:00",
+    "domain": "blog.google",
+    "image": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3_deep-think_keyword_hea.max-600x600.format-webp.webp",
+    "reading_time": 1,
+    "tags": [
+      "LLM"
+    ]
+  },
+  {
+    "id": "d05607cc3705",
+    "title": "Leading Inference Providers Cut AI Costs by up to 10x With Open Source Models on NVIDIA Blackwell",
+    "url": "https://blogs.nvidia.com/blog/inference-open-source-models-blackwell-reduce-cost-per-token/",
+    "summary": "A diagnostic insight in healthcare. A character’s dialogue in an interactive game. An autonomous resolution from a customer service agent. Each of these AI-powered interactions is built on the same unit of intelligence: a token. Scaling these AI inte...",
+    "source": "NVIDIA Blog",
+    "category": "Unternehmen & Cloud",
+    "published_iso": "2026-02-12T16:00:46+00:00",
+    "domain": "blogs.nvidia.com",
+    "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/inference-press-moe-x-tokenomics-think-smart-blog-4779150-1280x680-1.jpg",
+    "reading_time": 1,
+    "tags": [
+      "Hardware",
+      "Agents"
+    ]
+  },
+  {
+    "id": "50f63c1c63e9",
+    "title": "NVIDIA DGX Spark Powers Big Projects in Higher Education",
+    "url": "https://blogs.nvidia.com/blog/dgx-spark-higher-education/",
+    "summary": "At leading institutions across the globe, the NVIDIA DGX Spark desktop supercomputer is bringing data‑center‑class AI to lab benches, faculty offices and students’ systems. There’s even a DGX Spark hard at work in the South Pole, at the IceCube Neutr...",
+    "source": "NVIDIA Blog",
+    "category": "Unternehmen & Cloud",
+    "published_iso": "2026-02-12T15:00:23+00:00",
+    "domain": "blogs.nvidia.com",
+    "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/dgx-spark-higher-ed-featured-1280x680-1.jpg",
+    "reading_time": 1,
+    "tags": [
+      "Hardware"
+    ]
+  },
+  {
+    "id": "ded2ceaa6fa7",
+    "title": "GeForce NOW Turns Screens Into a Gaming Machine",
+    "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-amazon-fire-tv-app/",
+    "summary": "The GeForce NOW sixth-anniversary festivities roll on this February, continuing a monthlong celebration of NVIDIA’s cloud gaming service. This week brings even more reasons to join the party, as GeForce NOW launches on a new platform with support for...",
+    "source": "NVIDIA Blog",
+    "category": "Unternehmen & Cloud",
+    "published_iso": "2026-02-12T14:00:58+00:00",
+    "domain": "blogs.nvidia.com",
+    "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/gfn-thursday-ecosystem-nv-blog-1280x680-logo.jpg",
+    "reading_time": 1,
+    "tags": [
+      "Hardware"
+    ]
   },
   {
     "id": "882674348fab",
@@ -4096,5 +4419,31 @@
     "tags": [
       "Agents"
     ]
+  },
+  {
+    "id": "35caebc0ee7b",
+    "title": "9 fun questions to try asking Google Photos",
+    "url": "https://blog.google/products-and-platforms/products/photos/ask-button-ask-photos-tips/",
+    "summary": "A collage of outdoor images, a blue icon that say \"Ask Photos,\" and examples of Ask Photos prompts....",
+    "source": "Google AI",
+    "category": "Unternehmen & Cloud",
+    "published_iso": "2026-02-10T17:00:00+00:00",
+    "domain": "blog.google",
+    "image": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/2025-Travel-Trends_hero.max-600x600.format-webp.webp",
+    "reading_time": 1,
+    "tags": []
+  },
+  {
+    "id": "9eef7a370497",
+    "title": "Helping kids and teens learn and grow online on Safer Internet Day",
+    "url": "https://blog.google/innovation-and-ai/technology/safety-security/safer-internet-day-2026-kids-teens/",
+    "summary": "User profile on smartphone connected to security, media, and settings icons....",
+    "source": "Google AI",
+    "category": "Unternehmen & Cloud",
+    "published_iso": "2026-02-10T02:30:00+00:00",
+    "domain": "blog.google",
+    "image": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Helpingkidsteens_Hero.max-600x600.format-webp.webp",
+    "reading_time": 1,
+    "tags": []
   }
 ]
