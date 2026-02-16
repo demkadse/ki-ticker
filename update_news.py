@@ -6,15 +6,16 @@ from urllib.parse import urlparse
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 import requests, feedparser
-from bs4 import BeautifulSoup
 
 # --- KONFIGURATION ---
 SITE_TITLE = "KI‑Ticker – Aktuelle KI‑News"
-SITE_DESC = "Der automatisierte News-Ticker für Künstliche Intelligenz, Machine Learning und LLMs."
+SITE_DESC = "Dein stündliches Update zu Künstlicher Intelligenz, LLMs und Tech-Trends."
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
-DEFAULT_IMG = "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop"
+
+# Neues Open-Source Hero-Image
+HERO_IMG = ""
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
@@ -45,18 +46,16 @@ def save_db(data):
     with open(DB_FILE, "w", encoding="utf-8") as f: json.dump(filtered[:500], f, ensure_ascii=False, indent=2)
 
 def generate_sitemap():
-    pages = [{"loc": "", "priority": "1.0"}, {"loc": "impressum.html", "priority": "0.3"}, {"loc": "datenschutz.html", "priority": "0.3"}]
+    pages = [{"loc": "", "p": "1.0"}, {"loc": "impressum.html", "p": "0.3"}, {"loc": "datenschutz.html", "p": "0.3"}]
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    for page in pages:
-        url = f"{SITE_URL}/{page['loc']}".rstrip("/")
-        sitemap += f'  <url><loc>{url}</loc><priority>{page["priority"]}</priority></url>\n'
+    for p in pages:
+        sitemap += f'  <url><loc>{SITE_URL}/{p["loc"]}</loc><priority>{p["p"]}</priority></url>\n'
     sitemap += '</urlset>'
     with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(sitemap)
 
 def extract_image(e):
     media = e.get("media_content") or e.get("media_thumbnail") or []
     if media and isinstance(media, list) and media[0].get("url"): return media[0]["url"]
-    if isinstance(media, dict) and media.get("url"): return media["url"]
     return ""
 
 def fetch_feed(feed_info):
@@ -82,80 +81,34 @@ def fetch_feed(feed_info):
 
 def render_index(items):
     now = datetime.datetime.now(datetime.timezone.utc)
-    # Bild der ersten News als Social-Preview Bild nutzen
-    preview_img = items[0].get("image") if items and items[0].get("image") else DEFAULT_IMG
-    
     ad_block = f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
     
     html_content = ""
     for idx, it in enumerate(items[:120]):
-        img_url = it.get("image") if it.get("image") and it.get("image").startswith("http") else DEFAULT_IMG
+        img_url = it.get("image") if it.get("image") and it.get("image").startswith("http") else HERO_IMG
         dt = datetime.datetime.fromisoformat(it["published_iso"])
         html_content += f"""
         <article class="card" data-content="{it["title"].lower()}">
-          <div class="img-container">
-            <img src="{img_url}" loading="lazy" onerror="this.onerror=null;this.src='{DEFAULT_IMG}';">
-          </div>
+          <div class="img-container"><img src="{img_url}" loading="lazy" onerror="this.onerror=null;this.src='{HERO_IMG}';"></div>
           <div class="card-body">
-            <div class="meta">
-                <img src="https://www.google.com/s2/favicons?domain={it["domain"]}&sz=32" class="source-icon">
-                {it["source"]} • {dt.strftime("%d.%m. %H:%M")}
-            </div>
+            <div class="meta"><img src="https://www.google.com/s2/favicons?domain={it["domain"]}&sz=32" class="source-icon">{it["source"]} • {dt.strftime("%d.%m. %H:%M")}</div>
             <h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3>
-            <div class="share-bar">
-                <button onclick="copyToClipboard('{it["url"]}')">🔗 Link kopieren</button>
-            </div>
+            <div class="share-bar"><button onclick="copyToClipboard('{it["url"]}')">🔗 Link</button></div>
           </div>
         </article>"""
         if (idx + 1) % 12 == 0: html_content += ad_block
 
-    return f"""<!doctype html>
-<html lang="de">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title>
     <meta name="description" content="{SITE_DESC}">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{SITE_URL}/">
-    <meta property="og:title" content="{SITE_TITLE}">
-    <meta property="og:description" content="{SITE_DESC}">
-    <meta property="og:image" content="{preview_img}">
-
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{SITE_URL}/">
-    <meta property="twitter:title" content="{SITE_TITLE}">
-    <meta property="twitter:description" content="{SITE_DESC}">
-    <meta property="twitter:image" content="{preview_img}">
-
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v={int(time.time())}">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script>
-</head>
-<body class="dark-mode">
-    <main class="container">
-        <header class="header">
-            <h1>KI‑Ticker</h1>
-            <div class="controls"><input type="text" id="searchInput" placeholder="News durchsuchen..."></div>
-        </header>
-        {html_content}
-        <footer class="footer">
-            <p>&copy; {now.year} KI‑Ticker | <a href="impressum.html" style="color:var(--acc)">Impressum</a> | <a href="datenschutz.html" style="color:var(--acc)">Datenschutz</a></p>
-        </footer>
-    </main>
-    <script>
-        function filterNews(t) {{
-            const val = t.toLowerCase();
-            document.querySelectorAll('.card').forEach(el => {{
-                el.style.display = el.getAttribute('data-content').includes(val) ? 'flex' : 'none';
-            }});
-        }}
-        document.getElementById('searchInput').oninput = (e) => filterNews(e.target.value);
-        function copyToClipboard(t) {{ navigator.clipboard.writeText(t).then(() => alert('Link kopiert!')); }}
-    </script>
-</body>
-</html>"""
+    <meta property="og:title" content="{SITE_TITLE}"><meta property="og:description" content="{SITE_DESC}"><meta property="og:image" content="{HERO_IMG}"><meta property="og:url" content="{SITE_URL}/"><meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{HERO_IMG}">
+    <link rel="stylesheet" href="style.css?v={int(time.time())}"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
+    <body class="dark-mode"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="controls"><input type="text" id="searchInput" placeholder="News durchsuchen..."></div></header>{html_content}
+    <footer class="footer"><p>&copy; {now.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main>
+    <script>function filterNews(t){{const v=t.toLowerCase();document.querySelectorAll('.card').forEach(el=>{{el.style.display=el.getAttribute('data-content').includes(v)?'flex':'none';}});}}
+    document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value);function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}}</script></body></html>"""
 
 def main():
     db = load_db()
