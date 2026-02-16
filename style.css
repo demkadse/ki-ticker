@@ -2,71 +2,77 @@
   --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8; --acc: #38bdf8; --border: #334155;
   --radius: 8px;
 }
-body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.4; }
+body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.4; }
 
-.container { max-width: 750px; margin: 0 auto; padding: 20px; }
+.container { max-width: 800px; margin: 0 auto; padding: 20px; }
 
-/* Header */
+/* Header & Suche */
 .header { padding: 30px 20px; text-align: center; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
 .header h1 { font-size: 2rem; margin: 0 0 15px; font-weight: 800; }
 input { padding: 10px 15px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); color: var(--text); width: 100%; max-width: 350px; outline: none; font-size: 16px; }
 
-/* Stabiles Listen-Layout */
+/* HORIZONTALES KARTEN-LAYOUT */
 .card { 
     background: var(--card); 
     border-radius: var(--radius); 
     border: 1px solid var(--border); 
     margin-bottom: 12px; 
     display: flex; /* Bild links, Text rechts */
-    height: 120px; /* FESTE HÖHE - verhindert das Zerschießen */
+    height: 120px; /* FESTE HÖHE für die gesamte Karte */
     overflow: hidden;
-    transition: transform 0.1s;
 }
-.card:active { transform: scale(0.98); }
 
-/* Bild-Container: Bleibt immer 120x120 */
+/* BILD-CONTAINER: Hier wird die Größe fixiert */
 .img-container { 
     width: 120px; 
-    min-width: 120px; 
+    min-width: 120px; /* Verhindert Schrumpfen */
     height: 120px; 
-    background: #000;
+    background: #000; 
+    flex-shrink: 0;
 }
+
+/* DAS BILD SELBST: Passt sich an, ohne zu strecken */
 .card img { 
     width: 100%; 
     height: 100%; 
-    object-fit: cover; /* WICHTIG: Bild wird beschnitten, nicht gestreckt */
+    object-fit: cover; /* WICHTIG: Bild füllt den Container proportional */
+    display: block;
 }
 
 /* Text-Bereich */
 .card-body { 
-    padding: 12px 15px; 
+    padding: 10px 15px; 
     display: flex; 
     flex-direction: column; 
     justify-content: space-between;
-    flex: 1;
-    min-width: 0; /* Verhindert, dass langer Text die Karte sprengt */
+    flex-grow: 1;
+    min-width: 0; /* Wichtig für Textumbruch */
 }
 
-.meta { font-size: 10px; color: var(--muted); display: flex; align-items: center; gap: 5px; text-transform: uppercase; font-weight: 600; }
-.source-icon { width: 14px; height: 14px; border-radius: 2px; }
+.meta { font-size: 11px; color: var(--muted); margin-bottom: 4px; display: flex; align-items: center; gap: 5px; }
+.source-icon { width: 14px; height: 14px; border-radius: 3px; }
 
 .card h3 { 
-    margin: 5px 0; 
+    margin: 0; 
     font-size: 1rem; 
-    line-height: 1.2; 
+    line-height: 1.3;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Maximal 2 Zeilen Titel */
+    -webkit-line-clamp: 2; /* Begrenzt den Titel auf 2 Zeilen */
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 .card h3 a { color: var(--text); text-decoration: none; }
 
-.share-bar button { background: none; border: 1px solid var(--border); color: var(--muted); padding: 3px 8px; border-radius: 4px; cursor: pointer; font-size: 10px; }
+.share-bar button { background: none; border: 1px solid var(--border); color: var(--muted); padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 10px; margin-top: auto; }
 
-/* AdSense */
-.ad-container { margin: 15px 0; text-align: center; }
+/* Werbung */
+.ad-container { margin: 15px 0; text-align: center; padding: 5px; background: rgba(255,255,255,0.02); border-radius: var(--radius); }
 
+.footer { text-align: center; padding: 30px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); }
+.footer a { color: var(--acc); text-decoration: none; }
+
+/* Mobile Optimierung */
 @media (max-width: 500px) {
-    .img-container { width: 90px; min-width: 90px; height: 120px; }
-    .card h3 { font-size: 0.9rem; }
+    .img-container { width: 90px; min-width: 90px; height: 90px; }
+    .card { height: auto; min-height: 90px; }
 }
