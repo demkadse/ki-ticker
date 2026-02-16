@@ -14,8 +14,6 @@ SITE_DESC = "Automatisierte Übersicht zu KI, Machine Learning und LLMs."
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
-
-# Fallback-Bild, falls ein News-Bild fehlt oder kaputt ist
 DEFAULT_IMG = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop"
 
 DB_FILE = "news_db.json"
@@ -55,7 +53,6 @@ def save_db(data):
     with open(DB_FILE, "w", encoding="utf-8") as f: json.dump(filtered[:500], f, ensure_ascii=False, indent=2)
 
 def extract_image(e):
-    # Versuche verschiedene Metadaten-Felder für Bilder
     media = e.get("media_content") or e.get("media_thumbnail") or []
     if media and isinstance(media, list) and media[0].get("url"):
         return media[0]["url"]
@@ -77,10 +74,7 @@ def fetch_feed(feed_info):
             out.append({
                 "id": hashlib.md5(link.encode()).hexdigest()[:12],
                 "title": e.get("title", "").strip(), 
-                "url": link, 
-                "source": name, 
-                "category": category, 
-                "published_iso": dt.isoformat(),
+                "url": link, "source": name, "category": category, "published_iso": dt.isoformat(),
                 "domain": urlparse(link).netloc.replace("www.", ""),
                 "image": extract_image(e)
             })
