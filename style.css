@@ -48,3 +48,10 @@ input[type="text"] { padding: 10px 16px; border-radius: 20px; border: 1px solid 
 
 @media (max-width: 1100px) { .main-wrapper { grid-template-columns: 1fr; } .sidebar-ad { display: none; } }
 @media (max-width: 768px) { .header h1 { font-size: 2.5rem; } .hero { grid-template-columns: 1fr; } .hero-image { min-height: 220px; } }
+
+/* Nur zum Testen: Macht die Anzeigenplätze sichtbar */
+.sidebar-ad, .ad-container {
+    background-color: rgba(255, 0, 0, 0.1) !important;
+    border: 1px dashed red !important;
+    min-height: 600px;
+}
