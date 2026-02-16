@@ -30,14 +30,21 @@ ITEMS_PER_CATEGORY = 20
 
 HEADERS = {"User-Agent": "KI-TickerBot/1.0 (+https://ki-ticker.boehmonline.space)"}
 
+# ERWEITERTE FEED-LISTE
 FEEDS = [
     ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", "News & Trends"),
     ("MIT Tech Review", "https://www.technologyreview.com/feed/tag/artificial-intelligence/", "News & Trends"),
     ("VentureBeat AI", "https://venturebeat.com/category/ai/feed/", "News & Trends"),
+    ("TechCrunch AI", "https://techcrunch.com/category/artificial-intelligence/feed/", "News & Trends"),
+    ("Heise KI", "https://www.heise.de/thema/KI/rss.xml", "News & Trends"),
     ("arXiv cs.AI", "https://export.arxiv.org/rss/cs.AI", "Forschung"),
     ("arXiv cs.CL", "https://export.arxiv.org/rss/cs.CL", "Forschung"),
+    ("Microsoft Research", "https://www.microsoft.com/en-us/research/feed/", "Forschung"),
     ("AWS ML Blog", "https://aws.amazon.com/blogs/machine-learning/feed/", "Unternehmen & Cloud"),
     ("OpenAI Blog", "https://openai.com/news/rss.xml", "Unternehmen & Cloud"),
+    ("Google AI", "https://blog.google/technology/ai/rss/", "Unternehmen & Cloud"),
+    ("Meta AI", "https://ai.meta.com/blog/rss/", "Unternehmen & Cloud"),
+    ("NVIDIA Blog", "https://blogs.nvidia.com/feed/", "Unternehmen & Cloud"),
 ]
 
 STOP_WORDS = {"and", "the", "for", "with", "how", "from", "what", "this", "der", "die", "das", "und", "für", "mit", "von", "den", "auf", "ist", "ki-ticker", "new", "news", "ai", "ki"}
@@ -131,9 +138,8 @@ def render_index(items):
     display_items = items[1:]
     trends_html = "".join([f'<button class="trend-tag" onclick="setSearch(\'{kw}\')">#{kw}</button>' for kw in get_top_keywords(items)])
     
+    # ADSENSE BLOCKS
     ad_block = f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
-    
-    # NEU: SIDEBAR ADS
     sidebar_ad = f'<div class="sidebar-ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
 
     hero_img = f'style="background-image: url(\'{top_story["image"]}\')"' if top_story.get("image") else ""
@@ -160,6 +166,11 @@ def render_index(items):
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title>
     <meta name="description" content="{SITE_DESC}">
+    <meta property="og:title" content="{SITE_TITLE}">
+    <meta property="og:description" content="{SITE_DESC}">
+    <meta property="og:url" content="{SITE_URL}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{top_story["image"]}">
     <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script>
 </head>
