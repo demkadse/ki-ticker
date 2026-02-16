@@ -30,6 +30,7 @@ ITEMS_PER_CATEGORY = 20
 
 HEADERS = {"User-Agent": "KI-TickerBot/1.0 (+https://ki-ticker.boehmonline.space)"}
 
+# UNABHÄNGIGE QUELLEN
 FEEDS = [
     ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", "News & Trends"),
     ("MIT Tech Review", "https://www.technologyreview.com/feed/tag/artificial-intelligence/", "News & Trends"),
@@ -137,9 +138,7 @@ def render_index(items):
     display_items = items[1:]
     trends_html = "".join([f'<button class="trend-tag" onclick="setSearch(\'{kw}\')">#{kw}</button>' for kw in get_top_keywords(items)])
     
-    # Ad-Code Snippets
     in_grid_ad = f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
-    sidebar_ad_content = f'<ins class="adsbygoogle" style="display:block" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>'
 
     hero_img = f'style="background-image: url(\'{top_story["image"]}\')"' if top_story.get("image") else ""
     hero_html = f'<section class="hero" data-id="{top_story["id"]}" data-content="{top_story["title"].lower()}"><div class="hero-image" {hero_img}></div><div class="hero-content"><span class="badge" style="background:var(--acc); color:white;">🔥 Top Story</span><div class="meta">{top_story["source"]} • {datetime.datetime.fromisoformat(top_story["published_iso"]).strftime("%d.%m. %H:%M")}</div><h1><a href="{top_story["url"]}" target="_blank">{top_story["title"]}</a></h1><p>{top_story["summary"]}</p><div class="share-bar"><button onclick="toggleBookmark(\'{top_story["id"]}\')" class="btn-bookmark">🔖</button></div></div></section>'
@@ -175,11 +174,7 @@ def render_index(items):
         <div class="trends">{trends_html}</div>
     </header>
     
-    <div class="main-wrapper">
-        <aside class="sidebar-ad side-left">{sidebar_ad_content}</aside>
-        <main class="container">{hero_html}{html_content}</main>
-        <aside class="sidebar-ad side-right">{sidebar_ad_content}</aside>
-    </div>
+    <main class="container">{hero_html}{html_content}</main>
 
     <button id="backToTop">↑</button>
     <footer class="footer">
