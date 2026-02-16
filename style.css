@@ -11,48 +11,23 @@ body.dark-mode {
 * { box-sizing: border-box; transition: background 0.3s, color 0.3s; }
 body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-/* SPALTEN LAYOUT MIT GRID AREAS */
-.main-wrapper {
-    display: grid;
-    grid-template-areas: "left-ad main-content right-ad";
-    grid-template-columns: 180px 1fr 180px;
-    gap: 30px;
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+.container { width: 100%; max-width: var(--max-content); margin: 0 auto; padding: 0 16px; }
 
-.sidebar-left { grid-area: left-ad; }
-.content-area { grid-area: main-content; min-width: 0; } /* min-width 0 verhindert Grid-Blowout */
-.sidebar-right { grid-area: right-ad; }
-
-.sidebar-left, .sidebar-right {
-    width: 180px;
-    min-height: 600px;
-    position: sticky;
-    top: 20px;
-    background: rgba(0,0,0,0.03);
-    border-radius: var(--radius);
-}
-body.dark-mode .sidebar-left, body.dark-mode .sidebar-right { background: rgba(255,255,255,0.03); }
-
-/* HEADER & ELEMENTS */
 .header { padding: 80px 0 40px; text-align: center; background-image: var(--header-overlay), var(--header-bg-img); background-size: cover; background-position: center; margin-bottom: 40px; }
 .header h1 { font-size: 3.5rem; margin: 0 0 30px 0; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+
 .controls { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
 input[type="text"] { padding: 10px 16px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); color: var(--text); width: 300px; outline: none; }
 .btn-toggle { padding: 10px 16px; border-radius: 20px; border: none; background: var(--acc); color: white; cursor: pointer; }
 .trends { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
 .trend-tag { background: var(--card); border: 1px solid var(--border); color: var(--acc); padding: 6px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; }
 
-/* HERO (TOP STORY) */
 .hero { display: grid; grid-template-columns: 1.2fr 1fr; background: var(--card); border-radius: var(--radius); overflow: hidden; margin-bottom: 40px; border: 1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
 .hero-image { background-size: cover; background-position: center; min-height: 400px; }
 .hero-content { padding: 40px; display: flex; flex-direction: column; justify-content: center; gap: 15px; }
 .hero h1 { margin: 0; font-size: 32px; }
 .hero h1 a { color: var(--text); text-decoration: none; }
 
-/* GRID CARDS */
 .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); margin-bottom: 60px; }
 .card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; display: flex; flex-direction: column; }
 .img-container { width: 100%; height: 200px; background: var(--border); overflow: hidden; }
@@ -60,6 +35,10 @@ input[type="text"] { padding: 10px 16px; border-radius: 20px; border: 1px solid 
 .card-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
 .badge { font-size: 10px; padding: 3px 10px; border-radius: 12px; background: var(--border); color: var(--text); text-transform: uppercase; font-weight: 700; }
 .meta { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.source-icon { width: 16px; height: 16px; border-radius: 4px; }
+.card h3 { margin: 0; font-size: 19px; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card p { font-size: 14px; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin: 0; line-height: 1.6; }
 
 .ad-container { grid-column: 1 / -1; padding: 20px 0; text-align: center; }
 .share-bar { margin-top: auto; padding-top: 15px; display: flex; gap: 15px; border-top: 1px solid var(--border); }
@@ -70,12 +49,4 @@ input[type="text"] { padding: 10px 16px; border-radius: 20px; border: 1px solid 
 .footer-links { margin-top: 10px; display: flex; justify-content: center; gap: 20px; }
 .footer-links a { color: var(--muted); text-decoration: none; }
 
-/* RESPONSIVE */
-@media (max-width: 1250px) {
-    .main-wrapper { 
-        grid-template-areas: "main-content";
-        grid-template-columns: 1fr; 
-    }
-    .sidebar-left, .sidebar-right { display: none; }
-}
 @media (max-width: 768px) { .header h1 { font-size: 2.5rem; } .hero { grid-template-columns: 1fr; } .hero-image { min-height: 250px; } }
