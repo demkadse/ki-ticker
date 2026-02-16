@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
@@ -13,8 +12,8 @@ import feedparser
 from bs4 import BeautifulSoup
 
 SITE_TITLE = "KI‑Ticker – Aktuelle KI‑News"
-SITE_DESC  = "Automatisierte Übersicht zu KI, Machine Learning, LLMs und Forschung."
-SITE_URL   = "https://ki-ticker.boehmonline.space"
+SITE_DESC = "Automatisierte Übersicht zu KI, Machine Learning, LLMs und Forschung."
+SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 
 ITEMS_LIMIT = 60
@@ -113,12 +112,12 @@ def render_index(items):
     last = now.strftime("%d.%m.%Y %H:%M UTC")
 
     def card(it):
-        img = f'<a href="{it["url"]}" target="_blank
+        img = f'<a href="{it["url"]}" target="_blank"><img src="{it["image"]}" alt=""></a>' if it["image"] else ""
         summary = f'<p>{it["summary"]}</p>' if it["summary"] else ""
         return f"""
         <article class="card">
           {img}
-          <h3>{it[{it["title"]}</a></h3>
+          <h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3>
           <div class="meta">{it["source"]} • {it["domain"]} • {it["published"].strftime("%d.%m.%Y %H:%M")} UTC</div>
           {summary}
         </article>
@@ -133,10 +132,8 @@ def render_index(items):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{SITE_TITLE}</title>
 <meta name="description" content="{SITE_DESC}">
-{SITE_URL}
-<link.css
-
-https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_PUB}</script>
+<link rel="stylesheet" href="style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_PUB}"></script>
 </head>
 <body>
 <header class="header">
