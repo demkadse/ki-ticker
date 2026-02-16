@@ -208,8 +208,9 @@ def render_index(items):
             localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
         }};
         function filterNews(term) {{
+            const lowerTerm = term.toLowerCase();
             document.querySelectorAll('.card, .hero').forEach(el => {{
-                el.style.display = el.getAttribute('data-content').includes(term.toLowerCase()) ? '' : 'none';
+                el.style.display = el.getAttribute('data-content').includes(lowerTerm) ? '' : 'none';
             }});
         }}
         function filterCat(cat) {{
@@ -250,7 +251,8 @@ def main():
     db = load_db()
     with ThreadPoolExecutor(max_workers=7) as ex: res = list(ex.map(fetch_feed, FEEDS))
     items = [i for r in res for i in r]
-    all_data = sorted({{i['url']: i for i in (db + items)}}.values(), key=lambda x: x["published_iso"], reverse=True)
+    # KORREKTUR: Einzelne geschweifte Klammern für Dictionary Comprehension
+    all_data = sorted({i['url']: i for i in (db + items)}.values(), key=lambda x: x["published_iso"], reverse=True)
     save_db(all_data)
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(all_data))
 
