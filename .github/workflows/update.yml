@@ -2,9 +2,7 @@ name: Update KI-Ticker
 
 on:
   schedule:
-    # Läuft jede Stunde (immer zur Minute 17)
     - cron: "17 * * * *"
-  # Erlaubt den manuellen Start über den "Actions"-Tab
   workflow_dispatch: {}
 
 permissions:
@@ -32,11 +30,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # HIER DIE ERWEITERUNG: Alle wichtigen Dateien hinzufügen
-          git add index.html news_db.json sitemap.xml impressum.html datenschutz.html
-          
-          # Commit absetzen, nur wenn Änderungen da sind
-          git commit -m "Auto-update: News, Sitemap und Rechtstexte [skip ci]" || echo "Keine Änderungen zum Committen"
-          
+          git add index.html news_db.json sitemap.xml ads.txt impressum.html datenschutz.html style.css
+          git commit -m "Auto-update news, database and legal pages [skip ci]" || echo "No changes"
           git push
