@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import os, time, datetime, hashlib, json, math, re
+import os, time, datetime, hashlib, json, re
 from urllib.parse import urlparse
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
@@ -10,28 +10,27 @@ from bs4 import BeautifulSoup
 
 # --- KONFIGURATION ---
 SITE_TITLE = "KI‑Ticker – Aktuelle KI‑News"
-SITE_DESC = "Automatisierte Übersicht zu KI, Machine Learning und LLMs."
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
-DEFAULT_IMG = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop"
+DEFAULT_IMG = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop"
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
 
 FEEDS = [
-    ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", "News & Trends"),
-    ("MIT Tech Review", "https://www.technologyreview.com/feed/tag/artificial-intelligence/", "News & Trends"),
-    ("VentureBeat AI", "https://venturebeat.com/category/ai/feed/", "News & Trends"),
-    ("TechCrunch AI", "https://techcrunch.com/category/artificial-intelligence/feed/", "News & Trends"),
-    ("Heise KI", "https://www.heise.de/thema/KI/rss.xml", "News & Trends"),
-    ("arXiv cs.AI", "https://export.arxiv.org/rss/cs.AI", "Forschung"),
-    ("OpenAI Blog", "https://openai.com/news/rss.xml", "Unternehmen & Cloud"),
-    ("Google AI", "https://blog.google/technology/ai/rss/", "Unternehmen & Cloud"),
-    ("NVIDIA Blog", "https://blogs.nvidia.com/feed/", "Unternehmen & Cloud"),
+    ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
+    ("MIT Tech Review", "https://www.technologyreview.com/feed/tag/artificial-intelligence/"),
+    ("VentureBeat AI", "https://venturebeat.com/category/ai/feed/"),
+    ("TechCrunch AI", "https://techcrunch.com/category/artificial-intelligence/feed/"),
+    ("Heise KI", "https://www.heise.de/thema/KI/rss.xml"),
+    ("arXiv cs.AI", "https://export.arxiv.org/rss/cs.AI"),
+    ("OpenAI Blog", "https://openai.com/news/rss.xml"),
+    ("Google AI", "https://blog.google/technology/ai/rss/"),
+    ("NVIDIA Blog", "https://blogs.nvidia.com/feed/"),
 ]
 
-STOP_WORDS = {"and", "the", "for", "with", "how", "from", "what", "this", "der", "die", "das", "und", "für", "mit", "von", "den", "auf", "ist", "ki-ticker", "new", "news", "ai", "ki"}
+STOP_WORDS = {"and", "the", "for", "with", "how", "from", "what", "this", "der", "die", "das", "und", "für", "mit", "von", "den", "auf", "ist", "ki-ticker", "ai", "ki"}
 
 def get_top_keywords(items, limit=8):
     words = []
@@ -54,14 +53,12 @@ def save_db(data):
 
 def extract_image(e):
     media = e.get("media_content") or e.get("media_thumbnail") or []
-    if media and isinstance(media, list) and media[0].get("url"):
-        return media[0]["url"]
-    if isinstance(media, dict) and media.get("url"):
-        return media["url"]
+    if media and isinstance(media, list) and media[0].get("url"): return media[0]["url"]
+    if isinstance(media, dict) and media.get("url"): return media["url"]
     return ""
 
 def fetch_feed(feed_info):
-    name, url, category = feed_info
+    name, url = feed_info
     try:
         resp = requests.get(url, timeout=15)
         fp = feedparser.parse(resp.content)
@@ -74,7 +71,7 @@ def fetch_feed(feed_info):
             out.append({
                 "id": hashlib.md5(link.encode()).hexdigest()[:12],
                 "title": e.get("title", "").strip(), 
-                "url": link, "source": name, "category": category, "published_iso": dt.isoformat(),
+                "url": link, "source": name, "published_iso": dt.isoformat(),
                 "domain": urlparse(link).netloc.replace("www.", ""),
                 "image": extract_image(e)
             })
@@ -87,7 +84,7 @@ def render_index(items):
     ad_block = f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
 
     html_content = ""
-    for idx, it in enumerate(items[:80]):
+    for idx, it in enumerate(items[:100]):
         img_url = it.get("image") if it.get("image") else DEFAULT_IMG
         dt = datetime.datetime.fromisoformat(it["published_iso"])
         
@@ -97,17 +94,19 @@ def render_index(items):
             <img src="{img_url}" loading="lazy" onerror="this.onerror=null;this.src='{DEFAULT_IMG}';">
           </div>
           <div class="card-body">
-            <div class="meta">
-                <img src="https://www.google.com/s2/favicons?domain={it["domain"]}&sz=32" class="source-icon">
-                {it["source"]} • {dt.strftime("%d.%m. %H:%M")}
+            <div>
+                <div class="meta">
+                    <img src="https://www.google.com/s2/favicons?domain={it["domain"]}&sz=32" class="source-icon">
+                    {it["source"]} • {dt.strftime("%d.%m. %H:%M")}
+                </div>
+                <h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3>
             </div>
-            <h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3>
             <div class="share-bar">
-                <button onclick="copyToClipboard('{it["url"]}')">🔗 Link kopieren</button>
+                <button onclick="copyToClipboard('{it["url"]}')">🔗 Link</button>
             </div>
           </div>
         </article>"""
-        if (idx + 1) % 6 == 0: html_content += ad_block
+        if (idx + 1) % 8 == 0: html_content += ad_block
 
     return f"""<!doctype html>
 <html lang="de">
@@ -126,7 +125,7 @@ def render_index(items):
     </header>
     <main class="container">{html_content}</main>
     <footer class="footer">
-        <p>&copy; {now.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+        <p>&copy; {now.year} KI‑Ticker | <a href="impressum.html" style="color:var(--muted)">Impressum</a> | <a href="datenschutz.html" style="color:var(--muted)">Datenschutz</a></p>
     </footer>
     <script>
         const body = document.body;
@@ -142,7 +141,7 @@ def render_index(items):
         }}
         document.getElementById('searchInput').oninput = (e) => filterNews(e.target.value);
         function setSearch(t) {{ document.getElementById('searchInput').value=t; filterNews(t); }}
-        function copyToClipboard(t) {{ navigator.clipboard.writeText(t).then(() => alert('Kopiert!')); }}
+        function copyToClipboard(t) {{ navigator.clipboard.writeText(t).then(() => alert('Link kopiert!')); }}
     </script>
 </body>
 </html>"""
