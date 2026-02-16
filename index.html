@@ -4,16 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>KI‑Ticker – Aktuelle KI‑News</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1771276531">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2616688648278798" crossorigin="anonymous"></script>
 </head>
 <body class="dark-mode">
     <header class="header">
         <h1>KI‑Ticker</h1>
-        <div class="controls"><input type="text" id="searchInput" placeholder="Suchen..."><button class="btn-toggle" id="themeToggle">🌓</button></div>
-        <div class="trends"><button class="trend-tag" onclick="setSearch('openai')">#openai</button><button class="trend-tag" onclick="setSearch('models')">#models</button><button class="trend-tag" onclick="setSearch('introducing')">#introducing</button><button class="trend-tag" onclick="setSearch('chatgpt')">#chatgpt</button><button class="trend-tag" onclick="setSearch('language')">#language</button><button class="trend-tag" onclick="setSearch('learning')">#learning</button><button class="trend-tag" onclick="setSearch('model')">#model</button><button class="trend-tag" onclick="setSearch('data')">#data</button></div>
+        <div class="controls"><input type="text" id="searchInput" placeholder="Suchen..."></div>
     </header>
-    <main class="container">
+    <main class="container" id="news-container">
         <article class="card" data-content="have money, will travel: a16z’s hunt for the next european unicorn">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -22,7 +21,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=techcrunch.com&sz=32" class="source-icon">
-                    TechCrunch AI • 16.02. 18:53
+                    TechCrunch • 18:53
                 </div>
                 <h3><a href="https://techcrunch.com/2026/02/16/have-money-will-travel-a16zs-hunt-for-the-next-european-unicorn/" target="_blank">Have money, will travel: a16z’s hunt for the next European unicorn</a></h3>
             </div>
@@ -39,7 +38,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=32" class="source-icon">
-                    AWS ML Blog • 16.02. 17:45
+                    AWS ML Blog • 17:45
                 </div>
                 <h3><a href="https://aws.amazon.com/blogs/machine-learning/supercharge-regulated-workloads-with-claude-code-and-amazon-bedrock/" target="_blank">Supercharge regulated workloads with Claude Code and Amazon Bedrock</a></h3>
             </div>
@@ -56,7 +55,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=blogs.nvidia.com&sz=32" class="source-icon">
-                    NVIDIA Blog • 16.02. 17:00
+                    NVIDIA Blog • 17:00
                 </div>
                 <h3><a href="https://blogs.nvidia.com/blog/data-blackwell-ultra-performance-lower-cost-agentic-ai/" target="_blank">New SemiAnalysis InferenceX Data Shows NVIDIA Blackwell Ultra Delivers up to 50x Better Performance and 35x Lower Costs for Agentic AI</a></h3>
             </div>
@@ -73,7 +72,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=techcrunch.com&sz=32" class="source-icon">
-                    TechCrunch AI • 16.02. 17:00
+                    TechCrunch • 17:00
                 </div>
                 <h3><a href="https://techcrunch.com/2026/02/16/how-ricursive-intelligence-raised-335m-at-a-4b-valuation-in-4-months/" target="_blank">How Ricursive Intelligence raised $335M at a $4B valuation in 4 months</a></h3>
             </div>
@@ -90,7 +89,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=theverge.com&sz=32" class="source-icon">
-                    The Verge AI • 16.02. 15:00
+                    The Verge AI • 15:00
                 </div>
                 <h3><a href="https://www.theverge.com/podcast/879203/ring-search-party-super-bowl-ai-surveillance-privacy-security" target="_blank">Let&#8217;s talk about Ring, lost dogs, and the surveillance state</a></h3>
             </div>
@@ -107,7 +106,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=techcrunch.com&sz=32" class="source-icon">
-                    TechCrunch AI • 16.02. 14:00
+                    TechCrunch • 14:00
                 </div>
                 <h3><a href="https://techcrunch.com/2026/02/16/flapping-airplanes-on-the-future-of-ai-we-want-to-try-really-radically-different-things/" target="_blank">Flapping Airplanes on the future of AI: ‘We want to try really radically different things’</a></h3>
             </div>
@@ -124,7 +123,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=techcrunch.com&sz=32" class="source-icon">
-                    TechCrunch AI • 16.02. 13:15
+                    TechCrunch • 13:15
                 </div>
                 <h3><a href="https://techcrunch.com/2026/02/16/after-all-the-hype-some-ai-experts-dont-think-openclaw-is-all-that-exciting/" target="_blank">After all the hype, some AI experts don’t think OpenClaw is all that exciting</a></h3>
             </div>
@@ -141,7 +140,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=techcrunch.com&sz=32" class="source-icon">
-                    TechCrunch AI • 16.02. 11:51
+                    TechCrunch • 11:51
                 </div>
                 <h3><a href="https://techcrunch.com/2026/02/16/fractal-analytics-muted-ipo-debut-signals-persistent-ai-fears-in-india/" target="_blank">Fractal Analytics’ muted IPO debut signals persistent AI fears in India</a></h3>
             </div>
@@ -149,7 +148,7 @@
                 <button onclick="copyToClipboard('https://techcrunch.com/2026/02/16/fractal-analytics-muted-ipo-debut-signals-persistent-ai-fears-in-india/')">🔗 Link</button>
             </div>
           </div>
-        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </article>
         <article class="card" data-content="after spooking hollywood, bytedance will tweak safeguards on new ai model">
           <div class="img-container">
             <img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/02/gettyimages-2221026706.jpg?quality=90&strip=all&crop=0%2C10.705478127883%2C100%2C78.589043744234&w=1200" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -158,7 +157,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=theverge.com&sz=32" class="source-icon">
-                    The Verge AI • 16.02. 11:29
+                    The Verge AI • 11:29
                 </div>
                 <h3><a href="https://www.theverge.com/ai-artificial-intelligence/879644/bytedance-seedance-safeguards-ai-video-copyright-infringement" target="_blank">After spooking Hollywood, ByteDance will tweak safeguards on new AI model</a></h3>
             </div>
@@ -175,7 +174,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=techcrunch.com&sz=32" class="source-icon">
-                    TechCrunch AI • 16.02. 11:20
+                    TechCrunch • 11:20
                 </div>
                 <h3><a href="https://techcrunch.com/2026/02/16/all-the-important-news-from-the-ongoing-india-ai-summit/" target="_blank">All the important news from the ongoing India AI Impact Summit</a></h3>
             </div>
@@ -183,7 +182,7 @@
                 <button onclick="copyToClipboard('https://techcrunch.com/2026/02/16/all-the-important-news-from-the-ongoing-india-ai-summit/')">🔗 Link</button>
             </div>
           </div>
-        </article>
+        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
         <article class="card" data-content="gt-harmbench: benchmarking ai safety risks through the lens of game theory">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -192,7 +191,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12316" target="_blank">GT-HarmBench: Benchmarking AI Safety Risks Through the Lens of Game Theory</a></h3>
             </div>
@@ -209,7 +208,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12356" target="_blank">A Theoretical Framework for Adaptive Utility-Weighted Benchmarking</a></h3>
             </div>
@@ -226,7 +225,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12389" target="_blank">Evolving Beyond Snapshots: Harmonizing Structure and Sequence via Entity State Tuning for Temporal Knowledge Graph Forecasting</a></h3>
             </div>
@@ -243,7 +242,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12419" target="_blank">Intent-Driven Smart Manufacturing Integrating Knowledge Graphs and Large Language Models</a></h3>
             </div>
@@ -260,7 +259,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12544" target="_blank">Scaling Web Agent Training through Automatic Data Generation and Fine-grained Evaluation</a></h3>
             </div>
@@ -277,7 +276,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12566" target="_blank">To Mix or To Merge: Toward Multi-Domain Reinforcement Learning for Large Language Models</a></h3>
             </div>
@@ -285,7 +284,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12566')">🔗 Link</button>
             </div>
           </div>
-        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </article>
         <article class="card" data-content="can i have your order? monte-carlo tree search for slot filling ordering in diffusion language models">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -294,7 +293,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12586" target="_blank">Can I Have Your Order? Monte-Carlo Tree Search for Slot Filling Ordering in Diffusion Language Models</a></h3>
             </div>
@@ -311,7 +310,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12617" target="_blank">GeoAgent: Learning to Geolocate Everywhere with Reinforced Geographic Characteristics</a></h3>
             </div>
@@ -328,7 +327,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12631" target="_blank">AI Agents for Inventory Control: Human-LLM-OR Complementarity</a></h3>
             </div>
@@ -345,7 +344,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12662" target="_blank">Think Fast and Slow: Step-Level Cognitive Depth Adaptation for LLM Agents</a></h3>
             </div>
@@ -353,7 +352,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12662')">🔗 Link</button>
             </div>
           </div>
-        </article>
+        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
         <article class="card" data-content="evaluating robustness of reasoning models on parameterized logical problems">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -362,7 +361,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12665" target="_blank">Evaluating Robustness of Reasoning Models on Parameterized Logical Problems</a></h3>
             </div>
@@ -379,7 +378,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12670" target="_blank">SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks</a></h3>
             </div>
@@ -396,7 +395,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12748" target="_blank">X-SYS: A Reference Architecture for Interactive Explanation Systems</a></h3>
             </div>
@@ -413,7 +412,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12852" target="_blank">WebClipper: Efficient Evolution of Web Agents with Graph-based Trajectory Pruning</a></h3>
             </div>
@@ -421,7 +420,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12852')">🔗 Link</button>
             </div>
           </div>
-        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </article>
         <article class="card" data-content="browsecomp-$v^3$: a visual, vertical, and verifiable benchmark for multimodal browsing agents">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -430,7 +429,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12876" target="_blank">BrowseComp-$V^3$: A Visual, Vertical, and Verifiable Benchmark for Multimodal Browsing Agents</a></h3>
             </div>
@@ -447,7 +446,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12963" target="_blank">Information-theoretic analysis of world models in optimal reward maximizers</a></h3>
             </div>
@@ -464,7 +463,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.13093" target="_blank">Consistency of Large Reasoning Models Under Multi-Turn Attacks</a></h3>
             </div>
@@ -481,7 +480,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.13135" target="_blank">Constrained Assumption-Based Argumentation Frameworks</a></h3>
             </div>
@@ -498,7 +497,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.13166" target="_blank">Optimal Take-off under Fuzzy Clearances</a></h3>
             </div>
@@ -515,7 +514,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2511.13494" target="_blank">Language-Guided Invariance Probing of Vision-Language Models</a></h3>
             </div>
@@ -523,7 +522,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2511.13494')">🔗 Link</button>
             </div>
           </div>
-        </article>
+        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
         <article class="card" data-content="peak + accumulation: a proxy-level scoring formula for multi-turn llm attack detection">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -532,7 +531,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.11247" target="_blank">Peak + Accumulation: A Proxy-Level Scoring Formula for Multi-Turn LLM Attack Detection</a></h3>
             </div>
@@ -549,7 +548,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12284" target="_blank">A Lightweight LLM Framework for Disaster Humanitarian Information Classification</a></h3>
             </div>
@@ -557,7 +556,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12284')">🔗 Link</button>
             </div>
           </div>
-        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </article>
         <article class="card" data-content="from biased chatbots to biased agents: examining role assignment effects on llm agent robustness">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -566,7 +565,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12285" target="_blank">From Biased Chatbots to Biased Agents: Examining Role Assignment Effects on LLM Agent Robustness</a></h3>
             </div>
@@ -583,7 +582,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12287" target="_blank">Retrieval-Augmented Self-Taught Reasoning Model with Adaptive Chain-of-Thought for ASR Named Entity Correction</a></h3>
             </div>
@@ -600,7 +599,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12288" target="_blank">Energy-Aware Reinforcement Learning for Robotic Manipulation of Articulated Components in Infrastructure Operation and Maintenance</a></h3>
             </div>
@@ -617,7 +616,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12296" target="_blank">Adaptive traffic signal control optimization using a novel road partition and multi-channel state representation method</a></h3>
             </div>
@@ -634,7 +633,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12304" target="_blank">OmniCustom: Sync Audio-Video Customization Via Joint Audio-Video Generation Model</a></h3>
             </div>
@@ -651,7 +650,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12305" target="_blank">OptiML: An End-to-End Framework for Program Synthesis and CUDA Kernel Optimization</a></h3>
             </div>
@@ -668,7 +667,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12306" target="_blank">Quantum walk inspired JPEG compression of images</a></h3>
             </div>
@@ -685,7 +684,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12311" target="_blank">Perceptual Self-Reflection in Agentic Physics Simulation Code Generation</a></h3>
             </div>
@@ -693,7 +692,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12311')">🔗 Link</button>
             </div>
           </div>
-        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
         <article class="card" data-content="visible and hyperspectral imaging for quality assessment of milk: property characterisation and identification">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -702,7 +701,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12313" target="_blank">Visible and Hyperspectral Imaging for Quality Assessment of Milk: Property Characterisation and Identification</a></h3>
             </div>
@@ -719,7 +718,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12315" target="_blank">AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping</a></h3>
             </div>
@@ -736,7 +735,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12317" target="_blank">Free Lunch in Medical Image Foundation Model Pre-training via Randomized Synthesis and Disentanglement</a></h3>
             </div>
@@ -753,7 +752,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12322" target="_blank">ForeAct: Steering Your VLA with Efficient Visual Foresight Planning</a></h3>
             </div>
@@ -770,7 +769,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12342" target="_blank">Intrinsic Credit Assignment for Long Horizon Interaction</a></h3>
             </div>
@@ -787,7 +786,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12373" target="_blank">Policy4OOD: A Knowledge-Guided World Model for Policy Intervention Simulation against the Opioid Overdose Crisis</a></h3>
             </div>
@@ -804,7 +803,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12375" target="_blank">Value Bonuses using Ensemble Errors for Exploration in Reinforcement Learning</a></h3>
             </div>
@@ -821,7 +820,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12380" target="_blank">TFT-ACB-XML: Decision-Level Integration of Customized Temporal Fusion Transformer and Attention-BiLSTM with XGBoost Meta-Learner for BTC Price Forecasting</a></h3>
             </div>
@@ -829,7 +828,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12380')">🔗 Link</button>
             </div>
           </div>
-        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </article>
         <article class="card" data-content="why deep jacobian spectra separate: depth-induced scaling and singular-vector alignment">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -838,7 +837,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12384" target="_blank">Why Deep Jacobian Spectra Separate: Depth-Induced Scaling and Singular-Vector Alignment</a></h3>
             </div>
@@ -855,7 +854,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12390" target="_blank">Rational Neural Networks have Expressivity Advantages</a></h3>
             </div>
@@ -863,7 +862,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12390')">🔗 Link</button>
             </div>
           </div>
-        </article>
+        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
         <article class="card" data-content="reproducing dragdiffusion: interactive point-based editing with diffusion models">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -872,7 +871,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12393" target="_blank">Reproducing DragDiffusion: Interactive Point-Based Editing with Diffusion Models</a></h3>
             </div>
@@ -889,7 +888,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12395" target="_blank">What does RL improve for Visual Reasoning? A Frankenstein-Style Analysis</a></h3>
             </div>
@@ -906,7 +905,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12402" target="_blank">AstRL: Analog and Mixed-Signal Circuit Synthesis with Deep Reinforcement Learning</a></h3>
             </div>
@@ -923,7 +922,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12413" target="_blank">Soft Contamination Means Benchmarks Test Shallow Generalization</a></h3>
             </div>
@@ -940,7 +939,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12422" target="_blank">CacheMind: From Miss Rates to Why -- Natural-Language, Trace-Grounded Reasoning for Cache Replacement</a></h3>
             </div>
@@ -957,7 +956,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12424" target="_blank">RankLLM: Weighted Ranking of LLMs by Quantifying Question Difficulty</a></h3>
             </div>
@@ -965,7 +964,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12424')">🔗 Link</button>
             </div>
           </div>
-        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </article>
         <article class="card" data-content="agent skills for large language models: architecture, acquisition, security, and the path forward">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -974,7 +973,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12430" target="_blank">Agent Skills for Large Language Models: Architecture, Acquisition, Security, and the Path Forward</a></h3>
             </div>
@@ -991,7 +990,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12444" target="_blank">Safe Reinforcement Learning via Recovery-based Shielding with Gaussian Process Dynamics Models</a></h3>
             </div>
@@ -1008,7 +1007,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12463" target="_blank">Correctness, Artificial Intelligence, and the Epistemic Value of Mathematical Proof</a></h3>
             </div>
@@ -1025,7 +1024,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12470" target="_blank">Designing RNAs with Language Models</a></h3>
             </div>
@@ -1033,7 +1032,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12470')">🔗 Link</button>
             </div>
           </div>
-        </article>
+        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
         <article class="card" data-content="not a silver bullet for loneliness: how attachment and age shape intimacy with ai companions">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -1042,7 +1041,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12476" target="_blank">Not a Silver Bullet for Loneliness: How Attachment and Age Shape Intimacy with AI Companions</a></h3>
             </div>
@@ -1059,7 +1058,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12484" target="_blank">A Lightweight and Explainable DenseNet-121 Framework for Grape Leaf Disease Classification</a></h3>
             </div>
@@ -1076,7 +1075,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12486" target="_blank">Human-Like Coarse Object Representations in Vision Models</a></h3>
             </div>
@@ -1093,7 +1092,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12500" target="_blank">Favia: Forensic Agent for Vulnerability-fix Identification and Analysis</a></h3>
             </div>
@@ -1101,7 +1100,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12500')">🔗 Link</button>
             </div>
           </div>
-        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </article>
         <article class="card" data-content="monocular reconstruction of neural tactile fields">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -1110,7 +1109,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12508" target="_blank">Monocular Reconstruction of Neural Tactile Fields</a></h3>
             </div>
@@ -1127,7 +1126,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12517" target="_blank">Bench-MFG: A Benchmark Suite for Learning in Stationary Mean Field Games</a></h3>
             </div>
@@ -1144,7 +1143,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12542" target="_blank">Exploring Accurate and Transparent Domain Adaptation in Predictive Healthcare via Concept-Grounded Orthogonal Inference</a></h3>
             </div>
@@ -1161,7 +1160,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12546" target="_blank">Decoder-only Conformer with Modality-aware Sparse Mixtures of Experts for ASR</a></h3>
             </div>
@@ -1178,7 +1177,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12547" target="_blank">A consequence of failed sequential learning: A computational account of developmental amnesia</a></h3>
             </div>
@@ -1195,7 +1194,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12556" target="_blank">SD-MoE: Spectral Decomposition for Effective Expert Specialization</a></h3>
             </div>
@@ -1203,7 +1202,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12556')">🔗 Link</button>
             </div>
           </div>
-        </article>
+        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
         <article class="card" data-content="monte carlo tree search with reasoning path refinement for small language models in conversational text-to-nosql">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -1212,7 +1211,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12574" target="_blank">Monte Carlo Tree Search with Reasoning Path Refinement for Small Language Models in Conversational Text-to-NoSQL</a></h3>
             </div>
@@ -1229,7 +1228,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12579" target="_blank">VI-CuRL: Stabilizing Verifier-Independent RL Reasoning via Confidence-Guided Variance Reduction</a></h3>
             </div>
@@ -1237,7 +1236,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12579')">🔗 Link</button>
             </div>
           </div>
-        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </article>
         <article class="card" data-content="power interpretable causal ode networks: a unified model for explainable anomaly detection and root cause analysis in power systems">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -1246,7 +1245,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12592" target="_blank">Power Interpretable Causal ODE Networks: A Unified Model for Explainable Anomaly Detection and Root Cause Analysis in Power Systems</a></h3>
             </div>
@@ -1263,7 +1262,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12593" target="_blank">RQ-GMM: Residual Quantized Gaussian Mixture Model for Multimodal Semantic Discretization in CTR Prediction</a></h3>
             </div>
@@ -1280,7 +1279,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12601" target="_blank">HyperMLP: An Integrated Perspective for Sequence Modeling</a></h3>
             </div>
@@ -1297,7 +1296,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12609" target="_blank">QuEPT: Quantized Elastic Precision Transformers with One-Shot Calibration for Multi-Bit Switching</a></h3>
             </div>
@@ -1314,7 +1313,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12612" target="_blank">Self-EvolveRec: Self-Evolving Recommender Systems with LLM-based Directional Feedback</a></h3>
             </div>
@@ -1331,7 +1330,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12618" target="_blank">Vision Token Reduction via Attention-Driven Self-Compression for Efficient Multimodal Large Language Models</a></h3>
             </div>
@@ -1348,7 +1347,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12630" target="_blank">TensorCommitments: A Lightweight Verifiable Inference for Language Models</a></h3>
             </div>
@@ -1365,7 +1364,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12635" target="_blank">Unleashing Low-Bit Inference on Ascend NPUs: A Comprehensive Evaluation of HiFloat Formats</a></h3>
             </div>
@@ -1373,7 +1372,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12635')">🔗 Link</button>
             </div>
           </div>
-        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
         <article class="card" data-content="artic: ai-oriented real-time communication for mllm video assistant">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -1382,7 +1381,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12641" target="_blank">Artic: AI-oriented Real-time Communication for MLLM Video Assistant</a></h3>
             </div>
@@ -1399,7 +1398,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12642" target="_blank">Beyond Normalization: Rethinking the Partition Function as a Difficulty Scheduler for RLVR</a></h3>
             </div>
@@ -1416,7 +1415,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12643" target="_blank">Unifying Model-Free Efficiency and Model-Based Representations via Latent Dynamics</a></h3>
             </div>
@@ -1433,7 +1432,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12649" target="_blank">Multi-Task Learning with Additive U-Net for Image Denoising and Classification</a></h3>
             </div>
@@ -1450,7 +1449,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12656" target="_blank">PMG: Parameterized Motion Generator for Human-like Locomotion Control</a></h3>
             </div>
@@ -1467,7 +1466,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12659" target="_blank">IndicFairFace: Balanced Indian Face Dataset for Auditing and Mitigating Geographical Bias in Vision-Language Models</a></h3>
             </div>
@@ -1484,7 +1483,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12675" target="_blank">SLA2: Sparse-Linear Attention with Learnable Routing and QAT</a></h3>
             </div>
@@ -1501,7 +1500,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12687" target="_blank">Trust the uncertain teacher: distilling dark knowledge via calibrated uncertainty</a></h3>
             </div>
@@ -1509,7 +1508,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12687')">🔗 Link</button>
             </div>
           </div>
-        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </article>
         <article class="card" data-content="aloe: action-level off-policy evaluation for vision-language-action model post-training">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -1518,7 +1517,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12691" target="_blank">ALOE: Action-Level Off-Policy Evaluation for Vision-Language-Action Model Post-Training</a></h3>
             </div>
@@ -1535,7 +1534,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12705" target="_blank">MedXIAOHE: A Comprehensive Recipe for Building Medical MLLMs</a></h3>
             </div>
@@ -1543,7 +1542,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12705')">🔗 Link</button>
             </div>
           </div>
-        </article>
+        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
         <article class="card" data-content="vineetvc: adaptive video conferencing under severe bandwidth constraints using audio-driven talking-head reconstruction">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -1552,7 +1551,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12758" target="_blank">VineetVC: Adaptive Video Conferencing Under Severe Bandwidth Constraints Using Audio-Driven Talking-Head Reconstruction</a></h3>
             </div>
@@ -1569,7 +1568,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12763" target="_blank">"Not Human, Funnier": How Machine Identity Shapes Humor Perception in Online AI Stand-up Comedy</a></h3>
             </div>
@@ -1586,7 +1585,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12783" target="_blank">SQuTR: A Robustness Benchmark for Spoken Query to Text Retrieval under Acoustic Noise</a></h3>
             </div>
@@ -1603,7 +1602,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12798" target="_blank">Can Neural Networks Provide Latent Embeddings for Telemetry-Aware Greedy Routing?</a></h3>
             </div>
@@ -1620,7 +1619,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12806" target="_blank">RAT-Bench: A Comprehensive Benchmark for Text Anonymization</a></h3>
             </div>
@@ -1637,7 +1636,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12811" target="_blank">Left-right asymmetry in predicting brain activity from LLMs' representations emerges with their formal linguistic competence</a></h3>
             </div>
@@ -1645,7 +1644,7 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12811')">🔗 Link</button>
             </div>
           </div>
-        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+        </article>
         <article class="card" data-content="grail: geometry-aware retrieval-augmented inference with llms over hyperbolic representations of patient trajectories">
           <div class="img-container">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=400&auto=format&fit=crop';">
@@ -1654,7 +1653,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12828" target="_blank">GRAIL: Geometry-Aware Retrieval-Augmented Inference with LLMs over Hyperbolic Representations of Patient Trajectories</a></h3>
             </div>
@@ -1671,7 +1670,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12829" target="_blank">FLAC: Maximum Entropy RL via Kinetic Energy Regularized Bridge Matching</a></h3>
             </div>
@@ -1688,7 +1687,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12833" target="_blank">TRACE: Temporal Reasoning via Agentic Context Evolution for Streaming Electronic Health Records (EHRs)</a></h3>
             </div>
@@ -1705,7 +1704,7 @@
             <div>
                 <div class="meta">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" class="source-icon">
-                    arXiv cs.AI • 16.02. 05:00
+                    arXiv • 05:00
                 </div>
                 <h3><a href="https://arxiv.org/abs/2602.12846" target="_blank">Amortized Reasoning Tree Search: Decoupling Proposal and Decision in Large Language Models</a></h3>
             </div>
@@ -1713,24 +1712,18 @@
                 <button onclick="copyToClipboard('https://arxiv.org/abs/2602.12846')">🔗 Link</button>
             </div>
           </div>
-        </article></main>
+        </article><div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></main>
     <footer class="footer">
-        <p>&copy; 2026 KI‑Ticker | <a href="impressum.html" style="color:var(--muted)">Impressum</a> | <a href="datenschutz.html" style="color:var(--muted)">Datenschutz</a></p>
+        <p>&copy; 2026 KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
     </footer>
     <script>
-        const body = document.body;
-        if (localStorage.getItem('theme') === 'light') body.classList.remove('dark-mode');
-        document.getElementById('themeToggle').onclick = () => {
-            body.classList.toggle('dark-mode');
-            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-        };
         function filterNews(t) {
+            const val = t.toLowerCase();
             document.querySelectorAll('.card').forEach(el => {
-                el.style.display = el.getAttribute('data-content').includes(t.toLowerCase()) ? '' : 'none';
+                el.style.display = el.getAttribute('data-content').includes(val) ? 'flex' : 'none';
             });
         }
         document.getElementById('searchInput').oninput = (e) => filterNews(e.target.value);
-        function setSearch(t) { document.getElementById('searchInput').value=t; filterNews(t); }
         function copyToClipboard(t) { navigator.clipboard.writeText(t).then(() => alert('Link kopiert!')); }
     </script>
 </body>
