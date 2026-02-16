@@ -1,0 +1,36 @@
+<article class="card">
+
+  {# ------------------------------------------------------------
+     Artikelbild (falls vorhanden)
+  ------------------------------------------------------------ #}
+  {% if item.image %}
+  {{ item.url }}
+    <img
+      src="{{ item.image }}"
+      loading="lazy"
+      alt="Bild zum Artikel {{ item.title | e }}"
+
+     Titel
+  ------------------------------------------------------------ #}
+  <h3>
+    <a href="{{ item.url }}" target="_blank" rela>
+  </h3>
+
+
+  {# ------------------------------------------------------------
+     Metadaten
+  ------------------------------------------------------------ #}
+  <div class="meta">
+    {{ item.source }} • {{ item.domain }} •
+    {{ item.published.strftime("%d.%m.%Y %H:%M") }} UTC
+  </div>
+
+
+  {# ------------------------------------------------------------
+     Summary / Beschreibung
+  ------------------------------------------------------------ #}
+  {% if item.summary %}
+  <p>{{ item.summary }}</p>
+  {% endif %}
+
+</article>
