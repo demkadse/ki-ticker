@@ -9,6 +9,8 @@ import json
 import math
 import urllib.parse
 from urllib.parse import urlparse
+from collections import Counter
+import re
 from concurrent.futures import ThreadPoolExecutor
 
 import requests
@@ -36,15 +38,12 @@ FEEDS = [
     ("OpenAI Blog", "https://openai.com/news/rss.xml", "Unternehmen & Cloud"),
 ]
 
+STOP_WORDS = {"and", "the", "for", "with", "how", "from", "what", "this", "der", "die", "das", "und", "für", "mit", "von", "den", "auf", "ist", "ki-ticker", "new", "news", "ai", "ki"}
 TAG_MAPPING = {
-    "nvidia": "Hardware", "gpu": "Hardware", "h100": "Hardware",
-    "arxiv": "Research", "paper": "Research",
-    "openai": "LLM", "gpt": "LLM", "claude": "LLM", "gemini": "LLM",
-    "robot": "Robotics", "agent": "Agents",
+    "nvidia": "Hardware", "gpu": "Hardware", "openai": "LLM", "gpt": "LLM", 
+    "claude": "LLM", "gemini": "LLM", "robot": "Robotics", "agent": "Agents",
     "apple": "Big Tech", "google": "Big Tech", "meta": "Big Tech", "microsoft": "Big Tech"
 }
-
-AI_KEYWORDS = ["ki", "ai", "intelligence", "llm", "gpt", "model", "training", "robot", "nvidia", "openai", "claude", "gemini", "machine learning"]
 
 def get_reading_time(text):
     words = text.split()
@@ -57,6 +56,16 @@ def get_tags(title, summary):
         if kw in text and tag not in tags:
             tags.append(tag)
     return tags
+
+def get_top_keywords(items, limit=8):
+    words = []
+    for it in items:
+        # Nur Wörter mit mehr als 3 Buchstaben, die keine Stopwords sind
+        found = re.findall(r'\w+', it['title'].lower())
+        words.extend([w for w in found if len(w) > 3 and w not in STOP_WORDS])
+    
+    most_common = Counter(words).most_common(limit)
+    return [word for word, count in most_common]
 
 def load_db():
     if os.path.exists(DB_FILE):
@@ -74,6 +83,7 @@ def save_db(data):
 
 def is_ai_related(title, summary):
     text = f"{title} {summary}".lower()
+    AI_KEYWORDS = ["ki", "ai", "intelligence", "llm", "gpt", "model", "training", "robot", "nvidia", "openai", "claude", "gemini", "machine learning"]
     return any(kw in text for kw in AI_KEYWORDS)
 
 def extract_image(e):
@@ -98,7 +108,6 @@ def fetch_feed(feed_info):
             link = (e.get("link") or "").strip()
             raw_summary = e.get("summary") or e.get("description") or ""
             clean_summary = BeautifulSoup(raw_summary, "html.parser").get_text(" ", strip=True)
-            
             if not link or not is_ai_related(title, clean_summary): continue
 
             ts = e.get("published_parsed") or e.get("updated_parsed")
@@ -124,6 +133,11 @@ def fetch_feed(feed_info):
 
 def render_index(items):
     now = datetime.datetime.now(datetime.timezone.utc)
+    top_keywords = get_top_keywords(items)
+    
+    # Trends HTML
+    trends_html = "".join([f'<button class="trend-tag" onclick="setSearch(\'{kw}\')">#{kw}</button>' for kw in top_keywords])
+    
     categories = ["News & Trends", "Forschung", "Unternehmen & Cloud"]
     html_content = ""
 
@@ -138,7 +152,6 @@ def render_index(items):
             img_html = f'<div class="img-container"><img src="{it["image"]}" loading="lazy" alt=""></div>' if it.get("image") else ""
             badges = "".join([f'<span class="badge">{t}</span>' for t in it.get("tags", [])])
             
-            # Sharing URLs
             encoded_title = urllib.parse.quote(it["title"])
             encoded_url = urllib.parse.quote(it["url"])
             share_x = f"https://twitter.com/intent/tweet?text={encoded_title}&url={encoded_url}"
@@ -177,6 +190,10 @@ def render_index(items):
             <input type="text" id="searchInput" placeholder="News durchsuchen...">
             <button class="btn-toggle" id="themeToggle">🌓</button>
         </div>
+        <div class="trends">
+            <span style="font-size:12px; color:var(--muted); margin-right:10px;">Trends:</span>
+            {trends_html}
+        </div>
         <p class="tagline">Update: {now.strftime("%d.%m.%Y %H:%M")} UTC</p>
     </header>
     <main class="container" id="newsContainer">
@@ -195,21 +212,28 @@ def render_index(items):
         }});
 
         const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', (e) => {{
-            const term = e.target.value.toLowerCase();
+        function filterNews(term) {{
             document.querySelectorAll('.card').forEach(card => {{
-                card.style.display = card.getAttribute('data-content').includes(term) ? '' : 'none';
+                card.style.display = card.getAttribute('data-content').includes(term.toLowerCase()) ? '' : 'none';
             }});
             document.querySelectorAll('.category-title').forEach(title => {{
                 const section = title.nextElementSibling;
                 const hasVisible = Array.from(section.querySelectorAll('.card')).some(c => c.style.display !== 'none');
                 title.style.display = hasVisible ? '' : 'none';
             }});
-        }});
+        }}
+
+        searchInput.addEventListener('input', (e) => filterNews(e.target.value));
+
+        function setSearch(term) {{
+            searchInput.value = term;
+            filterNews(term);
+            window.scrollTo({{ top: 0, behavior: 'smooth' }});
+        }}
 
         function copyToClipboard(text) {{
             navigator.clipboard.writeText(text).then(() => {{
-                alert('Link in die Zwischenablage kopiert!');
+                alert('Link kopieren: Erfolg!');
             }});
         }}
     </script>
