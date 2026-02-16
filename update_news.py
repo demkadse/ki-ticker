@@ -30,7 +30,6 @@ ITEMS_PER_CATEGORY = 20
 
 HEADERS = {"User-Agent": "KI-TickerBot/1.0 (+https://ki-ticker.boehmonline.space)"}
 
-# ERWEITERTE FEED-LISTE
 FEEDS = [
     ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", "News & Trends"),
     ("MIT Tech Review", "https://www.technologyreview.com/feed/tag/artificial-intelligence/", "News & Trends"),
@@ -138,9 +137,9 @@ def render_index(items):
     display_items = items[1:]
     trends_html = "".join([f'<button class="trend-tag" onclick="setSearch(\'{kw}\')">#{kw}</button>' for kw in get_top_keywords(items)])
     
-    # ADSENSE BLOCKS
-    ad_block = f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
-    sidebar_ad = f'<div class="sidebar-ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
+    # Ad-Code Snippets
+    in_grid_ad = f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
+    sidebar_ad_content = f'<ins class="adsbygoogle" style="display:block" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>'
 
     hero_img = f'style="background-image: url(\'{top_story["image"]}\')"' if top_story.get("image") else ""
     hero_html = f'<section class="hero" data-id="{top_story["id"]}" data-content="{top_story["title"].lower()}"><div class="hero-image" {hero_img}></div><div class="hero-content"><span class="badge" style="background:var(--acc); color:white;">🔥 Top Story</span><div class="meta">{top_story["source"]} • {datetime.datetime.fromisoformat(top_story["published_iso"]).strftime("%d.%m. %H:%M")}</div><h1><a href="{top_story["url"]}" target="_blank">{top_story["title"]}</a></h1><p>{top_story["summary"]}</p><div class="share-bar"><button onclick="toggleBookmark(\'{top_story["id"]}\')" class="btn-bookmark">🔖</button></div></div></section>'
@@ -156,7 +155,7 @@ def render_index(items):
             img_html = f'<div class="img-container"><img src="{it["image"]}" loading="lazy"></div>' if it.get("image") else ""
             badges = "".join([f'<span class="badge">{t}</span>' for t in it.get("tags", [])])
             html_content += f'<article class="card" data-id="{it["id"]}" data-content="{it["title"].lower()} {it["summary"].lower()}">{img_html}<div class="card-body"><div class="badge-container">{badges}</div><div class="meta"><img src="https://www.google.com/s2/favicons?domain={it["domain"]}&sz=32" class="source-icon"> {it["source"]} • {dt.strftime("%d.%m. %H:%M")}</div><h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3><p>{it["summary"]}</p><div class="share-bar"><button onclick="toggleBookmark(\'{it["id"]}\')" class="btn-bookmark">🔖</button><button onclick="copyToClipboard(\'{it["url"]}\')">🔗</button></div></div></article>'
-            if (idx + 1) % 6 == 0: html_content += ad_block
+            if (idx + 1) % 6 == 0: html_content += in_grid_ad
         html_content += '</section></div>'
 
     return f"""<!doctype html>
@@ -166,11 +165,6 @@ def render_index(items):
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title>
     <meta name="description" content="{SITE_DESC}">
-    <meta property="og:title" content="{SITE_TITLE}">
-    <meta property="og:description" content="{SITE_DESC}">
-    <meta property="og:url" content="{SITE_URL}">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="{top_story["image"]}">
     <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script>
 </head>
@@ -182,9 +176,9 @@ def render_index(items):
     </header>
     
     <div class="main-wrapper">
-        {sidebar_ad}
+        <aside class="sidebar-ad side-left">{sidebar_ad_content}</aside>
         <main class="container">{hero_html}{html_content}</main>
-        {sidebar_ad}
+        <aside class="sidebar-ad side-right">{sidebar_ad_content}</aside>
     </div>
 
     <button id="backToTop">↑</button>
