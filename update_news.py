@@ -17,7 +17,7 @@ from bs4 import BeautifulSoup
 SITE_TITLE = "KI‑Ticker – Aktuelle KI‑News"
 SITE_DESC = "Automatisierte Übersicht zu KI, Machine Learning und LLMs."
 SITE_URL = "https://ki-ticker.boehmonline.space"
-[cite_start]ADSENSE_PUB = "pub-2616688648278798" # [cite: 1]
+ADSENSE_PUB = "pub-2616688648278798"
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
