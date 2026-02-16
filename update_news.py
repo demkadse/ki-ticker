@@ -12,7 +12,7 @@ SITE_DESC = "Dein stündliches Update zu Künstlicher Intelligenz und Tech-Trend
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
-# Stabiles Fallback- & Hero-Bild (Unsplash AI)
+# Das Bild für den Header oben
 HERO_IMG = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1280"
 
 DB_FILE = "news_db.json"
@@ -44,7 +44,6 @@ def save_db(data):
     with open(DB_FILE, "w", encoding="utf-8") as f: json.dump(filtered[:500], f, ensure_ascii=False, indent=2)
 
 def generate_sitemap():
-    """Erzeugt eine saubere sitemap.xml ohne externe URLs für Google"""
     pages = [{"loc": "", "p": "1.0"}, {"loc": "impressum.html", "p": "0.3"}, {"loc": "datenschutz.html", "p": "0.3"}]
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     for p in pages:
@@ -53,7 +52,6 @@ def generate_sitemap():
     with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(sitemap)
 
 def extract_image(e):
-    """Sucht in allen Tags nach Beitragsbildern"""
     for tag in ["media_content", "media_thumbnail", "links"]:
         items = e.get(tag, [])
         if isinstance(items, list):
@@ -88,11 +86,10 @@ def fetch_feed(feed_info):
 
 def render_index(items):
     now = datetime.datetime.now(datetime.timezone.utc)
-    # Kategorien dynamisch generieren
     categories = sorted(list(set(it["source"] for it in items)))
-    cat_html = '<button class="cat-btn active" onclick="filterCat(\'all\')">Alle</button>'
+    cat_html = '<button class="cat-btn active" onclick="filterCat(\'all\', this)">Alle</button>'
     for c in categories:
-        cat_html += f'<button class="cat-btn" onclick="filterCat(\'{c}\')">{c}</button>'
+        cat_html += f'<button class="cat-btn" onclick="filterCat(\'{c}\', this)">{c}</button>'
 
     ad_block = f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
     
@@ -119,16 +116,24 @@ def render_index(items):
     <link rel="stylesheet" href="style.css?v={int(time.time())}"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
     <body class="dark-mode"><main class="container">
         <header class="header">
-            <h1>KI‑Ticker</h1>
-            <div class="controls"><input type="text" id="searchInput" placeholder="Suchen..."></div>
-            <div class="category-bar">{cat_html}</div>
+            <div class="hero-section">
+                <img src="{HERO_IMG}" alt="KI Banner" class="hero-img">
+                <div class="hero-overlay">
+                    <h1>KI‑Ticker</h1>
+                    <p>Echtzeit-Updates aus der Welt der KI</p>
+                </div>
+            </div>
+            <div class="controls">
+                <input type="text" id="searchInput" placeholder="News durchsuchen...">
+                <div class="category-bar">{cat_html}</div>
+            </div>
         </header>
         {html_content}
         <footer class="footer"><p>&copy; {now.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main>
     <script>
-        function filterCat(cat) {{
+        function filterCat(cat, btn) {{
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-            if (event) event.target.classList.add('active');
+            btn.classList.add('active');
             document.querySelectorAll('.card').forEach(el => {{
                 el.style.display = (cat === 'all' || el.getAttribute('data-source') === cat) ? 'flex' : 'none';
             }});
