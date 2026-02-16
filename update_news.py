@@ -7,6 +7,7 @@ import datetime
 import hashlib
 import json
 import math
+import urllib.parse
 from urllib.parse import urlparse
 from concurrent.futures import ThreadPoolExecutor
 
@@ -17,7 +18,7 @@ from bs4 import BeautifulSoup
 # --- KONFIGURATION ---
 SITE_TITLE = "KI‑Ticker – Aktuelle KI‑News"
 SITE_DESC = "Automatisierte Übersicht zu KI, Machine Learning und LLMs."
-[cite_start]ADSENSE_PUB = "pub-2616688648278798" [cite: 1]
+ADSENSE_PUB = "pub-2616688648278798"
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
@@ -35,12 +36,11 @@ FEEDS = [
     ("OpenAI Blog", "https://openai.com/news/rss.xml", "Unternehmen & Cloud"),
 ]
 
-# Keyword-Mapping für automatische Tags
 TAG_MAPPING = {
-    "nvidia": "Hardware", "gpu": "Hardware", "h100": "Hardware", "blackwell": "Hardware",
-    "arxiv": "Research", "paper": "Research", "study": "Research",
-    "openai": "LLM", "gpt": "LLM", "claude": "LLM", "gemini": "LLM", "anthropic": "LLM",
-    "robot": "Robotics", "roboter": "Robotics", "agent": "Agents",
+    "nvidia": "Hardware", "gpu": "Hardware", "h100": "Hardware",
+    "arxiv": "Research", "paper": "Research",
+    "openai": "LLM", "gpt": "LLM", "claude": "LLM", "gemini": "LLM",
+    "robot": "Robotics", "agent": "Agents",
     "apple": "Big Tech", "google": "Big Tech", "meta": "Big Tech", "microsoft": "Big Tech"
 }
 
@@ -136,23 +136,31 @@ def render_index(items):
         for it in cat_items:
             dt = datetime.datetime.fromisoformat(it["published_iso"])
             img_html = f'<div class="img-container"><img src="{it["image"]}" loading="lazy" alt=""></div>' if it.get("image") else ""
-            
-            # Tags generieren
             badges = "".join([f'<span class="badge">{t}</span>' for t in it.get("tags", [])])
+            
+            # Sharing URLs
+            encoded_title = urllib.parse.quote(it["title"])
+            encoded_url = urllib.parse.quote(it["url"])
+            share_x = f"https://twitter.com/intent/tweet?text={encoded_title}&url={encoded_url}"
+            share_li = f"https://www.linkedin.com/sharing/share-offsite/?url={encoded_url}"
             
             html_content += f"""
             <article class="card" data-content="{it["title"].lower()} {it["summary"].lower()}">
               {img_html}
               <div class="card-body">
                 <div class="badge-container">{badges}</div>
-                <div class="meta">{it["source"]} • {dt.strftime("%d.%m. %H:%M")} • {it["reading_time"]} Min. Lesezeit</div>
+                <div class="meta">{it["source"]} • {dt.strftime("%d.%m. %H:%M")} • {it["reading_time"]} Min.</div>
                 <h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3>
                 <p>{it["summary"]}</p>
+                <div class="share-bar">
+                    <a href="{share_x}" target="_blank" title="Auf X teilen">𝕏</a>
+                    <a href="{share_li}" target="_blank" title="Auf LinkedIn teilen">in</a>
+                    <button onclick="copyToClipboard('{it["url"]}')" title="Link kopieren">🔗</button>
+                </div>
               </div>
             </article>"""
         html_content += '</section>'
 
-    # ... (Rest der HTML-Struktur inkl. Script bleibt gleich wie in Schritt 3)
     return f"""<!doctype html>
 <html lang="de">
 <head>
@@ -169,7 +177,7 @@ def render_index(items):
             <input type="text" id="searchInput" placeholder="News durchsuchen...">
             <button class="btn-toggle" id="themeToggle">🌓</button>
         </div>
-        <p class="tagline">Letztes Update: {now.strftime("%d.%m.%Y %H:%M")} UTC</p>
+        <p class="tagline">Update: {now.strftime("%d.%m.%Y %H:%M")} UTC</p>
     </header>
     <main class="container" id="newsContainer">
         {html_content}
@@ -198,6 +206,12 @@ def render_index(items):
                 title.style.display = hasVisible ? '' : 'none';
             }});
         }});
+
+        function copyToClipboard(text) {{
+            navigator.clipboard.writeText(text).then(() => {{
+                alert('Link in die Zwischenablage kopiert!');
+            }});
+        }}
     </script>
 </body>
 </html>"""
