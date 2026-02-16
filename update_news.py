@@ -20,7 +20,9 @@ from bs4 import BeautifulSoup
 # --- KONFIGURATION ---
 SITE_TITLE = "KI‑Ticker – Aktuelle KI‑News"
 SITE_DESC = "Automatisierte Übersicht zu KI, Machine Learning und LLMs."
-ADSENSE_PUB = "pub-2616688648278798"
+SITE_URL = "https://ki-ticker.boehmonline.space"
+[cite_start]ADSENSE_PUB = "pub-2616688648278798" [cite: 1]
+ADSENSE_SLOT = "8395864605" # Deine neue Slot-ID
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
@@ -123,12 +125,28 @@ def fetch_feed(feed_info):
         return out
     except: return []
 
+def generate_sitemap(items):
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    sitemap += f'  <url><loc>{SITE_URL}/</loc><priority>1.0</priority></url>\n'
+    for it in items[:100]:
+        sitemap += f'  <url><loc>{it["url"]}</loc></url>\n'
+    sitemap += '</urlset>'
+    with open("sitemap.xml", "w", encoding="utf-8") as f:
+        f.write(sitemap)
+
 def render_index(items):
     now = datetime.datetime.now(datetime.timezone.utc)
     top_story = items[0]
     display_items = items[1:]
     trends_html = "".join([f'<button class="trend-tag" onclick="setSearch(\'{kw}\')">#{kw}</button>' for kw in get_top_keywords(items)])
     
+    # AdSense Block
+    ad_block = f"""
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+    </div>"""
+
     dt_hero = datetime.datetime.fromisoformat(top_story["published_iso"])
     hero_img = f'style="background-image: url(\'{top_story["image"]}\')"' if top_story.get("image") else ""
     hero_html = f"""
@@ -140,7 +158,7 @@ def render_index(items):
             <h1><a href="{top_story["url"]}" target="_blank">{top_story["title"]}</a></h1>
             <p>{top_story["summary"]}</p>
             <div class="share-bar">
-                <button onclick="toggleBookmark('{top_story["id"]}')" class="btn-bookmark" title="Merken">🔖</button>
+                <button onclick="toggleBookmark('{top_story["id"]}')" class="btn-bookmark">🔖</button>
             </div>
         </div>
     </section>"""
@@ -155,12 +173,12 @@ def render_index(items):
         cat_items = [i for i in display_items if i["category"] == cat][:ITEMS_PER_CATEGORY]
         if not cat_items: continue
         html_content += f'<div class="cat-section" data-category="{cat}"><h2 class="category-title">{cat}</h2><section class="grid">'
-        for it in cat_items:
+        for idx, it in enumerate(cat_items):
             dt = datetime.datetime.fromisoformat(it["published_iso"])
             img_html = f'<div class="img-container"><img src="{it["image"]}" loading="lazy" alt=""></div>' if it.get("image") else ""
             badges = "".join([f'<span class="badge">{t}</span>' for t in it.get("tags", [])])
             fav = f"https://www.google.com/s2/favicons?domain={it['domain']}&sz=32"
-            share_x = f"https://twitter.com/intent/tweet?text={urllib.parse.quote(it['title'])}&url={urllib.parse.quote(it['url'])}"
+            
             html_content += f"""
             <article class="card" data-id="{it["id"]}" data-content="{it["title"].lower()} {it["summary"].lower()}">
               {img_html}
@@ -170,12 +188,12 @@ def render_index(items):
                 <h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3>
                 <p>{it["summary"]}</p>
                 <div class="share-bar">
-                    <a href="{share_x}" target="_blank">𝕏</a>
                     <button onclick="toggleBookmark('{it["id"]}')" class="btn-bookmark">🔖</button>
                     <button onclick="copyToClipboard('{it["url"]}')">🔗</button>
                 </div>
               </div>
             </article>"""
+            if (idx + 1) % 6 == 0: html_content += ad_block
         html_content += '</section></div>'
 
     return f"""<!doctype html>
@@ -184,8 +202,14 @@ def render_index(items):
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title>
+    <meta name="description" content="{SITE_DESC}">
+    <meta property="og:title" content="{SITE_TITLE}">
+    <meta property="og:description" content="{SITE_DESC}">
+    <meta property="og:url" content="{SITE_URL}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{top_story["image"]}">
     <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_PUB}"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script>
 </head>
 <body class="dark-mode">
     <header class="header">
@@ -208,17 +232,19 @@ def render_index(items):
             localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
         }};
         function filterNews(term) {{
-            const lowerTerm = term.toLowerCase();
+            const t = term.toLowerCase();
             document.querySelectorAll('.card, .hero').forEach(el => {{
-                el.style.display = el.getAttribute('data-content').includes(lowerTerm) ? '' : 'none';
+                const content = el.getAttribute('data-content') || "";
+                el.style.display = content.includes(t) ? '' : 'none';
             }});
         }}
         function filterCat(cat) {{
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
+            if(event) event.target.classList.add('active');
             const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
             document.querySelectorAll('.cat-section').forEach(s => s.style.display = (cat==='all' || s.dataset.category===cat) ? '' : 'none');
-            document.querySelector('.hero').style.display = (cat==='all') ? '' : 'none';
+            const hero = document.querySelector('.hero');
+            if(hero) hero.style.display = (cat==='all') ? '' : 'none';
             if(cat==='bookmarks') {{
                 document.querySelectorAll('.cat-section').forEach(s => s.style.display = '');
                 document.querySelectorAll('.card, .hero').forEach(c => c.style.display = bookmarks.includes(c.dataset.id) ? '' : 'none');
@@ -233,15 +259,18 @@ def render_index(items):
         function updateBookmarkUI() {{
             const b = JSON.parse(localStorage.getItem('bookmarks') || '[]');
             document.querySelectorAll('.btn-bookmark').forEach(btn => {{
-                const id = btn.closest('[data-id]').dataset.id;
-                btn.style.color = b.includes(id) ? 'var(--acc)' : '';
+                const parent = btn.closest('[data-id]');
+                if(parent) {{
+                   const id = parent.dataset.id;
+                   btn.style.color = b.includes(id) ? 'var(--acc)' : '';
+                }}
             }});
         }}
         document.getElementById('searchInput').oninput = (e) => filterNews(e.target.value);
         function setSearch(t) {{ document.getElementById('searchInput').value=t; filterNews(t); }}
         window.onscroll = () => document.getElementById("backToTop").style.display = window.scrollY > 500 ? "block" : "none";
         document.getElementById("backToTop").onclick = () => window.scrollTo({{top:0, behavior:'smooth'}});
-        function copyToClipboard(t) {{ navigator.clipboard.writeText(t).then(() => alert('Kopiert!')); }}
+        function copyToClipboard(t) {{ navigator.clipboard.writeText(t).then(() => alert('Link kopiert!')); }}
         updateBookmarkUI();
     </script>
 </body>
@@ -251,9 +280,9 @@ def main():
     db = load_db()
     with ThreadPoolExecutor(max_workers=7) as ex: res = list(ex.map(fetch_feed, FEEDS))
     items = [i for r in res for i in r]
-    # KORREKTUR: Einzelne geschweifte Klammern für Dictionary Comprehension
     all_data = sorted({i['url']: i for i in (db + items)}.values(), key=lambda x: x["published_iso"], reverse=True)
     save_db(all_data)
+    generate_sitemap(all_data)
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(all_data))
 
 if __name__ == "__main__": main()
