@@ -1,0 +1,76 @@
+{% extends "layout.html.j2" %}
+
+{% block content %}
+
+{# ------------------------------------------------------------
+   Hero / Intro Bereich
+------------------------------------------------------------ #}
+<section class="hero">
+  <h2>Aktuelle Nachrichten rund um Künstliche Intelligenz</h2>
+  <p>
+    Willkommen beim <strong>KI‑Ticker</strong> – deinem automatisierten News‑Ticker
+    für alles rund um KI, Machine Learning, LLMs, Forschung & Tech‑Unternehmen.
+    Die Inhalte werden stündlich aktualisiert.
+  </p>
+</section>
+
+
+{# ------------------------------------------------------------
+   Article Grid
+------------------------------------------------------------ #}
+<section class="grid">
+  {% for item in items %}
+    {% include "article_card.html.j2" %}
+  {% endfor %}
+</section>
+
+
+{# ------------------------------------------------------------
+   Pagination Navigation
+------------------------------------------------------------ #}
+{% if pagination %}
+  <nav class="pagination">
+    {% if pagination.prev %}
+      <a class="page-btn }}← Neuere Beiträge</a>
+    {% endif %}
+
+    {% if pagination.next %}
+      <a class="pagenext }}Ältere Beiträge →</a>
+    {% endif %}
+  </nav>
+{% endif %}
+
+{% endblock %}
+
+
+
+{# ------------------------------------------------------------
+   JSON-LD Structured Data (SEO)
+------------------------------------------------------------ #}
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "KI‑Ticker – Aktuelle KI News",
+  "description": "Automatisierte Übersicht über KI, Machine Learning und LLM Nachrichten.",
+  "url": "{{ site.url }}",
+  "itemListElement": [
+    {% for item in items %}
+    {
+      "@type": "NewsArticle",
+      "position": {{ loop.index }},
+      "headline": {{ item.title | tojson }},
+      "url": {{ item.url | tojson }},
+      "datePublished": "{{ item.published_iso }}",
+      "description": {{ item.summary | tojson }},
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ item.source | tojson }}
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
