@@ -1,5 +1,3 @@
-
-Run python builder/fetch_and_build.py
 Traceback (most recent call last):
   File "/home/runner/work/ki-ticker/ki-ticker/builder/fetch_and_build.py", line 638, in <module>
 ============================================================
