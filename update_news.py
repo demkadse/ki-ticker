@@ -3,19 +3,18 @@
 
 import os, time, datetime, hashlib, json, re
 from urllib.parse import urlparse
-from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 import requests, feedparser
 
 # --- KONFIGURATION ---
 SITE_TITLE = "KI‑Ticker – Aktuelle KI‑News"
-SITE_DESC = "Dein stündliches Update zu Künstlicher Intelligenz, LLMs und Tech-Trends."
+SITE_DESC = "Dein stündliches Update zu Künstlicher Intelligenz und Tech-Trends."
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
 
-# Neues Open-Source Hero-Image
-HERO_IMG = ""
+# Stabiles Open-Source Hero-Image (AI Neural Network)
+HERO_IMG = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1280"
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
@@ -54,8 +53,19 @@ def generate_sitemap():
     with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(sitemap)
 
 def extract_image(e):
-    media = e.get("media_content") or e.get("media_thumbnail") or []
-    if media and isinstance(media, list) and media[0].get("url"): return media[0]["url"]
+    """Verbesserte Bild-Extraktion für TechCrunch & Co."""
+    # 1. Media Content/Thumbnail Tags
+    for tag in ["media_content", "media_thumbnail", "links"]:
+        items = e.get(tag, [])
+        if isinstance(items, list):
+            for item in items:
+                url = item.get("url") or item.get("href")
+                if url and any(x in url.lower() for x in [".jpg", ".png", ".jpeg", ".webp"]):
+                    return url
+    # 2. Suche im HTML-Inhalt/Description
+    content = e.get("description", "") + e.get("summary", "")
+    img_match = re.search(r'<img [^>]*src="([^"]+)"', content)
+    if img_match: return img_match.group(1)
     return ""
 
 def fetch_feed(feed_info):
@@ -85,6 +95,7 @@ def render_index(items):
     
     html_content = ""
     for idx, it in enumerate(items[:120]):
+        # Nutze News-Bild oder das neue Hero-Bild als Fallback
         img_url = it.get("image") if it.get("image") and it.get("image").startswith("http") else HERO_IMG
         dt = datetime.datetime.fromisoformat(it["published_iso"])
         html_content += f"""
@@ -103,9 +114,8 @@ def render_index(items):
     <meta name="description" content="{SITE_DESC}">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta property="og:title" content="{SITE_TITLE}"><meta property="og:description" content="{SITE_DESC}"><meta property="og:image" content="{HERO_IMG}"><meta property="og:url" content="{SITE_URL}/"><meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{HERO_IMG}">
     <link rel="stylesheet" href="style.css?v={int(time.time())}"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
-    <body class="dark-mode"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="controls"><input type="text" id="searchInput" placeholder="News durchsuchen..."></div></header>{html_content}
+    <body class="dark-mode"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="controls"><input type="text" id="searchInput" placeholder="Suchen..."></div></header>{html_content}
     <footer class="footer"><p>&copy; {now.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main>
     <script>function filterNews(t){{const v=t.toLowerCase();document.querySelectorAll('.card').forEach(el=>{{el.style.display=el.getAttribute('data-content').includes(v)?'flex':'none';}});}}
     document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value);function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}}</script></body></html>"""
