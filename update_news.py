@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 
 # --- KONFIGURATION ---
 SITE_TITLE = "KI‑Ticker – Aktuelle KI‑News"
+SITE_DESC = "Der automatisierte News-Ticker für Künstliche Intelligenz, Machine Learning und LLMs."
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
@@ -44,16 +45,11 @@ def save_db(data):
     with open(DB_FILE, "w", encoding="utf-8") as f: json.dump(filtered[:500], f, ensure_ascii=False, indent=2)
 
 def generate_sitemap():
-    """Erzeugt eine sitemap.xml nur mit internen URLs für Google"""
-    pages = [
-        {"loc": "", "priority": "1.0"},
-        {"loc": "impressum.html", "priority": "0.3"},
-        {"loc": "datenschutz.html", "priority": "0.3"}
-    ]
+    pages = [{"loc": "", "priority": "1.0"}, {"loc": "impressum.html", "priority": "0.3"}, {"loc": "datenschutz.html", "priority": "0.3"}]
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     for page in pages:
         url = f"{SITE_URL}/{page['loc']}".rstrip("/")
-        sitemap += f'  <url>\n    <loc>{url}</loc>\n    <priority>{page["priority"]}</priority>\n  </url>\n'
+        sitemap += f'  <url><loc>{url}</loc><priority>{page["priority"]}</priority></url>\n'
     sitemap += '</urlset>'
     with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(sitemap)
 
@@ -86,6 +82,9 @@ def fetch_feed(feed_info):
 
 def render_index(items):
     now = datetime.datetime.now(datetime.timezone.utc)
+    # Bild der ersten News als Social-Preview Bild nutzen
+    preview_img = items[0].get("image") if items and items[0].get("image") else DEFAULT_IMG
+    
     ad_block = f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
     
     html_content = ""
@@ -116,6 +115,20 @@ def render_index(items):
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title>
+    <meta name="description" content="{SITE_DESC}">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{SITE_URL}/">
+    <meta property="og:title" content="{SITE_TITLE}">
+    <meta property="og:description" content="{SITE_DESC}">
+    <meta property="og:image" content="{preview_img}">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{SITE_URL}/">
+    <meta property="twitter:title" content="{SITE_TITLE}">
+    <meta property="twitter:description" content="{SITE_DESC}">
+    <meta property="twitter:image" content="{preview_img}">
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css?v={int(time.time())}">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script>
