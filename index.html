@@ -1,16 +1,24 @@
 <!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
     <title>KI‑Ticker</title><link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=1771327773">
+    <link rel="stylesheet" href="style.css?v=1771328271">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2616688648278798" crossorigin="anonymous"></script></head>
-    <body class="dark-mode"><main class="container">
-        <header class="header">
-            <h1>KI‑Ticker</h1>
-            <div class="controls">
-                <input type="text" id="searchInput" placeholder="Suchen..." aria-label="Suche">
-                <div class="category-bar"><button class="cat-btn active" onclick="filterCat('all', this)">Alle</button><button class="cat-btn" onclick="filterCat('AWS ML Blog', this)">AWS ML Blog</button><button class="cat-btn" onclick="filterCat('Google AI', this)">Google AI</button><button class="cat-btn" onclick="filterCat('NVIDIA Blog', this)">NVIDIA Blog</button><button class="cat-btn" onclick="filterCat('OpenAI', this)">OpenAI</button><button class="cat-btn" onclick="filterCat('TechCrunch', this)">TechCrunch</button><button class="cat-btn" onclick="filterCat('VentureBeat', this)">VentureBeat</button><button class="cat-btn" onclick="filterCat('arXiv', this)">arXiv</button></div>
-            </div>
-        </header>
-        <div class="news-grid">
+    <body class="dark-mode">
+
+    <div class="site-layout">
+        <aside class="sidebar-ad left">
+            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </aside>
+
+        <main class="container">
+            <header class="header">
+                <h1>KI‑Ticker</h1>
+                <div class="controls">
+                    <input type="text" id="searchInput" placeholder="Suchen..." aria-label="Suche">
+                    <div class="category-bar"><button class="cat-btn active" onclick="filterCat('all', this)">Alle</button><button class="cat-btn" onclick="filterCat('AWS ML Blog', this)">AWS ML Blog</button><button class="cat-btn" onclick="filterCat('Google AI', this)">Google AI</button><button class="cat-btn" onclick="filterCat('NVIDIA Blog', this)">NVIDIA Blog</button><button class="cat-btn" onclick="filterCat('OpenAI', this)">OpenAI</button><button class="cat-btn" onclick="filterCat('TechCrunch', this)">TechCrunch</button><button class="cat-btn" onclick="filterCat('VentureBeat', this)">VentureBeat</button><button class="cat-btn" onclick="filterCat('arXiv', this)">arXiv</button></div>
+                </div>
+            </header>
+            <div class="news-grid">
         <article class="card" data-source="TechCrunch" data-content="cohere launches a family of open multilingual models">
           <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200" srcset="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=300 300w, https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600 600w" sizes="(max-width: 600px) 300px, 600px" fetchpriority="high" loading="eager" alt=""></div>
           <div class="card-body">
@@ -473,7 +481,15 @@
             <div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in')">🔗 Link</button></div>
           </div>
         </article></div>
-        <footer class="footer"><p>&copy; 2026 KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main>
+            <footer class="footer"><p>&copy; 2026 KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
+        </main>
+
+        <aside class="sidebar-ad right">
+            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </aside>
+    </div>
+
     <script>
         function filterCat(cat, btn) {
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
