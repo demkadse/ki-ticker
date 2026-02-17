@@ -11,12 +11,11 @@ SITE_TITLE = "KI‑Ticker"
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 
-# Deine neuen AdSense Slots
+# AdSense Slots
 ADSENSE_SLOT_LEFT = "3499497230"   # Skyscraper Links
 ADSENSE_SLOT_RIGHT = "8513926860"  # Skyscraper Rechts
-ADSENSE_SLOT_FEED = "8395864605"   # Horizontaler Block zwischen News
+ADSENSE_SLOT_FEED = "8395864605"   # In-Feed Banner
 
-# Bild-Konfiguration
 HERO_BASE = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80"
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
@@ -80,22 +79,31 @@ def fetch_feed(feed_info):
     except: return []
 
 def render_index(items):
-    now = datetime.datetime.now(datetime.timezone.utc)
+    now_dt = datetime.datetime.now(datetime.timezone.utc)
     categories = sorted(list(set(it["source"] for it in items)))
     cat_html = "".join([f'<button class="cat-btn" onclick="filterCat(\'{c}\', this)">{c}</button>' for c in categories])
     hero_default = f"{HERO_BASE}&w=1200"
 
+    # Schema.org JSON-LD Vorbereitung
+    schema_items = []
     html_content = ""
+
     for idx, it in enumerate(items[:120]):
         prio = 'fetchpriority="high" loading="eager"' if idx < 2 else 'loading="lazy"'
         src_low = it["source"].lower()
         
-        if "arxiv" in src_low or "heise" in src_low or not it.get("image"):
+        # Bild-Logik
+        current_img = it.get("image")
+        if "arxiv" in src_low or "heise" in src_low or not current_img:
+            img_url = hero_default
             img_html = f'<img src="{hero_default}" srcset="{HERO_BASE}&w=300 300w, {HERO_BASE}&w=600 600w" sizes="(max-width: 600px) 300px, 600px" {prio} alt="">'
         else:
-            img_html = f'<img src="{it["image"]}" {prio} alt="" onerror="this.onerror=null;this.src=\'{hero_default}\';">'
+            img_url = current_img
+            img_html = f'<img src="{current_img}" {prio} alt="" onerror="this.onerror=null;this.src=\'{hero_default}\';">'
             
         dt = datetime.datetime.fromisoformat(it["published_iso"])
+        
+        # HTML für die Karte
         html_content += f"""
         <article class="card" data-source="{it["source"]}" data-content="{it["title"].lower()}">
           <div class="img-container">{img_html}</div>
@@ -108,12 +116,36 @@ def render_index(items):
             <div class="share-bar"><button onclick="copyToClipboard('{it['url']}')">🔗 Link</button></div>
           </div>
         </article>"""
+
+        # Schema.org ListItem hinzufügen
+        schema_items.append({
+            "@type": "ListItem",
+            "position": idx + 1,
+            "item": {
+                "@type": "NewsArticle",
+                "headline": it["title"],
+                "image": img_url,
+                "datePublished": it["published_iso"],
+                "author": {"@type": "Organization", "name": it["source"]},
+                "publisher": {"@type": "Organization", "name": SITE_TITLE},
+                "url": it["url"]
+            }
+        })
+
         if (idx + 1) % 12 == 0:
             html_content += f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_FEED}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
+
+    # Finales JSON-LD
+    schema_json = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": schema_items
+    }, ensure_ascii=False)
 
     return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css?v={int(time.time())}">
+    <script type="application/ld+json">{schema_json}</script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
     <body class="dark-mode">
     <div class="site-layout">
@@ -130,7 +162,7 @@ def render_index(items):
                 </div>
             </header>
             <div class="news-grid">{html_content}</div>
-            <footer class="footer"><p>&copy; {now.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
+            <footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
         </main>
         <aside class="sidebar-ad right">
             <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_RIGHT}"></ins>
@@ -166,6 +198,7 @@ def main():
         src = it["source"]
         source_counts[src] = source_counts.get(src, 0) + 1
         if source_counts[src] <= MAX_PER_SOURCE: final_items.append(it)
+    
     save_db(final_items)
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(final_items))
 
