@@ -7,7 +7,7 @@ body {
     line-height: 1.5; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
 }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 15px 40px; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 15px 40px; }
 
 /* Mobile-First Header */
 .header { text-align: center; margin-bottom: 20px; }
@@ -18,34 +18,51 @@ body {
     background: #0a0f1d; aspect-ratio: 16 / 9;
 }
 /* Desktop-Anpassung für Hero */
-@media (min-width: 768px) { .hero-section { height: 280px; aspect-ratio: 1200 / 280; } }
+@media (min-width: 768px) { .hero-section { height: 240px; aspect-ratio: 1200 / 240; } }
 
 .hero-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
 .hero-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; text-align: center; z-index: 2; }
 .header h1 { font-size: 2.2rem; margin: 0; font-weight: 800; letter-spacing: -1px; }
-@media (min-width: 768px) { .header h1 { font-size: 3.5rem; } }
+@media (min-width: 768px) { .header h1 { font-size: 3rem; } }
 
-/* News Grid */
-.news-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-@media (min-width: 640px) { .news-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; } }
+/* News Liste (statt Grid) */
+.news-grid { display: flex; flex-direction: column; gap: 15px; }
 
-/* Card Performance */
+/* Card Layout (Bild links, Text rechts) */
 .card { 
     background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); 
-    display: flex; flex-direction: column; overflow: hidden; contain: content;
+    display: flex; flex-direction: row; overflow: hidden; contain: content;
+    transition: transform 0.2s, border-color 0.2s;
 }
-.img-container { width: 100%; aspect-ratio: 16 / 9; background: #000; overflow: hidden; }
+.card:hover { transform: translateX(5px); border-color: var(--acc); }
+
+/* Feste Bildgröße für Desktop */
+.img-container { 
+    width: 140px; height: 105px; flex-shrink: 0; 
+    background: #0a0f1d; overflow: hidden; 
+}
 .card img { width: 100%; height: 100%; object-fit: cover; }
 
-.card-body { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
-.meta { font-size: 11px; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.card-content { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
+.meta { font-size: 11px; color: var(--muted); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
 .source-icon { width: 16px; height: 16px; border-radius: 3px; }
 
 .card h3 { 
-    margin: 0 0 12px; font-size: 1.05rem; line-height: 1.4; flex-grow: 1; 
-    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; 
+    margin: 0 0 10px; font-size: 1.1rem; line-height: 1.3; flex-grow: 1; 
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; 
 }
 .card h3 a { color: var(--text); text-decoration: none; }
+
+.share-bar { margin-top: auto; }
+.share-bar button { background: none; border: 1px solid var(--border); color: var(--muted); padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; }
+
+/* Mobile Layout (Bild oben) */
+@media (max-width: 600px) {
+    .card { flex-direction: column; }
+    .img-container { width: 100%; height: 180px; }
+    .card h3 { font-size: 1.2rem; -webkit-line-clamp: 3; }
+    .card:hover { transform: translateY(-5px); }
+}
 
 /* Mobile Controls */
 input { 
@@ -53,11 +70,9 @@ input {
     background: var(--card); color: var(--text); width: 100%; box-sizing: border-box; outline: none; margin-bottom: 20px; 
 }
 .category-bar { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 8px; padding-bottom: 10px; margin-bottom: 20px; -webkit-overflow-scrolling: touch; }
-/* Scrollbar verstecken für sauberen Look auf Mobile */
 .category-bar::-webkit-scrollbar { display: none; }
-
 .cat-btn { flex: 0 0 auto; background: var(--card); border: 1px solid var(--border); color: var(--muted); padding: 7px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; }
 .cat-btn.active { background: var(--acc); color: var(--bg); border-color: var(--acc); }
 
-.ad-container { grid-column: 1 / -1; min-height: 100px; margin: 20px 0; }
+.ad-container { width: 100%; max-width: 728px; margin: 20px auto; min-height: 90px; }
 .footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); margin-top: 30px; }
