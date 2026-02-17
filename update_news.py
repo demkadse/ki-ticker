@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import os, time, datetime, hashlib, json, re
+import os, time, datetime, hashlib, json, re, html
 from urllib.parse import urlparse
 from concurrent.futures import ThreadPoolExecutor
 import requests, feedparser
@@ -78,13 +78,42 @@ def fetch_feed(feed_info):
         return out
     except: return []
 
+def generate_sitemap(items):
+    now = datetime.datetime.now(datetime.timezone.utc)
+    # News-Sitemap darf nur Artikel der letzten 48 Stunden enthalten
+    news_cutoff = now - datetime.timedelta(hours=48)
+    
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n'
+    
+    # Statische Seiten (Wichtig für SEO)
+    xml += f'  <url><loc>{SITE_URL}/</loc><changefreq>hourly</changefreq><priority>1.0</priority></url>\n'
+    xml += f'  <url><loc>{SITE_URL}/impressum.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>\n'
+    xml += f'  <url><loc>{SITE_URL}/datenschutz.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>\n'
+
+    for it in items:
+        pub_dt = datetime.datetime.fromisoformat(it["published_iso"])
+        if pub_dt > news_cutoff:
+            title_esc = html.escape(it["title"])
+            xml += f'  <url>\n'
+            xml += f'    <loc>{it["url"]}</loc>\n'
+            xml += f'    <news:news>\n'
+            xml += f'      <news:publication><news:name>{SITE_TITLE}</news:name><news:language>de</news:language></news:publication>\n'
+            xml += f'      <news:publication_date>{it["published_iso"]}</news:publication_date>\n'
+            xml += f'      <news:title>{title_esc}</news:title>\n'
+            xml += f'    </news:news>\n'
+            xml += f'  </url>\n'
+    
+    xml += '</urlset>'
+    with open("sitemap.xml", "w", encoding="utf-8") as f:
+        f.write(xml)
+
 def render_index(items):
     now_dt = datetime.datetime.now(datetime.timezone.utc)
     categories = sorted(list(set(it["source"] for it in items)))
     cat_html = "".join([f'<button class="cat-btn" onclick="filterCat(\'{c}\', this)">{c}</button>' for c in categories])
     hero_default = f"{HERO_BASE}&w=1200"
 
-    # Schema.org JSON-LD Vorbereitung
     schema_items = []
     html_content = ""
 
@@ -92,7 +121,6 @@ def render_index(items):
         prio = 'fetchpriority="high" loading="eager"' if idx < 2 else 'loading="lazy"'
         src_low = it["source"].lower()
         
-        # Bild-Logik
         current_img = it.get("image")
         if "arxiv" in src_low or "heise" in src_low or not current_img:
             img_url = hero_default
@@ -103,7 +131,6 @@ def render_index(items):
             
         dt = datetime.datetime.fromisoformat(it["published_iso"])
         
-        # HTML für die Karte
         html_content += f"""
         <article class="card" data-source="{it["source"]}" data-content="{it["title"].lower()}">
           <div class="img-container">{img_html}</div>
@@ -117,13 +144,13 @@ def render_index(items):
           </div>
         </article>"""
 
-        # Schema.org ListItem hinzufügen
+        # NewsArticle Schema für Google Rich Snippets
         schema_items.append({
             "@type": "ListItem",
             "position": idx + 1,
             "item": {
                 "@type": "NewsArticle",
-                "headline": it["title"],
+                "headline": it["title"][:110], # Google kürzt ab 110 Zeichen
                 "image": img_url,
                 "datePublished": it["published_iso"],
                 "author": {"@type": "Organization", "name": it["source"]},
@@ -135,7 +162,6 @@ def render_index(items):
         if (idx + 1) % 12 == 0:
             html_content += f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_FEED}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
 
-    # Finales JSON-LD
     schema_json = json.dumps({
         "@context": "https://schema.org",
         "@type": "ItemList",
@@ -200,6 +226,8 @@ def main():
         if source_counts[src] <= MAX_PER_SOURCE: final_items.append(it)
     
     save_db(final_items)
+    # Sitemap automatisch generieren
+    generate_sitemap(final_items)
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(final_items))
 
 if __name__ == "__main__": main()
