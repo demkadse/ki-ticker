@@ -10,11 +10,14 @@ import requests, feedparser
 SITE_TITLE = "KI‑Ticker"
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
-ADSENSE_SLOT = "8395864605"
 
-# Unsplash Master-URL (ohne feste Breite für srcset)
+# Deine neuen AdSense Slots
+ADSENSE_SLOT_LEFT = "3499497230"   # Skyscraper Links
+ADSENSE_SLOT_RIGHT = "8513926860"  # Skyscraper Rechts
+ADSENSE_SLOT_FEED = "8395864605"   # Horizontaler Block zwischen News
+
+# Bild-Konfiguration
 HERO_BASE = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80"
-
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
 MAX_PER_SOURCE = 6 
@@ -80,16 +83,13 @@ def render_index(items):
     now = datetime.datetime.now(datetime.timezone.utc)
     categories = sorted(list(set(it["source"] for it in items)))
     cat_html = "".join([f'<button class="cat-btn" onclick="filterCat(\'{c}\', this)">{c}</button>' for c in categories])
-    
     hero_default = f"{HERO_BASE}&w=1200"
 
     html_content = ""
     for idx, it in enumerate(items[:120]):
-        # LCP Optimierung für die ersten 2 Artikel
         prio = 'fetchpriority="high" loading="eager"' if idx < 2 else 'loading="lazy"'
         src_low = it["source"].lower()
         
-        # arXiv/Heise Schutz
         if "arxiv" in src_low or "heise" in src_low or not it.get("image"):
             img_html = f'<img src="{hero_default}" srcset="{HERO_BASE}&w=300 300w, {HERO_BASE}&w=600 600w" sizes="(max-width: 600px) 300px, 600px" {prio} alt="">'
         else:
@@ -109,20 +109,18 @@ def render_index(items):
           </div>
         </article>"""
         if (idx + 1) % 12 == 0:
-            html_content += f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
+            html_content += f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_FEED}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
 
     return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css?v={int(time.time())}">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
     <body class="dark-mode">
-
     <div class="site-layout">
         <aside class="sidebar-ad left">
-            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins>
+            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_LEFT}"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
         </aside>
-
         <main class="container">
             <header class="header">
                 <h1>KI‑Ticker</h1>
@@ -134,13 +132,11 @@ def render_index(items):
             <div class="news-grid">{html_content}</div>
             <footer class="footer"><p>&copy; {now.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
         </main>
-
         <aside class="sidebar-ad right">
-            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins>
+            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_RIGHT}"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
         </aside>
     </div>
-
     <script>
         function filterCat(cat, btn) {{
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
@@ -170,10 +166,7 @@ def main():
         src = it["source"]
         source_counts[src] = source_counts.get(src, 0) + 1
         if source_counts[src] <= MAX_PER_SOURCE: final_items.append(it)
-    
-    # KORREKTUR: Speicherung aktiv
     save_db(final_items)
-    
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(final_items))
 
 if __name__ == "__main__": main()
