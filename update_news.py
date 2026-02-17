@@ -8,16 +8,17 @@ import requests, feedparser
 
 # --- KONFIGURATION ---
 SITE_TITLE = "KI‑Ticker"
+SITE_DESC = "Echtzeit-Updates aus der Welt der KI"
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
 
-# Hochwertiges Standard-Bild (AI-Thematik)
+# Hochwertiges Fallback (WebP optimiert für PageSpeed)
 HERO_IMG = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800&fm=webp"
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
-MAX_PER_SOURCE = 8 
+MAX_PER_SOURCE = 5 
 
 FEEDS = [
     ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
@@ -53,7 +54,6 @@ def generate_sitemap():
     with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(sitemap)
 
 def extract_image(e):
-    """Filtert aktiv Logos und winzige Bilder aus"""
     ignore_list = ["favicon", "logo", "icon", "avatar", "badge", "mark", "signet"]
     for tag in ["media_content", "media_thumbnail", "links"]:
         items = e.get(tag, [])
@@ -97,15 +97,14 @@ def render_index(items):
     for idx, it in enumerate(items[:120]):
         prio = 'fetchpriority="high" loading="eager"' if idx < 3 else 'loading="lazy"'
         
-        # HARTE SPERRE für arXiv und andere Quellen ohne echte Bilder
-        source_low = it["source"].lower()
-        if "arxiv" in source_low or "heise" in source_low:
+        # WIEDERHERGESTELLT: Hard-Lock für arXiv & Heise (vermeidet Logo-Pixelbrei)
+        src_low = it["source"].lower()
+        if "arxiv" in src_low or "heise" in src_low:
             img_url = HERO_IMG
         else:
             img_url = it.get("image") if it.get("image") and it.get("image").startswith("http") else HERO_IMG
             
         dt = datetime.datetime.fromisoformat(it["published_iso"])
-        
         html_content += f"""
         <article class="card" data-source="{it["source"]}" data-content="{it["title"].lower()}">
           <div class="img-container">
@@ -131,7 +130,7 @@ def render_index(items):
         <header class="header">
             <h1>KI‑Ticker</h1>
             <div class="controls">
-                <input type="text" id="searchInput" placeholder="Suchen..." aria-label="News Suche">
+                <input type="text" id="searchInput" placeholder="Suchen..." aria-label="Suche">
                 <div class="category-bar">{cat_html}</div>
             </div>
         </header>
