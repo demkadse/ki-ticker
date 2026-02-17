@@ -12,11 +12,12 @@ SITE_DESC = "Echtzeit-Updates aus der Welt der KI"
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
-HERO_IMG = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1280"
+# Optimiertes Hero-Bild (WebP, 800px)
+HERO_IMG = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800&fm=webp"
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
-MAX_PER_SOURCE = 10 # Verhindert "arXiv-Fluten"
+MAX_PER_SOURCE = 5 # Max. 5 Artikel pro Quelle für mehr Diversität
 
 FEEDS = [
     ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
@@ -93,7 +94,7 @@ def render_index(items):
 
     html_content = ""
     for idx, it in enumerate(items[:120]):
-        # Performance: LCP-Optimierung für die ersten 3 Karten
+        # LCP-Optimierung: Erste 3 Bilder werden priorisiert geladen
         prio = 'fetchpriority="high" loading="eager"' if idx < 3 else 'loading="lazy"'
         img_url = it.get("image") if it.get("image") and it.get("image").startswith("http") else HERO_IMG
         dt = datetime.datetime.fromisoformat(it["published_iso"])
@@ -101,11 +102,11 @@ def render_index(items):
         html_content += f"""
         <article class="card" data-source="{it["source"]}" data-content="{it["title"].lower()}">
           <div class="img-container">
-            <img src="{img_url}" {prio} alt="Vorschaubild: {it["title"]}" onerror="this.onerror=null;this.src='{HERO_IMG}';">
+            <img src="{img_url}" {prio} alt="Vorschaubild für: {it["title"]}" onerror="this.onerror=null;this.src='{HERO_IMG}';">
           </div>
-          <div class="card-body">
+          <div class="card-content">
             <div class="meta">
-                <img src="https://www.google.com/s2/favicons?domain={it["domain"]}&sz=32" class="source-icon" loading="lazy" width="16" height="16" alt="">
+                <img src="https://www.google.com/s2/favicons?domain={it["domain"]}&sz=32" class="source-icon" loading="lazy" width="16" height="16" alt="Icon">
                 {it["source"]} • {dt.strftime("%H:%M")}
             </div>
             <h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3>
@@ -117,12 +118,12 @@ def render_index(items):
 
     return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title><meta name="description" content="{SITE_DESC}"><link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <meta property="og:title" content="{SITE_TITLE}"><meta property="og:description" content="{SITE_DESC}"><meta property="og:image" content="{HERO_IMG}"><meta property="og:url" content="{SITE_URL}/"><meta property="og:type" content="website">
-    <link rel="stylesheet" href="style.css?v={int(time.time())}"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
+    <link rel="stylesheet" href="style.css?v={int(time.time())}">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
     <body class="dark-mode"><main class="container">
         <header class="header">
             <div class="hero-section">
-                <img src="{HERO_IMG}" alt="KI Banner" class="hero-img" fetchpriority="high">
+                <img src="{HERO_IMG}" alt="Header Banner" class="hero-img" fetchpriority="high">
                 <div class="hero-overlay"><h1>KI‑Ticker</h1><p>{SITE_DESC}</p></div>
             </div>
             <div class="controls">
@@ -154,9 +155,9 @@ def main():
     db = load_db()
     with ThreadPoolExecutor(max_workers=7) as ex: res = list(ex.map(fetch_feed, FEEDS))
     items = [i for r in res for i in r]
-    # Diversität erzwingen: Sortiere nach Datum, aber limitiere pro Quelle
-    raw_sorted = sorted({i['url']: i for i in (db + items)}.values(), key=lambda x: x["published_iso"], reverse=True)
     
+    # Diversität erzwingen: Max 5 Artikel pro Quelle
+    raw_sorted = sorted({i['url']: i for i in (db + items)}.values(), key=lambda x: x["published_iso"], reverse=True)
     final_items = []
     source_counts = {}
     for it in raw_sorted:
