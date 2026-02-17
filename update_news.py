@@ -12,9 +12,7 @@ SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
 
-# Dein neues Logo (muss im gleichen Ordner liegen wie die index.html)
 LOGO_FILE = "header-logo.webp" 
-# Fallback für News-Karten
 HERO_BASE = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80"
 
 DB_FILE = "news_db.json"
@@ -86,7 +84,6 @@ def render_index(items):
 
     html_content = ""
     for idx, it in enumerate(items[:120]):
-        # Lazy Loading ab der 3. Karte für besseren Score
         prio = 'fetchpriority="high" loading="eager"' if idx < 2 else 'loading="lazy"'
         src_low = it["source"].lower()
         
