@@ -80,33 +80,16 @@ def fetch_feed(feed_info):
 
 def generate_sitemap(items):
     now = datetime.datetime.now(datetime.timezone.utc)
-    # News-Sitemap darf nur Artikel der letzten 48 Stunden enthalten
     news_cutoff = now - datetime.timedelta(hours=48)
-    
-    xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
-    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n'
-    
-    # Statische Seiten (Wichtig für SEO)
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n'
     xml += f'  <url><loc>{SITE_URL}/</loc><changefreq>hourly</changefreq><priority>1.0</priority></url>\n'
-    xml += f'  <url><loc>{SITE_URL}/impressum.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>\n'
-    xml += f'  <url><loc>{SITE_URL}/datenschutz.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>\n'
-
     for it in items:
         pub_dt = datetime.datetime.fromisoformat(it["published_iso"])
         if pub_dt > news_cutoff:
             title_esc = html.escape(it["title"])
-            xml += f'  <url>\n'
-            xml += f'    <loc>{it["url"]}</loc>\n'
-            xml += f'    <news:news>\n'
-            xml += f'      <news:publication><news:name>{SITE_TITLE}</news:name><news:language>de</news:language></news:publication>\n'
-            xml += f'      <news:publication_date>{it["published_iso"]}</news:publication_date>\n'
-            xml += f'      <news:title>{title_esc}</news:title>\n'
-            xml += f'    </news:news>\n'
-            xml += f'  </url>\n'
-    
+            xml += f'  <url><loc>{it["url"]}</loc><news:news><news:publication><news:name>{SITE_TITLE}</news:name><news:language>de</news:language></news:publication><news:publication_date>{it["published_iso"]}</news:publication_date><news:title>{title_esc}</news:title></news:news></url>\n'
     xml += '</urlset>'
-    with open("sitemap.xml", "w", encoding="utf-8") as f:
-        f.write(xml)
+    with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(xml)
 
 def render_index(items):
     now_dt = datetime.datetime.now(datetime.timezone.utc)
@@ -122,12 +105,22 @@ def render_index(items):
         src_low = it["source"].lower()
         
         current_img = it.get("image")
-        if "arxiv" in src_low or "heise" in src_low or not current_img:
-            img_url = hero_default
+        is_fallback = "arxiv" in src_low or "heise" in src_low or not current_img
+        
+        # Bild-Logik & Schema Image Array (1x1, 4:3, 16:9)
+        if is_fallback:
+            img_url_display = hero_default
             img_html = f'<img src="{hero_default}" srcset="{HERO_BASE}&w=300 300w, {HERO_BASE}&w=600 600w" sizes="(max-width: 600px) 300px, 600px" {prio} alt="">'
+            # Generiere verschiedene Ratios für Unsplash
+            schema_images = [
+                f"{HERO_BASE}&w=1000&h=1000", # 1:1
+                f"{HERO_BASE}&w=1000&h=750",  # 4:3
+                f"{HERO_BASE}&w=1200&h=675"   # 16:9
+            ]
         else:
-            img_url = current_img
+            img_url_display = current_img
             img_html = f'<img src="{current_img}" {prio} alt="" onerror="this.onerror=null;this.src=\'{hero_default}\';">'
+            schema_images = [current_img]
             
         dt = datetime.datetime.fromisoformat(it["published_iso"])
         
@@ -144,17 +137,26 @@ def render_index(items):
           </div>
         </article>"""
 
-        # NewsArticle Schema für Google Rich Snippets
+        # Erweitertes NewsArticle Schema
         schema_items.append({
             "@type": "ListItem",
             "position": idx + 1,
             "item": {
                 "@type": "NewsArticle",
-                "headline": it["title"][:110], # Google kürzt ab 110 Zeichen
-                "image": img_url,
+                "headline": it["title"][:110],
+                "image": schema_images,
                 "datePublished": it["published_iso"],
-                "author": {"@type": "Organization", "name": it["source"]},
-                "publisher": {"@type": "Organization", "name": SITE_TITLE},
+                "dateModified": it["published_iso"], # Bei Aggregatoren meist identisch
+                "author": [{
+                    "@type": "Organization",
+                    "name": it["source"],
+                    "url": f"https://{it['domain']}" # Behebt die Warnung "url fehlt"
+                }],
+                "publisher": {
+                    "@type": "Organization",
+                    "name": SITE_TITLE,
+                    "logo": {"@type": "ImageObject", "url": f"{SITE_URL}/favicon.svg"}
+                },
                 "url": it["url"]
             }
         })
@@ -162,11 +164,7 @@ def render_index(items):
         if (idx + 1) % 12 == 0:
             html_content += f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_FEED}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
 
-    schema_json = json.dumps({
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "itemListElement": schema_items
-    }, ensure_ascii=False)
+    schema_json = json.dumps({"@context": "https://schema.org", "@type": "ItemList", "itemListElement": schema_items}, ensure_ascii=False)
 
     return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -224,9 +222,7 @@ def main():
         src = it["source"]
         source_counts[src] = source_counts.get(src, 0) + 1
         if source_counts[src] <= MAX_PER_SOURCE: final_items.append(it)
-    
     save_db(final_items)
-    # Sitemap automatisch generieren
     generate_sitemap(final_items)
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(final_items))
 
