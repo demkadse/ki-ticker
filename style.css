@@ -1,10 +1,10 @@
 :root {
-  --bg: #0a0f1d; --card: #151c2e; --text: #f1f5f9; --muted: #94a3b8; --acc: #38bdf8; --border: #1e293b;
+  --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8; --acc: #38bdf8; --border: #334155;
   --radius: 12px;
 }
-body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; -webkit-font-smoothing: antialiased; }
 
-.container { max-width: 1100px; margin: 0 auto; padding: 20px 15px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px 15px; }
 
 /* Header */
 .header { text-align: center; margin-bottom: 30px; }
@@ -17,30 +17,25 @@ body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: var(-
     gap: 20px; 
 }
 
-/* Cards - Stabiler Look gegen CLS */
+/* Cards */
 .card { 
     background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); 
     display: flex; flex-direction: column; overflow: hidden; 
-    transition: transform 0.2s, border-color 0.2s;
-    height: 100%;
+    transition: transform 0.2s; height: 100%;
 }
 .card:hover { transform: translateY(-4px); border-color: var(--acc); }
 
-/* Feste Aspect-Ratio Box verhindert Stretching */
+/* WICHTIG: Feste Aspect-Ratio gegen Stretching */
 .img-container { 
     width: 100%; 
     aspect-ratio: 16 / 9; 
     background: #000; 
     overflow: hidden; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
 }
-/* object-fit: cover sorgt dafür, dass Bilder die Box füllen, ohne verzerrt zu werden */
 .card img { 
     width: 100%; 
     height: 100%; 
-    object-fit: cover; 
+    object-fit: cover; /* Schneidet das Bild perfekt zu, statt es zu zerren */
 }
 
 .card-body { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
@@ -56,7 +51,7 @@ body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: var(-
 .share-bar { border-top: 1px solid var(--border); padding-top: 10px; }
 .share-bar button { background: none; border: 1px solid var(--border); color: var(--muted); padding: 4px 10px; border-radius: 5px; cursor: pointer; font-size: 11px; }
 
-/* Suchleiste & Kategorien */
+/* Controls */
 input { padding: 12px 20px; border-radius: 25px; border: 1px solid var(--border); background: var(--card); color: var(--text); width: 100%; max-width: 400px; margin-bottom: 15px; outline: none; }
 .category-bar { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 20px; }
 .cat-btn { background: var(--card); border: 1px solid var(--border); color: var(--muted); padding: 5px 12px; border-radius: 20px; cursor: pointer; font-size: 11px; }
@@ -66,6 +61,6 @@ input { padding: 12px 20px; border-radius: 25px; border: 1px solid var(--border)
 .footer { grid-column: 1 / -1; padding: 40px; text-align: center; color: var(--muted); font-size: 11px; }
 
 @media (max-width: 600px) {
-    .header h1 { font-size: 1.8rem; }
-    .news-grid { grid-template-columns: 1fr; } /* Verhindert winzige Karten auf Mobile */
+    .header h1 { font-size: 2rem; }
+    .news-grid { grid-template-columns: 1fr; }
 }
