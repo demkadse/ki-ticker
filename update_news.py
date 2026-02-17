@@ -12,12 +12,11 @@ SITE_DESC = "Echtzeit-Updates aus der Welt der KI"
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
-# Optimiertes Hero-Bild (WebP, 800px)
 HERO_IMG = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800&fm=webp"
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
-MAX_PER_SOURCE = 5 # Max. 5 Artikel pro Quelle für mehr Diversität
+MAX_PER_SOURCE = 5 
 
 FEEDS = [
     ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
@@ -53,15 +52,22 @@ def generate_sitemap():
     with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(sitemap)
 
 def extract_image(e):
+    """Filtert Favicons und Logos aus, um Pixel-Matsch zu vermeiden"""
+    ignore_list = ["favicon", "logo", "icon", "avatar", "badge"]
     for tag in ["media_content", "media_thumbnail", "links"]:
         items = e.get(tag, [])
         if isinstance(items, list):
             for item in items:
                 url = item.get("url") or item.get("href")
-                if url and any(x in url.lower() for x in [".jpg", ".png", ".jpeg", ".webp"]): return url
+                if url and any(x in url.lower() for x in [".jpg", ".png", ".jpeg", ".webp"]):
+                    if not any(word in url.lower() for word in ignore_list):
+                        return url
     content = e.get("description", "") + e.get("summary", "")
     img_match = re.search(r'<img [^>]*src="([^"]+)"', content)
-    if img_match: return img_match.group(1)
+    if img_match:
+        url = img_match.group(1)
+        if not any(word in url.lower() for word in ignore_list):
+            return url
     return ""
 
 def fetch_feed(feed_info):
@@ -94,19 +100,24 @@ def render_index(items):
 
     html_content = ""
     for idx, it in enumerate(items[:120]):
-        # LCP-Optimierung: Erste 3 Bilder werden priorisiert geladen
         prio = 'fetchpriority="high" loading="eager"' if idx < 3 else 'loading="lazy"'
-        img_url = it.get("image") if it.get("image") and it.get("image").startswith("http") else HERO_IMG
+        
+        # SONDERREGEL arXiv: Immer Fallback nutzen
+        if "arxiv" in it["source"].lower():
+            img_url = HERO_IMG
+        else:
+            img_url = it.get("image") if it.get("image") and it.get("image").startswith("http") else HERO_IMG
+            
         dt = datetime.datetime.fromisoformat(it["published_iso"])
         
         html_content += f"""
         <article class="card" data-source="{it["source"]}" data-content="{it["title"].lower()}">
           <div class="img-container">
-            <img src="{img_url}" {prio} alt="Vorschaubild für: {it["title"]}" onerror="this.onerror=null;this.src='{HERO_IMG}';">
+            <img src="{img_url}" {prio} alt="News Bild" onerror="this.onerror=null;this.src='{HERO_IMG}';">
           </div>
           <div class="card-content">
             <div class="meta">
-                <img src="https://www.google.com/s2/favicons?domain={it["domain"]}&sz=32" class="source-icon" loading="lazy" width="16" height="16" alt="Icon">
+                <img src="https://www.google.com/s2/favicons?domain={it["domain"]}&sz=32" class="source-icon" loading="lazy" width="16" height="16" alt="">
                 {it["source"]} • {dt.strftime("%H:%M")}
             </div>
             <h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3>
@@ -123,7 +134,7 @@ def render_index(items):
     <body class="dark-mode"><main class="container">
         <header class="header">
             <div class="hero-section">
-                <img src="{HERO_IMG}" alt="Header Banner" class="hero-img" fetchpriority="high">
+                <img src="{HERO_IMG}" alt="Banner" class="hero-img" fetchpriority="high">
                 <div class="hero-overlay"><h1>KI‑Ticker</h1><p>{SITE_DESC}</p></div>
             </div>
             <div class="controls">
@@ -155,8 +166,6 @@ def main():
     db = load_db()
     with ThreadPoolExecutor(max_workers=7) as ex: res = list(ex.map(fetch_feed, FEEDS))
     items = [i for r in res for i in r]
-    
-    # Diversität erzwingen: Max 5 Artikel pro Quelle
     raw_sorted = sorted({i['url']: i for i in (db + items)}.values(), key=lambda x: x["published_iso"], reverse=True)
     final_items = []
     source_counts = {}
@@ -165,7 +174,6 @@ def main():
         source_counts[src] = source_counts.get(src, 0) + 1
         if source_counts[src] <= MAX_PER_SOURCE:
             final_items.append(it)
-            
     save_db(final_items)
     generate_sitemap()
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(final_items))
