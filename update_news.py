@@ -7,16 +7,17 @@ from concurrent.futures import ThreadPoolExecutor
 import requests, feedparser
 
 # --- KONFIGURATION ---
-SITE_TITLE = "KI‑Ticker – Aktuelle KI‑News"
-SITE_DESC = "Echtzeit-Updates aus der Welt der KI"
+SITE_TITLE = "KI‑Ticker"
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
+
+# Hochwertiges Standard-Bild (AI-Thematik)
 HERO_IMG = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800&fm=webp"
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
-MAX_PER_SOURCE = 5 
+MAX_PER_SOURCE = 8 
 
 FEEDS = [
     ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
@@ -52,22 +53,16 @@ def generate_sitemap():
     with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(sitemap)
 
 def extract_image(e):
-    """Filtert Favicons und Logos aus, um Pixel-Matsch zu vermeiden"""
-    ignore_list = ["favicon", "logo", "icon", "avatar", "badge"]
+    """Filtert aktiv Logos und winzige Bilder aus"""
+    ignore_list = ["favicon", "logo", "icon", "avatar", "badge", "mark", "signet"]
     for tag in ["media_content", "media_thumbnail", "links"]:
         items = e.get(tag, [])
         if isinstance(items, list):
             for item in items:
                 url = item.get("url") or item.get("href")
-                if url and any(x in url.lower() for x in [".jpg", ".png", ".jpeg", ".webp"]):
+                if url and any(ext in url.lower() for ext in [".jpg", ".png", ".jpeg", ".webp"]):
                     if not any(word in url.lower() for word in ignore_list):
                         return url
-    content = e.get("description", "") + e.get("summary", "")
-    img_match = re.search(r'<img [^>]*src="([^"]+)"', content)
-    if img_match:
-        url = img_match.group(1)
-        if not any(word in url.lower() for word in ignore_list):
-            return url
     return ""
 
 def fetch_feed(feed_info):
@@ -102,8 +97,9 @@ def render_index(items):
     for idx, it in enumerate(items[:120]):
         prio = 'fetchpriority="high" loading="eager"' if idx < 3 else 'loading="lazy"'
         
-        # SONDERREGEL arXiv: Immer Fallback nutzen
-        if "arxiv" in it["source"].lower():
+        # HARTE SPERRE für arXiv und andere Quellen ohne echte Bilder
+        source_low = it["source"].lower()
+        if "arxiv" in source_low or "heise" in source_low:
             img_url = HERO_IMG
         else:
             img_url = it.get("image") if it.get("image") and it.get("image").startswith("http") else HERO_IMG
@@ -113,9 +109,9 @@ def render_index(items):
         html_content += f"""
         <article class="card" data-source="{it["source"]}" data-content="{it["title"].lower()}">
           <div class="img-container">
-            <img src="{img_url}" {prio} alt="News Bild" onerror="this.onerror=null;this.src='{HERO_IMG}';">
+            <img src="{img_url}" {prio} alt="" onerror="this.onerror=null;this.src='{HERO_IMG}';">
           </div>
-          <div class="card-content">
+          <div class="card-body">
             <div class="meta">
                 <img src="https://www.google.com/s2/favicons?domain={it["domain"]}&sz=32" class="source-icon" loading="lazy" width="16" height="16" alt="">
                 {it["source"]} • {dt.strftime("%H:%M")}
@@ -128,17 +124,14 @@ def render_index(items):
             html_content += f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
 
     return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{SITE_TITLE}</title><meta name="description" content="{SITE_DESC}"><link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css?v={int(time.time())}">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
     <body class="dark-mode"><main class="container">
         <header class="header">
-            <div class="hero-section">
-                <img src="{HERO_IMG}" alt="Banner" class="hero-img" fetchpriority="high">
-                <div class="hero-overlay"><h1>KI‑Ticker</h1><p>{SITE_DESC}</p></div>
-            </div>
+            <h1>KI‑Ticker</h1>
             <div class="controls">
-                <input type="text" id="searchInput" placeholder="News durchsuchen..." aria-label="News Suche">
+                <input type="text" id="searchInput" placeholder="Suchen..." aria-label="News Suche">
                 <div class="category-bar">{cat_html}</div>
             </div>
         </header>
@@ -159,7 +152,7 @@ def render_index(items):
             }});
         }}
         document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value);
-        function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}}
+        function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Kopiert!'));}}
     </script></body></html>"""
 
 def main():
