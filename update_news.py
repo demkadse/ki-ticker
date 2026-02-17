@@ -8,15 +8,15 @@ import requests, feedparser
 
 # --- KONFIGURATION ---
 SITE_TITLE = "KI‑Ticker – Aktuelle KI‑News"
-SITE_DESC = "Dein stündliches Update zu Künstlicher Intelligenz und Tech-Trends."
+SITE_DESC = "Echtzeit-Updates aus der Welt der KI"
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
-# Das Bild für den Header oben
 HERO_IMG = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1280"
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
+MAX_PER_SOURCE = 10 # Verhindert "arXiv-Fluten"
 
 FEEDS = [
     ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
@@ -91,44 +91,46 @@ def render_index(items):
     for c in categories:
         cat_html += f'<button class="cat-btn" onclick="filterCat(\'{c}\', this)">{c}</button>'
 
-    ad_block = f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
-    
     html_content = ""
     for idx, it in enumerate(items[:120]):
+        # Performance: LCP-Optimierung für die ersten 3 Karten
+        prio = 'fetchpriority="high" loading="eager"' if idx < 3 else 'loading="lazy"'
         img_url = it.get("image") if it.get("image") and it.get("image").startswith("http") else HERO_IMG
         dt = datetime.datetime.fromisoformat(it["published_iso"])
+        
         html_content += f"""
         <article class="card" data-source="{it["source"]}" data-content="{it["title"].lower()}">
-          <div class="img-container"><img src="{img_url}" loading="lazy" onerror="this.onerror=null;this.src='{HERO_IMG}';"></div>
+          <div class="img-container">
+            <img src="{img_url}" {prio} alt="Vorschaubild: {it["title"]}" onerror="this.onerror=null;this.src='{HERO_IMG}';">
+          </div>
           <div class="card-body">
-            <div class="meta"><img src="https://www.google.com/s2/favicons?domain={it["domain"]}&sz=32" class="source-icon">{it["source"]} • {dt.strftime("%d.%m. %H:%M")}</div>
+            <div class="meta">
+                <img src="https://www.google.com/s2/favicons?domain={it["domain"]}&sz=32" class="source-icon" loading="lazy" width="16" height="16" alt="">
+                {it["source"]} • {dt.strftime("%H:%M")}
+            </div>
             <h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3>
             <div class="share-bar"><button onclick="copyToClipboard('{it["url"]}')">🔗 Link</button></div>
           </div>
         </article>"""
-        if (idx + 1) % 12 == 0: html_content += ad_block
+        if (idx + 1) % 12 == 0:
+            html_content += f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
 
     return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{SITE_TITLE}</title>
-    <meta name="description" content="{SITE_DESC}">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>{SITE_TITLE}</title><meta name="description" content="{SITE_DESC}"><link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta property="og:title" content="{SITE_TITLE}"><meta property="og:description" content="{SITE_DESC}"><meta property="og:image" content="{HERO_IMG}"><meta property="og:url" content="{SITE_URL}/"><meta property="og:type" content="website">
     <link rel="stylesheet" href="style.css?v={int(time.time())}"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
     <body class="dark-mode"><main class="container">
         <header class="header">
             <div class="hero-section">
-                <img src="{HERO_IMG}" alt="KI Banner" class="hero-img">
-                <div class="hero-overlay">
-                    <h1>KI‑Ticker</h1>
-                    <p>Echtzeit-Updates aus der Welt der KI</p>
-                </div>
+                <img src="{HERO_IMG}" alt="KI Banner" class="hero-img" fetchpriority="high">
+                <div class="hero-overlay"><h1>KI‑Ticker</h1><p>{SITE_DESC}</p></div>
             </div>
             <div class="controls">
-                <input type="text" id="searchInput" placeholder="News durchsuchen...">
+                <input type="text" id="searchInput" placeholder="News durchsuchen..." aria-label="News Suche">
                 <div class="category-bar">{cat_html}</div>
             </div>
         </header>
-        {html_content}
+        <div class="news-grid">{html_content}</div>
         <footer class="footer"><p>&copy; {now.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main>
     <script>
         function filterCat(cat, btn) {{
@@ -152,9 +154,19 @@ def main():
     db = load_db()
     with ThreadPoolExecutor(max_workers=7) as ex: res = list(ex.map(fetch_feed, FEEDS))
     items = [i for r in res for i in r]
-    all_data = sorted({i['url']: i for i in (db + items)}.values(), key=lambda x: x["published_iso"], reverse=True)
-    save_db(all_data)
+    # Diversität erzwingen: Sortiere nach Datum, aber limitiere pro Quelle
+    raw_sorted = sorted({i['url']: i for i in (db + items)}.values(), key=lambda x: x["published_iso"], reverse=True)
+    
+    final_items = []
+    source_counts = {}
+    for it in raw_sorted:
+        src = it["source"]
+        source_counts[src] = source_counts.get(src, 0) + 1
+        if source_counts[src] <= MAX_PER_SOURCE:
+            final_items.append(it)
+            
+    save_db(final_items)
     generate_sitemap()
-    with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(all_data))
+    with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(final_items))
 
 if __name__ == "__main__": main()
