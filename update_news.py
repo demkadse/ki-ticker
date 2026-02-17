@@ -13,12 +13,12 @@ SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
 
-# Hochwertiges Fallback (WebP optimiert für PageSpeed)
+# WebP optimiertes Fallback für PageSpeed
 HERO_IMG = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800&fm=webp"
 
 DB_FILE = "news_db.json"
 DAYS_TO_KEEP = 7
-MAX_PER_SOURCE = 5 
+MAX_PER_SOURCE = 8 
 
 FEEDS = [
     ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
@@ -96,9 +96,8 @@ def render_index(items):
     html_content = ""
     for idx, it in enumerate(items[:120]):
         prio = 'fetchpriority="high" loading="eager"' if idx < 3 else 'loading="lazy"'
-        
-        # WIEDERHERGESTELLT: Hard-Lock für arXiv & Heise (vermeidet Logo-Pixelbrei)
         src_low = it["source"].lower()
+        
         if "arxiv" in src_low or "heise" in src_low:
             img_url = HERO_IMG
         else:
