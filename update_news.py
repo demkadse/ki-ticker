@@ -155,6 +155,10 @@ def main():
         src = it["source"]
         source_counts[src] = source_counts.get(src, 0) + 1
         if source_counts[src] <= MAX_PER_SOURCE: final_items.append(it)
+    
+    # KORREKTUR: Speichere die finalen Artikel in der Datenbank
+    save_db(final_items)
+    
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(final_items))
 
 if __name__ == "__main__": main()
