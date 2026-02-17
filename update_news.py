@@ -12,7 +12,9 @@ SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 ADSENSE_SLOT = "8395864605"
 
-# Unsplash Master-URL (ohne feste Breite für srcset)
+# Dein neues Logo (muss im gleichen Ordner liegen wie die index.html)
+LOGO_FILE = "header-logo.webp" 
+# Fallback für News-Karten
 HERO_BASE = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80"
 
 DB_FILE = "news_db.json"
@@ -80,21 +82,18 @@ def render_index(items):
     now = datetime.datetime.now(datetime.timezone.utc)
     categories = sorted(list(set(it["source"] for it in items)))
     cat_html = "".join([f'<button class="cat-btn" onclick="filterCat(\'{c}\', this)">{c}</button>' for c in categories])
-    
-    # Hero-srcset für Mobile (400px) vs Desktop (1200px)
-    hero_srcset = f"{HERO_BASE}&w=400 400w, {HERO_BASE}&w=1200 1200w"
-    hero_default = f"{HERO_BASE}&w=1200"
+    fallback_img = f"{HERO_BASE}&w=600"
 
     html_content = ""
     for idx, it in enumerate(items[:120]):
+        # Lazy Loading ab der 3. Karte für besseren Score
         prio = 'fetchpriority="high" loading="eager"' if idx < 2 else 'loading="lazy"'
         src_low = it["source"].lower()
         
-        # arXiv/Heise Schutz
         if "arxiv" in src_low or "heise" in src_low or not it.get("image"):
-            img_html = f'<img src="{hero_default}" srcset="{HERO_BASE}&w=300 300w, {HERO_BASE}&w=600 600w" sizes="(max-width: 600px) 300px, 600px" {prio} alt="">'
+            img_html = f'<img src="{fallback_img}" {prio} alt="">'
         else:
-            img_html = f'<img src="{it["image"]}" {prio} alt="" onerror="this.onerror=null;this.src=\'{hero_default}\';">'
+            img_html = f'<img src="{it["image"]}" {prio} alt="" onerror="this.onerror=null;this.src=\'{fallback_img}\';">'
             
         dt = datetime.datetime.fromisoformat(it["published_iso"])
         html_content += f"""
@@ -118,7 +117,9 @@ def render_index(items):
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
     <body class="dark-mode"><main class="container">
         <header class="header">
-            <h1>KI‑Ticker</h1>
+            <div class="logo-wrapper">
+                <img src="{LOGO_FILE}" alt="KI-Ticker Logo" class="main-logo" fetchpriority="high">
+            </div>
             <div class="controls">
                 <input type="text" id="searchInput" placeholder="Suchen..." aria-label="Suche">
                 <div class="category-bar"><button class="cat-btn active" onclick="filterCat('all', this)">Alle</button>{cat_html}</div>
