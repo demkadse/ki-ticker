@@ -1,5 +1,14 @@
 [
   {
+    "id": "96d56748f5af",
+    "title": "Cohere launches a family of open multilingual models",
+    "url": "https://techcrunch.com/2026/02/17/cohere-launches-a-family-of-open-multilingual-models/",
+    "source": "TechCrunch",
+    "published_iso": "2026-02-17T09:00:00+00:00",
+    "domain": "techcrunch.com",
+    "image": ""
+  },
+  {
     "id": "079d69d2cf64",
     "title": "Consistency of Large Reasoning Models Under Multi-Turn Attacks",
     "url": "https://arxiv.org/abs/2602.13093",
@@ -140,15 +149,6 @@
     "url": "https://techcrunch.com/2026/02/15/as-ai-data-centers-hit-power-limits-peak-xv-backs-indian-startup-c2i-to-fix-the-bottleneck/",
     "source": "TechCrunch",
     "published_iso": "2026-02-16T01:00:00+00:00",
-    "domain": "techcrunch.com",
-    "image": ""
-  },
-  {
-    "id": "2bd2cc215ebd",
-    "title": "Blackstone backs Neysa in up to $1.2B financing as India pushes to build domestic AI infrastructure",
-    "url": "https://techcrunch.com/2026/02/15/blackstone-backs-neysa-in-up-to-1-2b-financing-as-india-pushes-to-build-domestic-ai-compute/",
-    "source": "TechCrunch",
-    "published_iso": "2026-02-16T00:30:00+00:00",
     "domain": "techcrunch.com",
     "image": ""
   },
