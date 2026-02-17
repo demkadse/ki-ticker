@@ -1,43 +1,43 @@
-:root {
-  --bg: #0a0f1d; --card: #151c2e; --text: #f1f5f9; --muted: #94a3b8; --acc: #38bdf8; --border: #1e293b;
-  --radius: 12px;
+/* --- OPTIMIERTER HEADER --- */
+.header { 
+    text-align: center; 
+    padding: 20px 0 10px; /* Weniger Abstand oben/unten */
+    margin-bottom: 20px; 
 }
-body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; -webkit-font-smoothing: antialiased; }
-.container { max-width: 1100px; margin: 0 auto; padding: 20px 15px; }
 
-/* Header & Logo */
-.header { text-align: center; margin-bottom: 25px; }
-.logo-wrapper { width: 100%; display: flex; justify-content: center; margin-bottom: 20px; }
+.logo-wrapper { 
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    margin-bottom: 15px; 
+}
 
-/* Das Logo wird nie breiter als der Container, bleibt aber scharf */
 .main-logo { 
-    max-width: 100%; 
+    max-width: 85%; 
     height: auto; 
-    width: 600px; /* Ideale Größe für Desktop */
+    width: 320px; /* Von 600px auf 320px reduziert für Eleganz */
     aspect-ratio: 1536 / 896; 
     display: block;
+    filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.2)); /* Leichter Glow-Effekt */
 }
 
-@media (max-width: 600px) { .main-logo { width: 100%; } }
+/* Suche & Kategorien näher zusammenrücken */
+.controls { 
+    max-width: 600px; 
+    margin: 0 auto; 
+}
 
-/* Controls, Grid & Cards bleiben wie beim 97er Score optimiert */
-input { padding: 12px 20px; border-radius: 25px; border: 1px solid var(--border); background: var(--card); color: var(--text); width: 100%; max-width: 400px; margin-bottom: 15px; outline: none; }
-.category-bar { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 8px; padding-bottom: 10px; -webkit-overflow-scrolling: touch; justify-content: flex-start; }
-@media (min-width: 768px) { .category-bar { justify-content: center; flex-wrap: wrap; } }
-.category-bar::-webkit-scrollbar { display: none; }
-.cat-btn { flex: 0 0 auto; background: var(--card); border: 1px solid var(--border); color: var(--muted); padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 11px; transition: 0.2s; }
-.cat-btn.active { background: var(--acc); color: var(--bg); border-color: var(--acc); font-weight: 600; }
+input { 
+    margin-bottom: 10px; 
+    padding: 10px 20px; 
+}
 
-.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
-.card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; transition: 0.2s; height: 100%; }
-.img-container { width: 100%; aspect-ratio: 16 / 9; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.card img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: scale-down; }
-.card-body { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
-.meta { font-size: 10px; color: var(--muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-.source-icon { width: 14px; height: 14px; border-radius: 2px; }
-.card h3 { margin: 0 0 12px; font-size: 1rem; line-height: 1.4; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.card h3 a { color: var(--text); text-decoration: none; }
-.share-bar { border-top: 1px solid var(--border); padding-top: 10px; margin-top: auto; }
-.share-bar button { background: none; border: 1px solid var(--border); color: var(--muted); padding: 4px 10px; border-radius: 5px; cursor: pointer; font-size: 11px; }
+.category-bar { 
+    margin-bottom: 15px; 
+}
 
-.footer { padding: 40px; text-align: center; color: var(--muted); font-size: 11px; }
+/* Mobil-Optimierung: Logo noch etwas kleiner */
+@media (max-width: 600px) { 
+    .main-logo { width: 240px; } 
+    .header { padding-top: 10px; }
+}
