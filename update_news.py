@@ -81,12 +81,11 @@ def render_index(items):
     categories = sorted(list(set(it["source"] for it in items)))
     cat_html = "".join([f'<button class="cat-btn" onclick="filterCat(\'{c}\', this)">{c}</button>' for c in categories])
     
-    # Hero-srcset für Mobile (400px) vs Desktop (1200px)
-    hero_srcset = f"{HERO_BASE}&w=400 400w, {HERO_BASE}&w=1200 1200w"
     hero_default = f"{HERO_BASE}&w=1200"
 
     html_content = ""
     for idx, it in enumerate(items[:120]):
+        # LCP Optimierung für die ersten 2 Artikel
         prio = 'fetchpriority="high" loading="eager"' if idx < 2 else 'loading="lazy"'
         src_low = it["source"].lower()
         
@@ -116,16 +115,32 @@ def render_index(items):
     <title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css?v={int(time.time())}">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
-    <body class="dark-mode"><main class="container">
-        <header class="header">
-            <h1>KI‑Ticker</h1>
-            <div class="controls">
-                <input type="text" id="searchInput" placeholder="Suchen..." aria-label="Suche">
-                <div class="category-bar"><button class="cat-btn active" onclick="filterCat('all', this)">Alle</button>{cat_html}</div>
-            </div>
-        </header>
-        <div class="news-grid">{html_content}</div>
-        <footer class="footer"><p>&copy; {now.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main>
+    <body class="dark-mode">
+
+    <div class="site-layout">
+        <aside class="sidebar-ad left">
+            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+        </aside>
+
+        <main class="container">
+            <header class="header">
+                <h1>KI‑Ticker</h1>
+                <div class="controls">
+                    <input type="text" id="searchInput" placeholder="Suchen..." aria-label="Suche">
+                    <div class="category-bar"><button class="cat-btn active" onclick="filterCat('all', this)">Alle</button>{cat_html}</div>
+                </div>
+            </header>
+            <div class="news-grid">{html_content}</div>
+            <footer class="footer"><p>&copy; {now.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
+        </main>
+
+        <aside class="sidebar-ad right">
+            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT}"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+        </aside>
+    </div>
+
     <script>
         function filterCat(cat, btn) {{
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
@@ -156,7 +171,7 @@ def main():
         source_counts[src] = source_counts.get(src, 0) + 1
         if source_counts[src] <= MAX_PER_SOURCE: final_items.append(it)
     
-    # KORREKTUR: Speichere die finalen Artikel in der Datenbank
+    # KORREKTUR: Speicherung aktiv
     save_db(final_items)
     
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(final_items))
