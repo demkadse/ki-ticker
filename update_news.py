@@ -82,14 +82,12 @@ def render_index(items, editorial):
         if len(grouped[it["source"]]) < 10: grouped[it["source"]].append(it)
     sorted_sources = sorted(grouped.keys(), key=lambda s: grouped[s][0]["published_iso"], reverse=True)
 
-    # Kategorie-Buttons
-    category_html = """
-    <div class="category-nav" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px;">
-        <button class="card-link-btn" onclick="applySearch('KI')">🤖 KI & Technik</button>
-        <button class="card-link-btn" onclick="applySearch('Internet')">🌐 Internetkultur</button>
-        <button class="card-link-btn" onclick="applySearch('Wissenschaft')">🔬 Wissenschaft</button>
-    </div>
-    """
+    # Dynamische Kategorie-Buttons basierend auf den vorhandenen Quellen
+    cat_buttons = ""
+    for src in sorted_sources:
+        cat_buttons += f'<button class="nav-btn category-btn" onclick="applySearch(\'{src}\')">{src}</button>'
+    
+    category_html = f'<div class="category-nav-wrapper">{cat_buttons}</div>'
 
     editorial_html = ""
     if editorial:
@@ -107,15 +105,16 @@ def render_index(items, editorial):
                     {author_link}
                     <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;">Hinweis: Externer Videobeitrag.</p>
                 </div>
+                
                 <div class="editorial-text">{editorial.get('description', '')}</div>
                 
-                <div class="sources-box">
-                    <strong>Weiterführende Quellen:</strong>
-                    <div class="editorial-sources">{editorial.get('content', '')}</div>
-                </div>
-                
-                <div class="editorial-footer" style="margin-top:30px; text-align: center;">
-                    <button class="filter-action-btn" onclick="applySearch('{editorial.get('search_term','')}');" style="background:var(--acc); color:var(--bg); border:none; padding:12px 24px; border-radius:30px; font-weight:700; cursor:pointer;">
+                <div class="editorial-footer-area">
+                    <div class="sources-box-compact">
+                        <strong>Quellen:</strong>
+                        <div class="editorial-sources-compact">{editorial.get('content', '')}</div>
+                    </div>
+                    
+                    <button class="filter-action-btn-styled" onclick="applySearch('{editorial.get('search_term','')}');">
                         <i class="fa-solid fa-magnifying-glass"></i> Passende News finden
                     </button>
                 </div>
@@ -155,7 +154,7 @@ def render_index(items, editorial):
             <div class="carousel-wrapper"><div class="news-carousel" id="{carousel_id}">{cards_html}</div></div>
         </section>"""
 
-    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"></head><body class="dark-mode"><div class="site-layout"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>{category_html}{editorial_html}{main_content}<footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main></div><script>function scrollCarousel(id, dir) {{ const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({{ left: dir * amount, behavior: 'smooth' }}); }} function filterNews(t){{ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => {{ if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }}); }} function applySearch(word) {{ document.getElementById('searchInput').value = word; filterNews(word); }} document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}}</script></body></html>"""
+    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"></head><body class="dark-mode"><div class="site-layout"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div>{category_html}</header>{editorial_html}{main_content}<footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main></div><script>function scrollCarousel(id, dir) {{ const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({{ left: dir * amount, behavior: 'smooth' }}); }} function filterNews(t){{ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => {{ if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }}); }} function applySearch(word) {{ document.getElementById('searchInput').value = word; filterNews(word); window.scrollTo({{top: 0, behavior: 'smooth'}}); }} document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}}</script></body></html>"""
 
 # --- STEUERUNG VON HAUPTPROZESS ---
 def main():
