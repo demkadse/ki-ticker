@@ -1,76 +1,76 @@
-/* --- 1. BASIS SETUP --- */
+/* --- 1. GLOBAL RESET & VARIABLEN --- */
 :root {
     --bg-color: #0a0f1d;
     --card-bg: #151c2e;
-    --text-main: #ffffff;
+    --text-main: #f1f5f9;
     --text-muted: #94a3b8;
     --accent: #38bdf8; /* Cyan */
     --border: #1e293b;
+    --radius: 12px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
+    width: 100%;
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-    width: 100%;
+    overflow-x: hidden; /* Verhindert, dass 100vw Scrollbalken erzeugt */
 }
 
-/* --- 2. HEADER (FAILSAFE METHODE) --- */
-.hero-header {
-    position: relative;
+a { text-decoration: none; color: inherit; transition: 0.2s; }
+a:hover { color: var(--accent); }
+
+/* --- 2. HEADER (STABILISIERT) --- */
+#siteHeader {
     width: 100%;
-    height: 500px;
+    min-height: 480px;
+    padding: 100px 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-bottom: 2px solid var(--accent);
-    overflow: hidden;
-}
-
-/* Das Hintergrundbild als echtes HTML Element */
-.hero-bg-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    opacity: 0.6; /* Abdunklung */
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2; /* Über dem Bild */
     text-align: center;
-    width: 100%;
-    max-width: 800px;
-    padding: 0 20px;
+    border-bottom: 2px solid var(--accent);
+    background-color: #000;
+    
+    /* WICHTIG: Getrennte Definitionen für maximale Sicherheit */
+    background-image: 
+        linear-gradient(rgba(10, 15, 29, 0.5), rgba(10, 15, 29, 0.9)),
+        url('https://images.unsplash.com/photo-1620712943543-bcc4628c9456?q=80&w=1920&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.hero-title {
-    font-size: 4rem;
+#siteHeader h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
     font-weight: 800;
-    margin-bottom: 20px;
-    text-shadow: 0 4px 15px rgba(0,0,0,1);
+    color: #fff;
+    margin-bottom: 30px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.8);
 }
 
-.hero-search {
+.search-wrapper {
     width: 100%;
-    padding: 15px 25px;
-    border-radius: 30px;
-    border: 1px solid rgba(255,255,255,0.3);
-    background: rgba(15, 23, 42, 0.8);
+    max-width: 550px;
+    margin-bottom: 25px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 16px 25px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(21, 28, 46, 0.9);
     color: #fff;
     font-size: 1rem;
+    outline: none;
     backdrop-filter: blur(5px);
-    margin-bottom: 20px;
 }
 
-.hero-nav {
+.nav-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -78,97 +78,122 @@ body {
 }
 
 .nav-btn {
-    background: rgba(21, 28, 46, 0.9);
+    background: var(--card-bg);
     color: var(--accent);
     border: 1px solid var(--border);
     padding: 8px 16px;
     border-radius: 20px;
     cursor: pointer;
     font-weight: 600;
-    transition: 0.2s;
+    font-size: 0.85rem;
+    transition: all 0.2s;
 }
-.nav-btn:hover { background: var(--accent); color: var(--bg-color); }
+.nav-btn:hover {
+    background: var(--accent);
+    color: var(--bg-color);
+    transform: translateY(-2px);
+}
 
-/* --- 3. LAYOUT CONTAINER --- */
-.container {
+/* --- 3. HAUPT-LAYOUT --- */
+.main-container {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 20px;
+    margin: 60px auto;
+    padding: 0 20px;
 }
 
 /* --- 4. REDAKTIONSBOX --- */
-.editorial {
+.editorial-box {
     background: linear-gradient(145deg, #1e293b, #151c2e);
     border: 1px solid var(--accent);
-    border-radius: 12px;
+    border-radius: var(--radius);
     padding: 40px;
     margin-bottom: 80px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 
-.badge {
+.editorial-badge {
     background: var(--accent);
     color: var(--bg-color);
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 800;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     display: inline-block;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-.video-box {
+.video-container {
     width: 100%;
     aspect-ratio: 16/9;
     background: #000;
-    margin-bottom: 20px;
     border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    border: 1px solid var(--border);
 }
-.video-box iframe { width: 100%; height: 100%; border: 0; }
+.video-container iframe { width: 100%; height: 100%; border: 0; }
 
-.editorial-text { line-height: 1.6; margin-bottom: 20px; }
+.editorial-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    margin-bottom: 20px;
+}
 
-/* --- 5. NEWS CAROUSEL (DER FIX) --- */
-.feed-section { margin-bottom: 60px; }
+/* --- 5. NEWS KARUSSELL (DER FIX) --- */
+.news-section { margin-bottom: 60px; }
 
-.feed-header {
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 12px;
 }
-.feed-icon { width: 24px; height: 24px; border-radius: 4px; }
-.feed-title { font-size: 1.5rem; font-weight: 700; color: #fff; }
+.section-title img { width: 24px; height: 24px; border-radius: 4px; }
 
-/* Das Karussell zwingen wir jetzt in die Horizontale */
-.carousel {
+/* Flexbox-Container für horizontales Scrollen */
+.carousel-track {
     display: flex;
+    flex-wrap: nowrap; /* ZWINGEND: Verbietet Umbruch -> Horizontale Anordnung */
+    overflow-x: auto;  /* Erlaubt Scrollen */
     gap: 20px;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    scroll-behavior: smooth;
+    padding-bottom: 25px;
     scrollbar-width: thin;
     scrollbar-color: var(--accent) var(--bg-color);
 }
 
+/* Scrollbar Styling für Webkit (Chrome/Safari) */
+.carousel-track::-webkit-scrollbar { height: 8px; }
+.carousel-track::-webkit-scrollbar-track { background: var(--bg-color); }
+.carousel-track::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
 /* Die Karte darf NICHT wachsen oder schrumpfen */
-.card {
-    flex: 0 0 320px; /* Basisbreite fixieren! */
-    width: 320px;    /* Sicherheitshalber nochmal */
-    height: 450px;
+.news-card {
+    flex: 0 0 320px; /* Basisbreite fixieren! Das verhindert riesige Bilder */
+    width: 320px;
+    height: 460px;
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--radius);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: transform 0.2s;
+}
+.news-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
 }
 
-.card-img {
+.news-card img {
     width: 100%;
     height: 180px;
     object-fit: cover;
-    background: #000;
+    background-color: #000;
+    border-bottom: 1px solid var(--border);
 }
 
 .card-body {
@@ -178,37 +203,42 @@ body {
     flex-direction: column;
 }
 
-.card-date { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; }
+.card-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
 
 .card-title {
     font-size: 1.1rem;
     font-weight: 600;
+    line-height: 1.45;
     margin-bottom: 15px;
-    line-height: 1.4;
+    flex-grow: 1;
     overflow: hidden;
-    flex-grow: 1; /* Schiebt den Button nach unten */
 }
-.card-title a { color: #fff; text-decoration: none; }
-.card-title a:hover { color: var(--accent); }
 
 .copy-btn {
     width: 100%;
-    padding: 10px;
+    margin-top: auto;
     background: transparent;
     border: 1px solid var(--border);
     color: var(--text-muted);
+    padding: 10px;
     border-radius: 6px;
     cursor: pointer;
-    margin-top: auto; /* Klebt unten */
+    font-size: 0.85rem;
+    transition: 0.2s;
 }
 .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
 
 /* --- 6. FOOTER --- */
-.footer {
+.site-footer {
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 0;
     border-top: 1px solid var(--border);
     color: var(--text-muted);
     font-size: 0.9rem;
 }
-.footer a { color: var(--text-muted); margin: 0 10px; text-decoration: none; }
+.footer-links a { margin: 0 15px; color: var(--text-muted); }
+.footer-links a:hover { color: var(--accent); }
