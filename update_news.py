@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# --- STEUERUNG VON IMPORTS ---
 import os, time, datetime, hashlib, json, re, html
 from urllib.parse import urlparse, parse_qs
 from concurrent.futures import ThreadPoolExecutor
 import requests, feedparser
 
-# --- KONFIGURATION ---
+# --- STEUERUNG VON KONFIGURATION ---
 SITE_TITLE = "KI‑Ticker"
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 DB_FILE = "news_db.json"
 EDITORIAL_FILE = "editorial.json"
+HERO_BASE = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80"
 
+# --- STEUERUNG VON DATENQUELLEN ---
 FEEDS = [
     ("NVIDIA Blog", "https://blogs.nvidia.com/feed/"),
     ("Ars Technica", "https://feeds.arstechnica.com/arstechnica/index"),
@@ -25,6 +28,7 @@ FEEDS = [
     ("AWS ML Blog", "https://aws.amazon.com/blogs/machine-learning/feed/"),
 ]
 
+# --- STEUERUNG VON DATEN-LOADING ---
 def load_db():
     if os.path.exists(DB_FILE):
         try:
@@ -39,6 +43,7 @@ def load_editorial():
         except: return None
     return None
 
+# --- STEUERUNG VON HILFSFUNKTIONEN ---
 def get_youtube_id(url):
     if not url: return None
     parsed = urlparse(url)
@@ -53,6 +58,7 @@ def generate_sitemap():
     xml = f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{SITE_URL}/index.html</loc><lastmod>{now}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url><url><loc>{SITE_URL}/ueber-uns.html</loc><lastmod>{now}</lastmod></url></urlset>'
     with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(xml)
 
+# --- STEUERUNG VON FEED-ABRUF ---
 def fetch_feed(feed_info):
     name, url = feed_info
     try:
@@ -67,6 +73,7 @@ def fetch_feed(feed_info):
         return out
     except: return []
 
+# --- STEUERUNG VON HTML-RENDERING ---
 def render_index(items, editorial):
     now_dt = datetime.datetime.now(datetime.timezone.utc)
     hero_default = f"{HERO_BASE}&w=800"
@@ -130,6 +137,7 @@ def render_index(items, editorial):
 
     return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"></head><body class="dark-mode"><div class="site-layout"><aside class="sidebar-ad left"></aside><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>{editorial_html}{main_content}<footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main><aside class="sidebar-ad right"></aside></div><script>function scrollCarousel(id, dir) {{ const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({{ left: dir * amount, behavior: 'smooth' }}); }} function filterNews(t){{ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => {{ if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }}); }} document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Kopiert!'));}}</script></body></html>"""
 
+# --- STEUERUNG VON HAUPTPROZESS ---
 def main():
     db = load_db(); editorial = load_editorial()
     with ThreadPoolExecutor(max_workers=11) as ex: res = list(ex.map(fetch_feed, FEEDS))

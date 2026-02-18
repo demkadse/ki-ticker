@@ -1,13 +1,17 @@
+# --- STEUERUNG VON WORKFLOW-NAME ---
 name: Update KI-Ticker
 
+# --- STEUERUNG VON AUTOMATISIERUNG ---
 on:
   schedule:
     - cron: "17 * * * *"
   workflow_dispatch: {}
 
+# --- STEUERUNG VON BERECHTIGUNGEN ---
 permissions:
   contents: write
 
+# --- STEUERUNG VON PROZESS-SCHRITTEN ---
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,6 +30,7 @@ jobs:
       - name: Run updater
         run: python update_news.py
 
+      # --- STEUERUNG VON GITHUB-SYNCHRONISATION ---
       - name: Commit & push
         run: |
           git config user.name "github-actions[bot]"
