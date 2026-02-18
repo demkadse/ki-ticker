@@ -1,5 +1,59 @@
 [
   {
+    "id": "1cd3c1b6fdd1",
+    "title": "Agent Skills for Large Language Models: Architecture, Acquisition, Security, and the Path Forward",
+    "url": "https://arxiv.org/abs/2602.12430",
+    "source": "arXiv",
+    "published_iso": "2026-02-18T05:00:00+00:00",
+    "domain": "arxiv.org",
+    "image": ""
+  },
+  {
+    "id": "1a27f8ad48be",
+    "title": "Attention-gated U-Net model for semantic segmentation of brain tumors and feature extraction for survival prognosis",
+    "url": "https://arxiv.org/abs/2602.15067",
+    "source": "arXiv",
+    "published_iso": "2026-02-18T05:00:00+00:00",
+    "domain": "arxiv.org",
+    "image": ""
+  },
+  {
+    "id": "c6df99a4163a",
+    "title": "ResearchGym: Evaluating Language Model Agents on Real-World AI Research",
+    "url": "https://arxiv.org/abs/2602.15112",
+    "source": "arXiv",
+    "published_iso": "2026-02-18T05:00:00+00:00",
+    "domain": "arxiv.org",
+    "image": ""
+  },
+  {
+    "id": "65487145dad7",
+    "title": "Protecting Language Models Against Unauthorized Distillation through Trace Rewriting",
+    "url": "https://arxiv.org/abs/2602.15143",
+    "source": "arXiv",
+    "published_iso": "2026-02-18T05:00:00+00:00",
+    "domain": "arxiv.org",
+    "image": ""
+  },
+  {
+    "id": "e68f5369f00b",
+    "title": "Panini: Continual Learning in Token Space via Structured Memory",
+    "url": "https://arxiv.org/abs/2602.15156",
+    "source": "arXiv",
+    "published_iso": "2026-02-18T05:00:00+00:00",
+    "domain": "arxiv.org",
+    "image": ""
+  },
+  {
+    "id": "e3b953f4dc53",
+    "title": "da Costa and Tarski meet Goguen and Carnap: a novel approach for ontological heterogeneity based on consequence systems",
+    "url": "https://arxiv.org/abs/2602.15158",
+    "source": "arXiv",
+    "published_iso": "2026-02-18T05:00:00+00:00",
+    "domain": "arxiv.org",
+    "image": ""
+  },
+  {
     "id": "1febab26b2ba",
     "title": "India Fuels Its AI Mission With NVIDIA",
     "url": "https://blogs.nvidia.com/blog/india-ai-mission-infrastructure-models/",
@@ -87,60 +141,6 @@
     "source": "TechCrunch",
     "published_iso": "2026-02-17T16:30:43+00:00",
     "domain": "techcrunch.com",
-    "image": ""
-  },
-  {
-    "id": "079d69d2cf64",
-    "title": "Consistency of Large Reasoning Models Under Multi-Turn Attacks",
-    "url": "https://arxiv.org/abs/2602.13093",
-    "source": "arXiv",
-    "published_iso": "2026-02-17T05:00:00+00:00",
-    "domain": "arxiv.org",
-    "image": ""
-  },
-  {
-    "id": "d1031ffbeb5e",
-    "title": "Why Deep Jacobian Spectra Separate: Depth-Induced Scaling and Singular-Vector Alignment",
-    "url": "https://arxiv.org/abs/2602.12384",
-    "source": "arXiv",
-    "published_iso": "2026-02-17T05:00:00+00:00",
-    "domain": "arxiv.org",
-    "image": ""
-  },
-  {
-    "id": "1cd3c1b6fdd1",
-    "title": "Agent Skills for Large Language Models: Architecture, Acquisition, Security, and the Path Forward",
-    "url": "https://arxiv.org/abs/2602.12430",
-    "source": "arXiv",
-    "published_iso": "2026-02-17T05:00:00+00:00",
-    "domain": "arxiv.org",
-    "image": ""
-  },
-  {
-    "id": "58d95447a45a",
-    "title": "MedXIAOHE: A Comprehensive Recipe for Building Medical MLLMs",
-    "url": "https://arxiv.org/abs/2602.12705",
-    "source": "arXiv",
-    "published_iso": "2026-02-17T05:00:00+00:00",
-    "domain": "arxiv.org",
-    "image": ""
-  },
-  {
-    "id": "537ec58c69c5",
-    "title": "Prior-Guided Symbolic Regression: Towards Scientific Consistency in Equation Discovery",
-    "url": "https://arxiv.org/abs/2602.13021",
-    "source": "arXiv",
-    "published_iso": "2026-02-17T05:00:00+00:00",
-    "domain": "arxiv.org",
-    "image": ""
-  },
-  {
-    "id": "afd9eee772bc",
-    "title": "Agentic AI for Commercial Insurance Underwriting with Adversarial Self-Critique",
-    "url": "https://arxiv.org/abs/2602.13213",
-    "source": "arXiv",
-    "published_iso": "2026-02-17T05:00:00+00:00",
-    "domain": "arxiv.org",
     "image": ""
   },
   {
