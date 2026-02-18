@@ -1,15 +1,15 @@
-/* --- 1. FONTS & RESET --- */
+/* --- 1. SETUP & RESET --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-    --bg-color: #0a0f1d;
-    --card-bg: #151c2e;
-    --text-main: #f1f5f9;
-    --text-muted: #94a3b8;
-    --accent: #38bdf8; /* Cyan */
-    --border: #1e293b;
+    --bg-color: #0a0f1d;      /* Sehr dunkles Blau */
+    --card-bg: #151c2e;       /* Etwas helleres Blau für Karten */
+    --text-main: #f1f5f9;     /* Weiß/Hellgrau */
+    --text-muted: #94a3b8;    /* Grau für Details */
+    --accent: #38bdf8;        /* Cyan/Hellblau als Akzent */
+    --border: #1e293b;        /* Rahmenfarbe */
 }
 
 body {
@@ -18,13 +18,13 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Verhindert seitliches Scrollen der ganzen Seite */
 }
 
 a { text-decoration: none; color: inherit; transition: 0.2s; }
 a:hover { color: var(--accent); }
 
-/* --- 2. HEADER (FIXED IMAGE) --- */
+/* --- 2. HEADER (MIT BILD) --- */
 .header {
     width: 100%;
     min-height: 500px;
@@ -35,11 +35,11 @@ a:hover { color: var(--accent); }
     justify-content: center;
     text-align: center;
     border-bottom: 2px solid var(--accent);
-    background-color: #000;
+    background-color: #000; /* Fallback */
     
-    /* Robustes Hintergrundbild (Technologie/Netzwerk) */
+    /* Hintergrundbild getrennt definiert für Stabilität */
     background-image: 
-        linear-gradient(rgba(10, 15, 29, 0.7), rgba(10, 15, 29, 0.9)),
+        linear-gradient(rgba(10, 15, 29, 0.6), rgba(10, 15, 29, 0.9)),
         url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
@@ -69,7 +69,7 @@ a:hover { color: var(--accent); }
     font-family: 'Inter', sans-serif;
 }
 
-/* --- 3. BUTTONS (STANDARDISIERT) --- */
+/* --- 3. BUTTONS --- */
 .nav-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -112,17 +112,14 @@ a:hover { color: var(--accent); }
     transform: none;
 }
 
-/* --- 4. LAYOUT --- */
+/* --- 4. CONTENT-BEREICH --- */
 .main-container {
     max-width: 1200px;
     margin: 60px auto;
     padding: 0 20px;
 }
 
-h2 { font-weight: 700; margin-bottom: 15px; color: #fff; }
-h3 { font-weight: 600; }
-
-/* --- 5. KURATOREN-BOX (EDITORIAL) --- */
+/* --- 5. EDITORIAL BOX (KURATOREN) --- */
 .editorial-box {
     background: linear-gradient(145deg, #1e293b, #151c2e);
     border: 1px solid var(--accent);
@@ -150,6 +147,7 @@ h3 { font-weight: 600; }
     line-height: 1.2;
     margin-bottom: 25px;
     color: #fff;
+    font-weight: 700;
 }
 
 .video-wrapper {
@@ -179,7 +177,7 @@ h3 { font-weight: 600; }
 }
 .editorial-sources strong { display: block; margin-bottom: 5px; color: var(--accent); }
 
-/* --- 6. NEWS KARUSSELL --- */
+/* --- 6. NEWS KARUSSELL (LAYOUT FIX) --- */
 .section-wrapper { margin-bottom: 80px; }
 
 .section-header {
@@ -191,20 +189,22 @@ h3 { font-weight: 600; }
     padding-bottom: 10px;
 }
 .section-icon { width: 32px; height: 32px; border-radius: 6px; }
-.section-title { font-size: 1.6rem; margin: 0; color: #fff; }
+.section-title { font-size: 1.6rem; margin: 0; color: #fff; font-weight: 700; }
 
+/* Das Karussell: Flexbox erzwingt horizontale Anordnung */
 .carousel {
     display: flex;
-    flex-wrap: nowrap; /* Kein Umbruch! */
-    overflow-x: auto;
+    flex-wrap: nowrap; /* WICHTIG: Kein Umbruch! */
+    overflow-x: auto;  /* Scrollen erlauben */
     gap: 25px;
     padding-bottom: 30px;
     scrollbar-width: thin;
     scrollbar-color: var(--accent) var(--bg-color);
 }
 
-.news-card {
-    flex: 0 0 320px; /* Fixe Breite */
+/* Die Karte: Fixe Breite verhindert Riesen-Bilder */
+.card {
+    flex: 0 0 320px; /* Fixe Breite: Wachsen 0, Schrumpfen 0, Basis 320px */
     width: 320px;
     min-width: 320px;
     height: 480px;
@@ -216,37 +216,39 @@ h3 { font-weight: 600; }
     flex-direction: column;
     transition: transform 0.2s;
 }
-.news-card:hover {
+.card:hover {
     transform: translateY(-5px);
     border-color: var(--accent);
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-.news-card__img {
+.card__img {
     width: 100%;
     height: 180px;
     object-fit: cover;
     background: #000;
+    border-bottom: 1px solid var(--border);
 }
 
-.news-card__body {
+.card__body {
     padding: 20px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
-.news-card__meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
+.card__meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
 
-.news-card__title {
+.card__title {
     font-size: 1.1rem;
     line-height: 1.4;
+    font-weight: 600;
     margin-bottom: 15px;
     flex-grow: 1;
     overflow: hidden;
     color: #fff;
 }
-.news-card__title a { color: #fff; }
+.card__title a { color: #fff; }
 
 /* --- 7. FOOTER --- */
 .footer {

@@ -48,6 +48,15 @@ def fetch_feed(info):
         return items
     except: return []
 
+def generate_sitemap():
+    now = datetime.datetime.now().strftime("%Y-%m-%d")
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    for p in ["", "ueber-uns.html", "impressum.html", "datenschutz.html"]:
+        loc = f"{SITE_URL}/{p}" if p else SITE_URL
+        xml += f'  <url><loc>{loc}</loc><lastmod>{now}</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>\n'
+    xml += '</urlset>'
+    with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(xml)
+
 def render_html(items, editorial):
     now_year = datetime.datetime.now().year
     
@@ -68,7 +77,6 @@ def render_html(items, editorial):
         yt_id = parse_qs(urlparse(editorial.get('video_url', '')).query).get('v', [None])[0]
         video_embed = f'<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/{yt_id}" allowfullscreen></iframe></div>' if yt_id else ""
         
-        # Quellenangaben: Wir nehmen 'content' als Feld für die Quellenliste an
         sources_text = editorial.get('content', 'Keine Quellen angegeben.')
         
         editorial_html = f"""
@@ -93,11 +101,11 @@ def render_html(items, editorial):
         for item in grouped[source]:
             date_str = item["pub"].strftime("%d.%m. %H:%M")
             cards += f"""
-            <article class="news-card" data-src="{source}">
-                <img src="{HERO_IMG}" class="news-card__img" loading="lazy">
-                <div class="news-card__body">
-                    <div class="news-card__meta">{date_str}</div>
-                    <h3 class="news-card__title"><a href="{item['url']}" target="_blank">{item['title']}</a></h3>
+            <article class="card" data-src="{source}">
+                <img src="{HERO_IMG}" class="card__img" loading="lazy">
+                <div class="card__body">
+                    <div class="card__meta">{date_str}</div>
+                    <h3 class="card__title"><a href="{item['url']}" target="_blank">{item['title']}</a></h3>
                     <button class="btn btn--copy" onclick="copyLink('{item['url']}')">Link kopieren</button>
                 </div>
             </article>
@@ -168,7 +176,7 @@ def render_html(items, editorial):
 
     searchInput.addEventListener('input', (e) => {{
         const term = e.target.value.toLowerCase();
-        document.querySelectorAll('.news-card').forEach(card => {{
+        document.querySelectorAll('.card').forEach(card => {{
             const txt = card.innerText.toLowerCase();
             card.style.display = txt.includes(term) ? 'flex' : 'none';
         }});
@@ -186,5 +194,6 @@ def main():
     with ThreadPoolExecutor(max_workers=10) as ex: res = list(ex.map(fetch_feed, FEEDS))
     items = sorted([i for r in res for i in r], key=lambda x: x["pub"], reverse=True)
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_html(items, editorial))
+    generate_sitemap()
 
 if __name__ == "__main__": main()
