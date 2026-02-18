@@ -1,4 +1,8 @@
-/* --- 1. GLOBAL RESET & VARIABLEN --- */
+/* --- 1. FONTS & RESET --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
     --bg-color: #0a0f1d;
     --card-bg: #151c2e;
@@ -6,27 +10,25 @@
     --text-muted: #94a3b8;
     --accent: #38bdf8; /* Cyan */
     --border: #1e293b;
-    --radius: 12px;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
-    width: 100%;
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
-    overflow-x: hidden; /* Verhindert, dass 100vw Scrollbalken erzeugt */
+    line-height: 1.6;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 a { text-decoration: none; color: inherit; transition: 0.2s; }
 a:hover { color: var(--accent); }
 
-/* --- 2. HEADER (STABILISIERT) --- */
-#siteHeader {
+/* --- 2. HEADER (FIXED IMAGE) --- */
+.header {
     width: 100%;
-    min-height: 480px;
-    padding: 100px 20px;
+    min-height: 500px;
+    padding: 80px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,149 +37,180 @@ a:hover { color: var(--accent); }
     border-bottom: 2px solid var(--accent);
     background-color: #000;
     
-    /* WICHTIG: Getrennte Definitionen für maximale Sicherheit */
+    /* Robustes Hintergrundbild (Technologie/Netzwerk) */
     background-image: 
-        linear-gradient(rgba(10, 15, 29, 0.5), rgba(10, 15, 29, 0.9)),
-        url('https://images.unsplash.com/photo-1620712943543-bcc4628c9456?q=80&w=1920&auto=format&fit=crop');
+        linear-gradient(rgba(10, 15, 29, 0.7), rgba(10, 15, 29, 0.9)),
+        url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-#siteHeader h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
+.header__title {
+    font-size: clamp(3rem, 6vw, 5rem);
     font-weight: 800;
     color: #fff;
     margin-bottom: 30px;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    text-shadow: 0 4px 20px rgba(0,0,0,1);
+    letter-spacing: -1px;
 }
 
-.search-wrapper {
+.header__search {
     width: 100%;
-    max-width: 550px;
-    margin-bottom: 25px;
-}
-
-#searchInput {
-    width: 100%;
-    padding: 16px 25px;
+    max-width: 600px;
+    padding: 16px 30px;
     border-radius: 50px;
-    border: 1px solid rgba(255,255,255,0.2);
-    background: rgba(21, 28, 46, 0.9);
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(15, 23, 42, 0.9);
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.1rem;
     outline: none;
-    backdrop-filter: blur(5px);
+    margin-bottom: 30px;
+    font-family: 'Inter', sans-serif;
 }
 
+/* --- 3. BUTTONS (STANDARDISIERT) --- */
 .nav-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
 }
 
-.nav-btn {
-    background: var(--card-bg);
+.btn {
+    background-color: var(--card-bg);
     color: var(--accent);
     border: 1px solid var(--border);
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 0.9rem;
     font-weight: 600;
-    font-size: 0.85rem;
-    transition: all 0.2s;
-}
-.nav-btn:hover {
-    background: var(--accent);
-    color: var(--bg-color);
-    transform: translateY(-2px);
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s ease;
 }
 
-/* --- 3. HAUPT-LAYOUT --- */
+.btn:hover {
+    background-color: var(--accent);
+    color: var(--bg-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+}
+
+.btn--copy {
+    width: 100%;
+    margin-top: auto;
+    border-radius: 8px;
+    padding: 8px;
+    background: transparent;
+    color: var(--text-muted);
+}
+.btn--copy:hover {
+    background: transparent;
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: none;
+}
+
+/* --- 4. LAYOUT --- */
 .main-container {
     max-width: 1200px;
     margin: 60px auto;
     padding: 0 20px;
 }
 
-/* --- 4. REDAKTIONSBOX --- */
+h2 { font-weight: 700; margin-bottom: 15px; color: #fff; }
+h3 { font-weight: 600; }
+
+/* --- 5. KURATOREN-BOX (EDITORIAL) --- */
 .editorial-box {
     background: linear-gradient(145deg, #1e293b, #151c2e);
     border: 1px solid var(--accent);
-    border-radius: var(--radius);
+    border-radius: 16px;
     padding: 40px;
     margin-bottom: 80px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    position: relative;
 }
 
 .editorial-badge {
     background: var(--accent);
     color: var(--bg-color);
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     font-weight: 800;
     text-transform: uppercase;
     font-size: 0.75rem;
     display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-.video-container {
+.editorial-title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    color: #fff;
+}
+
+.video-wrapper {
     width: 100%;
     aspect-ratio: 16/9;
     background: #000;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     border: 1px solid var(--border);
 }
-.video-container iframe { width: 100%; height: 100%; border: 0; }
+.video-wrapper iframe { width: 100%; height: 100%; border: 0; }
 
-.editorial-text {
+.editorial-content {
     font-size: 1.15rem;
     line-height: 1.8;
+    color: #e2e8f0;
     white-space: pre-wrap;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
-/* --- 5. NEWS KARUSSELL (DER FIX) --- */
-.news-section { margin-bottom: 60px; }
+.editorial-sources {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+.editorial-sources strong { display: block; margin-bottom: 5px; color: var(--accent); }
 
-.section-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
+/* --- 6. NEWS KARUSSELL --- */
+.section-wrapper { margin-bottom: 80px; }
+
+.section-header {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
 }
-.section-title img { width: 24px; height: 24px; border-radius: 4px; }
+.section-icon { width: 32px; height: 32px; border-radius: 6px; }
+.section-title { font-size: 1.6rem; margin: 0; color: #fff; }
 
-/* Flexbox-Container für horizontales Scrollen */
-.carousel-track {
+.carousel {
     display: flex;
-    flex-wrap: nowrap; /* ZWINGEND: Verbietet Umbruch -> Horizontale Anordnung */
-    overflow-x: auto;  /* Erlaubt Scrollen */
-    gap: 20px;
-    padding-bottom: 25px;
+    flex-wrap: nowrap; /* Kein Umbruch! */
+    overflow-x: auto;
+    gap: 25px;
+    padding-bottom: 30px;
     scrollbar-width: thin;
     scrollbar-color: var(--accent) var(--bg-color);
 }
 
-/* Scrollbar Styling für Webkit (Chrome/Safari) */
-.carousel-track::-webkit-scrollbar { height: 8px; }
-.carousel-track::-webkit-scrollbar-track { background: var(--bg-color); }
-.carousel-track::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-
-/* Die Karte darf NICHT wachsen oder schrumpfen */
 .news-card {
-    flex: 0 0 320px; /* Basisbreite fixieren! Das verhindert riesige Bilder */
+    flex: 0 0 320px; /* Fixe Breite */
     width: 320px;
-    height: 460px;
+    min-width: 320px;
+    height: 480px;
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: 12px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -186,59 +219,42 @@ a:hover { color: var(--accent); }
 .news-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-.news-card img {
+.news-card__img {
     width: 100%;
     height: 180px;
     object-fit: cover;
-    background-color: #000;
-    border-bottom: 1px solid var(--border);
+    background: #000;
 }
 
-.card-body {
+.news-card__body {
     padding: 20px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
-.card-meta {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-}
+.news-card__meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
 
-.card-title {
+.news-card__title {
     font-size: 1.1rem;
-    font-weight: 600;
-    line-height: 1.45;
+    line-height: 1.4;
     margin-bottom: 15px;
     flex-grow: 1;
     overflow: hidden;
+    color: #fff;
 }
+.news-card__title a { color: #fff; }
 
-.copy-btn {
-    width: 100%;
-    margin-top: auto;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    padding: 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    transition: 0.2s;
-}
-.copy-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-/* --- 6. FOOTER --- */
-.site-footer {
-    text-align: center;
+/* --- 7. FOOTER --- */
+.footer {
     padding: 80px 0;
+    text-align: center;
     border-top: 1px solid var(--border);
     color: var(--text-muted);
     font-size: 0.9rem;
 }
-.footer-links a { margin: 0 15px; color: var(--text-muted); }
-.footer-links a:hover { color: var(--accent); }
+.footer a { color: var(--text-muted); margin: 0 15px; }
+.footer a:hover { color: var(--accent); }
