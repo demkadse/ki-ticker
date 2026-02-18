@@ -60,31 +60,32 @@ def generate_sitemap():
 def render_html(items, editorial):
     now_year = datetime.datetime.now().year
     
-    # Group & Sort
+    # 1. Group & Sort
     grouped = {}
     for it in items:
         if it["source"] not in grouped: grouped[it["source"]] = []
         if len(grouped[it["source"]]) < 10: grouped[it["source"]].append(it)
     
     sorted_sources = sorted(grouped.keys(), key=lambda s: grouped[s][0]["pub"] if grouped[s] else 0, reverse=True)
-    
-    # Buttons (Klasse: nav-btn)
     nav_buttons = "".join([f'<button class="nav-btn" onclick="filterFeed(\'{s}\')">{s}</button>' for s in sorted_sources])
 
-    # Editorial Box
+    # 2. Editorial Box
     editorial_html = ""
     if editorial:
         yt_id = parse_qs(urlparse(editorial.get('video_url', '')).query).get('v', [None])[0]
         video_embed = f'<div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/{yt_id}" allowfullscreen></iframe></div>' if yt_id else ""
+        sources_text = editorial.get('content', '')
+        
         editorial_html = f"""
         <article class="editorial-box">
             <span class="editorial-badge">Top-Thema</span>
             <h2 style="font-size:2rem; margin-bottom:20px; color:#fff;">{editorial.get('title')}</h2>
             {video_embed}
             <div class="editorial-text">{editorial.get('description')}</div>
+            <div class="editorial-sources"><strong>Quellen:</strong> {sources_text}</div>
         </article>"""
 
-    # News Feeds (Klasse: carousel-track)
+    # 3. News Feeds
     feeds_html = ""
     for idx, source in enumerate(sorted_sources):
         cards = ""
@@ -101,11 +102,18 @@ def render_html(items, editorial):
                 </div>
             </article>"""
         
+        # Hier werden die Pfeile eingefügt
         feeds_html += f"""
         <section class="news-section" id="feed-{idx}">
-            <div class="section-title">
-                <img src="https://www.google.com/s2/favicons?domain={domain}&sz=32">
-                {source}
+            <div class="section-header">
+                <div class="section-title-group">
+                    <img src="https://www.google.com/s2/favicons?domain={domain}&sz=64" class="section-icon">
+                    <h2 class="section-title">{source}</h2>
+                </div>
+                <div class="section-controls">
+                    <button class="control-btn" onclick="scrollCarousel('track-{idx}', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="control-btn" onclick="scrollCarousel('track-{idx}', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
             </div>
             <div class="carousel-track" id="track-{idx}">
                 {cards}
@@ -116,14 +124,13 @@ def render_html(items, editorial):
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css?v={int(time.time())}">
     </head><body>
     
     <header id="siteHeader">
         <h1>{SITE_TITLE}</h1>
-        <div class="search-wrapper">
-            <input type="text" id="searchInput" placeholder="News filtern...">
-        </div>
+        <div class="search-wrapper"><input type="text" id="searchInput" placeholder="News filtern..."></div>
         <div class="nav-wrapper">
             <button class="nav-btn" onclick="resetFilter()">Alle Anzeigen</button>
             {nav_buttons}
@@ -131,12 +138,7 @@ def render_html(items, editorial):
     </header>
 
     <div class="main-container">
-        <main>
-            {editorial_html}
-            <div id="feedContainer">
-                {feeds_html}
-            </div>
-        </main>
+        <main>{editorial_html}<div id="feedContainer">{feeds_html}</div></main>
     </div>
 
     <footer class="site-footer">
@@ -149,6 +151,13 @@ def render_html(items, editorial):
     </footer>
 
     <script>
+    // Scroll Logik für die Pfeile
+    function scrollCarousel(id, direction) {{
+        const container = document.getElementById(id);
+        const scrollAmount = 345; // Kartenbreite + Gap
+        container.scrollBy({{ left: direction * scrollAmount, behavior: 'smooth' }});
+    }}
+
     const searchInput = document.getElementById('searchInput');
     function filterFeed(sourceName) {{
         document.querySelectorAll('.news-section').forEach(sec => {{

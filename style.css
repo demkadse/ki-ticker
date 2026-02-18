@@ -1,4 +1,4 @@
-/* --- 1. GLOBAL RESET --- */
+/* --- 1. SETUP --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,7 +23,7 @@ body {
 a { text-decoration: none; color: inherit; transition: 0.2s; }
 a:hover { color: var(--accent); }
 
-/* --- 2. HEADER (Fix für id="siteHeader") --- */
+/* --- 2. HEADER --- */
 #siteHeader {
     width: 100%;
     min-height: 500px;
@@ -35,8 +35,6 @@ a:hover { color: var(--accent); }
     text-align: center;
     border-bottom: 2px solid var(--accent);
     background-color: #000;
-    
-    /* Hintergrundbild fixiert */
     background-image: 
         linear-gradient(rgba(10, 15, 29, 0.6), rgba(10, 15, 29, 0.9)),
         url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000&auto=format&fit=crop');
@@ -53,7 +51,6 @@ a:hover { color: var(--accent); }
     text-shadow: 0 4px 20px rgba(0,0,0,1);
 }
 
-/* Suche & Navigation (Fix für .nav-btn) */
 .search-wrapper { width: 100%; max-width: 600px; margin-bottom: 30px; }
 
 #searchInput {
@@ -67,12 +64,7 @@ a:hover { color: var(--accent); }
     outline: none;
 }
 
-.nav-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
+.nav-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 
 .nav-btn {
     background: var(--card-bg);
@@ -85,18 +77,10 @@ a:hover { color: var(--accent); }
     cursor: pointer;
     transition: all 0.2s;
 }
-.nav-btn:hover {
-    background: var(--accent);
-    color: var(--bg-color);
-    transform: translateY(-2px);
-}
+.nav-btn:hover { background: var(--accent); color: var(--bg-color); transform: translateY(-2px); }
 
-/* --- 3. LAYOUT & EDITORIAL --- */
-.main-container {
-    max-width: 1200px;
-    margin: 60px auto;
-    padding: 0 20px;
-}
+/* --- 3. LAYOUT --- */
+.main-container { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
 
 .editorial-box {
     background: linear-gradient(145deg, #1e293b, #151c2e);
@@ -104,7 +88,6 @@ a:hover { color: var(--accent); }
     border-radius: 16px;
     padding: 40px;
     margin-bottom: 80px;
-    position: relative;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
@@ -121,47 +104,65 @@ a:hover { color: var(--accent); }
 }
 
 .video-container {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: #000;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 25px;
-    border: 1px solid var(--border);
+    width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 12px;
+    overflow: hidden; margin-bottom: 25px; border: 1px solid var(--border);
 }
 .video-container iframe { width: 100%; height: 100%; border: 0; }
 
 .editorial-text { font-size: 1.15rem; line-height: 1.8; color: #e2e8f0; white-space: pre-wrap; }
+.editorial-sources { border-top: 1px solid var(--border); padding-top: 20px; font-size: 0.9rem; color: var(--text-muted); }
 
-/* --- 4. NEWS KARUSSELL (Der entscheidende Fix für .carousel-track) --- */
+/* --- 4. NEWS KARUSSELL (MIT NAVIGATION) --- */
 .news-section { margin-bottom: 80px; }
 
-.section-title {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 20px;
+/* Header Layout: Titel links, Pfeile rechts */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Das drückt die Elemente auseinander */
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 15px;
+}
+
+.section-title-group {
     display: flex;
     align-items: center;
     gap: 12px;
 }
-.section-title img { width: 28px; height: 28px; border-radius: 4px; }
+.section-icon { width: 32px; height: 32px; border-radius: 6px; }
+.section-title { font-size: 1.6rem; font-weight: 700; color: #fff; margin: 0; }
 
-/* WICHTIG: Hier matchen wir den Namen aus deinem HTML */
+/* Die Navigations-Pfeile */
+.section-controls { display: flex; gap: 10px; }
+
+.control-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.control-btn:hover { background: var(--accent); color: var(--bg-color); }
+
+/* Karussell Track */
 .carousel-track {
-    display: flex;        /* Aktiviert das Nebeneinander */
-    flex-wrap: nowrap;    /* Verbietet Umbruch -> Horizontales Scrollen */
-    overflow-x: auto;     /* Scrollbar */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
     gap: 25px;
     padding-bottom: 30px;
+    scroll-behavior: smooth; /* Weiches Scrollen */
     scrollbar-width: thin;
     scrollbar-color: var(--accent) var(--bg-color);
 }
 
-/* Karten-Styling (Matches .news-card) */
 .news-card {
-    flex: 0 0 320px;      /* ZWINGEND: Fixe Breite, kein Wachsen/Schrumpfen */
-    width: 320px;         /* Doppelte Absicherung */
+    flex: 0 0 320px;
+    width: 320px;
     min-width: 320px;
     height: 480px;
     background: var(--card-bg);
@@ -172,52 +173,19 @@ a:hover { color: var(--accent); }
     flex-direction: column;
     transition: transform 0.2s;
 }
-.news-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-}
+.news-card:hover { transform: translateY(-5px); border-color: var(--accent); }
 
-.news-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    background: #000;
-    border-bottom: 1px solid var(--border);
-}
-
+.news-card img { width: 100%; height: 180px; object-fit: cover; background: #000; border-bottom: 1px solid var(--border); }
 .card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
 .card-meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
-
-.card-title {
-    font-size: 1.1rem;
-    line-height: 1.4;
-    font-weight: 600;
-    margin-bottom: 15px;
-    flex-grow: 1;
-    overflow: hidden;
-    color: #fff;
-}
-.card-title a { color: #fff; }
+.card-title { font-size: 1.1rem; line-height: 1.4; font-weight: 600; margin-bottom: 15px; flex-grow: 1; overflow: hidden; color: #fff; }
 
 .copy-btn {
-    width: 100%;
-    margin-top: auto;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    padding: 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    transition: 0.2s;
+    width: 100%; margin-top: auto; background: transparent; border: 1px solid var(--border); color: var(--text-muted);
+    padding: 10px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: 0.2s;
 }
 .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
 
 /* --- 5. FOOTER --- */
-.site-footer {
-    text-align: center;
-    padding: 80px 0;
-    border-top: 1px solid var(--border);
-    color: var(--text-muted);
-}
+.site-footer { text-align: center; padding: 80px 0; border-top: 1px solid var(--border); color: var(--text-muted); }
 .footer-links a { margin: 0 15px; color: var(--text-muted); }
