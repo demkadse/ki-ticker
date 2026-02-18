@@ -1,27 +1,32 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>KI‑Ticker</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v=1771419068"></head><body class="dark-mode"><div class="site-layout"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>KI‑Ticker</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v=1771419980"></head><body class="dark-mode"><div class="site-layout"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>
+    <div class="category-nav" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px;">
+        <button class="card-link-btn" onclick="applySearch('KI')">🤖 KI & Technik</button>
+        <button class="card-link-btn" onclick="applySearch('Internet')">🌐 Internetkultur</button>
+        <button class="card-link-btn" onclick="applySearch('Wissenschaft')">🔬 Wissenschaft</button>
+    </div>
+    
         <section class="editorial-section">
             <div class="editorial-badge"><i class="fa-solid fa-star"></i> Tagesthema der Redaktion</div>
-            <div class="editorial-card" style="background: linear-gradient(145deg, #1e293b, #151c2e); border: 1px solid var(--acc); padding: 30px; border-radius: 12px; margin-bottom: 50px;">
-                <h2>Die 'Dead Internet Theory': Wenn die KI sich selbst fressen muss</h2>
+            <div class="editorial-card">
+                <h2 style="margin-bottom:20px;">Die 'Dead Internet Theory': Wenn die KI sich selbst fressen muss</h2>
                 <div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/oBT74O0IKCs" allowfullscreen></iframe></div>
-                <div style="margin-bottom:20px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px;">
-                    <a href="https://www.youtube.com/@InNuce" target="_blank" style="color:var(--acc); text-decoration:none; font-size:0.85rem;"><i class="fa-brands fa-youtube"></i> Zum Kanal des Video-Urhebers</a>
-                    <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;"><strong>Hinweis:</strong> Dieses Video ist ein externer Beitrag.</p>
+                <div style="margin-bottom:25px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px;">
+                    <a href="https://www.youtube.com/@InNuce" target="_blank" style="font-size:0.85rem;"><i class="fa-brands fa-youtube"></i> Zum Kanal des Video-Urhebers</a>
+                    <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;">Hinweis: Externer Videobeitrag.</p>
                 </div>
-                <div class="editorial-text"></div>
-                <div style="margin-top:20px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1);">
-                    <strong style="font-size:0.8rem; color:var(--acc); display:block; margin-bottom:10px;">Quellen:</strong>
-                    <div class="editorial-sources">Haben Sie in letzter Zeit das Gefühl, dass das Internet 'leerer' oder repetitiver wird? Die 'Dead Internet Theory' besagt, dass ein Großteil des Traffics und Contents im Netz nicht mehr von Menschen, sondern von Bots stammt.
+                <div class="editorial-text">Haben Sie in letzter Zeit das Gefühl, dass das Internet 'leerer' oder repetitiver wird? Die 'Dead Internet Theory' besagt, dass ein Großteil des Traffics und Contents im Netz nicht mehr von Menschen, sondern von Bots stammt.
 
-Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle werden mit Internetdaten trainiert, doch wenn das Netz zunehmend mit KI-generierten Inhalten geflutet wird, trainieren zukünftige Modelle unweigerlich mit diesen synthetischen Daten. Eine im Fachmagazin Nature veröffentlichte Studie warnt vor einem digitalen Teufelskreis: Die Qualität der KI-Ausgaben sinkt rapide, wenn sie nur noch lernt, was eine vorherige KI-Generation fehlerhaft ausgegeben hat.
-
-**Weiterführende Quellen:**
-<a href='https://www.nature.com/articles/s41586-024-07566-y' target='_blank'>Nature Studie: 'AI models collapse when trained on recursively generated data' (2024)</a>
-<a href='https://www.theatlantic.com/technology/archive/2021/08/dead-internet-theory-wrong-but-feels-true/619937/' target='_blank'>The Atlantic: 'Maybe You Missed It, but the Internet Died Five Years Ago' (2021)</a>
-<a href='https://arxiv.org/abs/2401.05749' target='_blank'>ArXiv Research: 'Is computational creativity flourishing on the dead internet?' (2024)</a></div>
+Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle werden mit Internetdaten trainiert, doch wenn das Netz zunehmend mit KI-generierten Inhalten geflutet wird, trainieren zukünftige Modelle unweigerlich mit diesen synthetischen Daten. Eine im Fachmagazin Nature veröffentlichte Studie warnt vor einem digitalen Teufelskreis: Die Qualität der KI-Ausgaben sinkt rapide, wenn sie nur noch lernt, was eine vorherige KI-Generation fehlerhaft ausgegeben hat.</div>
+                
+                <div class="sources-box">
+                    <strong>Weiterführende Quellen:</strong>
+                    <div class="editorial-sources">- <a href='https://www.nature.com/articles/s41586-024-07566-y' target='_blank'>Nature Studie: 'AI models collapse when trained on recursively generated data' (2024)</a>
+- <a href='https://www.theatlantic.com/technology/archive/2021/08/dead-internet-theory-wrong-but-feels-true/619937/' target='_blank'>The Atlantic: 'Maybe You Missed It, but the Internet Died Five Years Ago' (2021)</a>
+- <a href='https://arxiv.org/abs/2401.05749' target='_blank'>ArXiv Research: 'Is computational creativity flourishing on the dead internet?' (2024)</a></div>
                 </div>
-                <div class="editorial-footer" style="margin-top:25px;">
-                    <button class="filter-action-btn" onclick="applySearch('Dead Internet');">
+                
+                <div class="editorial-footer" style="margin-top:30px; text-align: center;">
+                    <button class="filter-action-btn" onclick="applySearch('Dead Internet');" style="background:var(--acc); color:var(--bg); border:none; padding:12px 24px; border-radius:30px; font-weight:700; cursor:pointer;">
                         <i class="fa-solid fa-magnifying-glass"></i> Passende News finden
                     </button>
                 </div>
@@ -29,13 +34,143 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
         </section>
         <section class="source-section">
             <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=blog.google&sz=32" alt=""> Google AI</div>
+                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=techcrunch.com&sz=32" alt=""> TechCrunch</div>
                 <div class="carousel-nav">
                     <button class="nav-btn" onclick="scrollCarousel('carousel-0', -1)"><i class="fa-solid fa-chevron-left"></i></button>
                     <button class="nav-btn" onclick="scrollCarousel('carousel-0', 1)"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
             <div class="carousel-wrapper"><div class="news-carousel" id="carousel-0">
+            <article class="card" data-content="india’s sarvam wants to bring its ai models to feature phones, cars and smart glasses">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">18.02. • 13:01</div>
+                    <h3><a href="https://techcrunch.com/2026/02/18/indias-sarvam-wants-to-bring-its-ai-models-to-feature-phones-cars-and-smart-glasses/" target="_blank">India’s Sarvam wants to bring its AI models to feature phones, cars and smart glasses</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/18/indias-sarvam-wants-to-bring-its-ai-models-to-feature-phones-cars-and-smart-glasses/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="indian ai lab sarvam’s new models are a major bet on the viability of open-source ai">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">18.02. • 12:55</div>
+                    <h3><a href="https://techcrunch.com/2026/02/18/indian-ai-lab-sarvams-new-models-are-a-major-bet-on-the-viability-of-open-source-ai/" target="_blank">Indian AI lab Sarvam’s new models are a major bet on the viability of open-source AI</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/18/indian-ai-lab-sarvams-new-models-are-a-major-bet-on-the-viability-of-open-source-ai/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="apple is reportedly cooking up a trio of ai wearables">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 20:14</div>
+                    <h3><a href="https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/" target="_blank">Apple is reportedly cooking up a trio of AI wearables</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="anthropic releases sonnet 4.6">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 18:00</div>
+                    <h3><a href="https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/" target="_blank">Anthropic releases Sonnet 4.6</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="mistral ai buys koyeb in first acquisition to back its cloud ambitions">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 17:22</div>
+                    <h3><a href="https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/" target="_blank">Mistral AI buys Koyeb in first acquisition to back its cloud ambitions</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="spacex vets raise $50m series a for data center links">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 17:00</div>
+                    <h3><a href="https://techcrunch.com/2026/02/17/spacex-vets-raise-50m-series-a-for-data-center-links/" target="_blank">SpaceX vets raise $50M Series A for data center links</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/spacex-vets-raise-50m-series-a-for-data-center-links/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="running ai models is turning into a memory game">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 16:44</div>
+                    <h3><a href="https://techcrunch.com/2026/02/17/running-ai-models-is-turning-into-a-memory-game/" target="_blank">Running AI models is turning into a memory game</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/running-ai-models-is-turning-into-a-memory-game/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="european parliament blocks ai on lawmakers’ devices, citing security risks">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 16:30</div>
+                    <h3><a href="https://techcrunch.com/2026/02/17/european-parliament-blocks-ai-on-lawmakers-devices-citing-security-risks/" target="_blank">European Parliament blocks AI on lawmakers’ devices, citing security risks</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/european-parliament-blocks-ai-on-lawmakers-devices-citing-security-risks/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="wordpress.com adds an ai assistant that can edit, adjust styles, create images, and more">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 16:10</div>
+                    <h3><a href="https://techcrunch.com/2026/02/17/wordpress-com-adds-an-ai-assistant-that-can-edit-adjust-styles-create-images-and-more/" target="_blank">WordPress.com adds an AI Assistant that can edit, adjust styles, create images, and more</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/wordpress-com-adds-an-ai-assistant-that-can-edit-adjust-styles-create-images-and-more/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="amazon fire tv’s new interface is now rolling out in the us">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 15:58</div>
+                    <h3><a href="https://techcrunch.com/2026/02/17/amazon-fire-tvs-new-interface-is-now-rolling-out-in-the-u-s/" target="_blank">Amazon Fire TV’s new interface is now rolling out in the US</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/amazon-fire-tvs-new-interface-is-now-rolling-out-in-the-u-s/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article></div></div>
+        </section>
+        <section class="source-section">
+            <div class="source-header">
+                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=blog.google&sz=32" alt=""> Google AI</div>
+                <div class="carousel-nav">
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-1', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-1', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-1">
             <article class="card" data-content="ai impact summit 2026: how we’re partnering to make ai work for everyone">
                 <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
                 <div class="card-body">
@@ -161,11 +296,11 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
             <div class="source-header">
                 <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" alt=""> arXiv</div>
                 <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-1', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-1', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-2', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-2', 1)"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-1">
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-2">
             <article class="card" data-content="attention-gated u-net model for semantic segmentation of brain tumors and feature extraction for survival prognosis">
                 <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
                 <div class="card-body">
@@ -291,11 +426,11 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
             <div class="source-header">
                 <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=blogs.nvidia.com&sz=32" alt=""> NVIDIA Blog</div>
                 <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-2', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-2', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-3', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-3', 1)"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-2">
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-3">
             <article class="card" data-content="india fuels its ai mission with nvidia">
                 <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
                 <div class="card-body">
@@ -421,11 +556,11 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
             <div class="source-header">
                 <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=arstechnica.com&sz=32" alt=""> Ars Technica</div>
                 <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-3', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-3', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-4', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-4', 1)"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-3">
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-4">
             <article class="card" data-content="gamehub will give mac owners another imperfect way to play windows games">
                 <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
                 <div class="card-body">
@@ -551,11 +686,11 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
             <div class="source-header">
                 <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=futurism.com&sz=32" alt=""> Futurism</div>
                 <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-4', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-4', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-5', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-5', 1)"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-4">
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-5">
             <article class="card" data-content="ai data centers are now spiking hard drive prices">
                 <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
                 <div class="card-body">
@@ -671,136 +806,6 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
                     <h3><a href="https://futurism.com/space/obama-aliens" target="_blank">Obama Just Dropped a Truth Bomb About Aliens</a></h3>
                     <div class="share-bar">
                         <button class="card-link-btn" onclick="copyToClipboard('https://futurism.com/space/obama-aliens')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article></div></div>
-        </section>
-        <section class="source-section">
-            <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=techcrunch.com&sz=32" alt=""> TechCrunch</div>
-                <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-5', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-5', 1)"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
-            </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-5">
-            <article class="card" data-content="apple is reportedly cooking up a trio of ai wearables">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 20:14</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/" target="_blank">Apple is reportedly cooking up a trio of AI wearables</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="anthropic releases sonnet 4.6">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 18:00</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/" target="_blank">Anthropic releases Sonnet 4.6</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="mistral ai buys koyeb in first acquisition to back its cloud ambitions">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 17:22</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/" target="_blank">Mistral AI buys Koyeb in first acquisition to back its cloud ambitions</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="spacex vets raise $50m series a for data center links">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 17:00</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/spacex-vets-raise-50m-series-a-for-data-center-links/" target="_blank">SpaceX vets raise $50M Series A for data center links</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/spacex-vets-raise-50m-series-a-for-data-center-links/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="running ai models is turning into a memory game">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 16:44</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/running-ai-models-is-turning-into-a-memory-game/" target="_blank">Running AI models is turning into a memory game</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/running-ai-models-is-turning-into-a-memory-game/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="european parliament blocks ai on lawmakers’ devices, citing security risks">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 16:30</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/european-parliament-blocks-ai-on-lawmakers-devices-citing-security-risks/" target="_blank">European Parliament blocks AI on lawmakers’ devices, citing security risks</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/european-parliament-blocks-ai-on-lawmakers-devices-citing-security-risks/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="wordpress.com adds an ai assistant that can edit, adjust styles, create images, and more">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 16:10</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/wordpress-com-adds-an-ai-assistant-that-can-edit-adjust-styles-create-images-and-more/" target="_blank">WordPress.com adds an AI Assistant that can edit, adjust styles, create images, and more</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/wordpress-com-adds-an-ai-assistant-that-can-edit-adjust-styles-create-images-and-more/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="amazon fire tv’s new interface is now rolling out in the us">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 15:58</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/amazon-fire-tvs-new-interface-is-now-rolling-out-in-the-u-s/" target="_blank">Amazon Fire TV’s new interface is now rolling out in the US</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/amazon-fire-tvs-new-interface-is-now-rolling-out-in-the-u-s/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="here are the 17 us-based ai companies that have raised $100m or more in 2026">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 14:58</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/" target="_blank">Here are the 17 US-based AI companies that have raised $100M or more in 2026</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="india bids to attract over $200b in ai infrastructure investment by 2028">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 14:13</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/india-bids-to-attract-over-200b-in-ai-infrastructure-investment-by-2028/" target="_blank">India bids to attract over $200B in AI infrastructure investment by 2028</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/india-bids-to-attract-over-200b-in-ai-infrastructure-investment-by-2028/')">
                             <i class="fa-solid fa-link"></i> Link kopieren
                         </button>
                     </div>
@@ -1160,4 +1165,4 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
                     </div>
                 </div>
             </article></div></div>
-        </section><footer class="footer"><p>&copy; 2026 KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main></div><script>function scrollCarousel(id, dir) { const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({ left: dir * amount, behavior: 'smooth' }); } function filterNews(t){ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => { if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }); } document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}</script></body></html>
+        </section><footer class="footer"><p>&copy; 2026 KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main></div><script>function scrollCarousel(id, dir) { const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({ left: dir * amount, behavior: 'smooth' }); } function filterNews(t){ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => { if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }); } function applySearch(word) { document.getElementById('searchInput').value = word; filterNews(word); } document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}</script></body></html>
