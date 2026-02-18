@@ -1,43 +1,42 @@
-/* --- 1. SETUP & RESET --- */
+/* --- 1. GLOBAL RESET --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-    --bg-color: #0a0f1d;      /* Sehr dunkles Blau */
-    --card-bg: #151c2e;       /* Etwas helleres Blau für Karten */
-    --text-main: #f1f5f9;     /* Weiß/Hellgrau */
-    --text-muted: #94a3b8;    /* Grau für Details */
-    --accent: #38bdf8;        /* Cyan/Hellblau als Akzent */
-    --border: #1e293b;        /* Rahmenfarbe */
+    --bg-color: #0a0f1d;
+    --card-bg: #151c2e;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent: #38bdf8;
+    --border: #1e293b;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: 'Inter', sans-serif;
-    line-height: 1.6;
     width: 100%;
-    overflow-x: hidden; /* Verhindert seitliches Scrollen der ganzen Seite */
+    overflow-x: hidden;
 }
 
 a { text-decoration: none; color: inherit; transition: 0.2s; }
 a:hover { color: var(--accent); }
 
-/* --- 2. HEADER (MIT BILD) --- */
-.header {
+/* --- 2. HEADER (Fix für id="siteHeader") --- */
+#siteHeader {
     width: 100%;
     min-height: 500px;
-    padding: 80px 20px;
+    padding: 100px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     border-bottom: 2px solid var(--accent);
-    background-color: #000; /* Fallback */
+    background-color: #000;
     
-    /* Hintergrundbild getrennt definiert für Stabilität */
+    /* Hintergrundbild fixiert */
     background-image: 
         linear-gradient(rgba(10, 15, 29, 0.6), rgba(10, 15, 29, 0.9)),
         url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000&auto=format&fit=crop');
@@ -46,18 +45,19 @@ a:hover { color: var(--accent); }
     background-repeat: no-repeat;
 }
 
-.header__title {
+#siteHeader h1 {
     font-size: clamp(3rem, 6vw, 5rem);
     font-weight: 800;
     color: #fff;
     margin-bottom: 30px;
     text-shadow: 0 4px 20px rgba(0,0,0,1);
-    letter-spacing: -1px;
 }
 
-.header__search {
+/* Suche & Navigation (Fix für .nav-btn) */
+.search-wrapper { width: 100%; max-width: 600px; margin-bottom: 30px; }
+
+#searchInput {
     width: 100%;
-    max-width: 600px;
     padding: 16px 30px;
     border-radius: 50px;
     border: 1px solid rgba(255,255,255,0.3);
@@ -65,147 +65,103 @@ a:hover { color: var(--accent); }
     color: #fff;
     font-size: 1.1rem;
     outline: none;
-    margin-bottom: 30px;
-    font-family: 'Inter', sans-serif;
 }
 
-/* --- 3. BUTTONS --- */
 .nav-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
 }
 
-.btn {
-    background-color: var(--card-bg);
+.nav-btn {
+    background: var(--card-bg);
     color: var(--accent);
     border: 1px solid var(--border);
-    padding: 10px 20px;
+    padding: 8px 18px;
     border-radius: 25px;
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    transition: all 0.2s ease;
+    transition: all 0.2s;
 }
-
-.btn:hover {
-    background-color: var(--accent);
+.nav-btn:hover {
+    background: var(--accent);
     color: var(--bg-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
 }
 
-.btn--copy {
-    width: 100%;
-    margin-top: auto;
-    border-radius: 8px;
-    padding: 8px;
-    background: transparent;
-    color: var(--text-muted);
-}
-.btn--copy:hover {
-    background: transparent;
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: none;
-}
-
-/* --- 4. CONTENT-BEREICH --- */
+/* --- 3. LAYOUT & EDITORIAL --- */
 .main-container {
     max-width: 1200px;
     margin: 60px auto;
     padding: 0 20px;
 }
 
-/* --- 5. EDITORIAL BOX (KURATOREN) --- */
 .editorial-box {
     background: linear-gradient(145deg, #1e293b, #151c2e);
     border: 1px solid var(--accent);
     border-radius: 16px;
     padding: 40px;
     margin-bottom: 80px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
 .editorial-badge {
     background: var(--accent);
     color: var(--bg-color);
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 20px;
     font-weight: 800;
     text-transform: uppercase;
     font-size: 0.75rem;
     display: inline-block;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
-.editorial-title {
-    font-size: 2.2rem;
-    line-height: 1.2;
-    margin-bottom: 25px;
-    color: #fff;
-    font-weight: 700;
-}
-
-.video-wrapper {
+.video-container {
     width: 100%;
     aspect-ratio: 16/9;
     background: #000;
     border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     border: 1px solid var(--border);
 }
-.video-wrapper iframe { width: 100%; height: 100%; border: 0; }
+.video-container iframe { width: 100%; height: 100%; border: 0; }
 
-.editorial-content {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: #e2e8f0;
-    white-space: pre-wrap;
-    margin-bottom: 30px;
-}
+.editorial-text { font-size: 1.15rem; line-height: 1.8; color: #e2e8f0; white-space: pre-wrap; }
 
-.editorial-sources {
-    border-top: 1px solid var(--border);
-    padding-top: 20px;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
-.editorial-sources strong { display: block; margin-bottom: 5px; color: var(--accent); }
+/* --- 4. NEWS KARUSSELL (Der entscheidende Fix für .carousel-track) --- */
+.news-section { margin-bottom: 80px; }
 
-/* --- 6. NEWS KARUSSELL (LAYOUT FIX) --- */
-.section-wrapper { margin-bottom: 80px; }
-
-.section-header {
+.section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 10px;
+    gap: 12px;
 }
-.section-icon { width: 32px; height: 32px; border-radius: 6px; }
-.section-title { font-size: 1.6rem; margin: 0; color: #fff; font-weight: 700; }
+.section-title img { width: 28px; height: 28px; border-radius: 4px; }
 
-/* Das Karussell: Flexbox erzwingt horizontale Anordnung */
-.carousel {
-    display: flex;
-    flex-wrap: nowrap; /* WICHTIG: Kein Umbruch! */
-    overflow-x: auto;  /* Scrollen erlauben */
+/* WICHTIG: Hier matchen wir den Namen aus deinem HTML */
+.carousel-track {
+    display: flex;        /* Aktiviert das Nebeneinander */
+    flex-wrap: nowrap;    /* Verbietet Umbruch -> Horizontales Scrollen */
+    overflow-x: auto;     /* Scrollbar */
     gap: 25px;
     padding-bottom: 30px;
     scrollbar-width: thin;
     scrollbar-color: var(--accent) var(--bg-color);
 }
 
-/* Die Karte: Fixe Breite verhindert Riesen-Bilder */
-.card {
-    flex: 0 0 320px; /* Fixe Breite: Wachsen 0, Schrumpfen 0, Basis 320px */
-    width: 320px;
+/* Karten-Styling (Matches .news-card) */
+.news-card {
+    flex: 0 0 320px;      /* ZWINGEND: Fixe Breite, kein Wachsen/Schrumpfen */
+    width: 320px;         /* Doppelte Absicherung */
     min-width: 320px;
     height: 480px;
     background: var(--card-bg);
@@ -216,13 +172,12 @@ a:hover { color: var(--accent); }
     flex-direction: column;
     transition: transform 0.2s;
 }
-.card:hover {
+.news-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-.card__img {
+.news-card img {
     width: 100%;
     height: 180px;
     object-fit: cover;
@@ -230,16 +185,10 @@ a:hover { color: var(--accent); }
     border-bottom: 1px solid var(--border);
 }
 
-.card__body {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
+.card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.card-meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
 
-.card__meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
-
-.card__title {
+.card-title {
     font-size: 1.1rem;
     line-height: 1.4;
     font-weight: 600;
@@ -248,15 +197,27 @@ a:hover { color: var(--accent); }
     overflow: hidden;
     color: #fff;
 }
-.card__title a { color: #fff; }
+.card-title a { color: #fff; }
 
-/* --- 7. FOOTER --- */
-.footer {
-    padding: 80px 0;
+.copy-btn {
+    width: 100%;
+    margin-top: auto;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+.copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* --- 5. FOOTER --- */
+.site-footer {
     text-align: center;
+    padding: 80px 0;
     border-top: 1px solid var(--border);
     color: var(--text-muted);
-    font-size: 0.9rem;
 }
-.footer a { color: var(--text-muted); margin: 0 15px; }
-.footer a:hover { color: var(--accent); }
+.footer-links a { margin: 0 15px; color: var(--text-muted); }
