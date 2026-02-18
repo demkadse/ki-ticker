@@ -64,8 +64,7 @@ def fetch_feed(feed_info):
             dt = datetime.datetime.fromtimestamp(time.mktime(ts), datetime.timezone.utc) if ts else datetime.datetime.now(datetime.timezone.utc)
             out.append({
                 "title": e.get("title", "").strip(), "url": link, "source": name, 
-                "published_iso": dt.isoformat(), "domain": urlparse(link).netloc.replace("www.", ""),
-                "image": "" # Vereinfacht für dieses Layout
+                "published_iso": dt.isoformat(), "domain": urlparse(link).netloc.replace("www.", "")
             })
         return out
     except: return []
@@ -74,13 +73,13 @@ def render_index(items, editorial):
     now_dt = datetime.datetime.now(datetime.timezone.utc)
     hero_default = f"{HERO_BASE}&w=800"
     
-    # Gruppierung nach Quelle
+    # Gruppierung
     grouped = {}
     for it in items:
         if it["source"] not in grouped: grouped[it["source"]] = []
         if len(grouped[it["source"]]) < 10: grouped[it["source"]].append(it)
     
-    # Sortierung der Quellen: Die mit der neuesten News nach oben
+    # Sortierung: Quellen mit neuester News zuerst
     sorted_sources = sorted(grouped.keys(), key=lambda s: grouped[s][0]["published_iso"], reverse=True)
 
     editorial_html = ""
@@ -89,7 +88,7 @@ def render_index(items, editorial):
         video_embed = f'<div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/{yt_id}" allowfullscreen></iframe></div>' if yt_id else ""
         editorial_html = f"""
         <section class="editorial-section">
-            <div class="editorial-badge"><i class="fa-solid fa-star"></i> Tagesthema</div>
+            <div class="editorial-badge"><i class="fa-solid fa-star"></i> Tagesthema der Redaktion</div>
             <div class="editorial-card">
                 <h2>{editorial.get('title', '...')}</h2>
                 {video_embed}
@@ -106,7 +105,7 @@ def render_index(items, editorial):
     main_content = ""
     for src in sorted_sources:
         cards_html = ""
-        source_url = f"https://{grouped[src][0]['domain']}"
+        source_domain = grouped[src][0]['domain']
         
         for it in grouped[src]:
             dt = datetime.datetime.fromisoformat(it["published_iso"])
@@ -120,13 +119,13 @@ def render_index(items, editorial):
               </div>
             </article>"""
         
-        # Der Deep-Dive Button am Ende jeder Zeile
+        # Deep-Dive Karte
         cards_html += f"""
         <article class="card deep-dive-card">
             <div class="card-body" style="justify-content:center; align-items:center;">
-                <p style="margin-bottom:15px; font-weight:600;">Lust auf den Deep-Dive?</p>
-                <a href="{source_url}" target="_blank" class="deep-dive-btn">
-                    Alle weiteren Artikel direkt bei {src} <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <p style="margin-bottom:15px; font-weight:700; color:var(--acc);">Lust auf den Deep-Dive?</p>
+                <a href="https://{source_domain}" target="_blank" class="deep-dive-btn">
+                    Alle Artikel direkt bei {src} <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
             </div>
         </article>"""
@@ -134,7 +133,7 @@ def render_index(items, editorial):
         main_content += f"""
         <section class="source-section">
             <div class="source-title">
-                <img src="https://www.google.com/s2/favicons?domain={grouped[src][0]['domain']}&sz=32" alt="">
+                <img src="https://www.google.com/s2/favicons?domain={source_domain}&sz=32" alt="">
                 {src}
             </div>
             <div class="carousel-wrapper">
@@ -153,7 +152,7 @@ def render_index(items, editorial):
             <header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>
             {editorial_html}
             {main_content}
-            <footer class="footer"><p>&copy; 2026 KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
+            <footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
         </main>
         <aside class="sidebar-ad right"></aside>
     </div>
@@ -162,8 +161,7 @@ def render_index(items, editorial):
             const v = t.toLowerCase();
             document.querySelectorAll('.card').forEach(el => {{
                 if(!el.classList.contains('deep-dive-card')) {{
-                    const match = el.getAttribute('data-content').includes(v);
-                    el.style.display = match ? 'flex' : 'none';
+                    el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none';
                 }}
             }});
         }}
@@ -176,7 +174,6 @@ def main():
     db = load_db(); editorial = load_editorial()
     with ThreadPoolExecutor(max_workers=11) as ex: res = list(ex.map(fetch_feed, FEEDS))
     items = [i for r in res for i in r]
-    # Sortierung aller Items nach Zeit vor der Gruppierung
     raw_sorted = sorted(items, key=lambda x: x["published_iso"], reverse=True)
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(raw_sorted, editorial))
 
