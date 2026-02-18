@@ -385,14 +385,5 @@
     "published_iso": "2026-02-11T15:48:15+00:00",
     "domain": "aws.amazon.com",
     "image": ""
-  },
-  {
-    "id": "118cb8ef5426",
-    "title": "Harness engineering: leveraging Codex in an agent-first world",
-    "url": "https://openai.com/index/harness-engineering",
-    "source": "OpenAI",
-    "published_iso": "2026-02-11T09:00:00+00:00",
-    "domain": "openai.com",
-    "image": ""
   }
 ]
