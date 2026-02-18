@@ -23,6 +23,9 @@ MAX_PER_SOURCE = 6
 
 FEEDS = [
     ("The Verge AI", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
+    ("Wired AI", "https://www.wired.com/feed/category/ai/latest/rss"),
+    ("Ars Technica", "https://feeds.arstechnica.com/arstechnica/index"),
+    ("Futurism", "https://futurism.com/feed"),
     ("MIT Tech Review", "https://www.technologyreview.com/feed/tag/artificial-intelligence/"),
     ("VentureBeat", "https://venturebeat.com/category/ai/feed/"),
     ("TechCrunch", "https://techcrunch.com/category/artificial-intelligence/feed/"),
@@ -30,8 +33,6 @@ FEEDS = [
     ("arXiv", "https://export.arxiv.org/rss/cs.AI"),
     ("OpenAI", "https://openai.com/news/rss.xml"),
     ("Google AI", "https://blog.google/technology/ai/rss/"),
-    ("AWS ML Blog", "https://aws.amazon.com/blogs/machine-learning/feed/"),
-    ("NVIDIA Blog", "https://blogs.nvidia.com/feed/"),
 ]
 
 def load_db():
@@ -134,32 +135,29 @@ def render_index(items, editorial):
             </div>
             """
         
-        # Filter-Wort Logik (bereinigt)
-        raw_title = editorial.get('title', '')
-        filter_word = re.sub(r"[^a-zA-Z0-9\s]", "", raw_title).split(' ')[0]
+        search_term = editorial.get('search_term') or ""
         
         editorial_html = f"""
         <section class="editorial-section">
             <div class="editorial-badge">Tagesthema der Redaktion</div>
             <div class="editorial-card">
-                <h2>{raw_title}</h2>
+                <h2>{editorial.get('title', 'Titel wird geladen...')}</h2>
                 {video_embed}
                 <div class="editorial-text">{editorial.get('content', '')}</div>
                 <div class="editorial-footer">
-                    <button class="filter-action-btn" onclick="document.getElementById('searchInput').value='{filter_word}'; filterNews('{filter_word}');">Passende News im Feed finden</button>
+                    <button class="filter-action-btn" onclick="applySearch('{search_term}');">Passende News im Feed finden</button>
                     <div class="editorial-date">Stand: {editorial.get('date', now_dt.strftime('%d.%m.%Y'))}</div>
                 </div>
             </div>
         </section>
         """
         
-        # Schema für Editorial
         editorial_schema = {
             "@type": "OpinionNewsArticle",
-            "headline": raw_title,
+            "headline": editorial.get('title', ''),
             "datePublished": now_dt.isoformat(),
-            "author": {"@type": "Person", "name": "Dennis M. Böhm"},
-            "description": editorial.get('content', '')[:160]
+            "author": {"@type": "Person", "name": "Dennis M. Böhm", "jobTitle": "Fachinformatiker"},
+            "description": editorial.get('content', '')[:160].replace("\n", " ")
         }
 
     schema_items = []
@@ -207,7 +205,6 @@ def render_index(items, editorial):
         if (idx + 1) % 12 == 0:
             html_content += f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_FEED}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
 
-    # Kombiniertes Schema
     graph = [{"@context": "https://schema.org", "@type": "ItemList", "itemListElement": schema_items}]
     if editorial_schema: graph.append(editorial_schema)
     schema_json = json.dumps(graph, ensure_ascii=False)
@@ -215,75 +212,70 @@ def render_index(items, editorial):
     return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title>
     <meta name="description" content="Täglich aktuelle KI‑Nachrichten kuratiert und analysiert von Dennis M. Böhm.">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{SITE_URL}">
-    <meta property="og:title" content="{SITE_TITLE} - KI‑News">
-    <meta property="og:description" content="Der Kompass durch die Welt der Künstlichen Intelligenz.">
-    <meta property="og:image" content="{hero_default}">
-
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v={int(time.time())}">
+    <meta property="og:type" content="website"><meta property="og:url" content="{SITE_URL}"><meta property="og:title" content="{SITE_TITLE} - Experten-News zu KI"><meta property="og:description" content="Vom Fachinformatiker kuratiert: Innovationen, Analysen und kritische Einblicke."><meta property="og:image" content="{hero_default}">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="style.css?v={int(time.time())}">
     <script type="application/ld+json">{schema_json}</script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
     <body class="dark-mode">
     <div class="site-layout">
-        <aside class="sidebar-ad left">
-            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_LEFT}"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
-        </aside>
+        <aside class="sidebar-ad left"><ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_LEFT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></aside>
         <main class="container">
             <header class="header">
                 <h1>KI‑Ticker</h1>
                 <p class="subtitle">Neues aus der Welt der künstlichen Intelligenz</p>
                 <div class="controls">
-                    <input type="text" id="searchInput" placeholder="Suchen..." aria-label="Suche">
+                    <div class="search-wrapper">
+                        <input type="text" id="searchInput" placeholder="Suchen..." aria-label="Suche">
+                        <button id="clearSearch" onclick="clearSearch()" title="Suche löschen">✕</button>
+                    </div>
                     <div class="category-bar"><button class="cat-btn active" onclick="filterCat('all', this)">Alle</button>{cat_html}</div>
                 </div>
             </header>
-
             {editorial_html}
-
             <h2 class="section-title">KI-Nachrichten aus aller Welt</h2>
-
+            <div id="noResults" class="no-results-msg">Keine passenden Nachrichten gefunden. Probieren Sie einen anderen Suchbegriff!</div>
             <div class="news-grid">{html_content}</div>
-            
-            <div class="profile-box-wrapper">
-                <div class="profile-box">
-                    <img src="profil.jpg" alt="Dennis M. Böhm" class="profile-img" onerror="this.src='{hero_default}'">
-                    <div class="profile-info">
-                        <strong>Redaktion: Dennis M. Böhm</strong>
-                        <p>Fachinformatiker • KI‑Enthusiast • KI‑Kritiker</p>
-                    </div>
-                </div>
-            </div>
-
-            <footer class="footer">
-                <p>&copy; {now_dt.year} KI‑Ticker | 
-                   <a href="ueber-uns.html">Über uns</a> | 
-                   <a href="impressum.html">Impressum</a> | 
-                   <a href="datenschutz.html">Datenschutz</a>
-                </p>
-            </footer>
+            <div class="profile-box-wrapper"><div class="profile-box"><img src="profil.jpg" alt="Dennis M. Böhm" class="profile-img" onerror="this.src='{hero_default}'"><div class="profile-info"><strong>Redaktion: Dennis M. Böhm</strong><p>Fachinformatiker • KI‑Enthusiast • KI‑Kritiker</p></div></div></div>
+            <footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
         </main>
-        <aside class="sidebar-ad right">
-            <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_RIGHT}"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
-        </aside>
+        <aside class="sidebar-ad right"><ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_RIGHT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></aside>
     </div>
     <script>
+        function checkResults() {{
+            const cards = document.querySelectorAll('.card');
+            let visible = 0;
+            cards.forEach(c => {{ if(c.style.display !== 'none') visible++; }});
+            document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+        }}
         function filterCat(cat, btn) {{
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearch').style.display = 'none';
             document.querySelectorAll('.card').forEach(el => {{
                 el.style.display = (cat === 'all' || el.getAttribute('data-source') === cat) ? 'flex' : 'none';
             }});
+            checkResults();
         }}
         function filterNews(t){{
             const v = t.toLowerCase();
+            document.getElementById('clearSearch').style.display = v ? 'block' : 'none';
             document.querySelectorAll('.card').forEach(el => {{
                 el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none';
             }});
+            checkResults();
+        }}
+        function applySearch(word) {{
+            const input = document.getElementById('searchInput');
+            input.value = word;
+            filterNews(word);
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector('.cat-btn').classList.add('active');
+        }}
+        function clearSearch() {{
+            const input = document.getElementById('searchInput');
+            input.value = '';
+            filterNews('');
         }}
         document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value);
         function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Kopiert!'));}}
@@ -292,7 +284,7 @@ def render_index(items, editorial):
 def main():
     db = load_db()
     editorial = load_editorial()
-    with ThreadPoolExecutor(max_workers=7) as ex: res = list(ex.map(fetch_feed, FEEDS))
+    with ThreadPoolExecutor(max_workers=11) as ex: res = list(ex.map(fetch_feed, FEEDS))
     items = [i for r in res for i in r]
     raw_sorted = sorted({i['url']: i for i in (db + items)}.values(), key=lambda x: x["published_iso"], reverse=True)
     final_items = []
