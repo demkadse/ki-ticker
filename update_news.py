@@ -52,6 +52,18 @@ def get_youtube_id(url):
         if parsed.path.startswith(('/embed/', '/v/')): return parsed.path.split('/')[2]
     return None
 
+def save_db(data):
+    with open(DB_FILE, "w", encoding="utf-8") as f: json.dump(data[:500], f, ensure_ascii=False, indent=2)
+
+def generate_sitemap():
+    now = datetime.datetime.now().strftime("%Y-%m-%d")
+    xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{SITE_URL}/index.html</loc><lastmod>{now}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>{SITE_URL}/ueber-uns.html</loc><lastmod>{now}</lastmod><priority>0.5</priority></url>
+</urlset>"""
+    with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(xml)
+
 def fetch_feed(feed_info):
     name, url = feed_info
     try:
@@ -73,13 +85,11 @@ def render_index(items, editorial):
     now_dt = datetime.datetime.now(datetime.timezone.utc)
     hero_default = f"{HERO_BASE}&w=800"
     
-    # Gruppierung
     grouped = {}
     for it in items:
         if it["source"] not in grouped: grouped[it["source"]] = []
         if len(grouped[it["source"]]) < 10: grouped[it["source"]].append(it)
     
-    # Sortierung: Quellen mit neuester News zuerst
     sorted_sources = sorted(grouped.keys(), key=lambda s: grouped[s][0]["published_iso"], reverse=True)
 
     editorial_html = ""
@@ -103,10 +113,10 @@ def render_index(items, editorial):
         </section>"""
 
     main_content = ""
-    for src in sorted_sources:
+    for idx, src in enumerate(sorted_sources):
+        carousel_id = f"carousel-{idx}"
         cards_html = ""
         source_domain = grouped[src][0]['domain']
-        
         for it in grouped[src]:
             dt = datetime.datetime.fromisoformat(it["published_iso"])
             cards_html += f"""
@@ -119,7 +129,6 @@ def render_index(items, editorial):
               </div>
             </article>"""
         
-        # Deep-Dive Karte
         cards_html += f"""
         <article class="card deep-dive-card">
             <div class="card-body" style="justify-content:center; align-items:center;">
@@ -132,12 +141,11 @@ def render_index(items, editorial):
 
         main_content += f"""
         <section class="source-section">
-            <div class="source-title">
-                <img src="https://www.google.com/s2/favicons?domain={source_domain}&sz=32" alt="">
-                {src}
-            </div>
+            <div class="source-title"><img src="https://www.google.com/s2/favicons?domain={source_domain}&sz=32" alt="">{src}</div>
             <div class="carousel-wrapper">
-                <div class="news-carousel">{cards_html}</div>
+                <button class="nav-btn left" onclick="scrollCarousel('{carousel_id}', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="news-carousel" id="{carousel_id}">{cards_html}</div>
+                <button class="nav-btn right" onclick="scrollCarousel('{carousel_id}', 1)"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </section>"""
 
@@ -157,6 +165,11 @@ def render_index(items, editorial):
         <aside class="sidebar-ad right"></aside>
     </div>
     <script>
+        function scrollCarousel(id, direction) {{
+            const c = document.getElementById(id);
+            const scrollAmount = c.offsetWidth * 0.8;
+            c.scrollBy({{ left: direction * scrollAmount, behavior: 'smooth' }});
+        }}
         function filterNews(t){{
             const v = t.toLowerCase();
             document.querySelectorAll('.card').forEach(el => {{
@@ -175,6 +188,7 @@ def main():
     with ThreadPoolExecutor(max_workers=11) as ex: res = list(ex.map(fetch_feed, FEEDS))
     items = [i for r in res for i in r]
     raw_sorted = sorted(items, key=lambda x: x["published_iso"], reverse=True)
+    save_db(raw_sorted); generate_sitemap()
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(raw_sorted, editorial))
 
 if __name__ == "__main__": main()
