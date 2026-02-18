@@ -5,12 +5,12 @@ import os, time, datetime, json, requests, feedparser
 from urllib.parse import urlparse, parse_qs
 from concurrent.futures import ThreadPoolExecutor
 
-# --- CONFIG ---
+# --- KONFIGURATION ---
 SITE_TITLE = "KI‑Ticker"
 SITE_URL = "https://ki-ticker.boehmonline.space"
 EDITORIAL_FILE = "editorial.json"
-# Fallback-Bild, falls kein Bild gefunden wird (Performance optimiert)
-HERO_BASE = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600"
+# Ein sicheres Fallback-Bild
+HERO_IMG_URL = "https://images.unsplash.com/photo-1620712943543-bcc4628c9456?q=80&w=2000&auto=format&fit=crop"
 
 FEEDS = [
     ("NVIDIA Blog", "https://blogs.nvidia.com/feed/"),
@@ -32,81 +32,63 @@ def load_editorial():
 
 def generate_sitemap():
     now = datetime.datetime.now().strftime("%Y-%m-%d")
-    # Logik: Root hat Prio 1.0, Unterseiten 0.8
-    pages = [("", "1.0"), ("ueber-uns.html", "0.8"), ("impressum.html", "0.8"), ("datenschutz.html", "0.8")]
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    for p, prio in pages:
-        # Falls p leer ist (Root), kein Slash am Ende, sonst Slash
+    # Startseite (Root) und Unterseiten
+    for p in ["", "ueber-uns.html", "impressum.html", "datenschutz.html"]:
         loc = f"{SITE_URL}/{p}" if p else SITE_URL
-        xml += f'  <url>\n    <loc>{loc}</loc>\n    <lastmod>{now}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>{prio}</priority>\n  </url>\n'
+        xml += f'  <url><loc>{loc}</loc><lastmod>{now}</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>\n'
     xml += '</urlset>'
     with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(xml)
 
 def fetch_feed(info):
     name, url = info
     try:
-        # Timeout verhindert Hänger
         resp = requests.get(url, timeout=10)
         fp = feedparser.parse(resp.content)
         items = []
         for e in fp.entries:
-            # Datums-Logik: Versuche published, sonst updated, sonst jetzt
             ts = e.get("published_parsed") or e.get("updated_parsed")
-            if ts:
-                dt = datetime.datetime.fromtimestamp(time.mktime(ts), datetime.timezone.utc)
-            else:
-                dt = datetime.datetime.now(datetime.timezone.utc)
-            
+            dt = datetime.datetime.fromtimestamp(time.mktime(ts), datetime.timezone.utc) if ts else datetime.datetime.now(datetime.timezone.utc)
             items.append({
-                "title": e.get("title", "Kein Titel").strip(),
+                "title": e.get("title", "").strip(),
                 "url": e.get("link", "").strip(),
                 "source": name,
                 "pub": dt,
                 "domain": urlparse(e.get("link", "")).netloc.replace("www.", "")
             })
         return items
-    except Exception as e:
-        print(f"Error fetching {name}: {e}")
-        return []
+    except: return []
 
-def render_html(items, editorial):
+def render_index(items, editorial):
     now_year = datetime.datetime.now().year
     
-    # 1. Gruppieren nach Quelle
+    # 1. Daten sortieren und gruppieren
     grouped = {}
     for it in items:
         if it["source"] not in grouped: grouped[it["source"]] = []
-        # Limit auf 10 Items pro Quelle
         if len(grouped[it["source"]]) < 10: grouped[it["source"]].append(it)
     
-    # 2. Sortieren der Quellen nach dem aktuellsten Artikel
-    sorted_sources = sorted(grouped.keys(), key=lambda s: grouped[s][0]["pub"] if grouped[s] else datetime.datetime.min.replace(tzinfo=datetime.timezone.utc), reverse=True)
+    sorted_sources = sorted(grouped.keys(), key=lambda s: grouped[s][0]["pub"] if grouped[s] else 0, reverse=True)
     
-    # 3. Kategorie-Buttons generieren
-    cat_buttons = "".join([f'<button class="cat-btn" onclick="filterSource(\'{s}\')">{s}</button>' for s in sorted_sources])
+    # 2. Buttons generieren
+    nav_buttons = "".join([f'<button class="nav-btn" onclick="filterFeed(\'{s}\')">{s}</button>' for s in sorted_sources])
 
-    # 4. Editorial HTML bauen
+    # 3. Editorial HTML
     editorial_html = ""
     if editorial:
-        # YouTube ID extrahieren (Robust)
-        yt_id = None
-        if "video_url" in editorial and editorial["video_url"]:
-            parsed = urlparse(editorial["video_url"])
-            if parsed.query:
-                yt_id = parse_qs(parsed.query).get('v', [None])[0]
-        
-        video_embed = f'<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/{yt_id}" allowfullscreen></iframe></div>' if yt_id else ""
+        yt_id = parse_qs(urlparse(editorial.get('video_url', '')).query).get('v', [None])[0]
+        video_embed = f'<div class="video-box"><iframe src="https://www.youtube-nocookie.com/embed/{yt_id}" allowfullscreen></iframe></div>' if yt_id else ""
         
         editorial_html = f"""
-        <article class="editorial-card">
-            <span class="badge">Tagesthema der Redaktion</span>
-            <h2>{editorial.get('title', '')}</h2>
+        <article class="editorial">
+            <span class="badge">Top-Thema</span>
+            <h2>{editorial.get('title')}</h2>
             {video_embed}
-            <div class="text-content">{editorial.get('description', '')}</div>
+            <div class="editorial-text">{editorial.get('description')}</div>
         </article>
         """
 
-    # 5. News-Feeds HTML bauen
+    # 4. Feed Sections generieren
     feeds_html = ""
     for idx, source in enumerate(sorted_sources):
         cards_html = ""
@@ -115,10 +97,10 @@ def render_html(items, editorial):
         for item in grouped[source]:
             date_str = item["pub"].strftime("%d.%m. %H:%M")
             cards_html += f"""
-            <div class="news-card" data-source="{source}">
-                <img src="{HERO_BASE}" class="card-img" loading="lazy" alt="News Image">
-                <div class="card-content">
-                    <div class="card-meta">{date_str}</div>
+            <div class="card" data-src="{source}">
+                <img src="{HERO_IMG_URL}" class="card-img" loading="lazy">
+                <div class="card-body">
+                    <div class="card-date">{date_str}</div>
                     <h3 class="card-title"><a href="{item['url']}" target="_blank">{item['title']}</a></h3>
                     <button class="copy-btn" onclick="copyLink('{item['url']}')">Link kopieren</button>
                 </div>
@@ -126,24 +108,18 @@ def render_html(items, editorial):
             """
         
         feeds_html += f"""
-        <section class="news-section" id="src-{idx}">
-            <div class="section-header">
-                <div class="source-label">
-                    <img src="https://www.google.com/s2/favicons?domain={domain}&sz=32" alt="{source}">
-                    {source}
-                </div>
-                <div class="carousel-controls">
-                    <button class="nav-arrow" onclick="scrollCarousel('track-{idx}', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-arrow" onclick="scrollCarousel('track-{idx}', 1)"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
+        <section class="feed-section" id="feed-{idx}">
+            <div class="feed-header">
+                <img src="https://www.google.com/s2/favicons?domain={domain}&sz=32" class="feed-icon">
+                <h2 class="feed-title">{source}</h2>
             </div>
-            <div class="carousel-track" id="track-{idx}">
+            <div class="carousel" id="track-{idx}">
                 {cards_html}
             </div>
         </section>
         """
 
-    # 6. Gesamtes HTML zusammensetzen
+    # 5. Finale HTML Ausgabe
     return f"""<!doctype html>
 <html lang="de">
 <head>
@@ -151,33 +127,33 @@ def render_html(items, editorial):
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{SITE_TITLE}</title>
     <link rel="stylesheet" href="style.css?v={int(time.time())}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-    <header id="siteHeader">
-        <h1>{SITE_TITLE}</h1>
-        <div class="header-ui">
-            <input type="text" id="searchInput" class="search-input" placeholder="Nachrichten filtern...">
-            <div class="category-nav">
-                <button class="cat-btn" onclick="resetFilter()">Alle</button>
-                {cat_buttons}
+    <header class="hero-header">
+        <img src="{HERO_IMG_URL}" class="hero-bg-img" alt="Background">
+        <div class="hero-content">
+            <h1 class="hero-title">{SITE_TITLE}</h1>
+            <input type="text" id="searchInput" class="hero-search" placeholder="News filtern...">
+            <div class="hero-nav">
+                <button class="nav-btn" onclick="resetFilter()">Alle</button>
+                {nav_buttons}
             </div>
         </div>
     </header>
 
-    <div class="main-container">
+    <div class="container">
         <main>
             {editorial_html}
-            <div id="newsContainer">
+            <div id="feedContainer">
                 {feeds_html}
             </div>
         </main>
     </div>
 
-    <footer class="site-footer">
-        <p>&copy; {now_year} {SITE_TITLE} — Kuratiert durch KI & Mensch</p>
-        <div class="footer-links">
+    <footer class="footer">
+        <p>&copy; {now_year} {SITE_TITLE}</p>
+        <div style="margin-top:10px;">
             <a href="ueber-uns.html">Über uns</a>
             <a href="impressum.html">Impressum</a>
             <a href="datenschutz.html">Datenschutz</a>
@@ -185,41 +161,31 @@ def render_html(items, editorial):
     </footer>
 
     <script>
-    // Scroll Logic
-    function scrollCarousel(id, direction) {{
-        const track = document.getElementById(id);
-        const scrollAmount = 340; // Kartenbreite + Gap
-        track.scrollBy({{ left: direction * scrollAmount, behavior: 'smooth' }});
-    }}
-
-    // Search Logic
     const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', (e) => {{
-        const term = e.target.value.toLowerCase();
-        document.querySelectorAll('.news-card').forEach(card => {{
-            const title = card.querySelector('.card-title').innerText.toLowerCase();
-            card.style.display = title.includes(term) ? 'flex' : 'none';
+    
+    // Filter Logik
+    function filterFeed(sourceName) {{
+        document.querySelectorAll('.feed-section').forEach(sec => {{
+            const title = sec.querySelector('.feed-title').innerText;
+            sec.style.display = title === sourceName ? 'block' : 'none';
         }});
-    }});
-
-    // Category Filter Logic
-    function filterSource(sourceName) {{
-        // Verstecke alle Sections, die nicht matchen
-        document.querySelectorAll('.news-section').forEach(sec => {{
-            const label = sec.querySelector('.source-label').innerText.trim();
-            sec.style.display = label === sourceName ? 'block' : 'none';
-        }});
-        // Scroll nach oben zum Content
-        document.querySelector('.main-container').scrollIntoView({{ behavior: 'smooth' }});
     }}
 
     function resetFilter() {{
-        document.querySelectorAll('.news-section').forEach(sec => sec.style.display = 'block');
+        document.querySelectorAll('.feed-section').forEach(sec => sec.style.display = 'block');
     }}
 
-    // Utility
+    // Suche
+    searchInput.addEventListener('input', (e) => {{
+        const term = e.target.value.toLowerCase();
+        document.querySelectorAll('.card').forEach(card => {{
+            const txt = card.innerText.toLowerCase();
+            card.style.display = txt.includes(term) ? 'flex' : 'none';
+        }});
+    }});
+
     function copyLink(url) {{
-        navigator.clipboard.writeText(url).then(() => alert('Link in Zwischenablage kopiert!'));
+        navigator.clipboard.writeText(url).then(() => alert('Link kopiert!'));
     }}
     </script>
 </body>
@@ -227,24 +193,9 @@ def render_html(items, editorial):
 
 def main():
     editorial = load_editorial()
-    # Paralleles Abrufen der Feeds
-    with ThreadPoolExecutor(max_workers=10) as executor:
-        results = list(executor.map(fetch_feed, FEEDS))
-    
-    # Flatten list
-    all_items = [item for sublist in results for item in sublist]
-    
-    # Sortieren nach Datum (neueste zuerst)
-    all_items.sort(key=lambda x: x["pub"], reverse=True)
-    
-    # HTML generieren
-    html_content = render_html(all_items, editorial)
-    
-    with open("index.html", "w", encoding="utf-8") as f:
-        f.write(html_content)
-    
+    with ThreadPoolExecutor(max_workers=10) as ex: res = list(ex.map(fetch_feed, FEEDS))
+    items = sorted([i for r in res for i in r], key=lambda x: x["pub"], reverse=True)
+    with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(items, editorial))
     generate_sitemap()
-    print("Update erfolgreich.")
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": main()
