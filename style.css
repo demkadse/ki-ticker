@@ -3,56 +3,70 @@
   --bg: #0a0f1d; --card: #151c2e; --text: #f1f5f9; --muted: #94a3b8; --acc: #38bdf8; --border: #1e293b;
   --radius: 12px;
 }
-* { box-sizing: border-box; }
-body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; overflow-x: hidden; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; overflow-x: hidden; }
 
-/* --- STEUERUNG VON LAYOUT-CONTAINER --- */
+/* --- STEUERUNG VON LAYOUT-STRUKTUR --- */
 .site-layout { display: flex; justify-content: center; gap: 20px; max-width: 1650px; margin: 0 auto; padding: 0 15px; }
-.container { flex: 1; max-width: 1100px; min-width: 0; }
-.header { text-align: center; margin: 40px 0; }
-.header h1 { font-size: 2.5rem; margin-bottom: 20px; font-weight: 800; }
+.container { flex: 1; max-width: 1100px; min-width: 0; width: 100%; }
 
-/* --- STEUERUNG VON CAROUSEL-NAVIGATION --- */
-.source-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+/* --- STEUERUNG VON HEADER --- */
+.header { text-align: center; margin: 40px 0; width: 100%; }
+.header h1 { font-size: 2.5rem; margin-bottom: 20px; font-weight: 800; }
+.search-wrapper { width: 100%; max-width: 450px; margin: 0 auto 30px; }
+#searchInput { width: 100%; padding: 12px 25px; border-radius: 30px; border: 1px solid var(--border); background: var(--card); color: var(--text); outline: none; font-size: 1rem; }
+
+/* --- STEUERUNG VON SOURCE-HEADER (TITEL & PFEILE) --- */
+.source-section { margin-bottom: 60px; width: 100%; }
+.source-header { 
+    display: flex !important; 
+    flex-direction: row !important; 
+    justify-content: space-between !important; 
+    align-items: center !important; 
+    margin-bottom: 15px; 
+    width: 100%; 
+}
 .source-title { font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
 .source-title img { width: 22px; height: 22px; border-radius: 4px; }
-.carousel-nav { display: flex; gap: 10px; }
+.carousel-nav { display: flex !important; gap: 10px !important; }
 
+/* --- STEUERUNG VON NAV-BUTTONS --- */
 .nav-btn { 
     width: 38px; height: 38px; border-radius: 50%; background: var(--card); color: var(--acc); 
     border: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; 
-    justify-content: center; transition: 0.2s; font-size: 1rem;
+    justify-content: center; transition: 0.2s;
 }
 .nav-btn:hover { background: var(--acc); color: var(--bg); border-color: var(--acc); }
 
-/* --- STEUERUNG VON KARTEN-DESIGN --- */
+/* --- STEUERUNG VON CAROUSEL & KARTEN --- */
 .news-carousel { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 25px; scrollbar-width: none; }
 .news-carousel::-webkit-scrollbar { display: none; }
 
 .card { 
-    flex: 0 0 320px; background: var(--card); border: 1px solid var(--border); 
-    border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; 
-    transition: 0.2s; height: 430px;
+    flex: 0 0 340px !important; background: var(--card); border: 1px solid var(--border); 
+    border-radius: var(--radius); display: flex; flex-direction: column; 
+    height: 450px; transition: 0.2s; overflow: hidden;
 }
 .card:hover { border-color: var(--acc); transform: translateY(-3px); }
-
 .img-container { width: 100%; height: 180px; background: #000; overflow: hidden; }
 .img-container img { width: 100%; height: 100%; object-fit: cover; }
 
-.card-body { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; }
-.card h3 { font-size: 0.95rem; margin: 0 0 12px; line-height: 1.4; font-weight: 600; flex-grow: 1; overflow: hidden; }
+/* --- STEUERUNG VON KARTEN-INHALT --- */
+.card-body { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+.card h3 { font-size: 1rem; margin-bottom: 12px; line-height: 1.4; font-weight: 600; flex-grow: 1; overflow: hidden; }
 .card h3 a { color: var(--text); text-decoration: none; }
 .meta { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
 
-/* --- STEUERUNG VON BUTTONS & LINKS --- */
+/* --- STEUERUNG VON BUTTONS --- */
 .share-bar { margin-top: auto; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); }
 .card-link-btn { 
-    display: inline-flex; align-items: center; gap: 8px; background: rgba(56, 189, 248, 0.15); 
-    color: var(--acc); border: 1px solid var(--acc); padding: 8px 14px; border-radius: 6px; 
+    display: inline-flex; align-items: center; gap: 8px; background: var(--acc); 
+    color: var(--bg); border: none; padding: 10px 16px; border-radius: 6px; 
     cursor: pointer; font-size: 0.8rem; font-weight: 700; text-decoration: none; transition: 0.2s;
 }
-.card-link-btn:hover { background: var(--acc); color: var(--bg); }
+.card-link-btn:hover { filter: brightness(1.1); }
+.filter-action-btn { background: var(--acc); color: var(--bg); border: none; padding: 12px 24px; border-radius: 6px; font-weight: 700; cursor: pointer; }
 
-.filter-action-btn { background: var(--acc); color: var(--bg); border: none; padding: 10px 20px; border-radius: 6px; font-weight: 700; cursor: pointer; }
+/* --- STEUERUNG VON FOOTER --- */
 .footer { padding: 60px 0; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 40px; }
 .footer a { color: var(--muted); margin: 0 15px; text-decoration: none; }
