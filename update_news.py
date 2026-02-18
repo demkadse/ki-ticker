@@ -49,7 +49,6 @@ def load_editorial():
     return None
 
 def get_youtube_id(url):
-    """Extrahiert die YouTube ID für das Embedding."""
     if not url: return None
     parsed = urlparse(url)
     if parsed.hostname == 'youtu.be': return parsed.path[1:]
@@ -114,10 +113,10 @@ def render_index(items, editorial):
     cat_html = "".join([f'<button class="cat-btn" onclick="filterCat(\'{c}\', this)">{c}</button>' for c in categories])
     hero_default = f"{HERO_BASE}&w=1200"
 
-    # Redaktions-Block mit Video-Unterstützung
     editorial_html = ""
     if editorial:
         yt_id = get_youtube_id(editorial.get('video_url'))
+        author_link = f'<a href="{editorial.get("author_url")}" target="_blank" class="author-vid-link">→ Zum Kanal des Video-Urhebers</a>' if editorial.get('author_url') else ""
         video_embed = ""
         if yt_id:
             video_embed = f"""
@@ -127,7 +126,13 @@ def render_index(items, editorial):
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         allowfullscreen></iframe>
             </div>
+            <div class="video-meta-box">
+                {author_link}
+                <p class="video-disclaimer">Hinweis: Das Video ist ein externer Beitrag. Die Redaktion macht sich die Inhalte nicht zu eigen; nur der Begleittext ist Eigenleistung.</p>
+            </div>
             """
+        
+        filter_word = editorial.get('title', '').split(' ')[0].replace("'", "").strip()
         
         editorial_html = f"""
         <section class="editorial-section">
@@ -136,7 +141,10 @@ def render_index(items, editorial):
                 <h2>{editorial.get('title', 'Titel wird geladen...')}</h2>
                 {video_embed}
                 <div class="editorial-text">{editorial.get('content', '')}</div>
-                <div class="editorial-date">Stand: {editorial.get('date', now_dt.strftime('%d.%m.%Y'))}</div>
+                <div class="editorial-footer">
+                    <button class="filter-action-btn" onclick="document.getElementById('searchInput').value='{filter_word}'; filterNews('{filter_word}');">Passende News im Feed finden</button>
+                    <div class="editorial-date">Stand: {editorial.get('date', now_dt.strftime('%d.%m.%Y'))}</div>
+                </div>
             </div>
         </section>
         """
@@ -212,6 +220,17 @@ def render_index(items, editorial):
             {editorial_html}
 
             <div class="news-grid">{html_content}</div>
+            
+            <div class="profile-box-wrapper">
+                <div class="profile-box">
+                    <img src="profil.jpg" alt="Dennis M. Böhm" class="profile-img" onerror="this.src='{hero_default}'">
+                    <div class="profile-info">
+                        <strong>Redaktion: Dennis M. Böhm</strong>
+                        <p>Fachinformatiker • KI‑Enthusiast • KI‑Kritiker</p>
+                    </div>
+                </div>
+            </div>
+
             <footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
         </main>
         <aside class="sidebar-ad right">
