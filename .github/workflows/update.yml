@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install dependencies
-        run: pip install feedparser requests beautifulsoup4
+        run: pip install feedparser requests
       - name: Run updater
         run: python update_news.py
       - name: Commit & push
@@ -24,5 +24,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Auto-update all files [skip ci]" || echo "No changes"
+          git commit -m "Auto-update site & sitemap [skip ci]" || echo "No changes"
           git push
