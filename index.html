@@ -1,10 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>KI‑Ticker</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v=1771419980"></head><body class="dark-mode"><div class="site-layout"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>
-    <div class="category-nav" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px;">
-        <button class="card-link-btn" onclick="applySearch('KI')">🤖 KI & Technik</button>
-        <button class="card-link-btn" onclick="applySearch('Internet')">🌐 Internetkultur</button>
-        <button class="card-link-btn" onclick="applySearch('Wissenschaft')">🔬 Wissenschaft</button>
-    </div>
-    
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>KI‑Ticker</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v=1771420862"></head><body class="dark-mode"><div class="site-layout"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div><div class="category-nav-wrapper"><button class="category-btn" onclick="applySearch('TechCrunch')">TechCrunch</button><button class="category-btn" onclick="applySearch('Ars Technica')">Ars Technica</button><button class="category-btn" onclick="applySearch('Google AI')">Google AI</button><button class="category-btn" onclick="applySearch('arXiv')">arXiv</button><button class="category-btn" onclick="applySearch('NVIDIA Blog')">NVIDIA Blog</button><button class="category-btn" onclick="applySearch('Futurism')">Futurism</button><button class="category-btn" onclick="applySearch('AWS ML Blog')">AWS ML Blog</button><button class="category-btn" onclick="applySearch('OpenAI')">OpenAI</button><button class="category-btn" onclick="applySearch('VentureBeat')">VentureBeat</button></div></header>
         <section class="editorial-section">
             <div class="editorial-badge"><i class="fa-solid fa-star"></i> Tagesthema der Redaktion</div>
             <div class="editorial-card">
@@ -17,16 +11,14 @@
                 <div class="editorial-text">Haben Sie in letzter Zeit das Gefühl, dass das Internet 'leerer' oder repetitiver wird? Die 'Dead Internet Theory' besagt, dass ein Großteil des Traffics und Contents im Netz nicht mehr von Menschen, sondern von Bots stammt.
 
 Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle werden mit Internetdaten trainiert, doch wenn das Netz zunehmend mit KI-generierten Inhalten geflutet wird, trainieren zukünftige Modelle unweigerlich mit diesen synthetischen Daten. Eine im Fachmagazin Nature veröffentlichte Studie warnt vor einem digitalen Teufelskreis: Die Qualität der KI-Ausgaben sinkt rapide, wenn sie nur noch lernt, was eine vorherige KI-Generation fehlerhaft ausgegeben hat.</div>
-                
-                <div class="sources-box">
-                    <strong>Weiterführende Quellen:</strong>
-                    <div class="editorial-sources">- <a href='https://www.nature.com/articles/s41586-024-07566-y' target='_blank'>Nature Studie: 'AI models collapse when trained on recursively generated data' (2024)</a>
+                <div class="editorial-footer-area">
+                    <div class="sources-box-compact">
+                        <strong>Quellen:</strong>
+                        <div class="editorial-sources-list">- <a href='https://www.nature.com/articles/s41586-024-07566-y' target='_blank'>Nature Studie: 'AI models collapse when trained on recursively generated data' (2024)</a>
 - <a href='https://www.theatlantic.com/technology/archive/2021/08/dead-internet-theory-wrong-but-feels-true/619937/' target='_blank'>The Atlantic: 'Maybe You Missed It, but the Internet Died Five Years Ago' (2021)</a>
 - <a href='https://arxiv.org/abs/2401.05749' target='_blank'>ArXiv Research: 'Is computational creativity flourishing on the dead internet?' (2024)</a></div>
-                </div>
-                
-                <div class="editorial-footer" style="margin-top:30px; text-align: center;">
-                    <button class="filter-action-btn" onclick="applySearch('Dead Internet');" style="background:var(--acc); color:var(--bg); border:none; padding:12px 24px; border-radius:30px; font-weight:700; cursor:pointer;">
+                    </div>
+                    <button class="filter-action-btn-styled" onclick="applySearch('Dead Internet');">
                         <i class="fa-solid fa-magnifying-glass"></i> Passende News finden
                     </button>
                 </div>
@@ -164,13 +156,143 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
         </section>
         <section class="source-section">
             <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=blog.google&sz=32" alt=""> Google AI</div>
+                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=arstechnica.com&sz=32" alt=""> Ars Technica</div>
                 <div class="carousel-nav">
                     <button class="nav-btn" onclick="scrollCarousel('carousel-1', -1)"><i class="fa-solid fa-chevron-left"></i></button>
                     <button class="nav-btn" onclick="scrollCarousel('carousel-1', 1)"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
             <div class="carousel-wrapper"><div class="news-carousel" id="carousel-1">
+            <article class="card" data-content="hallucinogen dmt an effective antidepressant in small clinical trial">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">18.02. • 12:00</div>
+                    <h3><a href="https://arstechnica.com/health/2026/02/hallucinogen-dmt-an-effective-antidepressant-in-small-clinical-trial/" target="_blank">Hallucinogen DMT an effective antidepressant in small clinical trial</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/health/2026/02/hallucinogen-dmt-an-effective-antidepressant-in-small-clinical-trial/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="gamehub will give mac owners another imperfect way to play windows games">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 22:45</div>
+                    <h3><a href="https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/" target="_blank">GameHub will give Mac owners another imperfect way to play Windows games</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="password managers' promise that they can't see your vaults isn't always true">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 20:43</div>
+                    <h3><a href="https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/" target="_blank">Password managers' promise that they can't see your vaults isn't always true</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="stephen colbert says cbs forbid interview of democrat because of fcc threat">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 19:01</div>
+                    <h3><a href="https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/" target="_blank">Stephen Colbert says CBS forbid interview of Democrat because of FCC threat</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="most vmware users still "actively reducing their vmware footprint," survey finds">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 18:38</div>
+                    <h3><a href="https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/" target="_blank">Most VMware users still "actively reducing their VMware footprint," survey finds</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="what happens to a car when the company behind its software goes under?">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 18:15</div>
+                    <h3><a href="https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/" target="_blank">What happens to a car when the company behind its software goes under?</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="ram shortage hits valve's four-year-old steam deck, now available "intermittently"">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 17:56</div>
+                    <h3><a href="https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/" target="_blank">RAM shortage hits Valve's four-year-old Steam Deck, now available "intermittently"</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="warner bros. rejects paramount again but asks for "best and final offer"">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 17:17</div>
+                    <h3><a href="https://arstechnica.com/tech-policy/2026/02/warner-bros-gives-paramount-one-more-week-to-beat-netflix-merger-offer/" target="_blank">Warner Bros. rejects Paramount again but asks for "best and final offer"</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/tech-policy/2026/02/warner-bros-gives-paramount-one-more-week-to-beat-netflix-merger-offer/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="there's a lot of big talk about sovereign launch—who is doing something about it?">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 16:47</div>
+                    <h3><a href="https://arstechnica.com/space/2026/02/which-countries-are-actually-serious-about-developing-their-own-rockets/" target="_blank">There's a lot of big talk about sovereign launch—who is doing something about it?</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/space/2026/02/which-countries-are-actually-serious-about-developing-their-own-rockets/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-content="here's the fun, action-packed trailer for mandolorian and grogu">
+                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">17.02. • 16:10</div>
+                    <h3><a href="https://arstechnica.com/culture/2026/02/heres-the-fun-action-packed-trailer-for-mandolorian-and-grogu/" target="_blank">Here's the fun, action-packed trailer for Mandolorian and Grogu</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/culture/2026/02/heres-the-fun-action-packed-trailer-for-mandolorian-and-grogu/')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article></div></div>
+        </section>
+        <section class="source-section">
+            <div class="source-header">
+                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=blog.google&sz=32" alt=""> Google AI</div>
+                <div class="carousel-nav">
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-2', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-2', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-2">
             <article class="card" data-content="ai impact summit 2026: how we’re partnering to make ai work for everyone">
                 <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
                 <div class="card-body">
@@ -296,11 +418,11 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
             <div class="source-header">
                 <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" alt=""> arXiv</div>
                 <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-2', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-2', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-3', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-3', 1)"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-2">
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-3">
             <article class="card" data-content="attention-gated u-net model for semantic segmentation of brain tumors and feature extraction for survival prognosis">
                 <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
                 <div class="card-body">
@@ -426,11 +548,11 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
             <div class="source-header">
                 <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=blogs.nvidia.com&sz=32" alt=""> NVIDIA Blog</div>
                 <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-3', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-3', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-4', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('carousel-4', 1)"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-3">
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-4">
             <article class="card" data-content="india fuels its ai mission with nvidia">
                 <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
                 <div class="card-body">
@@ -546,136 +668,6 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
                     <h3><a href="https://blogs.nvidia.com/blog/ai-agents-intelligent-document-processing/" target="_blank">Nemotron Labs: How AI Agents Are Turning Documents Into Real-Time Business Intelligence</a></h3>
                     <div class="share-bar">
                         <button class="card-link-btn" onclick="copyToClipboard('https://blogs.nvidia.com/blog/ai-agents-intelligent-document-processing/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article></div></div>
-        </section>
-        <section class="source-section">
-            <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=arstechnica.com&sz=32" alt=""> Ars Technica</div>
-                <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-4', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollCarousel('carousel-4', 1)"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
-            </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-4">
-            <article class="card" data-content="gamehub will give mac owners another imperfect way to play windows games">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 22:45</div>
-                    <h3><a href="https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/" target="_blank">GameHub will give Mac owners another imperfect way to play Windows games</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="password managers' promise that they can't see your vaults isn't always true">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 20:43</div>
-                    <h3><a href="https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/" target="_blank">Password managers' promise that they can't see your vaults isn't always true</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="stephen colbert says cbs forbid interview of democrat because of fcc threat">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 19:01</div>
-                    <h3><a href="https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/" target="_blank">Stephen Colbert says CBS forbid interview of Democrat because of FCC threat</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="most vmware users still "actively reducing their vmware footprint," survey finds">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 18:38</div>
-                    <h3><a href="https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/" target="_blank">Most VMware users still "actively reducing their VMware footprint," survey finds</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="what happens to a car when the company behind its software goes under?">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 18:15</div>
-                    <h3><a href="https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/" target="_blank">What happens to a car when the company behind its software goes under?</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="ram shortage hits valve's four-year-old steam deck, now available "intermittently"">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 17:56</div>
-                    <h3><a href="https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/" target="_blank">RAM shortage hits Valve's four-year-old Steam Deck, now available "intermittently"</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="warner bros. rejects paramount again but asks for "best and final offer"">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 17:17</div>
-                    <h3><a href="https://arstechnica.com/tech-policy/2026/02/warner-bros-gives-paramount-one-more-week-to-beat-netflix-merger-offer/" target="_blank">Warner Bros. rejects Paramount again but asks for "best and final offer"</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/tech-policy/2026/02/warner-bros-gives-paramount-one-more-week-to-beat-netflix-merger-offer/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="there's a lot of big talk about sovereign launch—who is doing something about it?">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 16:47</div>
-                    <h3><a href="https://arstechnica.com/space/2026/02/which-countries-are-actually-serious-about-developing-their-own-rockets/" target="_blank">There's a lot of big talk about sovereign launch—who is doing something about it?</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/space/2026/02/which-countries-are-actually-serious-about-developing-their-own-rockets/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="here's the fun, action-packed trailer for mandolorian and grogu">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 16:10</div>
-                    <h3><a href="https://arstechnica.com/culture/2026/02/heres-the-fun-action-packed-trailer-for-mandolorian-and-grogu/" target="_blank">Here's the fun, action-packed trailer for Mandolorian and Grogu</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/culture/2026/02/heres-the-fun-action-packed-trailer-for-mandolorian-and-grogu/')">
-                            <i class="fa-solid fa-link"></i> Link kopieren
-                        </button>
-                    </div>
-                </div>
-            </article>
-            <article class="card" data-content="ford is focusing on efficiency to make its 2027 $30,000 ev pickup affordable">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
-                <div class="card-body">
-                    <div class="meta">17.02. • 16:00</div>
-                    <h3><a href="https://arstechnica.com/cars/2026/02/ford-is-focusing-on-efficiency-to-make-its-2027-30000-ev-pickup-affordable/" target="_blank">Ford is focusing on efficiency to make its 2027 $30,000 EV pickup affordable</a></h3>
-                    <div class="share-bar">
-                        <button class="card-link-btn" onclick="copyToClipboard('https://arstechnica.com/cars/2026/02/ford-is-focusing-on-efficiency-to-make-its-2027-30000-ev-pickup-affordable/')">
                             <i class="fa-solid fa-link"></i> Link kopieren
                         </button>
                     </div>
@@ -1165,4 +1157,4 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
                     </div>
                 </div>
             </article></div></div>
-        </section><footer class="footer"><p>&copy; 2026 KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main></div><script>function scrollCarousel(id, dir) { const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({ left: dir * amount, behavior: 'smooth' }); } function filterNews(t){ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => { if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }); } function applySearch(word) { document.getElementById('searchInput').value = word; filterNews(word); } document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}</script></body></html>
+        </section><footer class="footer"><p>&copy; 2026 KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main></div><script>function scrollCarousel(id, dir) { const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({ left: dir * amount, behavior: 'smooth' }); } function filterNews(t){ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => { if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }); } function applySearch(word) { document.getElementById('searchInput').value = word; filterNews(word); window.scrollTo({top: 0, behavior: 'smooth'}); } document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}</script></body></html>
