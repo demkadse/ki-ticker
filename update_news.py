@@ -88,7 +88,9 @@ def render_index(items, editorial):
         yt_id = get_youtube_id(editorial.get('video_url'))
         author_link = f'<a href="{editorial.get("author_url")}" target="_blank" style="color:var(--acc); text-decoration:none; font-size:0.85rem;"><i class="fa-brands fa-youtube"></i> Zum Kanal des Video-Urhebers</a>' if editorial.get('author_url') else ""
         video_embed = f'<div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/{yt_id}" allowfullscreen></iframe></div>' if yt_id else ""
-        
+        raw_sources = editorial.get('content', '')
+        clean_sources = re.sub(r'^\s*-\s*', '', raw_sources, flags=re.MULTILINE)
+
         editorial_html = f"""
         <section class="editorial-section">
             <div class="editorial-badge"><i class="fa-solid fa-star"></i> Tagesthema der Redaktion</div>
@@ -97,17 +99,19 @@ def render_index(items, editorial):
                 {video_embed}
                 <div style="margin-bottom:20px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px;">
                     {author_link}
-                    <p style="font-size:0.75rem; color:var(--muted); margin-top:5px; line-height:1.3;">
-                        <strong>Hinweis:</strong> Dieses Video ist ein externer Beitrag. Die Redaktion macht sich die Inhalte nicht zu eigen; nur der Begleittext ist eine Eigenleistung.
+                    <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;">
+                        <strong>Hinweis:</strong> Dieses Video ist ein externer Beitrag. Die Redaktion macht sich die Inhalte nicht zu eigen.
                     </p>
                 </div>
                 <div class="editorial-text">{editorial.get('description', '')}</div>
                 <div style="margin-top:20px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1);">
-                    <strong style="font-size:0.8rem; color:var(--acc); display:block; margin-bottom:8px;">Weiterführende Quellen:</strong>
-                    <div class="editorial-sources">{editorial.get('content', '')}</div>
+                    <strong style="font-size:0.8rem; color:var(--acc); display:block; margin-bottom:10px;">Quellen:</strong>
+                    <div class="editorial-sources">{clean_sources}</div>
                 </div>
-                <div class="editorial-footer" style="margin-top:20px;">
-                    <button class="filter-action-btn" onclick="applySearch('{editorial.get('search_term','')}');"><i class="fa-solid fa-magnifying-glass"></i> Passende News finden</button>
+                <div class="editorial-footer" style="margin-top:25px;">
+                    <button class="filter-action-btn" onclick="applySearch('{editorial.get('search_term','')}');" style="background:var(--acc); color:var(--bg); border:none; padding:10px 20px; border-radius:6px; font-weight:700; cursor:pointer;">
+                        <i class="fa-solid fa-magnifying-glass"></i> Passende News finden
+                    </button>
                 </div>
             </div>
         </section>"""
@@ -119,23 +123,33 @@ def render_index(items, editorial):
         source_domain = grouped[src][0]['domain']
         for it in grouped[src]:
             dt = datetime.datetime.fromisoformat(it["published_iso"])
-            cards_html += f'<article class="card" data-content="{it["title"].lower()}"><div class="img-container"><img src="{hero_default}" loading="lazy" alt=""></div><div class="card-body"><div class="meta">{dt.strftime("%d.%m. • %H:%M")}</div><h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3><div class="share-bar"><button onclick="copyToClipboard(\'{it["url"]}\')"><i class="fa-solid fa-link"></i> Link</button></div></div></article>'
-        
-        cards_html += f'<article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Deep-Dive?</p><a href="https://{source_domain}" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">Alle Artikel bei {src} <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article>'
+            cards_html += f"""
+            <article class="card" data-content="{it["title"].lower()}">
+                <div class="img-container"><img src="{hero_default}" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">{dt.strftime("%d.%m. • %H:%M")}</div>
+                    <h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3>
+                    <div class="share-bar">
+                        <button class="card-link-btn" onclick="copyToClipboard('{it['url']}')">
+                            <i class="fa-solid fa-link"></i> Link kopieren
+                        </button>
+                    </div>
+                </div>
+            </article>"""
 
         main_content += f"""
         <section class="source-section">
             <div class="source-header">
                 <div class="source-title"><img src="https://www.google.com/s2/favicons?domain={source_domain}&sz=32" alt=""> {src}</div>
                 <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollCarousel('{carousel_id}', -1)" title="Zurück"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollCarousel('{carousel_id}', 1)" title="Vorwärts"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('{carousel_id}', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('{carousel_id}', 1)"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
             <div class="carousel-wrapper"><div class="news-carousel" id="{carousel_id}">{cards_html}</div></div>
         </section>"""
 
-    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"></head><body class="dark-mode"><div class="site-layout"><aside class="sidebar-ad left"></aside><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>{editorial_html}{main_content}<footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main><aside class="sidebar-ad right"></aside></div><script>function scrollCarousel(id, dir) {{ const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({{ left: dir * amount, behavior: 'smooth' }}); }} function filterNews(t){{ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => {{ if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }}); }} document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Kopiert!'));}}</script></body></html>"""
+    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"></head><body class="dark-mode"><div class="site-layout"><aside class="sidebar-ad left"></aside><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>{editorial_html}{main_content}<footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main><aside class="sidebar-ad right"></aside></div><script>function scrollCarousel(id, dir) {{ const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({{ left: dir * amount, behavior: 'smooth' }}); }} function filterNews(t){{ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => {{ if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }}); }} document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}}</script></body></html>"""
 
 # --- STEUERUNG VON HAUPTPROZESS ---
 def main():
