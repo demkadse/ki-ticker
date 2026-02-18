@@ -10,7 +10,6 @@ import requests, feedparser
 # --- STEUERUNG VON KONFIGURATION ---
 SITE_TITLE = "KI‑Ticker"
 SITE_URL = "https://ki-ticker.boehmonline.space"
-ADSENSE_PUB = "pub-2616688648278798"
 DB_FILE = "news_db.json"
 EDITORIAL_FILE = "editorial.json"
 HERO_BASE = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80"
@@ -94,14 +93,12 @@ def render_index(items, editorial):
         editorial_html = f"""
         <section class="editorial-section">
             <div class="editorial-badge"><i class="fa-solid fa-star"></i> Tagesthema der Redaktion</div>
-            <div class="editorial-card">
+            <div class="editorial-card" style="background: linear-gradient(145deg, #1e293b, #151c2e); border: 1px solid var(--acc); padding: 30px; border-radius: 12px; margin-bottom: 50px;">
                 <h2>{editorial.get('title', '...')}</h2>
                 {video_embed}
                 <div style="margin-bottom:20px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px;">
                     {author_link}
-                    <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;">
-                        <strong>Hinweis:</strong> Dieses Video ist ein externer Beitrag. Die Redaktion macht sich die Inhalte nicht zu eigen.
-                    </p>
+                    <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;"><strong>Hinweis:</strong> Dieses Video ist ein externer Beitrag.</p>
                 </div>
                 <div class="editorial-text">{editorial.get('description', '')}</div>
                 <div style="margin-top:20px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1);">
@@ -109,7 +106,7 @@ def render_index(items, editorial):
                     <div class="editorial-sources">{clean_sources}</div>
                 </div>
                 <div class="editorial-footer" style="margin-top:25px;">
-                    <button class="filter-action-btn" onclick="applySearch('{editorial.get('search_term','')}');" style="background:var(--acc); color:var(--bg); border:none; padding:10px 20px; border-radius:6px; font-weight:700; cursor:pointer;">
+                    <button class="filter-action-btn" onclick="applySearch('{editorial.get('search_term','')}');">
                         <i class="fa-solid fa-magnifying-glass"></i> Passende News finden
                     </button>
                 </div>
@@ -149,7 +146,7 @@ def render_index(items, editorial):
             <div class="carousel-wrapper"><div class="news-carousel" id="{carousel_id}">{cards_html}</div></div>
         </section>"""
 
-    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"></head><body class="dark-mode"><div class="site-layout"><aside class="sidebar-ad left"></aside><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>{editorial_html}{main_content}<footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main><aside class="sidebar-ad right"></aside></div><script>function scrollCarousel(id, dir) {{ const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({{ left: dir * amount, behavior: 'smooth' }}); }} function filterNews(t){{ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => {{ if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }}); }} document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}}</script></body></html>"""
+    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"></head><body class="dark-mode"><div class="site-layout"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>{editorial_html}{main_content}<footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main></div><script>function scrollCarousel(id, dir) {{ const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({{ left: dir * amount, behavior: 'smooth' }}); }} function filterNews(t){{ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => {{ if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }}); }} document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}}</script></body></html>"""
 
 # --- STEUERUNG VON HAUPTPROZESS ---
 def main():
