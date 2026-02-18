@@ -9,55 +9,58 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color
 .site-layout { display: flex; justify-content: center; align-items: flex-start; max-width: 1650px; margin: 0 auto; padding: 0 10px; gap: 20px; }
 .container { flex: 1; max-width: 1100px; width: 100%; min-width: 0; position: relative; }
 
-/* Skyscraper: Erst ab sehr großen Bildschirmen einblenden */
+/* Skyscraper */
 .sidebar-ad { display: none; width: 160px; position: sticky; top: 20px; height: 600px; background: rgba(255,255,255,0.02); border: 1px dashed var(--border); border-radius: 8px; flex-shrink: 0; }
 @media (min-width: 1480px) { .sidebar-ad { display: block; } }
 
+/* Header */
 .header { text-align: center; margin: 30px 0; }
-.header h1 { font-size: 2.5rem; margin: 0; font-weight: 800; }
+.header h1 { font-size: 2.5rem; margin: 0 0 15px; font-weight: 800; }
 .search-wrapper { position: relative; max-width: 450px; margin: 0 auto 30px; }
 #searchInput { width: 100%; padding: 14px 25px; border-radius: 30px; border: 1px solid var(--border); background: var(--card); color: var(--text); outline: none; font-size: 1rem; }
 
-/* --- EDITORIAL (GARANTIERT GROSS) --- */
+/* --- EDITORIAL (RIESEN-VIDEO) --- */
 .editorial-card { width: 100% !important; background: linear-gradient(145deg, #1e293b, #151c2e); border: 1px solid var(--acc); padding: 30px; border-radius: var(--radius); margin-bottom: 50px; }
 .editorial-badge { display: inline-block; background: var(--acc); color: var(--bg); padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; }
 
-.video-container { width: 100% !important; min-width: 100% !important; aspect-ratio: 16 / 9; background: #000; border-radius: 8px; overflow: hidden; margin-bottom: 25px; }
+.video-container { width: 100% !important; aspect-ratio: 16 / 9; background: #000; border-radius: 8px; overflow: hidden; margin-bottom: 25px; }
 .video-container iframe { width: 100%; height: 100%; border: 0; }
 
 .editorial-text { font-size: 1.15rem; line-height: 1.7; white-space: pre-wrap; margin-bottom: 30px; }
-.editorial-text a { color: var(--acc); display: block; margin-bottom: 10px; width: fit-content; text-decoration: none; border-bottom: 1px solid transparent; }
+.editorial-text a { color: var(--acc); display: block !important; margin-bottom: 10px; width: fit-content; text-decoration: none; border-bottom: 1px solid transparent; }
 .editorial-text a:hover { border-bottom-color: var(--acc); }
 
-/* --- CAROUSEL (NAVIGATION FIX) --- */
-.source-section { margin-bottom: 60px; width: 100%; position: relative; overflow: visible; }
-.source-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+/* --- ZENTRIERTE NAVIGATION ÜBER CAROUSEL --- */
+.source-section { margin-bottom: 60px; width: 100%; }
+.source-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 15px; }
+.source-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.source-title img { width: 22px; height: 22px; border-radius: 4px; }
 
-.carousel-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
-
-/* Nav-Buttons: Am PC dauerhaft sichtbar für Testzwecke */
-.nav-btn {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    width: 48px; height: 48px; border-radius: 50%;
-    background: var(--acc); color: #000; border: none;
-    cursor: pointer; z-index: 50; display: none; align-items: center; justify-content: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.6); transition: 0.2s;
+/* Desktop-Pfeile zentriert */
+.carousel-nav { display: flex; gap: 15px; justify-content: center; }
+.nav-btn { 
+    width: 36px; height: 36px; border-radius: 50%; background: var(--card); color: var(--acc); 
+    border: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; 
+    justify-content: center; transition: 0.2s; 
 }
-@media (min-width: 1025px) { .nav-btn { display: flex; opacity: 0.7; } .carousel-wrapper:hover .nav-btn { opacity: 1; } }
-.nav-btn.left { left: -24px; }
-.nav-btn.right { right: -24px; }
-.nav-btn:hover { background: #fff; transform: translateY(-50%) scale(1.1); }
+.nav-btn:hover { background: var(--acc); color: var(--bg); border-color: var(--acc); }
 
-/* Fade-Effekt (darf nicht blockieren) */
+/* NUR AM PC SICHTBAR */
+@media (max-width: 1024px) {
+    .carousel-nav { display: none; }
+}
+
+.carousel-wrapper { position: relative; width: 100%; }
+/* Dezenter Fade-Effekt am Rand */
 .carousel-wrapper::after {
-    content: ''; position: absolute; top: 0; right: 0; width: 120px; height: 100%;
+    content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 100%;
     background: linear-gradient(to right, transparent, var(--bg));
     pointer-events: none; z-index: 5;
 }
 
 .news-carousel { 
     display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; 
-    gap: 22px; padding: 10px 0 30px; scroll-snap-type: x mandatory;
+    gap: 20px; padding: 10px 0 25px; scroll-snap-type: x mandatory;
     scroll-behavior: smooth; scrollbar-width: none;
 }
 .news-carousel::-webkit-scrollbar { display: none; }
@@ -73,13 +76,14 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color
 .img-container img { width: 100%; height: 100%; object-fit: cover; }
 
 .card-body { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-.card h3 { margin: 0 0 15px; font-size: 1.1rem; line-height: 1.4; font-weight: 600; }
+.card h3 { margin: 0 0 15px; font-size: 1.05rem; line-height: 1.4; font-weight: 600; }
 .card h3 a { color: var(--text); text-decoration: none; }
+.meta { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
 
 .share-bar { margin-top: auto; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); }
 .share-bar button { background: transparent; color: var(--muted); border: 1px solid var(--border); padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; }
 
-.footer { padding: 60px 0; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 50px; }
+.footer { padding: 60px 0; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 40px; }
 .footer a { color: var(--muted); margin: 0 15px; text-decoration: none; }
 
-@media (max-width: 600px) { .card { flex: 0 0 88%; } .header h1 { font-size: 2rem; } .editorial-card { padding: 15px; } }
+@media (max-width: 600px) { .card { flex: 0 0 88%; } }

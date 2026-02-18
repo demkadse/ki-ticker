@@ -52,11 +52,6 @@ def get_youtube_id(url):
         if parsed.path.startswith(('/embed/', '/v/')): return parsed.path.split('/')[2]
     return None
 
-def generate_sitemap():
-    now = datetime.datetime.now().strftime("%Y-%m-%d")
-    xml = f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{SITE_URL}/index.html</loc><lastmod>{now}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url><url><loc>{SITE_URL}/ueber-uns.html</loc><lastmod>{now}</lastmod></url></urlset>'
-    with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(xml)
-
 def fetch_feed(feed_info):
     name, url = feed_info
     try:
@@ -104,11 +99,21 @@ def render_index(items, editorial):
         source_domain = grouped[src][0]['domain']
         for it in grouped[src]:
             dt = datetime.datetime.fromisoformat(it["published_iso"])
-            cards_html += f'<article class="card" data-content="{it["title"].lower()}"><div class="img-container"><img src="{hero_default}" loading="lazy" alt=""></div><div class="card-body"><div style="font-size:11px; color:var(--muted); margin-bottom:8px;">{dt.strftime("%d.%m. • %H:%M")}</div><h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3><div class="share-bar"><button onclick="copyToClipboard(\'{it["url"]}\')"><i class="fa-solid fa-link"></i> Link</button></div></div></article>'
+            cards_html += f'<article class="card" data-content="{it["title"].lower()}"><div class="img-container"><img src="{hero_default}" loading="lazy" alt=""></div><div class="card-body"><div class="meta">{dt.strftime("%d.%m. • %H:%M")}</div><h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3><div class="share-bar"><button onclick="copyToClipboard(\'{it["url"]}\')"><i class="fa-solid fa-link"></i> Link</button></div></div></article>'
         
-        cards_html += f'<article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Lust auf den Deep-Dive?</p><a href="https://{source_domain}" target="_blank" class="filter-action-btn" style="padding:10px 20px; font-size:0.85rem;">Alle Artikel bei {src} <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article>'
+        cards_html += f'<article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Deep-Dive?</p><a href="https://{source_domain}" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">Alle Artikel bei {src} <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article>'
 
-        main_content += f'<section class="source-section"><div class="source-title"><img src="https://www.google.com/s2/favicons?domain={source_domain}&sz=32" alt=""> {src}</div><div class="carousel-wrapper"><button class="nav-btn left" onclick="scrollCarousel(\'{carousel_id}\', -1)"><i class="fa-solid fa-chevron-left"></i></button><div class="news-carousel" id="{carousel_id}">{cards_html}</div><button class="nav-btn right" onclick="scrollCarousel(\'{carousel_id}\', 1)"><i class="fa-solid fa-chevron-right"></i></button></div></section>'
+        main_content += f"""
+        <section class="source-section">
+            <div class="source-header">
+                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain={source_domain}&sz=32" alt=""> {src}</div>
+                <div class="carousel-nav">
+                    <button class="nav-btn" onclick="scrollCarousel('{carousel_id}', -1)" title="Zurück"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('{carousel_id}', 1)" title="Vorwärts"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="carousel-wrapper"><div class="news-carousel" id="{carousel_id}">{cards_html}</div></div>
+        </section>"""
 
     return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"></head><body class="dark-mode"><div class="site-layout"><aside class="sidebar-ad left"></aside><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>{editorial_html}{main_content}<footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main><aside class="sidebar-ad right"></aside></div><script>function scrollCarousel(id, dir) {{ const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({{ left: dir * amount, behavior: 'smooth' }}); }} function filterNews(t){{ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => {{ if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }}); }} document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Kopiert!'));}}</script></body></html>"""
 
@@ -117,7 +122,6 @@ def main():
     with ThreadPoolExecutor(max_workers=11) as ex: res = list(ex.map(fetch_feed, FEEDS))
     items = [i for r in res for i in r]
     raw_sorted = sorted(items, key=lambda x: x["published_iso"], reverse=True)
-    generate_sitemap()
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(raw_sorted, editorial))
 
 if __name__ == "__main__": main()
