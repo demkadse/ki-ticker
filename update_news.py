@@ -60,7 +60,6 @@ def generate_sitemap():
 def render_html(items, editorial):
     now_year = datetime.datetime.now().year
     
-    # 1. Group & Sort
     grouped = {}
     for it in items:
         if it["source"] not in grouped: grouped[it["source"]] = []
@@ -69,11 +68,26 @@ def render_html(items, editorial):
     sorted_sources = sorted(grouped.keys(), key=lambda s: grouped[s][0]["pub"] if grouped[s] else 0, reverse=True)
     nav_buttons = "".join([f'<button class="nav-btn" onclick="filterFeed(\'{s}\')">{s}</button>' for s in sorted_sources])
 
-    # 2. Editorial Box
+    # Editorial Box
     editorial_html = ""
     if editorial:
-        yt_id = parse_qs(urlparse(editorial.get('video_url', '')).query).get('v', [None])[0]
+        yt_url = editorial.get('video_url', '')
+        yt_id = parse_qs(urlparse(yt_url).query).get('v', [None])[0]
+        
+        # Urheber-Info extrahieren (Fallback auf Video-Link wenn keine Author-URL im JSON)
+        author_url = editorial.get('author_url', yt_url)
+        author_name = editorial.get('author_name', 'Externer Quelle')
+        
         video_embed = f'<div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/{yt_id}" allowfullscreen></iframe></div>' if yt_id else ""
+        
+        # Der neue Disclaimer Block
+        disclaimer_html = f"""
+        <div class="video-meta">
+            Hinweis: Das oben eingebundene Video ist ein externer Inhalt von <a href="{author_url}" target="_blank">{author_name}</a>. 
+            Es dient der kontextuellen Vertiefung. Die redaktionelle Verantwortung für das Video liegt beim Urheber.
+        </div>
+        """ if yt_id else ""
+
         sources_text = editorial.get('content', '')
         
         editorial_html = f"""
@@ -81,11 +95,12 @@ def render_html(items, editorial):
             <span class="editorial-badge">Top-Thema</span>
             <h2 style="font-size:2rem; margin-bottom:20px; color:#fff;">{editorial.get('title')}</h2>
             {video_embed}
+            {disclaimer_html}
             <div class="editorial-text">{editorial.get('description')}</div>
             <div class="editorial-sources"><strong>Quellen:</strong> {sources_text}</div>
         </article>"""
 
-    # 3. News Feeds
+    # News Feeds
     feeds_html = ""
     for idx, source in enumerate(sorted_sources):
         cards = ""
@@ -102,7 +117,6 @@ def render_html(items, editorial):
                 </div>
             </article>"""
         
-        # Hier werden die Pfeile eingefügt
         feeds_html += f"""
         <section class="news-section" id="feed-{idx}">
             <div class="section-header">
@@ -151,13 +165,11 @@ def render_html(items, editorial):
     </footer>
 
     <script>
-    // Scroll Logik für die Pfeile
     function scrollCarousel(id, direction) {{
         const container = document.getElementById(id);
-        const scrollAmount = 345; // Kartenbreite + Gap
+        const scrollAmount = 345;
         container.scrollBy({{ left: direction * scrollAmount, behavior: 'smooth' }});
     }}
-
     const searchInput = document.getElementById('searchInput');
     function filterFeed(sourceName) {{
         document.querySelectorAll('.news-section').forEach(sec => {{
