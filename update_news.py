@@ -87,7 +87,7 @@ def render_index(items, editorial):
             <div class="editorial-card">
                 <h2 style="margin-bottom:25px;">{editorial.get('title', '...')}</h2>
                 {video_embed}
-                <div style="margin-bottom:25px; padding:15px; background:rgba(255,255,255,0.03); border-radius:8px;">
+                <div style="margin-bottom:25px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px;">
                     {author_link}
                     <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;">Hinweis: Externer Videobeitrag.</p>
                 </div>
@@ -102,13 +102,42 @@ def render_index(items, editorial):
                         <div class="editorial-sources-list">{editorial.get('content', '')}</div>
                     </div>
                     <button class="toggle-btn" style="margin:0; width:auto; border-radius:30px; background:var(--acc); color:var(--bg);" onclick="applySearch('{editorial.get('search_term','')}');">
-                        <i class="fa-solid fa-magnifying-glass"></i> Passende News filtern
+                        <i class="fa-solid fa-magnifying-glass"></i> News filtern
                     </button>
                 </div>
             </div>
         </section>"""
 
-    main_content = "".join([f"""<section class="source-section"><div class="source-header"><div class="source-title"><img src="https://www.google.com/s2/favicons?domain={grouped[s][0]['domain']}&sz=32" alt=""> {s}</div><div class="carousel-nav"><button class="nav-btn" onclick="scrollCarousel('carousel-{idx}', -1)"><i class="fa-solid fa-chevron-left"></i></button><button class="nav-btn" onclick="scrollCarousel('carousel-{idx}', 1)"><i class="fa-solid fa-chevron-right"></i></button></div></div><div class="carousel-wrapper"><div class="news-carousel" id="carousel-{idx}">{"".join([f'<article class="card" data-content="{it["title"].lower()}"><div class="img-container"><img src="{hero_default}" loading="lazy" alt=""></div><div class="card-body"><div class="meta">{datetime.datetime.fromisoformat(it["published_iso"]).strftime("%d.%m. • %H:%M")}</div><h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3><div class="share-bar" style="margin-top:auto; padding-top:15px; border-top:1px solid rgba(255,255,255,0.05); text-align:center;"><button class="toggle-btn" style="margin:0; width:100%; border-radius:8px;" onclick="copyToClipboard(\'{it["url"]}\')">Link kopieren</button></div></div></article>' for it in grouped[s]])}</div></div></section>""" for idx, s in enumerate(sorted_sources)])
+    main_content = ""
+    for idx, src in enumerate(sorted_sources):
+        carousel_id = f"carousel-{idx}"
+        cards_html = ""
+        for it in grouped[src]:
+            dt = datetime.datetime.fromisoformat(it["published_iso"]).strftime("%d.%m. • %H:%M")
+            # Wir nutzen hier einfache Anführungszeichen für JS, um den f-string Backslash-Error zu umgehen
+            cards_html += f"""
+            <article class="card" data-content="{it['title'].lower()}">
+                <div class="img-container"><img src="{hero_default}" loading="lazy" alt=""></div>
+                <div class="card-body">
+                    <div class="meta">{dt}</div>
+                    <h3><a href="{it['url']}" target="_blank">{it['title']}</a></h3>
+                    <div class="share-bar" style="margin-top:auto; padding-top:15px; border-top:1px solid rgba(255,255,255,0.05); text-align:center;">
+                        <button class="toggle-btn" style="margin:0; width:100%; border-radius:8px;" onclick="copyToClipboard('{it['url']}')">Link kopieren</button>
+                    </div>
+                </div>
+            </article>"""
+        
+        main_content += f"""
+        <section class="source-section">
+            <div class="source-header">
+                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain={grouped[src][0]['domain']}&sz=32" alt=""> {src}</div>
+                <div class="carousel-nav">
+                    <button class="nav-btn" onclick="scrollCarousel('{carousel_id}', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-btn" onclick="scrollCarousel('{carousel_id}', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="carousel-wrapper"><div class="news-carousel" id="{carousel_id}">{cards_html}</div></div>
+        </section>"""
 
     return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0"><meta http-equiv="expires" content="0"><meta http-equiv="pragma" content="no-cache">
