@@ -1,40 +1,28 @@
-# --- STEUERUNG VON WORKFLOW-NAME ---
 name: Update KI-Ticker
-
-# --- STEUERUNG VON AUTOMATISIERUNG ---
 on:
   schedule:
     - cron: "17 * * * *"
   workflow_dispatch: {}
-
-# --- STEUERUNG VON BERECHTIGUNGEN ---
 permissions:
   contents: write
-
-# --- STEUERUNG VON PROZESS-SCHRITTEN ---
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
       - name: Install dependencies
         run: pip install feedparser requests beautifulsoup4
-
       - name: Run updater
         run: python update_news.py
-
-      # --- STEUERUNG VON GITHUB-SYNCHRONISATION ---
       - name: Commit & push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html news_db.json sitemap.xml ads.txt impressum.html datenschutz.html style.css
-          git commit -m "Auto-update news, database and legal pages [skip ci]" || echo "No changes"
+          git add .
+          git commit -m "Auto-update all files [skip ci]" || echo "No changes"
           git push

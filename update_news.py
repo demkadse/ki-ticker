@@ -85,26 +85,26 @@ def render_index(items, editorial):
     editorial_html = ""
     if editorial:
         yt_id = get_youtube_id(editorial.get('video_url'))
-        author_link = f'<a href="{editorial.get("author_url")}" target="_blank" style="color:var(--acc); text-decoration:none; font-size:0.85rem;"><i class="fa-brands fa-youtube"></i> Zum Kanal des Video-Urhebers</a>' if editorial.get('author_url') else ""
+        author_link = f'<a href="{editorial.get("author_url")}" target="_blank" style="font-size:0.85rem;"><i class="fa-brands fa-youtube"></i> Zum Kanal des Video-Urhebers</a>' if editorial.get('author_url') else ""
         video_embed = f'<div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/{yt_id}" allowfullscreen></iframe></div>' if yt_id else ""
         
         editorial_html = f"""
         <section class="editorial-section">
             <div class="editorial-badge"><i class="fa-solid fa-star"></i> Tagesthema der Redaktion</div>
-            <div class="editorial-card" style="background: linear-gradient(145deg, #1e293b, #151c2e); border: 1px solid var(--acc); padding: 30px; border-radius: 12px; margin-bottom: 50px;">
-                <h2>{editorial.get('title', '...')}</h2>
+            <div class="editorial-card">
+                <h2 style="margin-bottom:20px;">{editorial.get('title', '...')}</h2>
                 {video_embed}
-                <div style="margin-bottom:20px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px;">
+                <div style="margin-bottom:25px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px;">
                     {author_link}
-                    <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;"><strong>Hinweis:</strong> Externer Videobeitrag.</p>
+                    <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;">Hinweis: Externer Videobeitrag.</p>
                 </div>
                 <div class="editorial-text">{editorial.get('description', '')}</div>
-                <div style="margin-top:20px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1);">
-                    <strong style="font-size:0.8rem; color:var(--acc); display:block; margin-bottom:10px;">Quellen:</strong>
+                <div class="sources-box">
+                    <strong>Weiterführende Quellen:</strong>
                     <div class="editorial-sources">{editorial.get('content', '')}</div>
                 </div>
-                <div class="editorial-footer" style="margin-top:25px;">
-                    <button class="filter-action-btn" onclick="applySearch('{editorial.get('search_term','')}');">
+                <div class="editorial-footer" style="margin-top:30px;">
+                    <button class="filter-action-btn" onclick="applySearch('{editorial.get('search_term','')}');" style="background:var(--acc); color:var(--bg); border:none; padding:12px 24px; border-radius:6px; font-weight:700; cursor:pointer;">
                         <i class="fa-solid fa-magnifying-glass"></i> Passende News finden
                     </button>
                 </div>
