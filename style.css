@@ -17,7 +17,7 @@ a:hover { filter: brightness(1.2); text-decoration: underline; }
 /* --- STEUERUNG VON HEADER & SUCHE --- */
 .header { text-align: center; margin: 40px 0; }
 .header h1 { font-size: 2.8rem; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px; }
-.search-wrapper { max-width: 480px; margin: 0 auto 40px; position: relative; }
+.search-wrapper { max-width: 480px; margin: 0 auto 20px; position: relative; }
 #searchInput { width: 100%; padding: 14px 25px; border-radius: 30px; border: 1px solid var(--border); background: var(--card); color: var(--text); outline: none; font-size: 1rem; transition: 0.2s; }
 #searchInput:focus { border-color: var(--acc); box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1); }
 
