@@ -1,723 +1,910 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KI‑Ticker</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1771429240"></head><body>
-    <header class="hero-header" id="siteHeader">
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KI‑Ticker</title>
+    <link rel="stylesheet" href="style.css?v=1771430273">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header id="siteHeader">
         <h1>KI‑Ticker</h1>
-        <div class="header-controls">
-            <input type="text" id="searchInput" placeholder="Feed durchsuchen...">
-            <div class="category-bar"><button class="cat-btn" onclick="applySearch('TechCrunch')">TechCrunch</button><button class="cat-btn" onclick="applySearch('Futurism')">Futurism</button><button class="cat-btn" onclick="applySearch('Ars Technica')">Ars Technica</button><button class="cat-btn" onclick="applySearch('Google AI')">Google AI</button><button class="cat-btn" onclick="applySearch('arXiv')">arXiv</button><button class="cat-btn" onclick="applySearch('NVIDIA Blog')">NVIDIA Blog</button><button class="cat-btn" onclick="applySearch('OpenAI')">OpenAI</button><button class="cat-btn" onclick="applySearch('VentureBeat')">VentureBeat</button></div>
+        <div class="header-ui">
+            <input type="text" id="searchInput" class="search-input" placeholder="Nachrichten filtern...">
+            <div class="category-nav">
+                <button class="cat-btn" onclick="resetFilter()">Alle</button>
+                <button class="cat-btn" onclick="filterSource('Futurism')">Futurism</button><button class="cat-btn" onclick="filterSource('TechCrunch')">TechCrunch</button><button class="cat-btn" onclick="filterSource('Ars Technica')">Ars Technica</button><button class="cat-btn" onclick="filterSource('Google AI')">Google AI</button><button class="cat-btn" onclick="filterSource('arXiv')">arXiv</button><button class="cat-btn" onclick="filterSource('NVIDIA Blog')">NVIDIA Blog</button><button class="cat-btn" onclick="filterSource('OpenAI')">OpenAI</button><button class="cat-btn" onclick="filterSource('VentureBeat')">VentureBeat</button>
+            </div>
         </div>
     </header>
-    <div class="main-layout">
-        <main>
-            <article class="editorial-card"><div class="editorial-badge">Top-Thema</div><h2>Die 'Dead Internet Theory' und die Sackgasse des 'Model Collapse'</h2><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/oBT74O0IKCs" allowfullscreen></iframe></div><div class="editorial-text" id="eWrap">Die 'Dead Internet Theory' hat sich von einer nischigen Verschwörungstheorie zu einer ernstzunehmenden technologischen Prognose entwickelt. Wir steuern auf eine digitale Echokammer zu, in der künstliche Intelligenzen beginnen, sich von den Inhalten ihrer Vorgänger zu ernähren.
 
-Das Kernproblem bezeichnen Forscher als **'Model Collapse'**. Da LLMs auf Internetdaten trainiert werden, diese aber zunehmend selbst aus KI-generierten Inhalten bestehen, entsteht ein rekursiver Teufelskreis. Ohne den stetigen Zustrom neuer menschlicher Daten verlieren Modelle über Generationen hinweg ihre Fähigkeit, kreative Zusammenhänge zu bilden. Das Internet wird zu einem geschlossenen System. Wer den Zugriff auf authentischen Content verliert, wird in naher Zukunft nur noch Modelle produzieren können, die sich in ihrer eigenen Belanglosigkeit verlieren. Wir müssen uns fragen: Wie sieht ein Internet aus, in dem die KI die einzige Stimme ist, die noch laut genug ist, um gehört zu werden?<div class="read-more-overlay"></div></div><button class="toggle-btn" id="tBtn" onclick="toggleE()">Analyse vollständig lesen</button></article>
+    <div class="main-container">
+        <main>
             
-        <section class="news-row">
-            <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=techcrunch.com&sz=32"> TechCrunch</div>
-                <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollC('c-0', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollC('c-0', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+        <article class="editorial-card">
+            <span class="badge">Tagesthema der Redaktion</span>
+            <h2>Die 'Dead Internet Theory' und die Sackgasse des 'Model Collapse'</h2>
+            <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/oBT74O0IKCs" allowfullscreen></iframe></div>
+            <div class="text-content">Die 'Dead Internet Theory' hat sich von einer nischigen Verschwörungstheorie zu einer ernstzunehmenden technologischen Prognose entwickelt. Wir steuern auf eine digitale Echokammer zu, in der künstliche Intelligenzen beginnen, sich von den Inhalten ihrer Vorgänger zu ernähren.
+
+Das Kernproblem bezeichnen Forscher als **'Model Collapse'**. Da LLMs auf Internetdaten trainiert werden, diese aber zunehmend selbst aus KI-generierten Inhalten bestehen, entsteht ein rekursiver Teufelskreis. Ohne den stetigen Zustrom neuer menschlicher Daten verlieren Modelle über Generationen hinweg ihre Fähigkeit, kreative Zusammenhänge zu bilden. Das Internet wird zu einem geschlossenen System. Wer den Zugriff auf authentischen Content verliert, wird in naher Zukunft nur noch Modelle produzieren können, die sich in ihrer eigenen Belanglosigkeit verlieren. Wir müssen uns fragen: Wie sieht ein Internet aus, in dem die KI die einzige Stimme ist, die noch laut genug ist, um gehört zu werden?</div>
+        </article>
+        
+            <div id="newsContainer">
+                
+        <section class="news-section" id="src-0">
+            <div class="section-header">
+                <div class="source-label">
+                    <img src="https://www.google.com/s2/favicons?domain=futurism.com&sz=32" alt="Futurism">
+                    Futurism
+                </div>
+                <div class="carousel-controls">
+                    <button class="nav-arrow" onclick="scrollCarousel('track-0', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-arrow" onclick="scrollCarousel('track-0', 1)"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="news-grid" id="c-0">
-            <article class="news-card" data-content="kana emerges from stealth with $15m to build flexible ai agents for marketers">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 15:08</div>
-                    <h3><a href="https://techcrunch.com/2026/02/18/kana-emerges-from-stealth-with-15m-to-build-flexible-ai-agents-for-marketers/" target="_blank">Kana emerges from stealth with $15M to build flexible AI agents for marketers</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://techcrunch.com/2026/02/18/kana-emerges-from-stealth-with-15m-to-build-flexible-ai-agents-for-marketers/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="microsoft says office bug exposed customers’ confidential emails to copilot ai">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 14:44</div>
-                    <h3><a href="https://techcrunch.com/2026/02/18/microsoft-says-office-bug-exposed-customers-confidential-emails-to-copilot-ai/" target="_blank">Microsoft says Office bug exposed customers’ confidential emails to Copilot AI</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://techcrunch.com/2026/02/18/microsoft-says-office-bug-exposed-customers-confidential-emails-to-copilot-ai/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="openai pushes into higher education as india seeks to scale ai skills">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 14:32</div>
-                    <h3><a href="https://techcrunch.com/2026/02/18/openai-pushes-into-higher-education-as-india-seeks-to-scale-ai-skills/" target="_blank">OpenAI pushes into higher education as India seeks to scale AI skills</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://techcrunch.com/2026/02/18/openai-pushes-into-higher-education-as-india-seeks-to-scale-ai-skills/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="world labs lands $200m from autodesk to bring world models into 3d workflows">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 14:00</div>
-                    <h3><a href="https://techcrunch.com/2026/02/18/world-labs-lands-200m-from-autodesk-to-bring-world-models-into-3d-workflows/" target="_blank">World Labs lands $200M from Autodesk to bring world models into 3D workflows</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://techcrunch.com/2026/02/18/world-labs-lands-200m-from-autodesk-to-bring-world-models-into-3d-workflows/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="india’s sarvam wants to bring its ai models to feature phones, cars and smart glasses">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 13:01</div>
-                    <h3><a href="https://techcrunch.com/2026/02/18/indias-sarvam-wants-to-bring-its-ai-models-to-feature-phones-cars-and-smart-glasses/" target="_blank">India’s Sarvam wants to bring its AI models to feature phones, cars and smart glasses</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://techcrunch.com/2026/02/18/indias-sarvam-wants-to-bring-its-ai-models-to-feature-phones-cars-and-smart-glasses/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="indian ai lab sarvam’s new models are a major bet on the viability of open-source ai">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 12:55</div>
-                    <h3><a href="https://techcrunch.com/2026/02/18/indian-ai-lab-sarvams-new-models-are-a-major-bet-on-the-viability-of-open-source-ai/" target="_blank">Indian AI lab Sarvam’s new models are a major bet on the viability of open-source AI</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://techcrunch.com/2026/02/18/indian-ai-lab-sarvams-new-models-are-a-major-bet-on-the-viability-of-open-source-ai/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="apple is reportedly cooking up a trio of ai wearables">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 20:14</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/" target="_blank">Apple is reportedly cooking up a trio of AI wearables</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="anthropic releases sonnet 4.6">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 18:00</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/" target="_blank">Anthropic releases Sonnet 4.6</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="mistral ai buys koyeb in first acquisition to back its cloud ambitions">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 17:22</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/" target="_blank">Mistral AI buys Koyeb in first acquisition to back its cloud ambitions</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="spacex vets raise $50m series a for data center links">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 17:00</div>
-                    <h3><a href="https://techcrunch.com/2026/02/17/spacex-vets-raise-50m-series-a-for-data-center-links/" target="_blank">SpaceX vets raise $50M Series A for data center links</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://techcrunch.com/2026/02/17/spacex-vets-raise-50m-series-a-for-data-center-links/')">Link kopieren</button>
-                </div>
-            </article></div>
-        </section>
-        <section class="news-row">
-            <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=futurism.com&sz=32"> Futurism</div>
-                <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollC('c-1', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollC('c-1', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            <div class="carousel-track" id="track-0">
+                
+            <div class="news-card" data-source="Futurism">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 15:53</div>
+                    <h3 class="card-title"><a href="https://futurism.com/artificial-intelligence/realtor-ai-photo-mirror" target="_blank">Realtor Uses AI, Accidentally Posts Photo of Rental Property With Demonic Figure Emerging From Mirror</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://futurism.com/artificial-intelligence/realtor-ai-photo-mirror')">Link kopieren</button>
                 </div>
             </div>
-            <div class="news-grid" id="c-1">
-            <article class="news-card" data-content="tesla’s new sales data is absolutely brutal">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 15:05</div>
-                    <h3><a href="https://futurism.com/advanced-transport/tesla-europe-sales-2026" target="_blank">Tesla’s New Sales Data Is Absolutely Brutal</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://futurism.com/advanced-transport/tesla-europe-sales-2026')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="unity says it has a new product that cooks up entire games using ai">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 14:07</div>
-                    <h3><a href="https://futurism.com/artificial-intelligence/unity-create-entire-games-using-ai" target="_blank">Unity Says It Has a New Product That Cooks Up Entire Games Using AI</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://futurism.com/artificial-intelligence/unity-create-entire-games-using-ai')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="ai data centers are now spiking hard drive prices">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 21:06</div>
-                    <h3><a href="https://futurism.com/artificial-intelligence/ai-data-centers-spiking-hard-drive-prices" target="_blank">AI Data Centers Are Now Spiking Hard Drive Prices</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://futurism.com/artificial-intelligence/ai-data-centers-spiking-hard-drive-prices')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="it turns out that constantly telling workers they’re about to be replaced by ai has grim psychological effects">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 20:08</div>
-                    <h3><a href="https://futurism.com/artificial-intelligence/ai-effects-workers-psychological" target="_blank">It Turns Out That Constantly Telling Workers They’re About to Be Replaced by AI Has Grim Psychological Effects</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://futurism.com/artificial-intelligence/ai-effects-workers-psychological')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="pentagon issues threat to anthropic">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 19:09</div>
-                    <h3><a href="https://futurism.com/artificial-intelligence/pentagon-issues-threat-anthropic" target="_blank">Pentagon Issues Threat to Anthropic</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://futurism.com/artificial-intelligence/pentagon-issues-threat-anthropic')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="chinese robots can now run up walls">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 18:10</div>
-                    <h3><a href="https://futurism.com/robots-and-machines/robots-run-up-walls" target="_blank">Chinese Robots Can Now Run Up Walls</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://futurism.com/robots-and-machines/robots-run-up-walls')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="fsd tries to drive straight into lake">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 17:21</div>
-                    <h3><a href="https://futurism.com/advanced-transport/fsd-lake" target="_blank">FSD Tries to Drive Straight Into Lake</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://futurism.com/advanced-transport/fsd-lake')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="meta patented ai that takes over your account when you die, keeps posting forever">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 16:26</div>
-                    <h3><a href="https://futurism.com/future-society/meta-patented-ai-die-keeps-posting" target="_blank">Meta Patented AI That Takes Over Your Account When You Die, Keeps Posting Forever</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://futurism.com/future-society/meta-patented-ai-die-keeps-posting')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="ai delusions are leading to domestic abuse, harassment, and stalking">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 15:30</div>
-                    <h3><a href="https://futurism.com/artificial-intelligence/ai-abuse-harassment-stalking" target="_blank">AI Delusions Are Leading to Domestic Abuse, Harassment, and Stalking</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://futurism.com/artificial-intelligence/ai-abuse-harassment-stalking')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="top machine learning developer speechless at simple question: should ai simulate emotional intimacy?">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 14:25</div>
-                    <h3><a href="https://futurism.com/artificial-intelligence/ai-developers-emotional-intimacy" target="_blank">Top Machine Learning Developer Speechless at Simple Question: Should AI Simulate Emotional Intimacy?</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://futurism.com/artificial-intelligence/ai-developers-emotional-intimacy')">Link kopieren</button>
-                </div>
-            </article></div>
-        </section>
-        <section class="news-row">
-            <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=arstechnica.com&sz=32"> Ars Technica</div>
-                <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollC('c-2', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollC('c-2', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            
+            <div class="news-card" data-source="Futurism">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 15:05</div>
+                    <h3 class="card-title"><a href="https://futurism.com/advanced-transport/tesla-europe-sales-2026" target="_blank">Tesla’s New Sales Data Is Absolutely Brutal</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://futurism.com/advanced-transport/tesla-europe-sales-2026')">Link kopieren</button>
                 </div>
             </div>
-            <div class="news-grid" id="c-2">
-            <article class="news-card" data-content="hallucinogen dmt an effective antidepressant in small clinical trial">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 12:00</div>
-                    <h3><a href="https://arstechnica.com/health/2026/02/hallucinogen-dmt-an-effective-antidepressant-in-small-clinical-trial/" target="_blank">Hallucinogen DMT an effective antidepressant in small clinical trial</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arstechnica.com/health/2026/02/hallucinogen-dmt-an-effective-antidepressant-in-small-clinical-trial/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="gamehub will give mac owners another imperfect way to play windows games">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 22:45</div>
-                    <h3><a href="https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/" target="_blank">GameHub will give Mac owners another imperfect way to play Windows games</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="password managers' promise that they can't see your vaults isn't always true">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 20:43</div>
-                    <h3><a href="https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/" target="_blank">Password managers' promise that they can't see your vaults isn't always true</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="stephen colbert says cbs forbid interview of democrat because of fcc threat">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 19:01</div>
-                    <h3><a href="https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/" target="_blank">Stephen Colbert says CBS forbid interview of Democrat because of FCC threat</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="most vmware users still "actively reducing their vmware footprint," survey finds">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 18:38</div>
-                    <h3><a href="https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/" target="_blank">Most VMware users still "actively reducing their VMware footprint," survey finds</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="what happens to a car when the company behind its software goes under?">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 18:15</div>
-                    <h3><a href="https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/" target="_blank">What happens to a car when the company behind its software goes under?</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="ram shortage hits valve's four-year-old steam deck, now available "intermittently"">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 17:56</div>
-                    <h3><a href="https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/" target="_blank">RAM shortage hits Valve's four-year-old Steam Deck, now available "intermittently"</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="warner bros. rejects paramount again but asks for "best and final offer"">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 17:17</div>
-                    <h3><a href="https://arstechnica.com/tech-policy/2026/02/warner-bros-gives-paramount-one-more-week-to-beat-netflix-merger-offer/" target="_blank">Warner Bros. rejects Paramount again but asks for "best and final offer"</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arstechnica.com/tech-policy/2026/02/warner-bros-gives-paramount-one-more-week-to-beat-netflix-merger-offer/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="there's a lot of big talk about sovereign launch—who is doing something about it?">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 16:47</div>
-                    <h3><a href="https://arstechnica.com/space/2026/02/which-countries-are-actually-serious-about-developing-their-own-rockets/" target="_blank">There's a lot of big talk about sovereign launch—who is doing something about it?</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arstechnica.com/space/2026/02/which-countries-are-actually-serious-about-developing-their-own-rockets/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="here's the fun, action-packed trailer for mandolorian and grogu">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 16:10</div>
-                    <h3><a href="https://arstechnica.com/culture/2026/02/heres-the-fun-action-packed-trailer-for-mandolorian-and-grogu/" target="_blank">Here's the fun, action-packed trailer for Mandolorian and Grogu</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arstechnica.com/culture/2026/02/heres-the-fun-action-packed-trailer-for-mandolorian-and-grogu/')">Link kopieren</button>
-                </div>
-            </article></div>
-        </section>
-        <section class="news-row">
-            <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=blog.google&sz=32"> Google AI</div>
-                <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollC('c-3', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollC('c-3', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            
+            <div class="news-card" data-source="Futurism">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 14:07</div>
+                    <h3 class="card-title"><a href="https://futurism.com/artificial-intelligence/unity-create-entire-games-using-ai" target="_blank">Unity Says It Has a New Product That Cooks Up Entire Games Using AI</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://futurism.com/artificial-intelligence/unity-create-entire-games-using-ai')">Link kopieren</button>
                 </div>
             </div>
-            <div class="news-grid" id="c-3">
-            <article class="news-card" data-content="ai impact summit 2026: how we’re partnering to make ai work for everyone">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 10:30</div>
-                    <h3><a href="https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-india/" target="_blank">AI Impact Summit 2026: How we’re partnering to make AI work for everyone</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-india/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="ai impact summit 2026">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 10:30</div>
-                    <h3><a href="https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-collection/" target="_blank">AI Impact Summit 2026</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-collection/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="our 2026 responsible ai progress report">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">17.02. • 22:30</div>
-                    <h3><a href="https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/" target="_blank">Our 2026 Responsible AI Progress Report</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="gemini 3 deep think: advancing science, research and engineering">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">12.02. • 16:13</div>
-                    <h3><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/" target="_blank">Gemini 3 Deep Think: Advancing science, research and engineering</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="9 fun questions to try asking google photos">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">10.02. • 17:00</div>
-                    <h3><a href="https://blog.google/products-and-platforms/products/photos/ask-button-ask-photos-tips/" target="_blank">9 fun questions to try asking Google Photos</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blog.google/products-and-platforms/products/photos/ask-button-ask-photos-tips/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="helping kids and teens learn and grow online on safer internet day">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">10.02. • 02:30</div>
-                    <h3><a href="https://blog.google/innovation-and-ai/technology/safety-security/safer-internet-day-2026-kids-teens/" target="_blank">Helping kids and teens learn and grow online on Safer Internet Day</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blog.google/innovation-and-ai/technology/safety-security/safer-internet-day-2026-kids-teens/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="natively adaptive interfaces: a new framework for ai accessibility">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">05.02. • 17:00</div>
-                    <h3><a href="https://blog.google/company-news/outreach-and-initiatives/accessibility/natively-adaptive-interfaces-ai-accessibility/" target="_blank">Natively Adaptive Interfaces: A new framework for AI accessibility</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blog.google/company-news/outreach-and-initiatives/accessibility/natively-adaptive-interfaces-ai-accessibility/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="how google cloud is helping team usa elevate their tricks with ai">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">05.02. • 16:00</div>
-                    <h3><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/us-ski-snowboard-tool-winter-olympics-2026/" target="_blank">How Google Cloud is helping Team USA elevate their tricks with AI</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/us-ski-snowboard-tool-winter-olympics-2026/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="watch our new gemini ad ahead of football’s biggest weekend">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">05.02. • 14:30</div>
-                    <h3><a href="https://blog.google/company-news/inside-google/company-announcements/gemini-ad-new-home/" target="_blank">Watch our new Gemini ad ahead of football’s biggest weekend</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blog.google/company-news/inside-google/company-announcements/gemini-ad-new-home/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="the latest ai news we announced in january">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">04.02. • 16:55</div>
-                    <h3><a href="https://blog.google/innovation-and-ai/products/google-ai-updates-january-2026/" target="_blank">The latest AI news we announced in January</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blog.google/innovation-and-ai/products/google-ai-updates-january-2026/')">Link kopieren</button>
-                </div>
-            </article></div>
-        </section>
-        <section class="news-row">
-            <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32"> arXiv</div>
-                <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollC('c-4', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollC('c-4', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            
+            <div class="news-card" data-source="Futurism">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 21:06</div>
+                    <h3 class="card-title"><a href="https://futurism.com/artificial-intelligence/ai-data-centers-spiking-hard-drive-prices" target="_blank">AI Data Centers Are Now Spiking Hard Drive Prices</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://futurism.com/artificial-intelligence/ai-data-centers-spiking-hard-drive-prices')">Link kopieren</button>
                 </div>
             </div>
-            <div class="news-grid" id="c-4">
-            <article class="news-card" data-content="attention-gated u-net model for semantic segmentation of brain tumors and feature extraction for survival prognosis">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 05:00</div>
-                    <h3><a href="https://arxiv.org/abs/2602.15067" target="_blank">Attention-gated U-Net model for semantic segmentation of brain tumors and feature extraction for survival prognosis</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arxiv.org/abs/2602.15067')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="researchgym: evaluating language model agents on real-world ai research">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 05:00</div>
-                    <h3><a href="https://arxiv.org/abs/2602.15112" target="_blank">ResearchGym: Evaluating Language Model Agents on Real-World AI Research</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arxiv.org/abs/2602.15112')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="protecting language models against unauthorized distillation through trace rewriting">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 05:00</div>
-                    <h3><a href="https://arxiv.org/abs/2602.15143" target="_blank">Protecting Language Models Against Unauthorized Distillation through Trace Rewriting</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arxiv.org/abs/2602.15143')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="panini: continual learning in token space via structured memory">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 05:00</div>
-                    <h3><a href="https://arxiv.org/abs/2602.15156" target="_blank">Panini: Continual Learning in Token Space via Structured Memory</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arxiv.org/abs/2602.15156')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="da costa and tarski meet goguen and carnap: a novel approach for ontological heterogeneity based on consequence systems">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 05:00</div>
-                    <h3><a href="https://arxiv.org/abs/2602.15158" target="_blank">da Costa and Tarski meet Goguen and Carnap: a novel approach for ontological heterogeneity based on consequence systems</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arxiv.org/abs/2602.15158')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="mind the (dh) gap! a contrast in risky choices between reasoning and conversational llms">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 05:00</div>
-                    <h3><a href="https://arxiv.org/abs/2602.15173" target="_blank">Mind the (DH) Gap! A Contrast in Risky Choices Between Reasoning and Conversational LLMs</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arxiv.org/abs/2602.15173')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="secure and energy-efficient wireless agentic ai networks">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 05:00</div>
-                    <h3><a href="https://arxiv.org/abs/2602.15212" target="_blank">Secure and Energy-Efficient Wireless Agentic AI Networks</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arxiv.org/abs/2602.15212')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="predicting invoice dilution in supply chain finance with leakage free two stage xgboost, kan (kolmogorov arnold networks), and ensemble models">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 05:00</div>
-                    <h3><a href="https://arxiv.org/abs/2602.15248" target="_blank">Predicting Invoice Dilution in Supply Chain Finance with Leakage Free Two Stage XGBoost, KAN (Kolmogorov Arnold Networks), and Ensemble Models</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arxiv.org/abs/2602.15248')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="enhancing diversity and feasibility: joint population synthesis from multi-source data using generative models">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 05:00</div>
-                    <h3><a href="https://arxiv.org/abs/2602.15270" target="_blank">Enhancing Diversity and Feasibility: Joint Population Synthesis from Multi-source Data Using Generative Models</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arxiv.org/abs/2602.15270')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="when remembering and planning are worth it: navigating under change">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 05:00</div>
-                    <h3><a href="https://arxiv.org/abs/2602.15274" target="_blank">When Remembering and Planning are Worth it: Navigating under Change</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://arxiv.org/abs/2602.15274')">Link kopieren</button>
-                </div>
-            </article></div>
-        </section>
-        <section class="news-row">
-            <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=blogs.nvidia.com&sz=32"> NVIDIA Blog</div>
-                <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollC('c-5', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollC('c-5', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            
+            <div class="news-card" data-source="Futurism">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 20:08</div>
+                    <h3 class="card-title"><a href="https://futurism.com/artificial-intelligence/ai-effects-workers-psychological" target="_blank">It Turns Out That Constantly Telling Workers They’re About to Be Replaced by AI Has Grim Psychological Effects</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://futurism.com/artificial-intelligence/ai-effects-workers-psychological')">Link kopieren</button>
                 </div>
             </div>
-            <div class="news-grid" id="c-5">
-            <article class="news-card" data-content="india fuels its ai mission with nvidia">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 00:30</div>
-                    <h3><a href="https://blogs.nvidia.com/blog/india-ai-mission-infrastructure-models/" target="_blank">India Fuels Its AI Mission With NVIDIA</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blogs.nvidia.com/blog/india-ai-mission-infrastructure-models/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="india’s global systems integrators build next wave of enterprise agents with nvidia ai, transforming back office and customer support">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 00:30</div>
-                    <h3><a href="https://blogs.nvidia.com/blog/india-enterprise-ai-agents/" target="_blank">India’s Global Systems Integrators Build Next Wave of Enterprise Agents With NVIDIA AI, Transforming Back Office and Customer Support</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blogs.nvidia.com/blog/india-enterprise-ai-agents/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="nvidia and global industrial software leaders partner with india’s largest manufacturers to drive ai boom">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">18.02. • 00:30</div>
-                    <h3><a href="https://blogs.nvidia.com/blog/india-global-industrial-software-leaders-manufacturers-ai/" target="_blank">NVIDIA and Global Industrial Software Leaders Partner With India’s Largest Manufacturers to Drive AI Boom</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blogs.nvidia.com/blog/india-global-industrial-software-leaders-manufacturers-ai/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="new semianalysis inferencex data shows nvidia blackwell ultra delivers up to 50x better performance and 35x lower costs for agentic ai">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">16.02. • 17:00</div>
-                    <h3><a href="https://blogs.nvidia.com/blog/data-blackwell-ultra-performance-lower-cost-agentic-ai/" target="_blank">New SemiAnalysis InferenceX Data Shows NVIDIA Blackwell Ultra Delivers up to 50x Better Performance and 35x Lower Costs for Agentic AI</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blogs.nvidia.com/blog/data-blackwell-ultra-performance-lower-cost-agentic-ai/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="code, compute and connection: inside the inaugural nvidia ai day são paulo">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">12.02. • 22:00</div>
-                    <h3><a href="https://blogs.nvidia.com/blog/ai-day-sao-paulo/" target="_blank">Code, Compute and Connection: Inside the Inaugural NVIDIA AI Day São Paulo</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blogs.nvidia.com/blog/ai-day-sao-paulo/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="leading inference providers cut ai costs by up to 10x with open source models on nvidia blackwell">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">12.02. • 16:00</div>
-                    <h3><a href="https://blogs.nvidia.com/blog/inference-open-source-models-blackwell-reduce-cost-per-token/" target="_blank">Leading Inference Providers Cut AI Costs by up to 10x With Open Source Models on NVIDIA Blackwell</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blogs.nvidia.com/blog/inference-open-source-models-blackwell-reduce-cost-per-token/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="nvidia dgx spark powers big projects in higher education">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">12.02. • 15:00</div>
-                    <h3><a href="https://blogs.nvidia.com/blog/dgx-spark-higher-education/" target="_blank">NVIDIA DGX Spark Powers Big Projects in Higher Education</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blogs.nvidia.com/blog/dgx-spark-higher-education/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="geforce now turns screens into a gaming machine">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">12.02. • 14:00</div>
-                    <h3><a href="https://blogs.nvidia.com/blog/geforce-now-thursday-amazon-fire-tv-app/" target="_blank">GeForce NOW Turns Screens Into a Gaming Machine</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blogs.nvidia.com/blog/geforce-now-thursday-amazon-fire-tv-app/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="geforce now celebrates six years of streaming with 24 games in february">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">05.02. • 14:00</div>
-                    <h3><a href="https://blogs.nvidia.com/blog/geforce-now-thursday-feb-2026-games-list/" target="_blank">GeForce NOW Celebrates Six Years of Streaming With 24 Games in February</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blogs.nvidia.com/blog/geforce-now-thursday-feb-2026-games-list/')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="nemotron labs: how ai agents are turning documents into real-time business intelligence">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">04.02. • 16:00</div>
-                    <h3><a href="https://blogs.nvidia.com/blog/ai-agents-intelligent-document-processing/" target="_blank">Nemotron Labs: How AI Agents Are Turning Documents Into Real-Time Business Intelligence</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://blogs.nvidia.com/blog/ai-agents-intelligent-document-processing/')">Link kopieren</button>
-                </div>
-            </article></div>
-        </section>
-        <section class="news-row">
-            <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=openai.com&sz=32"> OpenAI</div>
-                <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollC('c-6', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollC('c-6', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            
+            <div class="news-card" data-source="Futurism">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 19:09</div>
+                    <h3 class="card-title"><a href="https://futurism.com/artificial-intelligence/pentagon-issues-threat-anthropic" target="_blank">Pentagon Issues Threat to Anthropic</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://futurism.com/artificial-intelligence/pentagon-issues-threat-anthropic')">Link kopieren</button>
                 </div>
             </div>
-            <div class="news-grid" id="c-6">
-            <article class="news-card" data-content="gpt-5.2 derives a new result in theoretical physics">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">13.02. • 11:00</div>
-                    <h3><a href="https://openai.com/index/new-result-theoretical-physics" target="_blank">GPT-5.2 derives a new result in theoretical physics</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://openai.com/index/new-result-theoretical-physics')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="introducing lockdown mode and elevated risk labels in chatgpt">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">13.02. • 10:00</div>
-                    <h3><a href="https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt" target="_blank">Introducing Lockdown Mode and Elevated Risk labels in ChatGPT</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="beyond rate limits: scaling access to codex and sora">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">13.02. • 09:00</div>
-                    <h3><a href="https://openai.com/index/beyond-rate-limits" target="_blank">Beyond rate limits: scaling access to Codex and Sora</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://openai.com/index/beyond-rate-limits')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="scaling social science research">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">13.02. • 09:00</div>
-                    <h3><a href="https://openai.com/index/scaling-social-science-research" target="_blank">Scaling social science research</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://openai.com/index/scaling-social-science-research')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="introducing gpt-5.3-codex-spark">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">12.02. • 10:00</div>
-                    <h3><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark" target="_blank">Introducing GPT-5.3-Codex-Spark</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://openai.com/index/introducing-gpt-5-3-codex-spark')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="harness engineering: leveraging codex in an agent-first world">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">11.02. • 09:00</div>
-                    <h3><a href="https://openai.com/index/harness-engineering" target="_blank">Harness engineering: leveraging Codex in an agent-first world</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://openai.com/index/harness-engineering')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="testing ads in chatgpt">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">09.02. • 11:00</div>
-                    <h3><a href="https://openai.com/index/testing-ads-in-chatgpt" target="_blank">Testing ads in ChatGPT</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://openai.com/index/testing-ads-in-chatgpt')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="bringing chatgpt to genai.mil">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">09.02. • 11:00</div>
-                    <h3><a href="https://openai.com/index/bringing-chatgpt-to-genaimil" target="_blank">Bringing ChatGPT to GenAI.mil</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://openai.com/index/bringing-chatgpt-to-genaimil')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="making ai work for everyone, everywhere: our approach to localization">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">06.02. • 10:00</div>
-                    <h3><a href="https://openai.com/index/our-approach-to-localization" target="_blank">Making AI work for everyone, everywhere: our approach to localization</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://openai.com/index/our-approach-to-localization')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="gpt-5 lowers the cost of cell-free protein synthesis">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">05.02. • 11:00</div>
-                    <h3><a href="https://openai.com/index/gpt-5-lowers-protein-synthesis-cost" target="_blank">GPT-5 lowers the cost of cell-free protein synthesis</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://openai.com/index/gpt-5-lowers-protein-synthesis-cost')">Link kopieren</button>
-                </div>
-            </article></div>
-        </section>
-        <section class="news-row">
-            <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=venturebeat.com&sz=32"> VentureBeat</div>
-                <div class="carousel-nav">
-                    <button class="nav-btn" onclick="scrollC('c-7', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn" onclick="scrollC('c-7', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            
+            <div class="news-card" data-source="Futurism">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 18:10</div>
+                    <h3 class="card-title"><a href="https://futurism.com/robots-and-machines/robots-run-up-walls" target="_blank">Chinese Robots Can Now Run Up Walls</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://futurism.com/robots-and-machines/robots-run-up-walls')">Link kopieren</button>
                 </div>
             </div>
-            <div class="news-grid" id="c-7">
-            <article class="news-card" data-content="railway secures $100 million to challenge aws with ai-native cloud infrastructure">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">22.01. • 14:00</div>
-                    <h3><a href="https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud" target="_blank">Railway secures $100 million to challenge AWS with AI-native cloud infrastructure</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud')">Link kopieren</button>
+            
+            <div class="news-card" data-source="Futurism">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 17:21</div>
+                    <h3 class="card-title"><a href="https://futurism.com/advanced-transport/fsd-lake" target="_blank">FSD Tries to Drive Straight Into Lake</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://futurism.com/advanced-transport/fsd-lake')">Link kopieren</button>
                 </div>
-            </article>
-            <article class="news-card" data-content="claude code costs up to $200 a month. goose does the same thing for free.">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">19.01. • 14:00</div>
-                    <h3><a href="https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free" target="_blank">Claude Code costs up to $200 a month. Goose does the same thing for free.</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free')">Link kopieren</button>
+            </div>
+            
+            <div class="news-card" data-source="Futurism">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 16:26</div>
+                    <h3 class="card-title"><a href="https://futurism.com/future-society/meta-patented-ai-die-keeps-posting" target="_blank">Meta Patented AI That Takes Over Your Account When You Die, Keeps Posting Forever</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://futurism.com/future-society/meta-patented-ai-die-keeps-posting')">Link kopieren</button>
                 </div>
-            </article>
-            <article class="news-card" data-content="listen labs raises $69m after viral billboard hiring stunt to scale ai customer interviews">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">16.01. • 14:01</div>
-                    <h3><a href="https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai" target="_blank">Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai')">Link kopieren</button>
+            </div>
+            
+            <div class="news-card" data-source="Futurism">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 15:30</div>
+                    <h3 class="card-title"><a href="https://futurism.com/artificial-intelligence/ai-abuse-harassment-stalking" target="_blank">AI Delusions Are Leading to Domestic Abuse, Harassment, and Stalking</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://futurism.com/artificial-intelligence/ai-abuse-harassment-stalking')">Link kopieren</button>
                 </div>
-            </article>
-            <article class="news-card" data-content="salesforce rolls out new slackbot ai agent as it battles microsoft and google in workplace ai">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">13.01. • 13:00</div>
-                    <h3><a href="https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and" target="_blank">Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="anthropic launches cowork, a claude desktop agent that works in your files — no coding required">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">12.01. • 11:30</div>
-                    <h3><a href="https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no" target="_blank">Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="nous research's nouscoder-14b is an open-source coding model landing right in the claude code moment">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">07.01. • 20:00</div>
-                    <h3><a href="https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in" target="_blank">Nous Research's NousCoder-14B is an open-source coding model landing right in the Claude Code moment</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-content="the creator of claude code just revealed his workflow, and developers are losing their minds">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="">
-                <div class="card-body">
-                    <div style="font-size:11px; color:var(--muted); margin-bottom:10px;">05.01. • 07:45</div>
-                    <h3><a href="https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are" target="_blank">The creator of Claude Code just revealed his workflow, and developers are losing their minds</a></h3>
-                    <button class="cat-btn" style="width:100%; margin-top:auto;" onclick="copyToClipboard('https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are')">Link kopieren</button>
-                </div>
-            </article></div>
+            </div>
+            
+            </div>
         </section>
+        
+        <section class="news-section" id="src-1">
+            <div class="section-header">
+                <div class="source-label">
+                    <img src="https://www.google.com/s2/favicons?domain=techcrunch.com&sz=32" alt="TechCrunch">
+                    TechCrunch
+                </div>
+                <div class="carousel-controls">
+                    <button class="nav-arrow" onclick="scrollCarousel('track-1', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-arrow" onclick="scrollCarousel('track-1', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="carousel-track" id="track-1">
+                
+            <div class="news-card" data-source="TechCrunch">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 15:08</div>
+                    <h3 class="card-title"><a href="https://techcrunch.com/2026/02/18/kana-emerges-from-stealth-with-15m-to-build-flexible-ai-agents-for-marketers/" target="_blank">Kana emerges from stealth with $15M to build flexible AI agents for marketers</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://techcrunch.com/2026/02/18/kana-emerges-from-stealth-with-15m-to-build-flexible-ai-agents-for-marketers/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="TechCrunch">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 14:44</div>
+                    <h3 class="card-title"><a href="https://techcrunch.com/2026/02/18/microsoft-says-office-bug-exposed-customers-confidential-emails-to-copilot-ai/" target="_blank">Microsoft says Office bug exposed customers’ confidential emails to Copilot AI</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://techcrunch.com/2026/02/18/microsoft-says-office-bug-exposed-customers-confidential-emails-to-copilot-ai/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="TechCrunch">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 14:32</div>
+                    <h3 class="card-title"><a href="https://techcrunch.com/2026/02/18/openai-pushes-into-higher-education-as-india-seeks-to-scale-ai-skills/" target="_blank">OpenAI pushes into higher education as India seeks to scale AI skills</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://techcrunch.com/2026/02/18/openai-pushes-into-higher-education-as-india-seeks-to-scale-ai-skills/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="TechCrunch">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 14:00</div>
+                    <h3 class="card-title"><a href="https://techcrunch.com/2026/02/18/world-labs-lands-200m-from-autodesk-to-bring-world-models-into-3d-workflows/" target="_blank">World Labs lands $200M from Autodesk to bring world models into 3D workflows</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://techcrunch.com/2026/02/18/world-labs-lands-200m-from-autodesk-to-bring-world-models-into-3d-workflows/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="TechCrunch">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 13:01</div>
+                    <h3 class="card-title"><a href="https://techcrunch.com/2026/02/18/indias-sarvam-wants-to-bring-its-ai-models-to-feature-phones-cars-and-smart-glasses/" target="_blank">India’s Sarvam wants to bring its AI models to feature phones, cars and smart glasses</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://techcrunch.com/2026/02/18/indias-sarvam-wants-to-bring-its-ai-models-to-feature-phones-cars-and-smart-glasses/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="TechCrunch">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 12:55</div>
+                    <h3 class="card-title"><a href="https://techcrunch.com/2026/02/18/indian-ai-lab-sarvams-new-models-are-a-major-bet-on-the-viability-of-open-source-ai/" target="_blank">Indian AI lab Sarvam’s new models are a major bet on the viability of open-source AI</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://techcrunch.com/2026/02/18/indian-ai-lab-sarvams-new-models-are-a-major-bet-on-the-viability-of-open-source-ai/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="TechCrunch">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 20:14</div>
+                    <h3 class="card-title"><a href="https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/" target="_blank">Apple is reportedly cooking up a trio of AI wearables</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="TechCrunch">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 18:00</div>
+                    <h3 class="card-title"><a href="https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/" target="_blank">Anthropic releases Sonnet 4.6</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="TechCrunch">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 17:22</div>
+                    <h3 class="card-title"><a href="https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/" target="_blank">Mistral AI buys Koyeb in first acquisition to back its cloud ambitions</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="TechCrunch">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 17:00</div>
+                    <h3 class="card-title"><a href="https://techcrunch.com/2026/02/17/spacex-vets-raise-50m-series-a-for-data-center-links/" target="_blank">SpaceX vets raise $50M Series A for data center links</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://techcrunch.com/2026/02/17/spacex-vets-raise-50m-series-a-for-data-center-links/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            </div>
+        </section>
+        
+        <section class="news-section" id="src-2">
+            <div class="section-header">
+                <div class="source-label">
+                    <img src="https://www.google.com/s2/favicons?domain=arstechnica.com&sz=32" alt="Ars Technica">
+                    Ars Technica
+                </div>
+                <div class="carousel-controls">
+                    <button class="nav-arrow" onclick="scrollCarousel('track-2', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-arrow" onclick="scrollCarousel('track-2', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="carousel-track" id="track-2">
+                
+            <div class="news-card" data-source="Ars Technica">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 15:00</div>
+                    <h3 class="card-title"><a href="https://arstechnica.com/gadgets/2026/02/googles-pixel-10a-arrives-on-march-5-for-499-with-specs-and-design-of-yesteryear/" target="_blank">Google's Pixel 10a arrives on March 5 for $499 with specs and design of yesteryear</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arstechnica.com/gadgets/2026/02/googles-pixel-10a-arrives-on-march-5-for-499-with-specs-and-design-of-yesteryear/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Ars Technica">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 14:24</div>
+                    <h3 class="card-title"><a href="https://arstechnica.com/science/2026/02/what-the-chinese-art-of-tian-tsui-has-to-do-with-kingfishers/" target="_blank">X-rays reveal kingfisher feather structure in unprecedented detail</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arstechnica.com/science/2026/02/what-the-chinese-art-of-tian-tsui-has-to-do-with-kingfishers/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Ars Technica">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 14:14</div>
+                    <h3 class="card-title"><a href="https://arstechnica.com/tech-policy/2026/02/inside-the-dhs-forum-where-ice-agents-trash-talk-one-another/" target="_blank">Inside the DHS forum where ICE agents trash talk one another</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arstechnica.com/tech-policy/2026/02/inside-the-dhs-forum-where-ice-agents-trash-talk-one-another/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Ars Technica">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 12:00</div>
+                    <h3 class="card-title"><a href="https://arstechnica.com/health/2026/02/hallucinogen-dmt-an-effective-antidepressant-in-small-clinical-trial/" target="_blank">Hallucinogen DMT an effective antidepressant in small clinical trial</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arstechnica.com/health/2026/02/hallucinogen-dmt-an-effective-antidepressant-in-small-clinical-trial/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Ars Technica">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 22:45</div>
+                    <h3 class="card-title"><a href="https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/" target="_blank">GameHub will give Mac owners another imperfect way to play Windows games</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Ars Technica">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 20:43</div>
+                    <h3 class="card-title"><a href="https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/" target="_blank">Password managers' promise that they can't see your vaults isn't always true</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Ars Technica">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 19:01</div>
+                    <h3 class="card-title"><a href="https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/" target="_blank">Stephen Colbert says CBS forbid interview of Democrat because of FCC threat</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Ars Technica">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 18:38</div>
+                    <h3 class="card-title"><a href="https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/" target="_blank">Most VMware users still "actively reducing their VMware footprint," survey finds</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Ars Technica">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 18:15</div>
+                    <h3 class="card-title"><a href="https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/" target="_blank">What happens to a car when the company behind its software goes under?</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Ars Technica">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 17:56</div>
+                    <h3 class="card-title"><a href="https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/" target="_blank">RAM shortage hits Valve's four-year-old Steam Deck, now available "intermittently"</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            </div>
+        </section>
+        
+        <section class="news-section" id="src-3">
+            <div class="section-header">
+                <div class="source-label">
+                    <img src="https://www.google.com/s2/favicons?domain=blog.google&sz=32" alt="Google AI">
+                    Google AI
+                </div>
+                <div class="carousel-controls">
+                    <button class="nav-arrow" onclick="scrollCarousel('track-3', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-arrow" onclick="scrollCarousel('track-3', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="carousel-track" id="track-3">
+                
+            <div class="news-card" data-source="Google AI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 10:30</div>
+                    <h3 class="card-title"><a href="https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-india/" target="_blank">AI Impact Summit 2026: How we’re partnering to make AI work for everyone</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-india/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Google AI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 10:30</div>
+                    <h3 class="card-title"><a href="https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-collection/" target="_blank">AI Impact Summit 2026</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-collection/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Google AI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">17.02. 22:30</div>
+                    <h3 class="card-title"><a href="https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/" target="_blank">Our 2026 Responsible AI Progress Report</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Google AI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">12.02. 16:13</div>
+                    <h3 class="card-title"><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/" target="_blank">Gemini 3 Deep Think: Advancing science, research and engineering</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Google AI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">10.02. 17:00</div>
+                    <h3 class="card-title"><a href="https://blog.google/products-and-platforms/products/photos/ask-button-ask-photos-tips/" target="_blank">9 fun questions to try asking Google Photos</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blog.google/products-and-platforms/products/photos/ask-button-ask-photos-tips/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Google AI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">10.02. 02:30</div>
+                    <h3 class="card-title"><a href="https://blog.google/innovation-and-ai/technology/safety-security/safer-internet-day-2026-kids-teens/" target="_blank">Helping kids and teens learn and grow online on Safer Internet Day</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blog.google/innovation-and-ai/technology/safety-security/safer-internet-day-2026-kids-teens/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Google AI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">05.02. 17:00</div>
+                    <h3 class="card-title"><a href="https://blog.google/company-news/outreach-and-initiatives/accessibility/natively-adaptive-interfaces-ai-accessibility/" target="_blank">Natively Adaptive Interfaces: A new framework for AI accessibility</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blog.google/company-news/outreach-and-initiatives/accessibility/natively-adaptive-interfaces-ai-accessibility/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Google AI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">05.02. 16:00</div>
+                    <h3 class="card-title"><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/us-ski-snowboard-tool-winter-olympics-2026/" target="_blank">How Google Cloud is helping Team USA elevate their tricks with AI</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/us-ski-snowboard-tool-winter-olympics-2026/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Google AI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">05.02. 14:30</div>
+                    <h3 class="card-title"><a href="https://blog.google/company-news/inside-google/company-announcements/gemini-ad-new-home/" target="_blank">Watch our new Gemini ad ahead of football’s biggest weekend</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blog.google/company-news/inside-google/company-announcements/gemini-ad-new-home/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="Google AI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">04.02. 16:55</div>
+                    <h3 class="card-title"><a href="https://blog.google/innovation-and-ai/products/google-ai-updates-january-2026/" target="_blank">The latest AI news we announced in January</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blog.google/innovation-and-ai/products/google-ai-updates-january-2026/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            </div>
+        </section>
+        
+        <section class="news-section" id="src-4">
+            <div class="section-header">
+                <div class="source-label">
+                    <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" alt="arXiv">
+                    arXiv
+                </div>
+                <div class="carousel-controls">
+                    <button class="nav-arrow" onclick="scrollCarousel('track-4', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-arrow" onclick="scrollCarousel('track-4', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="carousel-track" id="track-4">
+                
+            <div class="news-card" data-source="arXiv">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 05:00</div>
+                    <h3 class="card-title"><a href="https://arxiv.org/abs/2602.15067" target="_blank">Attention-gated U-Net model for semantic segmentation of brain tumors and feature extraction for survival prognosis</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arxiv.org/abs/2602.15067')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="arXiv">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 05:00</div>
+                    <h3 class="card-title"><a href="https://arxiv.org/abs/2602.15112" target="_blank">ResearchGym: Evaluating Language Model Agents on Real-World AI Research</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arxiv.org/abs/2602.15112')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="arXiv">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 05:00</div>
+                    <h3 class="card-title"><a href="https://arxiv.org/abs/2602.15143" target="_blank">Protecting Language Models Against Unauthorized Distillation through Trace Rewriting</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arxiv.org/abs/2602.15143')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="arXiv">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 05:00</div>
+                    <h3 class="card-title"><a href="https://arxiv.org/abs/2602.15156" target="_blank">Panini: Continual Learning in Token Space via Structured Memory</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arxiv.org/abs/2602.15156')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="arXiv">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 05:00</div>
+                    <h3 class="card-title"><a href="https://arxiv.org/abs/2602.15158" target="_blank">da Costa and Tarski meet Goguen and Carnap: a novel approach for ontological heterogeneity based on consequence systems</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arxiv.org/abs/2602.15158')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="arXiv">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 05:00</div>
+                    <h3 class="card-title"><a href="https://arxiv.org/abs/2602.15173" target="_blank">Mind the (DH) Gap! A Contrast in Risky Choices Between Reasoning and Conversational LLMs</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arxiv.org/abs/2602.15173')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="arXiv">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 05:00</div>
+                    <h3 class="card-title"><a href="https://arxiv.org/abs/2602.15212" target="_blank">Secure and Energy-Efficient Wireless Agentic AI Networks</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arxiv.org/abs/2602.15212')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="arXiv">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 05:00</div>
+                    <h3 class="card-title"><a href="https://arxiv.org/abs/2602.15248" target="_blank">Predicting Invoice Dilution in Supply Chain Finance with Leakage Free Two Stage XGBoost, KAN (Kolmogorov Arnold Networks), and Ensemble Models</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arxiv.org/abs/2602.15248')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="arXiv">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 05:00</div>
+                    <h3 class="card-title"><a href="https://arxiv.org/abs/2602.15270" target="_blank">Enhancing Diversity and Feasibility: Joint Population Synthesis from Multi-source Data Using Generative Models</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arxiv.org/abs/2602.15270')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="arXiv">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 05:00</div>
+                    <h3 class="card-title"><a href="https://arxiv.org/abs/2602.15274" target="_blank">When Remembering and Planning are Worth it: Navigating under Change</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://arxiv.org/abs/2602.15274')">Link kopieren</button>
+                </div>
+            </div>
+            
+            </div>
+        </section>
+        
+        <section class="news-section" id="src-5">
+            <div class="section-header">
+                <div class="source-label">
+                    <img src="https://www.google.com/s2/favicons?domain=blogs.nvidia.com&sz=32" alt="NVIDIA Blog">
+                    NVIDIA Blog
+                </div>
+                <div class="carousel-controls">
+                    <button class="nav-arrow" onclick="scrollCarousel('track-5', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-arrow" onclick="scrollCarousel('track-5', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="carousel-track" id="track-5">
+                
+            <div class="news-card" data-source="NVIDIA Blog">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 00:30</div>
+                    <h3 class="card-title"><a href="https://blogs.nvidia.com/blog/india-ai-mission-infrastructure-models/" target="_blank">India Fuels Its AI Mission With NVIDIA</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blogs.nvidia.com/blog/india-ai-mission-infrastructure-models/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="NVIDIA Blog">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 00:30</div>
+                    <h3 class="card-title"><a href="https://blogs.nvidia.com/blog/india-enterprise-ai-agents/" target="_blank">India’s Global Systems Integrators Build Next Wave of Enterprise Agents With NVIDIA AI, Transforming Back Office and Customer Support</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blogs.nvidia.com/blog/india-enterprise-ai-agents/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="NVIDIA Blog">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">18.02. 00:30</div>
+                    <h3 class="card-title"><a href="https://blogs.nvidia.com/blog/india-global-industrial-software-leaders-manufacturers-ai/" target="_blank">NVIDIA and Global Industrial Software Leaders Partner With India’s Largest Manufacturers to Drive AI Boom</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blogs.nvidia.com/blog/india-global-industrial-software-leaders-manufacturers-ai/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="NVIDIA Blog">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">16.02. 17:00</div>
+                    <h3 class="card-title"><a href="https://blogs.nvidia.com/blog/data-blackwell-ultra-performance-lower-cost-agentic-ai/" target="_blank">New SemiAnalysis InferenceX Data Shows NVIDIA Blackwell Ultra Delivers up to 50x Better Performance and 35x Lower Costs for Agentic AI</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blogs.nvidia.com/blog/data-blackwell-ultra-performance-lower-cost-agentic-ai/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="NVIDIA Blog">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">12.02. 22:00</div>
+                    <h3 class="card-title"><a href="https://blogs.nvidia.com/blog/ai-day-sao-paulo/" target="_blank">Code, Compute and Connection: Inside the Inaugural NVIDIA AI Day São Paulo</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blogs.nvidia.com/blog/ai-day-sao-paulo/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="NVIDIA Blog">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">12.02. 16:00</div>
+                    <h3 class="card-title"><a href="https://blogs.nvidia.com/blog/inference-open-source-models-blackwell-reduce-cost-per-token/" target="_blank">Leading Inference Providers Cut AI Costs by up to 10x With Open Source Models on NVIDIA Blackwell</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blogs.nvidia.com/blog/inference-open-source-models-blackwell-reduce-cost-per-token/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="NVIDIA Blog">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">12.02. 15:00</div>
+                    <h3 class="card-title"><a href="https://blogs.nvidia.com/blog/dgx-spark-higher-education/" target="_blank">NVIDIA DGX Spark Powers Big Projects in Higher Education</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blogs.nvidia.com/blog/dgx-spark-higher-education/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="NVIDIA Blog">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">12.02. 14:00</div>
+                    <h3 class="card-title"><a href="https://blogs.nvidia.com/blog/geforce-now-thursday-amazon-fire-tv-app/" target="_blank">GeForce NOW Turns Screens Into a Gaming Machine</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blogs.nvidia.com/blog/geforce-now-thursday-amazon-fire-tv-app/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="NVIDIA Blog">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">05.02. 14:00</div>
+                    <h3 class="card-title"><a href="https://blogs.nvidia.com/blog/geforce-now-thursday-feb-2026-games-list/" target="_blank">GeForce NOW Celebrates Six Years of Streaming With 24 Games in February</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blogs.nvidia.com/blog/geforce-now-thursday-feb-2026-games-list/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="NVIDIA Blog">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">04.02. 16:00</div>
+                    <h3 class="card-title"><a href="https://blogs.nvidia.com/blog/ai-agents-intelligent-document-processing/" target="_blank">Nemotron Labs: How AI Agents Are Turning Documents Into Real-Time Business Intelligence</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://blogs.nvidia.com/blog/ai-agents-intelligent-document-processing/')">Link kopieren</button>
+                </div>
+            </div>
+            
+            </div>
+        </section>
+        
+        <section class="news-section" id="src-6">
+            <div class="section-header">
+                <div class="source-label">
+                    <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=32" alt="OpenAI">
+                    OpenAI
+                </div>
+                <div class="carousel-controls">
+                    <button class="nav-arrow" onclick="scrollCarousel('track-6', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-arrow" onclick="scrollCarousel('track-6', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="carousel-track" id="track-6">
+                
+            <div class="news-card" data-source="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">13.02. 11:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/new-result-theoretical-physics" target="_blank">GPT-5.2 derives a new result in theoretical physics</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/new-result-theoretical-physics')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">13.02. 10:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt" target="_blank">Introducing Lockdown Mode and Elevated Risk labels in ChatGPT</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">13.02. 09:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/beyond-rate-limits" target="_blank">Beyond rate limits: scaling access to Codex and Sora</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/beyond-rate-limits')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">13.02. 09:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/scaling-social-science-research" target="_blank">Scaling social science research</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/scaling-social-science-research')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">12.02. 10:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark" target="_blank">Introducing GPT-5.3-Codex-Spark</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/introducing-gpt-5-3-codex-spark')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">11.02. 09:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/harness-engineering" target="_blank">Harness engineering: leveraging Codex in an agent-first world</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/harness-engineering')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">09.02. 11:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/testing-ads-in-chatgpt" target="_blank">Testing ads in ChatGPT</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/testing-ads-in-chatgpt')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">09.02. 11:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/bringing-chatgpt-to-genaimil" target="_blank">Bringing ChatGPT to GenAI.mil</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/bringing-chatgpt-to-genaimil')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">06.02. 10:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/our-approach-to-localization" target="_blank">Making AI work for everyone, everywhere: our approach to localization</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/our-approach-to-localization')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">05.02. 11:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/gpt-5-lowers-protein-synthesis-cost" target="_blank">GPT-5 lowers the cost of cell-free protein synthesis</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/gpt-5-lowers-protein-synthesis-cost')">Link kopieren</button>
+                </div>
+            </div>
+            
+            </div>
+        </section>
+        
+        <section class="news-section" id="src-7">
+            <div class="section-header">
+                <div class="source-label">
+                    <img src="https://www.google.com/s2/favicons?domain=venturebeat.com&sz=32" alt="VentureBeat">
+                    VentureBeat
+                </div>
+                <div class="carousel-controls">
+                    <button class="nav-arrow" onclick="scrollCarousel('track-7', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-arrow" onclick="scrollCarousel('track-7', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="carousel-track" id="track-7">
+                
+            <div class="news-card" data-source="VentureBeat">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">22.01. 14:00</div>
+                    <h3 class="card-title"><a href="https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud" target="_blank">Railway secures $100 million to challenge AWS with AI-native cloud infrastructure</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="VentureBeat">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">19.01. 14:00</div>
+                    <h3 class="card-title"><a href="https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free" target="_blank">Claude Code costs up to $200 a month. Goose does the same thing for free.</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="VentureBeat">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">16.01. 14:01</div>
+                    <h3 class="card-title"><a href="https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai" target="_blank">Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="VentureBeat">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">13.01. 13:00</div>
+                    <h3 class="card-title"><a href="https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and" target="_blank">Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="VentureBeat">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">12.01. 11:30</div>
+                    <h3 class="card-title"><a href="https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no" target="_blank">Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="VentureBeat">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">07.01. 20:00</div>
+                    <h3 class="card-title"><a href="https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in" target="_blank">Nous Research's NousCoder-14B is an open-source coding model landing right in the Claude Code moment</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in')">Link kopieren</button>
+                </div>
+            </div>
+            
+            <div class="news-card" data-source="VentureBeat">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" class="card-img" loading="lazy" alt="News Image">
+                <div class="card-content">
+                    <div class="card-meta">05.01. 07:45</div>
+                    <h3 class="card-title"><a href="https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are" target="_blank">The creator of Claude Code just revealed his workflow, and developers are losing their minds</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are')">Link kopieren</button>
+                </div>
+            </div>
+            
+            </div>
+        </section>
+        
+            </div>
         </main>
     </div>
-    <footer class="site-footer">&copy; 2026 KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></footer>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 KI‑Ticker — Kuratiert durch KI & Mensch</p>
+        <div class="footer-links">
+            <a href="ueber-uns.html">Über uns</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+        </div>
+    </footer>
+
     <script>
-    function scrollC(id, d) { const c = document.getElementById(id); c.scrollBy({ left: d * 360, behavior: 'smooth' }); }
-    function filterN(t) { const v = t.toLowerCase(); document.querySelectorAll('.news-card').forEach(el => { el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }); }
-    function toggleE() { const w = document.getElementById('eWrap'); const b = document.getElementById('tBtn'); w.classList.toggle('expanded'); b.innerText = w.classList.contains('expanded') ? 'Zusammenklappen' : 'Analyse vollständig lesen'; }
-    function applySearch(w) { document.getElementById('searchInput').value = w; filterN(w); window.scrollTo({top: 400, behavior: 'smooth'}); }
-    document.getElementById('searchInput').oninput = (e) => filterN(e.target.value);
-    function copyToClipboard(u) { navigator.clipboard.writeText(u).then(() => alert('Link kopiert!')); }
-    </script></body></html>
+    // Scroll Logic
+    function scrollCarousel(id, direction) {
+        const track = document.getElementById(id);
+        const scrollAmount = 340; // Kartenbreite + Gap
+        track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+
+    // Search Logic
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        document.querySelectorAll('.news-card').forEach(card => {
+            const title = card.querySelector('.card-title').innerText.toLowerCase();
+            card.style.display = title.includes(term) ? 'flex' : 'none';
+        });
+    });
+
+    // Category Filter Logic
+    function filterSource(sourceName) {
+        // Verstecke alle Sections, die nicht matchen
+        document.querySelectorAll('.news-section').forEach(sec => {
+            const label = sec.querySelector('.source-label').innerText.trim();
+            sec.style.display = label === sourceName ? 'block' : 'none';
+        });
+        // Scroll nach oben zum Content
+        document.querySelector('.main-container').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetFilter() {
+        document.querySelectorAll('.news-section').forEach(sec => sec.style.display = 'block');
+    }
+
+    // Utility
+    function copyLink(url) {
+        navigator.clipboard.writeText(url).then(() => alert('Link in Zwischenablage kopiert!'));
+    }
+    </script>
+</body>
+</html>
