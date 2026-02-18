@@ -87,9 +87,7 @@ def render_index(items, editorial):
         yt_id = get_youtube_id(editorial.get('video_url'))
         author_link = f'<a href="{editorial.get("author_url")}" target="_blank" style="color:var(--acc); text-decoration:none; font-size:0.85rem;"><i class="fa-brands fa-youtube"></i> Zum Kanal des Video-Urhebers</a>' if editorial.get('author_url') else ""
         video_embed = f'<div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/{yt_id}" allowfullscreen></iframe></div>' if yt_id else ""
-        raw_sources = editorial.get('content', '')
-        clean_sources = re.sub(r'^\s*-\s*', '', raw_sources, flags=re.MULTILINE)
-
+        
         editorial_html = f"""
         <section class="editorial-section">
             <div class="editorial-badge"><i class="fa-solid fa-star"></i> Tagesthema der Redaktion</div>
@@ -98,12 +96,12 @@ def render_index(items, editorial):
                 {video_embed}
                 <div style="margin-bottom:20px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px;">
                     {author_link}
-                    <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;"><strong>Hinweis:</strong> Dieses Video ist ein externer Beitrag.</p>
+                    <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;"><strong>Hinweis:</strong> Externer Videobeitrag.</p>
                 </div>
                 <div class="editorial-text">{editorial.get('description', '')}</div>
                 <div style="margin-top:20px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1);">
                     <strong style="font-size:0.8rem; color:var(--acc); display:block; margin-bottom:10px;">Quellen:</strong>
-                    <div class="editorial-sources">{clean_sources}</div>
+                    <div class="editorial-sources">{editorial.get('content', '')}</div>
                 </div>
                 <div class="editorial-footer" style="margin-top:25px;">
                     <button class="filter-action-btn" onclick="applySearch('{editorial.get('search_term','')}');">
@@ -146,7 +144,7 @@ def render_index(items, editorial):
             <div class="carousel-wrapper"><div class="news-carousel" id="{carousel_id}">{cards_html}</div></div>
         </section>"""
 
-    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"></head><body class="dark-mode"><div class="site-layout"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>{editorial_html}{main_content}<footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main></div><script>function scrollCarousel(id, dir) {{ const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({{ left: dir * amount, behavior: 'smooth' }}); }} function filterNews(t){{ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => {{ if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }}); }} document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}}</script></body></html>"""
+    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"></head><body class="dark-mode"><div class="site-layout"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>{editorial_html}{main_content}<footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main></div><script>function scrollCarousel(id, dir) {{ const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({{ left: dir * amount, behavior: 'smooth' }}); }} function filterNews(t){{ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => {{ if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }}); }} function applySearch(word) {{ document.getElementById('searchInput').value = word; filterNews(word); }} document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}}</script></body></html>"""
 
 # --- STEUERUNG VON HAUPTPROZESS ---
 def main():
