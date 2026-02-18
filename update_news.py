@@ -23,7 +23,7 @@ FEEDS = [
     ("Futurism", "https://futurism.com/feed"),
     ("VentureBeat", "https://venturebeat.com/category/ai/feed/"),
     ("TechCrunch", "https://techcrunch.com/category/artificial-intelligence/feed/"),
-    ("arXiv", "https://export.arxiv.org/rss/cs.CS"),
+    ("arXiv", "https://export.arxiv.org/rss/cs.AI"),
     ("OpenAI", "https://openai.com/news/rss.xml"),
     ("Google AI", "https://blog.google/technology/ai/rss/"),
     ("AWS ML Blog", "https://aws.amazon.com/blogs/machine-learning/feed/"),
@@ -93,7 +93,6 @@ def render_index(items, editorial):
                 <div class="editorial-text">{editorial.get('content', '')}</div>
                 <div class="editorial-footer">
                     <button class="filter-action-btn" onclick="applySearch('{editorial.get('search_term','')}');"><i class="fa-solid fa-magnifying-glass"></i> Passende News finden</button>
-                    <div style="font-size:0.8rem; color:var(--muted); margin-top:10px;">Stand: {editorial.get('date', '')}</div>
                 </div>
             </div>
         </section>"""
@@ -105,9 +104,9 @@ def render_index(items, editorial):
         source_domain = grouped[src][0]['domain']
         for it in grouped[src]:
             dt = datetime.datetime.fromisoformat(it["published_iso"])
-            cards_html += f'<article class="card" data-content="{it["title"].lower()}"><div class="img-container"><img src="{hero_default}" loading="lazy" alt=""></div><div class="card-body"><div style="font-size:10px; color:var(--muted); margin-bottom:8px;">{dt.strftime("%d.%m. • %H:%M")}</div><h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3><div class="share-bar"><button onclick="copyToClipboard(\'{it["url"]}\')"><i class="fa-solid fa-link"></i> Link</button></div></div></article>'
+            cards_html += f'<article class="card" data-content="{it["title"].lower()}"><div class="img-container"><img src="{hero_default}" loading="lazy" alt=""></div><div class="card-body"><div style="font-size:11px; color:var(--muted); margin-bottom:8px;">{dt.strftime("%d.%m. • %H:%M")}</div><h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3><div class="share-bar"><button onclick="copyToClipboard(\'{it["url"]}\')"><i class="fa-solid fa-link"></i> Link</button></div></div></article>'
         
-        cards_html += f'<article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Lust auf den Deep-Dive?</p><a href="https://{source_domain}" target="_blank" class="filter-action-btn" style="padding:8px 15px; font-size:0.8rem;">Alle Artikel bei {src} <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article>'
+        cards_html += f'<article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Lust auf den Deep-Dive?</p><a href="https://{source_domain}" target="_blank" class="filter-action-btn" style="padding:10px 20px; font-size:0.85rem;">Alle Artikel bei {src} <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article>'
 
         main_content += f'<section class="source-section"><div class="source-title"><img src="https://www.google.com/s2/favicons?domain={source_domain}&sz=32" alt=""> {src}</div><div class="carousel-wrapper"><button class="nav-btn left" onclick="scrollCarousel(\'{carousel_id}\', -1)"><i class="fa-solid fa-chevron-left"></i></button><div class="news-carousel" id="{carousel_id}">{cards_html}</div><button class="nav-btn right" onclick="scrollCarousel(\'{carousel_id}\', 1)"><i class="fa-solid fa-chevron-right"></i></button></div></section>'
 
