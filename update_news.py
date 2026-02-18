@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os, time, datetime, hashlib, json, re, html
-from urllib.parse import urlparse
+from urllib.parse import urlparse, parse_qs
 from concurrent.futures import ThreadPoolExecutor
 import requests, feedparser
 
@@ -11,13 +11,13 @@ SITE_TITLE = "KI‑Ticker"
 SITE_URL = "https://ki-ticker.boehmonline.space"
 ADSENSE_PUB = "pub-2616688648278798"
 
-# AdSense Slots
-ADSENSE_SLOT_LEFT = "3499497230"   # Skyscraper Links
-ADSENSE_SLOT_RIGHT = "8513926860"  # Skyscraper Rechts
-ADSENSE_SLOT_FEED = "8395864605"   # In-Feed Banner
+ADSENSE_SLOT_LEFT = "3499497230"
+ADSENSE_SLOT_RIGHT = "8513926860"
+ADSENSE_SLOT_FEED = "8395864605"
 
 HERO_BASE = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80"
 DB_FILE = "news_db.json"
+EDITORIAL_FILE = "editorial.json"
 DAYS_TO_KEEP = 7
 MAX_PER_SOURCE = 6 
 
@@ -40,6 +40,23 @@ def load_db():
             with open(DB_FILE, "r", encoding="utf-8") as f: return json.load(f)
         except: return []
     return []
+
+def load_editorial():
+    if os.path.exists(EDITORIAL_FILE):
+        try:
+            with open(EDITORIAL_FILE, "r", encoding="utf-8") as f: return json.load(f)
+        except: return None
+    return None
+
+def get_youtube_id(url):
+    """Extrahiert die YouTube ID für das Embedding."""
+    if not url: return None
+    parsed = urlparse(url)
+    if parsed.hostname == 'youtu.be': return parsed.path[1:]
+    if parsed.hostname in ('www.youtube.com', 'youtube.com'):
+        if parsed.path == '/watch': return parse_qs(parsed.query).get('v', [None])[0]
+        if parsed.path.startswith(('/embed/', '/v/')): return parsed.path.split('/')[2]
+    return None
 
 def save_db(data):
     cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=DAYS_TO_KEEP)
@@ -91,11 +108,38 @@ def generate_sitemap(items):
     xml += '</urlset>'
     with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(xml)
 
-def render_index(items):
+def render_index(items, editorial):
     now_dt = datetime.datetime.now(datetime.timezone.utc)
     categories = sorted(list(set(it["source"] for it in items)))
     cat_html = "".join([f'<button class="cat-btn" onclick="filterCat(\'{c}\', this)">{c}</button>' for c in categories])
     hero_default = f"{HERO_BASE}&w=1200"
+
+    # Redaktions-Block mit Video-Unterstützung
+    editorial_html = ""
+    if editorial:
+        yt_id = get_youtube_id(editorial.get('video_url'))
+        video_embed = ""
+        if yt_id:
+            video_embed = f"""
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/{yt_id}" 
+                        title="YouTube video player" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen></iframe>
+            </div>
+            """
+        
+        editorial_html = f"""
+        <section class="editorial-section">
+            <div class="editorial-badge">Tagesthema der Redaktion</div>
+            <div class="editorial-card">
+                <h2>{editorial.get('title', 'Titel wird geladen...')}</h2>
+                {video_embed}
+                <div class="editorial-text">{editorial.get('content', '')}</div>
+                <div class="editorial-date">Stand: {editorial.get('date', now_dt.strftime('%d.%m.%Y'))}</div>
+            </div>
+        </section>
+        """
 
     schema_items = []
     html_content = ""
@@ -103,22 +147,13 @@ def render_index(items):
     for idx, it in enumerate(items[:120]):
         prio = 'fetchpriority="high" loading="eager"' if idx < 2 else 'loading="lazy"'
         src_low = it["source"].lower()
-        
         current_img = it.get("image")
         is_fallback = "arxiv" in src_low or "heise" in src_low or not current_img
         
-        # Bild-Logik & Schema Image Array (1x1, 4:3, 16:9)
         if is_fallback:
-            img_url_display = hero_default
             img_html = f'<img src="{hero_default}" srcset="{HERO_BASE}&w=300 300w, {HERO_BASE}&w=600 600w" sizes="(max-width: 600px) 300px, 600px" {prio} alt="">'
-            # Generiere verschiedene Ratios für Unsplash
-            schema_images = [
-                f"{HERO_BASE}&w=1000&h=1000", # 1:1
-                f"{HERO_BASE}&w=1000&h=750",  # 4:3
-                f"{HERO_BASE}&w=1200&h=675"   # 16:9
-            ]
+            schema_images = [f"{HERO_BASE}&w=1000&h=1000", f"{HERO_BASE}&w=1000&h=750", f"{HERO_BASE}&w=1200&h=675"]
         else:
-            img_url_display = current_img
             img_html = f'<img src="{current_img}" {prio} alt="" onerror="this.onerror=null;this.src=\'{hero_default}\';">'
             schema_images = [current_img]
             
@@ -137,26 +172,13 @@ def render_index(items):
           </div>
         </article>"""
 
-        # Erweitertes NewsArticle Schema
         schema_items.append({
-            "@type": "ListItem",
-            "position": idx + 1,
+            "@type": "ListItem", "position": idx + 1,
             "item": {
-                "@type": "NewsArticle",
-                "headline": it["title"][:110],
-                "image": schema_images,
-                "datePublished": it["published_iso"],
-                "dateModified": it["published_iso"], # Bei Aggregatoren meist identisch
-                "author": [{
-                    "@type": "Organization",
-                    "name": it["source"],
-                    "url": f"https://{it['domain']}" # Behebt die Warnung "url fehlt"
-                }],
-                "publisher": {
-                    "@type": "Organization",
-                    "name": SITE_TITLE,
-                    "logo": {"@type": "ImageObject", "url": f"{SITE_URL}/favicon.svg"}
-                },
+                "@type": "NewsArticle", "headline": it["title"][:110], "image": schema_images,
+                "datePublished": it["published_iso"], "dateModified": it["published_iso"],
+                "author": [{"@type": "Organization", "name": it["source"], "url": f"https://{it['domain']}"}],
+                "publisher": {"@type": "Organization", "name": SITE_TITLE, "logo": {"@type": "ImageObject", "url": f"{SITE_URL}/favicon.svg"}},
                 "url": it["url"]
             }
         })
@@ -180,11 +202,15 @@ def render_index(items):
         <main class="container">
             <header class="header">
                 <h1>KI‑Ticker</h1>
+                <p class="subtitle">Neues aus der Welt der künstlichen Intelligenz</p>
                 <div class="controls">
                     <input type="text" id="searchInput" placeholder="Suchen..." aria-label="Suche">
                     <div class="category-bar"><button class="cat-btn active" onclick="filterCat('all', this)">Alle</button>{cat_html}</div>
                 </div>
             </header>
+
+            {editorial_html}
+
             <div class="news-grid">{html_content}</div>
             <footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
         </main>
@@ -213,6 +239,7 @@ def render_index(items):
 
 def main():
     db = load_db()
+    editorial = load_editorial()
     with ThreadPoolExecutor(max_workers=7) as ex: res = list(ex.map(fetch_feed, FEEDS))
     items = [i for r in res for i in r]
     raw_sorted = sorted({i['url']: i for i in (db + items)}.values(), key=lambda x: x["published_iso"], reverse=True)
@@ -224,6 +251,6 @@ def main():
         if source_counts[src] <= MAX_PER_SOURCE: final_items.append(it)
     save_db(final_items)
     generate_sitemap(final_items)
-    with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(final_items))
+    with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(final_items, editorial))
 
 if __name__ == "__main__": main()

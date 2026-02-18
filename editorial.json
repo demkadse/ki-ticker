@@ -1,0 +1,6 @@
+{
+  "title": "Die 'Dead Internet Theory': Wenn die KI sich selbst fressen muss",
+  "content": "Haben Sie in letzter Zeit das Gefühl, dass das Internet 'leerer' oder repetitiver wird? Die 'Dead Internet Theory' besagt, dass ein Großteil des Traffics und Contents im Netz nicht mehr von Menschen, sondern von Bots stammt. Mit dem Boom generativer KI erreicht dieses Phänomen eine neue, besorgniserregende Stufe.\n\nDas Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle werden mit Internetdaten trainiert, doch wenn das Netz zunehmend mit KI-generierten Inhalten geflutet wird, trainieren zukünftige Modelle unweigerlich mit diesen synthetischen Daten. Eine im Fachmagazin Nature veröffentlichte Studie warnt vor einem digitalen Teufelskreis: Die Qualität der KI-Ausgaben sinkt rapide, wenn sie nur noch lernt, was eine vorherige KI-Generation fehlerhaft ausgegeben hat.\n\n**Weiterführende Quellen:**\n- Nature Studie: 'AI models collapse when trained on recursively generated data' (2024)\n- The Atlantic: 'Maybe You Missed It, but the Internet Died Five Years Ago' (2021)\n- ArXiv Research: 'Is computational creativity flourishing on the dead internet?' (2024)",
+  "video_url": "https://www.youtube.com/watch?v=oBT74O0IKCs",
+  "date": "18.02.2026"
+}
