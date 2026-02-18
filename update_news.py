@@ -57,7 +57,6 @@ def generate_sitemap():
     xml = f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{SITE_URL}/index.html</loc><lastmod>{now}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url><url><loc>{SITE_URL}/ueber-uns.html</loc><lastmod>{now}</lastmod></url></urlset>'
     with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(xml)
 
-# --- STEUERUNG VON FEED-ABRUF ---
 def fetch_feed(feed_info):
     name, url = feed_info
     try:
@@ -82,11 +81,9 @@ def render_index(items, editorial):
         if len(grouped[it["source"]]) < 10: grouped[it["source"]].append(it)
     sorted_sources = sorted(grouped.keys(), key=lambda s: grouped[s][0]["published_iso"], reverse=True)
 
-    # Dynamische Kategorie-Buttons
     cat_buttons = ""
     for src in sorted_sources:
-        cat_buttons += f'<button class="nav-btn category-btn" onclick="applySearch(\'{src}\')">{src}</button>'
-    
+        cat_buttons += f'<button class="category-btn" onclick="applySearch(\'{src}\')">{src}</button>'
     category_html = f'<div class="category-nav-wrapper">{cat_buttons}</div>'
 
     editorial_html = ""
@@ -105,17 +102,12 @@ def render_index(items, editorial):
                     {author_link}
                     <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;">Hinweis: Externer Videobeitrag.</p>
                 </div>
-                
                 <div class="editorial-text">{editorial.get('description', '')}</div>
-                
                 <div class="editorial-footer-area">
                     <div class="sources-box-compact">
                         <strong>Quellen:</strong>
-                        <div class="editorial-sources-list">
-                            {editorial.get('content', '')}
-                        </div>
+                        <div class="editorial-sources-list">{editorial.get('content', '')}</div>
                     </div>
-                    
                     <button class="filter-action-btn-styled" onclick="applySearch('{editorial.get('search_term','')}');">
                         <i class="fa-solid fa-magnifying-glass"></i> Passende News finden
                     </button>
