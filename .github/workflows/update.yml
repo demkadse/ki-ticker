@@ -1,28 +1,41 @@
 name: Update KI-Ticker
+
 on:
   schedule:
+    # Läuft alle 60 Minuten (zur 17. Minute)
     - cron: "17 * * * *"
   workflow_dispatch: {}
+
 permissions:
   contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false # Wir nutzen das Token explizit im Push-Schritt
+          fetch-depth: 0
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - name: Install dependencies
         run: pip install feedparser requests
-      - name: Run updater
+
+      - name: Run updater script
         run: python update_news.py
-      - name: Commit & push
+
+      - name: Commit & push changes
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add .
-          git commit -m "Auto-update site & sitemap [skip ci]" || echo "No changes"
-          git push
+          # Commit nur machen, wenn es Änderungen gibt, sonst kein Fehler
+          git commit -m "Auto-update site & sitemap [skip ci]" || exit 0
+          # Hier ist der Fix: Token wird in die URL integriert
+          git push "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:main
