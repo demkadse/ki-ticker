@@ -1,5 +1,32 @@
 [
   {
+    "id": "1febab26b2ba",
+    "title": "India Fuels Its AI Mission With NVIDIA",
+    "url": "https://blogs.nvidia.com/blog/india-ai-mission-infrastructure-models/",
+    "source": "NVIDIA Blog",
+    "published_iso": "2026-02-18T00:30:49+00:00",
+    "domain": "blogs.nvidia.com",
+    "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/ai-infra-corp-blog-india-impact-summit-2026-1280x680-1.png"
+  },
+  {
+    "id": "ae55e0e9f326",
+    "title": "India’s Global Systems Integrators Build Next Wave of Enterprise Agents With NVIDIA AI, Transforming Back Office and Customer Support",
+    "url": "https://blogs.nvidia.com/blog/india-enterprise-ai-agents/",
+    "source": "NVIDIA Blog",
+    "published_iso": "2026-02-18T00:30:41+00:00",
+    "domain": "blogs.nvidia.com",
+    "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/ai-impact-summit-in26-visual-gsi-4871450-concept1-r2-scaled.png"
+  },
+  {
+    "id": "062a5baabadc",
+    "title": "NVIDIA and Global Industrial Software Leaders Partner With India’s Largest Manufacturers to Drive AI Boom",
+    "url": "https://blogs.nvidia.com/blog/india-global-industrial-software-leaders-manufacturers-ai/",
+    "source": "NVIDIA Blog",
+    "published_iso": "2026-02-18T00:30:32+00:00",
+    "domain": "blogs.nvidia.com",
+    "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/NVIDIA-India-AI-Impact-Summit-Indias-Manufacturers-Drive-AI-Boom-scaled.jpg"
+  },
+  {
     "id": "dfb934804fc9",
     "title": "Our 2026 Responsible AI Progress Report",
     "url": "https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/",
@@ -214,24 +241,6 @@
     "published_iso": "2026-02-12T16:00:46+00:00",
     "domain": "blogs.nvidia.com",
     "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/inference-press-moe-x-tokenomics-think-smart-blog-4779150-1280x680-1.jpg"
-  },
-  {
-    "id": "50f63c1c63e9",
-    "title": "NVIDIA DGX Spark Powers Big Projects in Higher Education",
-    "url": "https://blogs.nvidia.com/blog/dgx-spark-higher-education/",
-    "source": "NVIDIA Blog",
-    "published_iso": "2026-02-12T15:00:23+00:00",
-    "domain": "blogs.nvidia.com",
-    "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/dgx-spark-higher-ed-featured-1280x680-1.jpg"
-  },
-  {
-    "id": "ded2ceaa6fa7",
-    "title": "GeForce NOW Turns Screens Into a Gaming Machine",
-    "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-amazon-fire-tv-app/",
-    "source": "NVIDIA Blog",
-    "published_iso": "2026-02-12T14:00:58+00:00",
-    "domain": "blogs.nvidia.com",
-    "image": ""
   },
   {
     "id": "882674348fab",
