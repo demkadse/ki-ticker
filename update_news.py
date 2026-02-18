@@ -78,7 +78,7 @@ def render_index(items, editorial):
     editorial_html = ""
     if editorial:
         yt_id = get_youtube_id(editorial.get('video_url'))
-        author_link = f'<a href="{editorial.get("author_url")}" target="_blank" style="font-size:0.85rem;"><i class="fa-brands fa-youtube"></i> Zum Kanal des Urhebers</a>' if editorial.get('author_url') else ""
+        author_link = f'<a href="{editorial.get("author_url")}" target="_blank" style="font-size:0.85rem;"><i class="fa-brands fa-youtube"></i> Zum Urheber</a>' if editorial.get('author_url') else ""
         video_embed = f'<div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/{yt_id}" allowfullscreen></iframe></div>' if yt_id else ""
         
         editorial_html = f"""
@@ -87,7 +87,7 @@ def render_index(items, editorial):
             <div class="editorial-card">
                 <h2 style="margin-bottom:25px;">{editorial.get('title', '...')}</h2>
                 {video_embed}
-                <div style="margin-bottom:25px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px;">
+                <div style="margin-bottom:25px; padding:15px; background:rgba(255,255,255,0.03); border-radius:8px;">
                     {author_link}
                     <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;">Hinweis: Externer Videobeitrag.</p>
                 </div>
@@ -114,7 +114,6 @@ def render_index(items, editorial):
         cards_html = ""
         for it in grouped[src]:
             dt = datetime.datetime.fromisoformat(it["published_iso"]).strftime("%d.%m. • %H:%M")
-            # Wir nutzen hier einfache Anführungszeichen für JS, um den f-string Backslash-Error zu umgehen
             cards_html += f"""
             <article class="card" data-content="{it['title'].lower()}">
                 <div class="img-container"><img src="{hero_default}" loading="lazy" alt=""></div>
