@@ -1,11 +1,24 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>KI‑Ticker</title><link rel="icon" type="image/svg+xml" href="favicon.svg">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KI‑Ticker</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1771410589"></head><body class="dark-mode"><div class="site-layout"><aside class="sidebar-ad left"></aside><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>
+    <link rel="stylesheet" href="style.css?v=1771412351">
+    </head><body class="dark-mode"><div class="site-layout">
+        <aside class="sidebar-ad left"></aside>
+        <main class="container">
+            <header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>
+            
         <section class="editorial-section">
             <div class="editorial-badge"><i class="fa-solid fa-star"></i> Tagesthema der Redaktion</div>
             <div class="editorial-card">
                 <h2>Die 'Dead Internet Theory': Wenn die KI sich selbst fressen muss</h2>
                 <div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/oBT74O0IKCs" allowfullscreen></iframe></div>
+                <div style="margin-bottom:20px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px;">
+                    <a href="https://www.youtube.com/@InNuce" target="_blank" style="color:var(--acc); text-decoration:none; font-size:0.85rem;"><i class="fa-brands fa-youtube"></i> Zum Kanal des Video-Urhebers</a>
+                    <p style="font-size:0.75rem; color:var(--muted); margin-top:5px; line-height:1.3;">
+                        <strong>Hinweis:</strong> Dieses Video ist ein externer Beitrag. Die Redaktion macht sich die Inhalte nicht zu eigen; nur der Begleittext ist eine Eigenleistung.
+                    </p>
+                </div>
                 <div class="editorial-text">Haben Sie in letzter Zeit das Gefühl, dass das Internet 'leerer' oder repetitiver wird? Die 'Dead Internet Theory' besagt, dass ein Großteil des Traffics und Contents im Netz nicht mehr von Menschen, sondern von Bots stammt.
 
 Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle werden mit Internetdaten trainiert, doch wenn das Netz zunehmend mit KI-generierten Inhalten geflutet wird, trainieren zukünftige Modelle unweigerlich mit diesen synthetischen Daten. Eine im Fachmagazin Nature veröffentlichte Studie warnt vor einem digitalen Teufelskreis: Die Qualität der KI-Ausgaben sinkt rapide, wenn sie nur noch lernt, was eine vorherige KI-Generation fehlerhaft ausgegeben hat.
@@ -15,49 +28,404 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
 - <a href='https://www.theatlantic.com/technology/archive/2021/08/dead-internet-theory-wrong-but-feels-true/619937/' target='_blank'>The Atlantic: 'Maybe You Missed It, but the Internet Died Five Years Ago' (2021)</a>
 - <a href='https://arxiv.org/abs/2401.05749' target='_blank'>ArXiv Research: 'Is computational creativity flourishing on the dead internet?' (2024)</a></div>
                 <div class="editorial-footer">
-                    <button class="filter-action-btn" onclick="applySearch('Dead Internet');"><i class="fa-solid fa-magnifying-glass"></i> Passende News finden</button>
+                    <button class="filter-action-btn" onclick="applySearch('Dead Internet');">
+                        <i class="fa-solid fa-magnifying-glass"></i> Passende News finden
+                    </button>
                 </div>
             </div>
         </section>
+            
         <section class="source-section">
             <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" alt=""> arXiv</div>
+                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=blog.google&sz=32" alt=""> Google AI</div>
                 <div class="carousel-nav">
                     <button class="nav-btn" onclick="scrollCarousel('carousel-0', -1)" title="Zurück"><i class="fa-solid fa-chevron-left"></i></button>
                     <button class="nav-btn" onclick="scrollCarousel('carousel-0', 1)" title="Vorwärts"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-0"><article class="card" data-content="attention-gated u-net model for semantic segmentation of brain tumors and feature extraction for survival prognosis"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">18.02. • 05:00</div><h3><a href="https://arxiv.org/abs/2602.15067" target="_blank">Attention-gated U-Net model for semantic segmentation of brain tumors and feature extraction for survival prognosis</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15067')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="researchgym: evaluating language model agents on real-world ai research"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">18.02. • 05:00</div><h3><a href="https://arxiv.org/abs/2602.15112" target="_blank">ResearchGym: Evaluating Language Model Agents on Real-World AI Research</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15112')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="protecting language models against unauthorized distillation through trace rewriting"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">18.02. • 05:00</div><h3><a href="https://arxiv.org/abs/2602.15143" target="_blank">Protecting Language Models Against Unauthorized Distillation through Trace Rewriting</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15143')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="panini: continual learning in token space via structured memory"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">18.02. • 05:00</div><h3><a href="https://arxiv.org/abs/2602.15156" target="_blank">Panini: Continual Learning in Token Space via Structured Memory</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15156')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="da costa and tarski meet goguen and carnap: a novel approach for ontological heterogeneity based on consequence systems"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">18.02. • 05:00</div><h3><a href="https://arxiv.org/abs/2602.15158" target="_blank">da Costa and Tarski meet Goguen and Carnap: a novel approach for ontological heterogeneity based on consequence systems</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15158')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="mind the (dh) gap! a contrast in risky choices between reasoning and conversational llms"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">18.02. • 05:00</div><h3><a href="https://arxiv.org/abs/2602.15173" target="_blank">Mind the (DH) Gap! A Contrast in Risky Choices Between Reasoning and Conversational LLMs</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15173')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="secure and energy-efficient wireless agentic ai networks"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">18.02. • 05:00</div><h3><a href="https://arxiv.org/abs/2602.15212" target="_blank">Secure and Energy-Efficient Wireless Agentic AI Networks</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15212')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="predicting invoice dilution in supply chain finance with leakage free two stage xgboost, kan (kolmogorov arnold networks), and ensemble models"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">18.02. • 05:00</div><h3><a href="https://arxiv.org/abs/2602.15248" target="_blank">Predicting Invoice Dilution in Supply Chain Finance with Leakage Free Two Stage XGBoost, KAN (Kolmogorov Arnold Networks), and Ensemble Models</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15248')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="enhancing diversity and feasibility: joint population synthesis from multi-source data using generative models"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">18.02. • 05:00</div><h3><a href="https://arxiv.org/abs/2602.15270" target="_blank">Enhancing Diversity and Feasibility: Joint Population Synthesis from Multi-source Data Using Generative Models</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15270')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="when remembering and planning are worth it: navigating under change"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">18.02. • 05:00</div><h3><a href="https://arxiv.org/abs/2602.15274" target="_blank">When Remembering and Planning are Worth it: Navigating under Change</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15274')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Deep-Dive?</p><a href="https://arxiv.org" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">Alle Artikel bei arXiv <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article></div></div>
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-0">
+            <article class="card" data-content="ai impact summit 2026: how we’re partnering to make ai work for everyone">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 10:30</div>
+                <h3><a href="https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-india/" target="_blank">AI Impact Summit 2026: How we’re partnering to make AI work for everyone</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-india/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="ai impact summit 2026">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 10:30</div>
+                <h3><a href="https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-collection/" target="_blank">AI Impact Summit 2026</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-collection/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="our 2026 responsible ai progress report">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 22:30</div>
+                <h3><a href="https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/" target="_blank">Our 2026 Responsible AI Progress Report</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="gemini 3 deep think: advancing science, research and engineering">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">12.02. • 16:13</div>
+                <h3><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/" target="_blank">Gemini 3 Deep Think: Advancing science, research and engineering</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="9 fun questions to try asking google photos">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">10.02. • 17:00</div>
+                <h3><a href="https://blog.google/products-and-platforms/products/photos/ask-button-ask-photos-tips/" target="_blank">9 fun questions to try asking Google Photos</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blog.google/products-and-platforms/products/photos/ask-button-ask-photos-tips/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="helping kids and teens learn and grow online on safer internet day">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">10.02. • 02:30</div>
+                <h3><a href="https://blog.google/innovation-and-ai/technology/safety-security/safer-internet-day-2026-kids-teens/" target="_blank">Helping kids and teens learn and grow online on Safer Internet Day</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/technology/safety-security/safer-internet-day-2026-kids-teens/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="natively adaptive interfaces: a new framework for ai accessibility">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">05.02. • 17:00</div>
+                <h3><a href="https://blog.google/company-news/outreach-and-initiatives/accessibility/natively-adaptive-interfaces-ai-accessibility/" target="_blank">Natively Adaptive Interfaces: A new framework for AI accessibility</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blog.google/company-news/outreach-and-initiatives/accessibility/natively-adaptive-interfaces-ai-accessibility/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="how google cloud is helping team usa elevate their tricks with ai">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">05.02. • 16:00</div>
+                <h3><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/us-ski-snowboard-tool-winter-olympics-2026/" target="_blank">How Google Cloud is helping Team USA elevate their tricks with AI</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/us-ski-snowboard-tool-winter-olympics-2026/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="watch our new gemini ad ahead of football’s biggest weekend">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">05.02. • 14:30</div>
+                <h3><a href="https://blog.google/company-news/inside-google/company-announcements/gemini-ad-new-home/" target="_blank">Watch our new Gemini ad ahead of football’s biggest weekend</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blog.google/company-news/inside-google/company-announcements/gemini-ad-new-home/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="the latest ai news we announced in january">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">04.02. • 16:55</div>
+                <h3><a href="https://blog.google/innovation-and-ai/products/google-ai-updates-january-2026/" target="_blank">The latest AI news we announced in January</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/products/google-ai-updates-january-2026/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+        <article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);">
+            <div class="card-body" style="justify-content:center;">
+                <p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Lust auf den Deep-Dive?</p>
+                <a href="https://blog.google" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">
+                    Alle Artikel bei Google AI <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </article></div></div>
         </section>
         <section class="source-section">
             <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=blogs.nvidia.com&sz=32" alt=""> NVIDIA Blog</div>
+                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=32" alt=""> arXiv</div>
                 <div class="carousel-nav">
                     <button class="nav-btn" onclick="scrollCarousel('carousel-1', -1)" title="Zurück"><i class="fa-solid fa-chevron-left"></i></button>
                     <button class="nav-btn" onclick="scrollCarousel('carousel-1', 1)" title="Vorwärts"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-1"><article class="card" data-content="india fuels its ai mission with nvidia"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">18.02. • 00:30</div><h3><a href="https://blogs.nvidia.com/blog/india-ai-mission-infrastructure-models/" target="_blank">India Fuels Its AI Mission With NVIDIA</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/india-ai-mission-infrastructure-models/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="india’s global systems integrators build next wave of enterprise agents with nvidia ai, transforming back office and customer support"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">18.02. • 00:30</div><h3><a href="https://blogs.nvidia.com/blog/india-enterprise-ai-agents/" target="_blank">India’s Global Systems Integrators Build Next Wave of Enterprise Agents With NVIDIA AI, Transforming Back Office and Customer Support</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/india-enterprise-ai-agents/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="nvidia and global industrial software leaders partner with india’s largest manufacturers to drive ai boom"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">18.02. • 00:30</div><h3><a href="https://blogs.nvidia.com/blog/india-global-industrial-software-leaders-manufacturers-ai/" target="_blank">NVIDIA and Global Industrial Software Leaders Partner With India’s Largest Manufacturers to Drive AI Boom</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/india-global-industrial-software-leaders-manufacturers-ai/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="new semianalysis inferencex data shows nvidia blackwell ultra delivers up to 50x better performance and 35x lower costs for agentic ai"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">16.02. • 17:00</div><h3><a href="https://blogs.nvidia.com/blog/data-blackwell-ultra-performance-lower-cost-agentic-ai/" target="_blank">New SemiAnalysis InferenceX Data Shows NVIDIA Blackwell Ultra Delivers up to 50x Better Performance and 35x Lower Costs for Agentic AI</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/data-blackwell-ultra-performance-lower-cost-agentic-ai/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="code, compute and connection: inside the inaugural nvidia ai day são paulo"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">12.02. • 22:00</div><h3><a href="https://blogs.nvidia.com/blog/ai-day-sao-paulo/" target="_blank">Code, Compute and Connection: Inside the Inaugural NVIDIA AI Day São Paulo</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/ai-day-sao-paulo/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="leading inference providers cut ai costs by up to 10x with open source models on nvidia blackwell"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">12.02. • 16:00</div><h3><a href="https://blogs.nvidia.com/blog/inference-open-source-models-blackwell-reduce-cost-per-token/" target="_blank">Leading Inference Providers Cut AI Costs by up to 10x With Open Source Models on NVIDIA Blackwell</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/inference-open-source-models-blackwell-reduce-cost-per-token/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="nvidia dgx spark powers big projects in higher education"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">12.02. • 15:00</div><h3><a href="https://blogs.nvidia.com/blog/dgx-spark-higher-education/" target="_blank">NVIDIA DGX Spark Powers Big Projects in Higher Education</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/dgx-spark-higher-education/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="geforce now turns screens into a gaming machine"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">12.02. • 14:00</div><h3><a href="https://blogs.nvidia.com/blog/geforce-now-thursday-amazon-fire-tv-app/" target="_blank">GeForce NOW Turns Screens Into a Gaming Machine</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/geforce-now-thursday-amazon-fire-tv-app/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="geforce now celebrates six years of streaming with 24 games in february"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">05.02. • 14:00</div><h3><a href="https://blogs.nvidia.com/blog/geforce-now-thursday-feb-2026-games-list/" target="_blank">GeForce NOW Celebrates Six Years of Streaming With 24 Games in February</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/geforce-now-thursday-feb-2026-games-list/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="nemotron labs: how ai agents are turning documents into real-time business intelligence"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">04.02. • 16:00</div><h3><a href="https://blogs.nvidia.com/blog/ai-agents-intelligent-document-processing/" target="_blank">Nemotron Labs: How AI Agents Are Turning Documents Into Real-Time Business Intelligence</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/ai-agents-intelligent-document-processing/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Deep-Dive?</p><a href="https://blogs.nvidia.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">Alle Artikel bei NVIDIA Blog <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article></div></div>
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-1">
+            <article class="card" data-content="attention-gated u-net model for semantic segmentation of brain tumors and feature extraction for survival prognosis">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 05:00</div>
+                <h3><a href="https://arxiv.org/abs/2602.15067" target="_blank">Attention-gated U-Net model for semantic segmentation of brain tumors and feature extraction for survival prognosis</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15067')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="researchgym: evaluating language model agents on real-world ai research">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 05:00</div>
+                <h3><a href="https://arxiv.org/abs/2602.15112" target="_blank">ResearchGym: Evaluating Language Model Agents on Real-World AI Research</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15112')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="protecting language models against unauthorized distillation through trace rewriting">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 05:00</div>
+                <h3><a href="https://arxiv.org/abs/2602.15143" target="_blank">Protecting Language Models Against Unauthorized Distillation through Trace Rewriting</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15143')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="panini: continual learning in token space via structured memory">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 05:00</div>
+                <h3><a href="https://arxiv.org/abs/2602.15156" target="_blank">Panini: Continual Learning in Token Space via Structured Memory</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15156')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="da costa and tarski meet goguen and carnap: a novel approach for ontological heterogeneity based on consequence systems">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 05:00</div>
+                <h3><a href="https://arxiv.org/abs/2602.15158" target="_blank">da Costa and Tarski meet Goguen and Carnap: a novel approach for ontological heterogeneity based on consequence systems</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15158')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="mind the (dh) gap! a contrast in risky choices between reasoning and conversational llms">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 05:00</div>
+                <h3><a href="https://arxiv.org/abs/2602.15173" target="_blank">Mind the (DH) Gap! A Contrast in Risky Choices Between Reasoning and Conversational LLMs</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15173')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="secure and energy-efficient wireless agentic ai networks">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 05:00</div>
+                <h3><a href="https://arxiv.org/abs/2602.15212" target="_blank">Secure and Energy-Efficient Wireless Agentic AI Networks</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15212')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="predicting invoice dilution in supply chain finance with leakage free two stage xgboost, kan (kolmogorov arnold networks), and ensemble models">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 05:00</div>
+                <h3><a href="https://arxiv.org/abs/2602.15248" target="_blank">Predicting Invoice Dilution in Supply Chain Finance with Leakage Free Two Stage XGBoost, KAN (Kolmogorov Arnold Networks), and Ensemble Models</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15248')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="enhancing diversity and feasibility: joint population synthesis from multi-source data using generative models">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 05:00</div>
+                <h3><a href="https://arxiv.org/abs/2602.15270" target="_blank">Enhancing Diversity and Feasibility: Joint Population Synthesis from Multi-source Data Using Generative Models</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15270')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="when remembering and planning are worth it: navigating under change">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 05:00</div>
+                <h3><a href="https://arxiv.org/abs/2602.15274" target="_blank">When Remembering and Planning are Worth it: Navigating under Change</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arxiv.org/abs/2602.15274')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+        <article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);">
+            <div class="card-body" style="justify-content:center;">
+                <p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Lust auf den Deep-Dive?</p>
+                <a href="https://arxiv.org" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">
+                    Alle Artikel bei arXiv <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </article></div></div>
         </section>
         <section class="source-section">
             <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=arstechnica.com&sz=32" alt=""> Ars Technica</div>
+                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=blogs.nvidia.com&sz=32" alt=""> NVIDIA Blog</div>
                 <div class="carousel-nav">
                     <button class="nav-btn" onclick="scrollCarousel('carousel-2', -1)" title="Zurück"><i class="fa-solid fa-chevron-left"></i></button>
                     <button class="nav-btn" onclick="scrollCarousel('carousel-2', 1)" title="Vorwärts"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-2"><article class="card" data-content="gamehub will give mac owners another imperfect way to play windows games"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 22:45</div><h3><a href="https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/" target="_blank">GameHub will give Mac owners another imperfect way to play Windows games</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="password managers' promise that they can't see your vaults isn't always true"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 20:43</div><h3><a href="https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/" target="_blank">Password managers' promise that they can't see your vaults isn't always true</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="stephen colbert says cbs forbid interview of democrat because of fcc threat"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 19:01</div><h3><a href="https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/" target="_blank">Stephen Colbert says CBS forbid interview of Democrat because of FCC threat</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="most vmware users still "actively reducing their vmware footprint," survey finds"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 18:38</div><h3><a href="https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/" target="_blank">Most VMware users still "actively reducing their VMware footprint," survey finds</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="what happens to a car when the company behind its software goes under?"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 18:15</div><h3><a href="https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/" target="_blank">What happens to a car when the company behind its software goes under?</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="ram shortage hits valve's four-year-old steam deck, now available "intermittently""><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 17:56</div><h3><a href="https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/" target="_blank">RAM shortage hits Valve's four-year-old Steam Deck, now available "intermittently"</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="warner bros. rejects paramount again but asks for "best and final offer""><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 17:17</div><h3><a href="https://arstechnica.com/tech-policy/2026/02/warner-bros-gives-paramount-one-more-week-to-beat-netflix-merger-offer/" target="_blank">Warner Bros. rejects Paramount again but asks for "best and final offer"</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/tech-policy/2026/02/warner-bros-gives-paramount-one-more-week-to-beat-netflix-merger-offer/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="there's a lot of big talk about sovereign launch—who is doing something about it?"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 16:47</div><h3><a href="https://arstechnica.com/space/2026/02/which-countries-are-actually-serious-about-developing-their-own-rockets/" target="_blank">There's a lot of big talk about sovereign launch—who is doing something about it?</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/space/2026/02/which-countries-are-actually-serious-about-developing-their-own-rockets/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="here's the fun, action-packed trailer for mandolorian and grogu"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 16:10</div><h3><a href="https://arstechnica.com/culture/2026/02/heres-the-fun-action-packed-trailer-for-mandolorian-and-grogu/" target="_blank">Here's the fun, action-packed trailer for Mandolorian and Grogu</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/culture/2026/02/heres-the-fun-action-packed-trailer-for-mandolorian-and-grogu/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="ford is focusing on efficiency to make its 2027 $30,000 ev pickup affordable"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 16:00</div><h3><a href="https://arstechnica.com/cars/2026/02/ford-is-focusing-on-efficiency-to-make-its-2027-30000-ev-pickup-affordable/" target="_blank">Ford is focusing on efficiency to make its 2027 $30,000 EV pickup affordable</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/cars/2026/02/ford-is-focusing-on-efficiency-to-make-its-2027-30000-ev-pickup-affordable/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Deep-Dive?</p><a href="https://arstechnica.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">Alle Artikel bei Ars Technica <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article></div></div>
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-2">
+            <article class="card" data-content="india fuels its ai mission with nvidia">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 00:30</div>
+                <h3><a href="https://blogs.nvidia.com/blog/india-ai-mission-infrastructure-models/" target="_blank">India Fuels Its AI Mission With NVIDIA</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/india-ai-mission-infrastructure-models/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="india’s global systems integrators build next wave of enterprise agents with nvidia ai, transforming back office and customer support">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 00:30</div>
+                <h3><a href="https://blogs.nvidia.com/blog/india-enterprise-ai-agents/" target="_blank">India’s Global Systems Integrators Build Next Wave of Enterprise Agents With NVIDIA AI, Transforming Back Office and Customer Support</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/india-enterprise-ai-agents/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="nvidia and global industrial software leaders partner with india’s largest manufacturers to drive ai boom">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">18.02. • 00:30</div>
+                <h3><a href="https://blogs.nvidia.com/blog/india-global-industrial-software-leaders-manufacturers-ai/" target="_blank">NVIDIA and Global Industrial Software Leaders Partner With India’s Largest Manufacturers to Drive AI Boom</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/india-global-industrial-software-leaders-manufacturers-ai/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="new semianalysis inferencex data shows nvidia blackwell ultra delivers up to 50x better performance and 35x lower costs for agentic ai">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">16.02. • 17:00</div>
+                <h3><a href="https://blogs.nvidia.com/blog/data-blackwell-ultra-performance-lower-cost-agentic-ai/" target="_blank">New SemiAnalysis InferenceX Data Shows NVIDIA Blackwell Ultra Delivers up to 50x Better Performance and 35x Lower Costs for Agentic AI</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/data-blackwell-ultra-performance-lower-cost-agentic-ai/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="code, compute and connection: inside the inaugural nvidia ai day são paulo">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">12.02. • 22:00</div>
+                <h3><a href="https://blogs.nvidia.com/blog/ai-day-sao-paulo/" target="_blank">Code, Compute and Connection: Inside the Inaugural NVIDIA AI Day São Paulo</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/ai-day-sao-paulo/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="leading inference providers cut ai costs by up to 10x with open source models on nvidia blackwell">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">12.02. • 16:00</div>
+                <h3><a href="https://blogs.nvidia.com/blog/inference-open-source-models-blackwell-reduce-cost-per-token/" target="_blank">Leading Inference Providers Cut AI Costs by up to 10x With Open Source Models on NVIDIA Blackwell</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/inference-open-source-models-blackwell-reduce-cost-per-token/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="nvidia dgx spark powers big projects in higher education">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">12.02. • 15:00</div>
+                <h3><a href="https://blogs.nvidia.com/blog/dgx-spark-higher-education/" target="_blank">NVIDIA DGX Spark Powers Big Projects in Higher Education</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/dgx-spark-higher-education/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="geforce now turns screens into a gaming machine">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">12.02. • 14:00</div>
+                <h3><a href="https://blogs.nvidia.com/blog/geforce-now-thursday-amazon-fire-tv-app/" target="_blank">GeForce NOW Turns Screens Into a Gaming Machine</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/geforce-now-thursday-amazon-fire-tv-app/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="geforce now celebrates six years of streaming with 24 games in february">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">05.02. • 14:00</div>
+                <h3><a href="https://blogs.nvidia.com/blog/geforce-now-thursday-feb-2026-games-list/" target="_blank">GeForce NOW Celebrates Six Years of Streaming With 24 Games in February</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/geforce-now-thursday-feb-2026-games-list/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="nemotron labs: how ai agents are turning documents into real-time business intelligence">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">04.02. • 16:00</div>
+                <h3><a href="https://blogs.nvidia.com/blog/ai-agents-intelligent-document-processing/" target="_blank">Nemotron Labs: How AI Agents Are Turning Documents Into Real-Time Business Intelligence</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://blogs.nvidia.com/blog/ai-agents-intelligent-document-processing/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+        <article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);">
+            <div class="card-body" style="justify-content:center;">
+                <p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Lust auf den Deep-Dive?</p>
+                <a href="https://blogs.nvidia.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">
+                    Alle Artikel bei NVIDIA Blog <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </article></div></div>
         </section>
         <section class="source-section">
             <div class="source-header">
-                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=blog.google&sz=32" alt=""> Google AI</div>
+                <div class="source-title"><img src="https://www.google.com/s2/favicons?domain=arstechnica.com&sz=32" alt=""> Ars Technica</div>
                 <div class="carousel-nav">
                     <button class="nav-btn" onclick="scrollCarousel('carousel-3', -1)" title="Zurück"><i class="fa-solid fa-chevron-left"></i></button>
                     <button class="nav-btn" onclick="scrollCarousel('carousel-3', 1)" title="Vorwärts"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-3"><article class="card" data-content="our 2026 responsible ai progress report"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 22:30</div><h3><a href="https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/" target="_blank">Our 2026 Responsible AI Progress Report</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="gemini 3 deep think: advancing science, research and engineering"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">12.02. • 16:13</div><h3><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/" target="_blank">Gemini 3 Deep Think: Advancing science, research and engineering</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-deep-think/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="9 fun questions to try asking google photos"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">10.02. • 17:00</div><h3><a href="https://blog.google/products-and-platforms/products/photos/ask-button-ask-photos-tips/" target="_blank">9 fun questions to try asking Google Photos</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blog.google/products-and-platforms/products/photos/ask-button-ask-photos-tips/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="helping kids and teens learn and grow online on safer internet day"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">10.02. • 02:30</div><h3><a href="https://blog.google/innovation-and-ai/technology/safety-security/safer-internet-day-2026-kids-teens/" target="_blank">Helping kids and teens learn and grow online on Safer Internet Day</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/technology/safety-security/safer-internet-day-2026-kids-teens/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="natively adaptive interfaces: a new framework for ai accessibility"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">05.02. • 17:00</div><h3><a href="https://blog.google/company-news/outreach-and-initiatives/accessibility/natively-adaptive-interfaces-ai-accessibility/" target="_blank">Natively Adaptive Interfaces: A new framework for AI accessibility</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blog.google/company-news/outreach-and-initiatives/accessibility/natively-adaptive-interfaces-ai-accessibility/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="how google cloud is helping team usa elevate their tricks with ai"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">05.02. • 16:00</div><h3><a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/us-ski-snowboard-tool-winter-olympics-2026/" target="_blank">How Google Cloud is helping Team USA elevate their tricks with AI</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/us-ski-snowboard-tool-winter-olympics-2026/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="watch our new gemini ad ahead of football’s biggest weekend"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">05.02. • 14:30</div><h3><a href="https://blog.google/company-news/inside-google/company-announcements/gemini-ad-new-home/" target="_blank">Watch our new Gemini ad ahead of football’s biggest weekend</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blog.google/company-news/inside-google/company-announcements/gemini-ad-new-home/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="the latest ai news we announced in january"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">04.02. • 16:55</div><h3><a href="https://blog.google/innovation-and-ai/products/google-ai-updates-january-2026/" target="_blank">The latest AI news we announced in January</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/products/google-ai-updates-january-2026/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="how we’re helping preserve the genetic information of endangered species with ai"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">02.02. • 18:00</div><h3><a href="https://blog.google/innovation-and-ai/technology/ai/ai-to-preserve-endangered-species/" target="_blank">How we’re helping preserve the genetic information of endangered species with AI</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/technology/ai/ai-to-preserve-endangered-species/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="advancing ai benchmarking with game arena"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">02.02. • 17:00</div><h3><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/kaggle-game-arena-updates/" target="_blank">Advancing AI benchmarking with Game Arena</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://blog.google/innovation-and-ai/models-and-research/google-deepmind/kaggle-game-arena-updates/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Deep-Dive?</p><a href="https://blog.google" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">Alle Artikel bei Google AI <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article></div></div>
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-3">
+            <article class="card" data-content="gamehub will give mac owners another imperfect way to play windows games">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 22:45</div>
+                <h3><a href="https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/" target="_blank">GameHub will give Mac owners another imperfect way to play Windows games</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="password managers' promise that they can't see your vaults isn't always true">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 20:43</div>
+                <h3><a href="https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/" target="_blank">Password managers' promise that they can't see your vaults isn't always true</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="stephen colbert says cbs forbid interview of democrat because of fcc threat">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 19:01</div>
+                <h3><a href="https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/" target="_blank">Stephen Colbert says CBS forbid interview of Democrat because of FCC threat</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="most vmware users still "actively reducing their vmware footprint," survey finds">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 18:38</div>
+                <h3><a href="https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/" target="_blank">Most VMware users still "actively reducing their VMware footprint," survey finds</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="what happens to a car when the company behind its software goes under?">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 18:15</div>
+                <h3><a href="https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/" target="_blank">What happens to a car when the company behind its software goes under?</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="ram shortage hits valve's four-year-old steam deck, now available "intermittently"">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 17:56</div>
+                <h3><a href="https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/" target="_blank">RAM shortage hits Valve's four-year-old Steam Deck, now available "intermittently"</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="warner bros. rejects paramount again but asks for "best and final offer"">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 17:17</div>
+                <h3><a href="https://arstechnica.com/tech-policy/2026/02/warner-bros-gives-paramount-one-more-week-to-beat-netflix-merger-offer/" target="_blank">Warner Bros. rejects Paramount again but asks for "best and final offer"</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/tech-policy/2026/02/warner-bros-gives-paramount-one-more-week-to-beat-netflix-merger-offer/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="there's a lot of big talk about sovereign launch—who is doing something about it?">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 16:47</div>
+                <h3><a href="https://arstechnica.com/space/2026/02/which-countries-are-actually-serious-about-developing-their-own-rockets/" target="_blank">There's a lot of big talk about sovereign launch—who is doing something about it?</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/space/2026/02/which-countries-are-actually-serious-about-developing-their-own-rockets/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="here's the fun, action-packed trailer for mandolorian and grogu">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 16:10</div>
+                <h3><a href="https://arstechnica.com/culture/2026/02/heres-the-fun-action-packed-trailer-for-mandolorian-and-grogu/" target="_blank">Here's the fun, action-packed trailer for Mandolorian and Grogu</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/culture/2026/02/heres-the-fun-action-packed-trailer-for-mandolorian-and-grogu/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="ford is focusing on efficiency to make its 2027 $30,000 ev pickup affordable">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 16:00</div>
+                <h3><a href="https://arstechnica.com/cars/2026/02/ford-is-focusing-on-efficiency-to-make-its-2027-30000-ev-pickup-affordable/" target="_blank">Ford is focusing on efficiency to make its 2027 $30,000 EV pickup affordable</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://arstechnica.com/cars/2026/02/ford-is-focusing-on-efficiency-to-make-its-2027-30000-ev-pickup-affordable/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+        <article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);">
+            <div class="card-body" style="justify-content:center;">
+                <p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Lust auf den Deep-Dive?</p>
+                <a href="https://arstechnica.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">
+                    Alle Artikel bei Ars Technica <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </article></div></div>
         </section>
         <section class="source-section">
             <div class="source-header">
@@ -67,7 +435,95 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
                     <button class="nav-btn" onclick="scrollCarousel('carousel-4', 1)" title="Vorwärts"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-4"><article class="card" data-content="ai data centers are now spiking hard drive prices"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 21:06</div><h3><a href="https://futurism.com/artificial-intelligence/ai-data-centers-spiking-hard-drive-prices" target="_blank">AI Data Centers Are Now Spiking Hard Drive Prices</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/artificial-intelligence/ai-data-centers-spiking-hard-drive-prices')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="it turns out that constantly telling workers they’re about to be replaced by ai has grim psychological effects"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 20:08</div><h3><a href="https://futurism.com/artificial-intelligence/ai-effects-workers-psychological" target="_blank">It Turns Out That Constantly Telling Workers They’re About to Be Replaced by AI Has Grim Psychological Effects</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/artificial-intelligence/ai-effects-workers-psychological')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="pentagon issues threat to anthropic"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 19:09</div><h3><a href="https://futurism.com/artificial-intelligence/pentagon-issues-threat-anthropic" target="_blank">Pentagon Issues Threat to Anthropic</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/artificial-intelligence/pentagon-issues-threat-anthropic')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="chinese robots can now run up walls"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 18:10</div><h3><a href="https://futurism.com/robots-and-machines/robots-run-up-walls" target="_blank">Chinese Robots Can Now Run Up Walls</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/robots-and-machines/robots-run-up-walls')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="fsd tries to drive straight into lake"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 17:21</div><h3><a href="https://futurism.com/advanced-transport/fsd-lake" target="_blank">FSD Tries to Drive Straight Into Lake</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/advanced-transport/fsd-lake')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="meta patented ai that takes over your account when you die, keeps posting forever"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 16:26</div><h3><a href="https://futurism.com/future-society/meta-patented-ai-die-keeps-posting" target="_blank">Meta Patented AI That Takes Over Your Account When You Die, Keeps Posting Forever</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/future-society/meta-patented-ai-die-keeps-posting')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="ai delusions are leading to domestic abuse, harassment, and stalking"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 15:30</div><h3><a href="https://futurism.com/artificial-intelligence/ai-abuse-harassment-stalking" target="_blank">AI Delusions Are Leading to Domestic Abuse, Harassment, and Stalking</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/artificial-intelligence/ai-abuse-harassment-stalking')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="top machine learning developer speechless at simple question: should ai simulate emotional intimacy?"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 14:25</div><h3><a href="https://futurism.com/artificial-intelligence/ai-developers-emotional-intimacy" target="_blank">Top Machine Learning Developer Speechless at Simple Question: Should AI Simulate Emotional Intimacy?</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/artificial-intelligence/ai-developers-emotional-intimacy')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="site of elementary school was sprayed with radioactive fracking waste, worker warns"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">16.02. • 18:00</div><h3><a href="https://futurism.com/science-energy/radioactive-fracking-school-texas" target="_blank">Site of Elementary School Was Sprayed With Radioactive Fracking Waste, Worker Warns</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/science-energy/radioactive-fracking-school-texas')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="obama just dropped a truth bomb about aliens"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">16.02. • 16:44</div><h3><a href="https://futurism.com/space/obama-aliens" target="_blank">Obama Just Dropped a Truth Bomb About Aliens</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/space/obama-aliens')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Deep-Dive?</p><a href="https://futurism.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">Alle Artikel bei Futurism <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article></div></div>
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-4">
+            <article class="card" data-content="ai data centers are now spiking hard drive prices">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 21:06</div>
+                <h3><a href="https://futurism.com/artificial-intelligence/ai-data-centers-spiking-hard-drive-prices" target="_blank">AI Data Centers Are Now Spiking Hard Drive Prices</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/artificial-intelligence/ai-data-centers-spiking-hard-drive-prices')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="it turns out that constantly telling workers they’re about to be replaced by ai has grim psychological effects">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 20:08</div>
+                <h3><a href="https://futurism.com/artificial-intelligence/ai-effects-workers-psychological" target="_blank">It Turns Out That Constantly Telling Workers They’re About to Be Replaced by AI Has Grim Psychological Effects</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/artificial-intelligence/ai-effects-workers-psychological')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="pentagon issues threat to anthropic">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 19:09</div>
+                <h3><a href="https://futurism.com/artificial-intelligence/pentagon-issues-threat-anthropic" target="_blank">Pentagon Issues Threat to Anthropic</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/artificial-intelligence/pentagon-issues-threat-anthropic')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="chinese robots can now run up walls">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 18:10</div>
+                <h3><a href="https://futurism.com/robots-and-machines/robots-run-up-walls" target="_blank">Chinese Robots Can Now Run Up Walls</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/robots-and-machines/robots-run-up-walls')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="fsd tries to drive straight into lake">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 17:21</div>
+                <h3><a href="https://futurism.com/advanced-transport/fsd-lake" target="_blank">FSD Tries to Drive Straight Into Lake</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/advanced-transport/fsd-lake')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="meta patented ai that takes over your account when you die, keeps posting forever">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 16:26</div>
+                <h3><a href="https://futurism.com/future-society/meta-patented-ai-die-keeps-posting" target="_blank">Meta Patented AI That Takes Over Your Account When You Die, Keeps Posting Forever</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/future-society/meta-patented-ai-die-keeps-posting')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="ai delusions are leading to domestic abuse, harassment, and stalking">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 15:30</div>
+                <h3><a href="https://futurism.com/artificial-intelligence/ai-abuse-harassment-stalking" target="_blank">AI Delusions Are Leading to Domestic Abuse, Harassment, and Stalking</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/artificial-intelligence/ai-abuse-harassment-stalking')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="top machine learning developer speechless at simple question: should ai simulate emotional intimacy?">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 14:25</div>
+                <h3><a href="https://futurism.com/artificial-intelligence/ai-developers-emotional-intimacy" target="_blank">Top Machine Learning Developer Speechless at Simple Question: Should AI Simulate Emotional Intimacy?</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/artificial-intelligence/ai-developers-emotional-intimacy')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="site of elementary school was sprayed with radioactive fracking waste, worker warns">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">16.02. • 18:00</div>
+                <h3><a href="https://futurism.com/science-energy/radioactive-fracking-school-texas" target="_blank">Site of Elementary School Was Sprayed With Radioactive Fracking Waste, Worker Warns</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/science-energy/radioactive-fracking-school-texas')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="obama just dropped a truth bomb about aliens">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">16.02. • 16:44</div>
+                <h3><a href="https://futurism.com/space/obama-aliens" target="_blank">Obama Just Dropped a Truth Bomb About Aliens</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://futurism.com/space/obama-aliens')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+        <article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);">
+            <div class="card-body" style="justify-content:center;">
+                <p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Lust auf den Deep-Dive?</p>
+                <a href="https://futurism.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">
+                    Alle Artikel bei Futurism <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </article></div></div>
         </section>
         <section class="source-section">
             <div class="source-header">
@@ -77,7 +533,95 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
                     <button class="nav-btn" onclick="scrollCarousel('carousel-5', 1)" title="Vorwärts"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-5"><article class="card" data-content="apple is reportedly cooking up a trio of ai wearables"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 20:14</div><h3><a href="https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/" target="_blank">Apple is reportedly cooking up a trio of AI wearables</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="anthropic releases sonnet 4.6"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 18:00</div><h3><a href="https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/" target="_blank">Anthropic releases Sonnet 4.6</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="mistral ai buys koyeb in first acquisition to back its cloud ambitions"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 17:22</div><h3><a href="https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/" target="_blank">Mistral AI buys Koyeb in first acquisition to back its cloud ambitions</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="spacex vets raise $50m series a for data center links"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 17:00</div><h3><a href="https://techcrunch.com/2026/02/17/spacex-vets-raise-50m-series-a-for-data-center-links/" target="_blank">SpaceX vets raise $50M Series A for data center links</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/spacex-vets-raise-50m-series-a-for-data-center-links/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="running ai models is turning into a memory game"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 16:44</div><h3><a href="https://techcrunch.com/2026/02/17/running-ai-models-is-turning-into-a-memory-game/" target="_blank">Running AI models is turning into a memory game</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/running-ai-models-is-turning-into-a-memory-game/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="european parliament blocks ai on lawmakers’ devices, citing security risks"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 16:30</div><h3><a href="https://techcrunch.com/2026/02/17/european-parliament-blocks-ai-on-lawmakers-devices-citing-security-risks/" target="_blank">European Parliament blocks AI on lawmakers’ devices, citing security risks</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/european-parliament-blocks-ai-on-lawmakers-devices-citing-security-risks/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="wordpress.com adds an ai assistant that can edit, adjust styles, create images, and more"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 16:10</div><h3><a href="https://techcrunch.com/2026/02/17/wordpress-com-adds-an-ai-assistant-that-can-edit-adjust-styles-create-images-and-more/" target="_blank">WordPress.com adds an AI Assistant that can edit, adjust styles, create images, and more</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/wordpress-com-adds-an-ai-assistant-that-can-edit-adjust-styles-create-images-and-more/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="amazon fire tv’s new interface is now rolling out in the us"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 15:58</div><h3><a href="https://techcrunch.com/2026/02/17/amazon-fire-tvs-new-interface-is-now-rolling-out-in-the-u-s/" target="_blank">Amazon Fire TV’s new interface is now rolling out in the US</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/amazon-fire-tvs-new-interface-is-now-rolling-out-in-the-u-s/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="here are the 17 us-based ai companies that have raised $100m or more in 2026"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 14:58</div><h3><a href="https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/" target="_blank">Here are the 17 US-based AI companies that have raised $100M or more in 2026</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="india bids to attract over $200b in ai infrastructure investment by 2028"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">17.02. • 14:13</div><h3><a href="https://techcrunch.com/2026/02/17/india-bids-to-attract-over-200b-in-ai-infrastructure-investment-by-2028/" target="_blank">India bids to attract over $200B in AI infrastructure investment by 2028</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/india-bids-to-attract-over-200b-in-ai-infrastructure-investment-by-2028/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Deep-Dive?</p><a href="https://techcrunch.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">Alle Artikel bei TechCrunch <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article></div></div>
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-5">
+            <article class="card" data-content="apple is reportedly cooking up a trio of ai wearables">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 20:14</div>
+                <h3><a href="https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/" target="_blank">Apple is reportedly cooking up a trio of AI wearables</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/apple-is-reportedly-cooking-up-a-trio-of-ai-wearables/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="anthropic releases sonnet 4.6">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 18:00</div>
+                <h3><a href="https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/" target="_blank">Anthropic releases Sonnet 4.6</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="mistral ai buys koyeb in first acquisition to back its cloud ambitions">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 17:22</div>
+                <h3><a href="https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/" target="_blank">Mistral AI buys Koyeb in first acquisition to back its cloud ambitions</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="spacex vets raise $50m series a for data center links">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 17:00</div>
+                <h3><a href="https://techcrunch.com/2026/02/17/spacex-vets-raise-50m-series-a-for-data-center-links/" target="_blank">SpaceX vets raise $50M Series A for data center links</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/spacex-vets-raise-50m-series-a-for-data-center-links/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="running ai models is turning into a memory game">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 16:44</div>
+                <h3><a href="https://techcrunch.com/2026/02/17/running-ai-models-is-turning-into-a-memory-game/" target="_blank">Running AI models is turning into a memory game</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/running-ai-models-is-turning-into-a-memory-game/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="european parliament blocks ai on lawmakers’ devices, citing security risks">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 16:30</div>
+                <h3><a href="https://techcrunch.com/2026/02/17/european-parliament-blocks-ai-on-lawmakers-devices-citing-security-risks/" target="_blank">European Parliament blocks AI on lawmakers’ devices, citing security risks</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/european-parliament-blocks-ai-on-lawmakers-devices-citing-security-risks/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="wordpress.com adds an ai assistant that can edit, adjust styles, create images, and more">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 16:10</div>
+                <h3><a href="https://techcrunch.com/2026/02/17/wordpress-com-adds-an-ai-assistant-that-can-edit-adjust-styles-create-images-and-more/" target="_blank">WordPress.com adds an AI Assistant that can edit, adjust styles, create images, and more</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/wordpress-com-adds-an-ai-assistant-that-can-edit-adjust-styles-create-images-and-more/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="amazon fire tv’s new interface is now rolling out in the us">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 15:58</div>
+                <h3><a href="https://techcrunch.com/2026/02/17/amazon-fire-tvs-new-interface-is-now-rolling-out-in-the-u-s/" target="_blank">Amazon Fire TV’s new interface is now rolling out in the US</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/amazon-fire-tvs-new-interface-is-now-rolling-out-in-the-u-s/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="here are the 17 us-based ai companies that have raised $100m or more in 2026">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 14:58</div>
+                <h3><a href="https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/" target="_blank">Here are the 17 US-based AI companies that have raised $100M or more in 2026</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/here-are-the-17-us-based-ai-companies-that-have-raised-100m-or-more-in-2026/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="india bids to attract over $200b in ai infrastructure investment by 2028">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">17.02. • 14:13</div>
+                <h3><a href="https://techcrunch.com/2026/02/17/india-bids-to-attract-over-200b-in-ai-infrastructure-investment-by-2028/" target="_blank">India bids to attract over $200B in AI infrastructure investment by 2028</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://techcrunch.com/2026/02/17/india-bids-to-attract-over-200b-in-ai-infrastructure-investment-by-2028/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+        <article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);">
+            <div class="card-body" style="justify-content:center;">
+                <p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Lust auf den Deep-Dive?</p>
+                <a href="https://techcrunch.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">
+                    Alle Artikel bei TechCrunch <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </article></div></div>
         </section>
         <section class="source-section">
             <div class="source-header">
@@ -87,7 +631,95 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
                     <button class="nav-btn" onclick="scrollCarousel('carousel-6', 1)" title="Vorwärts"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-6"><article class="card" data-content="customize ai agent browsing with proxies, profiles, and extensions in amazon bedrock agentcore browser"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">13.02. • 22:57</div><h3><a href="https://aws.amazon.com/blogs/machine-learning/customize-ai-agent-browsing-with-proxies-profiles-and-extensions-in-amazon-bedrock-agentcore-browser/" target="_blank">Customize AI agent browsing with proxies, profiles, and extensions in Amazon Bedrock AgentCore Browser</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/customize-ai-agent-browsing-with-proxies-profiles-and-extensions-in-amazon-bedrock-agentcore-browser/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="ai meets hr: transforming talent acquisition with amazon bedrock"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">12.02. • 20:18</div><h3><a href="https://aws.amazon.com/blogs/machine-learning/ai-meets-hr-transforming-talent-acquisition-with-amazon-bedrock/" target="_blank">AI meets HR: Transforming talent acquisition with Amazon Bedrock</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/ai-meets-hr-transforming-talent-acquisition-with-amazon-bedrock/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="build long-running mcp servers on amazon bedrock agentcore with strands agents integration"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">12.02. • 20:16</div><h3><a href="https://aws.amazon.com/blogs/machine-learning/build-long-running-mcp-servers-on-amazon-bedrock-agentcore-with-strands-agents-integration/" target="_blank">Build long-running MCP servers on Amazon Bedrock AgentCore with Strands Agents integration</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/build-long-running-mcp-servers-on-amazon-bedrock-agentcore-with-strands-agents-integration/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="nvidia nemotron 3 nano 30b moe model is now available in amazon sagemaker jumpstart"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">11.02. • 19:38</div><h3><a href="https://aws.amazon.com/blogs/machine-learning/nvidia-nemotron-3-nano-30b-is-now-available-in-amazon-sagemaker-jumpstart/" target="_blank">NVIDIA Nemotron 3 Nano 30B MoE model is now available in Amazon SageMaker JumpStart</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/nvidia-nemotron-3-nano-30b-is-now-available-in-amazon-sagemaker-jumpstart/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="mastering amazon bedrock throttling and service availability: a comprehensive guide"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">11.02. • 15:52</div><h3><a href="https://aws.amazon.com/blogs/machine-learning/mastering-amazon-bedrock-throttling-and-service-availability-a-comprehensive-guide/" target="_blank">Mastering Amazon Bedrock throttling and service availability: A comprehensive guide</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/mastering-amazon-bedrock-throttling-and-service-availability-a-comprehensive-guide/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="swann provides generative ai to millions of iot devices using amazon bedrock"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">11.02. • 15:48</div><h3><a href="https://aws.amazon.com/blogs/machine-learning/swann-provides-generative-ai-to-millions-of-iot-devices-using-amazon-bedrock/" target="_blank">Swann provides Generative AI to millions of IoT Devices using Amazon Bedrock</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/swann-provides-generative-ai-to-millions-of-iot-devices-using-amazon-bedrock/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="how linqalpha assesses investment theses using devil’s advocate on amazon bedrock"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">11.02. • 15:45</div><h3><a href="https://aws.amazon.com/blogs/machine-learning/how-linqalpha-assesses-investment-theses-using-devils-advocate-on-amazon-bedrock/" target="_blank">How LinqAlpha assesses investment theses using Devil’s Advocate on Amazon Bedrock</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/how-linqalpha-assesses-investment-theses-using-devils-advocate-on-amazon-bedrock/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="how amazon uses amazon nova models to automate operational readiness testing for new fulfillment centers"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">10.02. • 18:34</div><h3><a href="https://aws.amazon.com/blogs/machine-learning/how-amazon-uses-amazon-nova-models-to-automate-operational-readiness-testing-for-new-fulfillment-centers/" target="_blank">How Amazon uses Amazon Nova models to automate operational readiness testing for new fulfillment centers</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/how-amazon-uses-amazon-nova-models-to-automate-operational-readiness-testing-for-new-fulfillment-centers/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="iberdrola enhances it operations using amazon bedrock agentcore"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">10.02. • 18:31</div><h3><a href="https://aws.amazon.com/blogs/machine-learning/iberdrola-enhances-it-operations-using-amazon-bedrock-agentcore/" target="_blank">Iberdrola enhances IT operations using Amazon Bedrock AgentCore</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/iberdrola-enhances-it-operations-using-amazon-bedrock-agentcore/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="building real-time voice assistants with amazon nova sonic compared to cascading architectures"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">10.02. • 18:29</div><h3><a href="https://aws.amazon.com/blogs/machine-learning/building-real-time-voice-assistants-with-amazon-nova-sonic-compared-to-cascading-architectures/" target="_blank">Building real-time voice assistants with Amazon Nova Sonic compared to cascading architectures</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/building-real-time-voice-assistants-with-amazon-nova-sonic-compared-to-cascading-architectures/')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Deep-Dive?</p><a href="https://aws.amazon.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">Alle Artikel bei AWS ML Blog <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article></div></div>
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-6">
+            <article class="card" data-content="customize ai agent browsing with proxies, profiles, and extensions in amazon bedrock agentcore browser">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">13.02. • 22:57</div>
+                <h3><a href="https://aws.amazon.com/blogs/machine-learning/customize-ai-agent-browsing-with-proxies-profiles-and-extensions-in-amazon-bedrock-agentcore-browser/" target="_blank">Customize AI agent browsing with proxies, profiles, and extensions in Amazon Bedrock AgentCore Browser</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/customize-ai-agent-browsing-with-proxies-profiles-and-extensions-in-amazon-bedrock-agentcore-browser/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="ai meets hr: transforming talent acquisition with amazon bedrock">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">12.02. • 20:18</div>
+                <h3><a href="https://aws.amazon.com/blogs/machine-learning/ai-meets-hr-transforming-talent-acquisition-with-amazon-bedrock/" target="_blank">AI meets HR: Transforming talent acquisition with Amazon Bedrock</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/ai-meets-hr-transforming-talent-acquisition-with-amazon-bedrock/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="build long-running mcp servers on amazon bedrock agentcore with strands agents integration">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">12.02. • 20:16</div>
+                <h3><a href="https://aws.amazon.com/blogs/machine-learning/build-long-running-mcp-servers-on-amazon-bedrock-agentcore-with-strands-agents-integration/" target="_blank">Build long-running MCP servers on Amazon Bedrock AgentCore with Strands Agents integration</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/build-long-running-mcp-servers-on-amazon-bedrock-agentcore-with-strands-agents-integration/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="nvidia nemotron 3 nano 30b moe model is now available in amazon sagemaker jumpstart">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">11.02. • 19:38</div>
+                <h3><a href="https://aws.amazon.com/blogs/machine-learning/nvidia-nemotron-3-nano-30b-is-now-available-in-amazon-sagemaker-jumpstart/" target="_blank">NVIDIA Nemotron 3 Nano 30B MoE model is now available in Amazon SageMaker JumpStart</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/nvidia-nemotron-3-nano-30b-is-now-available-in-amazon-sagemaker-jumpstart/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="mastering amazon bedrock throttling and service availability: a comprehensive guide">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">11.02. • 15:52</div>
+                <h3><a href="https://aws.amazon.com/blogs/machine-learning/mastering-amazon-bedrock-throttling-and-service-availability-a-comprehensive-guide/" target="_blank">Mastering Amazon Bedrock throttling and service availability: A comprehensive guide</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/mastering-amazon-bedrock-throttling-and-service-availability-a-comprehensive-guide/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="swann provides generative ai to millions of iot devices using amazon bedrock">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">11.02. • 15:48</div>
+                <h3><a href="https://aws.amazon.com/blogs/machine-learning/swann-provides-generative-ai-to-millions-of-iot-devices-using-amazon-bedrock/" target="_blank">Swann provides Generative AI to millions of IoT Devices using Amazon Bedrock</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/swann-provides-generative-ai-to-millions-of-iot-devices-using-amazon-bedrock/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="how linqalpha assesses investment theses using devil’s advocate on amazon bedrock">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">11.02. • 15:45</div>
+                <h3><a href="https://aws.amazon.com/blogs/machine-learning/how-linqalpha-assesses-investment-theses-using-devils-advocate-on-amazon-bedrock/" target="_blank">How LinqAlpha assesses investment theses using Devil’s Advocate on Amazon Bedrock</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/how-linqalpha-assesses-investment-theses-using-devils-advocate-on-amazon-bedrock/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="how amazon uses amazon nova models to automate operational readiness testing for new fulfillment centers">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">10.02. • 18:34</div>
+                <h3><a href="https://aws.amazon.com/blogs/machine-learning/how-amazon-uses-amazon-nova-models-to-automate-operational-readiness-testing-for-new-fulfillment-centers/" target="_blank">How Amazon uses Amazon Nova models to automate operational readiness testing for new fulfillment centers</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/how-amazon-uses-amazon-nova-models-to-automate-operational-readiness-testing-for-new-fulfillment-centers/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="iberdrola enhances it operations using amazon bedrock agentcore">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">10.02. • 18:31</div>
+                <h3><a href="https://aws.amazon.com/blogs/machine-learning/iberdrola-enhances-it-operations-using-amazon-bedrock-agentcore/" target="_blank">Iberdrola enhances IT operations using Amazon Bedrock AgentCore</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/iberdrola-enhances-it-operations-using-amazon-bedrock-agentcore/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="building real-time voice assistants with amazon nova sonic compared to cascading architectures">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">10.02. • 18:29</div>
+                <h3><a href="https://aws.amazon.com/blogs/machine-learning/building-real-time-voice-assistants-with-amazon-nova-sonic-compared-to-cascading-architectures/" target="_blank">Building real-time voice assistants with Amazon Nova Sonic compared to cascading architectures</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://aws.amazon.com/blogs/machine-learning/building-real-time-voice-assistants-with-amazon-nova-sonic-compared-to-cascading-architectures/')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+        <article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);">
+            <div class="card-body" style="justify-content:center;">
+                <p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Lust auf den Deep-Dive?</p>
+                <a href="https://aws.amazon.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">
+                    Alle Artikel bei AWS ML Blog <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </article></div></div>
         </section>
         <section class="source-section">
             <div class="source-header">
@@ -97,7 +729,95 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
                     <button class="nav-btn" onclick="scrollCarousel('carousel-7', 1)" title="Vorwärts"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-7"><article class="card" data-content="gpt-5.2 derives a new result in theoretical physics"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">13.02. • 11:00</div><h3><a href="https://openai.com/index/new-result-theoretical-physics" target="_blank">GPT-5.2 derives a new result in theoretical physics</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/new-result-theoretical-physics')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="introducing lockdown mode and elevated risk labels in chatgpt"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">13.02. • 10:00</div><h3><a href="https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt" target="_blank">Introducing Lockdown Mode and Elevated Risk labels in ChatGPT</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="beyond rate limits: scaling access to codex and sora"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">13.02. • 09:00</div><h3><a href="https://openai.com/index/beyond-rate-limits" target="_blank">Beyond rate limits: scaling access to Codex and Sora</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/beyond-rate-limits')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="scaling social science research"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">13.02. • 09:00</div><h3><a href="https://openai.com/index/scaling-social-science-research" target="_blank">Scaling social science research</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/scaling-social-science-research')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="introducing gpt-5.3-codex-spark"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">12.02. • 10:00</div><h3><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark" target="_blank">Introducing GPT-5.3-Codex-Spark</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/introducing-gpt-5-3-codex-spark')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="harness engineering: leveraging codex in an agent-first world"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">11.02. • 09:00</div><h3><a href="https://openai.com/index/harness-engineering" target="_blank">Harness engineering: leveraging Codex in an agent-first world</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/harness-engineering')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="testing ads in chatgpt"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">09.02. • 11:00</div><h3><a href="https://openai.com/index/testing-ads-in-chatgpt" target="_blank">Testing ads in ChatGPT</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/testing-ads-in-chatgpt')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="bringing chatgpt to genai.mil"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">09.02. • 11:00</div><h3><a href="https://openai.com/index/bringing-chatgpt-to-genaimil" target="_blank">Bringing ChatGPT to GenAI.mil</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/bringing-chatgpt-to-genaimil')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="making ai work for everyone, everywhere: our approach to localization"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">06.02. • 10:00</div><h3><a href="https://openai.com/index/our-approach-to-localization" target="_blank">Making AI work for everyone, everywhere: our approach to localization</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/our-approach-to-localization')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="gpt-5 lowers the cost of cell-free protein synthesis"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">05.02. • 11:00</div><h3><a href="https://openai.com/index/gpt-5-lowers-protein-synthesis-cost" target="_blank">GPT-5 lowers the cost of cell-free protein synthesis</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/gpt-5-lowers-protein-synthesis-cost')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Deep-Dive?</p><a href="https://openai.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">Alle Artikel bei OpenAI <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article></div></div>
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-7">
+            <article class="card" data-content="gpt-5.2 derives a new result in theoretical physics">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">13.02. • 11:00</div>
+                <h3><a href="https://openai.com/index/new-result-theoretical-physics" target="_blank">GPT-5.2 derives a new result in theoretical physics</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/new-result-theoretical-physics')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="introducing lockdown mode and elevated risk labels in chatgpt">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">13.02. • 10:00</div>
+                <h3><a href="https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt" target="_blank">Introducing Lockdown Mode and Elevated Risk labels in ChatGPT</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="beyond rate limits: scaling access to codex and sora">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">13.02. • 09:00</div>
+                <h3><a href="https://openai.com/index/beyond-rate-limits" target="_blank">Beyond rate limits: scaling access to Codex and Sora</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/beyond-rate-limits')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="scaling social science research">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">13.02. • 09:00</div>
+                <h3><a href="https://openai.com/index/scaling-social-science-research" target="_blank">Scaling social science research</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/scaling-social-science-research')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="introducing gpt-5.3-codex-spark">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">12.02. • 10:00</div>
+                <h3><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark" target="_blank">Introducing GPT-5.3-Codex-Spark</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/introducing-gpt-5-3-codex-spark')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="harness engineering: leveraging codex in an agent-first world">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">11.02. • 09:00</div>
+                <h3><a href="https://openai.com/index/harness-engineering" target="_blank">Harness engineering: leveraging Codex in an agent-first world</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/harness-engineering')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="testing ads in chatgpt">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">09.02. • 11:00</div>
+                <h3><a href="https://openai.com/index/testing-ads-in-chatgpt" target="_blank">Testing ads in ChatGPT</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/testing-ads-in-chatgpt')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="bringing chatgpt to genai.mil">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">09.02. • 11:00</div>
+                <h3><a href="https://openai.com/index/bringing-chatgpt-to-genaimil" target="_blank">Bringing ChatGPT to GenAI.mil</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/bringing-chatgpt-to-genaimil')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="making ai work for everyone, everywhere: our approach to localization">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">06.02. • 10:00</div>
+                <h3><a href="https://openai.com/index/our-approach-to-localization" target="_blank">Making AI work for everyone, everywhere: our approach to localization</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/our-approach-to-localization')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="gpt-5 lowers the cost of cell-free protein synthesis">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">05.02. • 11:00</div>
+                <h3><a href="https://openai.com/index/gpt-5-lowers-protein-synthesis-cost" target="_blank">GPT-5 lowers the cost of cell-free protein synthesis</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://openai.com/index/gpt-5-lowers-protein-synthesis-cost')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+        <article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);">
+            <div class="card-body" style="justify-content:center;">
+                <p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Lust auf den Deep-Dive?</p>
+                <a href="https://openai.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">
+                    Alle Artikel bei OpenAI <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </article></div></div>
         </section>
         <section class="source-section">
             <div class="source-header">
@@ -107,5 +827,91 @@ Das Problem wird in der Wissenschaft als 'Model Collapse' bezeichnet: KI-Modelle
                     <button class="nav-btn" onclick="scrollCarousel('carousel-8', 1)" title="Vorwärts"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-8"><article class="card" data-content="railway secures $100 million to challenge aws with ai-native cloud infrastructure"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">22.01. • 14:00</div><h3><a href="https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud" target="_blank">Railway secures $100 million to challenge AWS with AI-native cloud infrastructure</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="claude code costs up to $200 a month. goose does the same thing for free."><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">19.01. • 14:00</div><h3><a href="https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free" target="_blank">Claude Code costs up to $200 a month. Goose does the same thing for free.</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="listen labs raises $69m after viral billboard hiring stunt to scale ai customer interviews"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">16.01. • 14:01</div><h3><a href="https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai" target="_blank">Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="salesforce rolls out new slackbot ai agent as it battles microsoft and google in workplace ai"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">13.01. • 13:00</div><h3><a href="https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and" target="_blank">Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="anthropic launches cowork, a claude desktop agent that works in your files — no coding required"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">12.01. • 11:30</div><h3><a href="https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no" target="_blank">Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="nous research's nouscoder-14b is an open-source coding model landing right in the claude code moment"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">07.01. • 20:00</div><h3><a href="https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in" target="_blank">Nous Research's NousCoder-14B is an open-source coding model landing right in the Claude Code moment</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" data-content="the creator of claude code just revealed his workflow, and developers are losing their minds"><div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div><div class="card-body"><div class="meta">05.01. • 07:45</div><h3><a href="https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are" target="_blank">The creator of Claude Code just revealed his workflow, and developers are losing their minds</a></h3><div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are')"><i class="fa-solid fa-link"></i> Link</button></div></div></article><article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Deep-Dive?</p><a href="https://venturebeat.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">Alle Artikel bei VentureBeat <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article></div></div>
-        </section><footer class="footer"><p>&copy; 2026 KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main><aside class="sidebar-ad right"></aside></div><script>function scrollCarousel(id, dir) { const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({ left: dir * amount, behavior: 'smooth' }); } function filterNews(t){ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => { if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }); } document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){navigator.clipboard.writeText(t).then(()=>alert('Kopiert!'));}</script></body></html>
+            <div class="carousel-wrapper"><div class="news-carousel" id="carousel-8">
+            <article class="card" data-content="railway secures $100 million to challenge aws with ai-native cloud infrastructure">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">22.01. • 14:00</div>
+                <h3><a href="https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud" target="_blank">Railway secures $100 million to challenge AWS with AI-native cloud infrastructure</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="claude code costs up to $200 a month. goose does the same thing for free.">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">19.01. • 14:00</div>
+                <h3><a href="https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free" target="_blank">Claude Code costs up to $200 a month. Goose does the same thing for free.</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="listen labs raises $69m after viral billboard hiring stunt to scale ai customer interviews">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">16.01. • 14:01</div>
+                <h3><a href="https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai" target="_blank">Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="salesforce rolls out new slackbot ai agent as it battles microsoft and google in workplace ai">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">13.01. • 13:00</div>
+                <h3><a href="https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and" target="_blank">Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="anthropic launches cowork, a claude desktop agent that works in your files — no coding required">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">12.01. • 11:30</div>
+                <h3><a href="https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no" target="_blank">Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="nous research's nouscoder-14b is an open-source coding model landing right in the claude code moment">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">07.01. • 20:00</div>
+                <h3><a href="https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in" target="_blank">Nous Research's NousCoder-14B is an open-source coding model landing right in the Claude Code moment</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+            <article class="card" data-content="the creator of claude code just revealed his workflow, and developers are losing their minds">
+              <div class="img-container"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" loading="lazy" alt=""></div>
+              <div class="card-body">
+                <div class="meta">05.01. • 07:45</div>
+                <h3><a href="https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are" target="_blank">The creator of Claude Code just revealed his workflow, and developers are losing their minds</a></h3>
+                <div class="share-bar"><button onclick="copyToClipboard('https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are')"><i class="fa-solid fa-link"></i> Link</button></div>
+              </div>
+            </article>
+        <article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);">
+            <div class="card-body" style="justify-content:center;">
+                <p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Lust auf den Deep-Dive?</p>
+                <a href="https://venturebeat.com" target="_blank" class="filter-action-btn" style="padding:10px 18px; font-size:0.85rem;">
+                    Alle Artikel bei VentureBeat <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </article></div></div>
+        </section>
+            <footer class="footer"><p>&copy; 2026 KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
+        </main>
+        <aside class="sidebar-ad right"></aside>
+    </div>
+    <script>
+        function scrollCarousel(id, dir) {
+            const c = document.getElementById(id);
+            const amount = c.offsetWidth * 0.8;
+            c.scrollBy({ left: dir * amount, behavior: 'smooth' });
+        }
+        function filterNews(t){
+            const v = t.toLowerCase();
+            document.querySelectorAll('.card').forEach(el => {
+                if(el.getAttribute('data-content')) {
+                    el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none';
+                }
+            });
+        }
+        function applySearch(word) { document.getElementById('searchInput').value = word; filterNews(word); }
+        document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value);
+        function copyToClipboard(t){navigator.clipboard.writeText(t).then(()=>alert('Kopiert!'));}
+    </script></body></html>
