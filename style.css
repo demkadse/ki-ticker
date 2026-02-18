@@ -8,114 +8,72 @@
   --radius: 12px;
 }
 
-/* 1. Globales Reset */
+/* Globales Reset */
 * { box-sizing: border-box; }
 body { 
-    margin: 0; 
-    font-family: 'Inter', system-ui, sans-serif; 
-    background: var(--bg); 
-    color: var(--text); 
-    line-height: 1.5; 
-    overflow-x: hidden;
+    margin: 0; font-family: 'Inter', system-ui, sans-serif; 
+    background: var(--bg); color: var(--text); line-height: 1.5; overflow-x: hidden;
 }
 
-/* 2. Layout-Container */
-.site-layout { 
-    display: flex; 
-    justify-content: center; 
-    max-width: 1400px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
-    gap: 30px;
-}
+.site-layout { display: flex; justify-content: center; max-width: 1400px; margin: 0 auto; padding: 0 20px; gap: 30px; }
 .container { flex: 1; max-width: 1100px; width: 100%; }
 
-/* 3. Header & Suche */
+/* Header & Suche */
 .header { text-align: center; margin: 30px 0; }
 .header h1 { font-size: 2.5rem; margin: 0; font-weight: 800; }
-.subtitle { color: var(--muted); margin-top: 5px; }
-
 .search-wrapper { position: relative; max-width: 450px; margin: 0 auto 20px; }
-#searchInput { 
-    width: 100%; padding: 12px 20px; border-radius: 25px; 
-    border: 1px solid var(--border); background: var(--card); 
-    color: var(--text); outline: none;
-}
+#searchInput { width: 100%; padding: 12px 20px; border-radius: 25px; border: 1px solid var(--border); background: var(--card); color: var(--text); outline: none; }
 #clearSearch { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--muted); cursor: pointer; display: none; }
 
-/* 4. Editorial Karte & Video (Garantierte Skalierung) */
-.editorial-section { margin-bottom: 40px; }
-.editorial-card { 
-    background: linear-gradient(145deg, #1e293b, #151c2e); 
-    border: 1px solid var(--acc); padding: 25px; border-radius: var(--radius); 
+/* FIX: Die Suchmeldung ist standardmäßig UNSICHTBAR */
+.no-results-msg { 
+    display: none; 
+    text-align: center; 
+    padding: 50px 20px; 
+    color: var(--muted); 
+    font-size: 1.2rem; 
+    grid-column: 1 / -1; 
 }
-.editorial-card h2 { margin: 0 0 15px; font-size: 1.8rem; line-height: 1.2; }
 
-/* Fix: Video nutzt modernes aspect-ratio */
-.video-container { 
-    width: 100%; 
-    aspect-ratio: 16 / 9; 
-    background: #000; 
-    border-radius: 8px; 
-    margin-bottom: 15px; 
-    overflow: hidden; 
+/* FIX: Das Tagesthema-Badge (Umrandet/Hinterlegt) */
+.editorial-badge { 
+    display: inline-block; 
+    background-color: var(--acc); 
+    color: var(--bg); 
+    padding: 6px 14px; 
+    border-radius: 50px; 
+    font-size: 0.75rem; 
+    font-weight: 800; 
+    text-transform: uppercase; 
+    margin-bottom: 12px; 
+    letter-spacing: 0.5px;
 }
+
+.editorial-section { margin-bottom: 40px; }
+.editorial-card { background: linear-gradient(145deg, #1e293b, #151c2e); border: 1px solid var(--acc); padding: 25px; border-radius: var(--radius); }
+.video-container { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 8px; margin-bottom: 15px; overflow: hidden; }
 .video-container iframe { width: 100%; height: 100%; border: 0; }
 
 .editorial-text { font-size: 1.1rem; line-height: 1.6; white-space: pre-wrap; }
-.editorial-text p { margin: 0 0 12px; }
 .editorial-text h3 { margin: 20px 0 8px; font-size: 1.3rem; color: var(--acc); }
 
-/* Links im Editorial & News-Karten (Kein Blau, keine Unterstreichung) */
-a { text-decoration: none; transition: 0.2s; }
+/* Links & Karten */
+a { text-decoration: none; transition: 0.2s; color: inherit; }
 .editorial-text a { color: var(--acc); border-bottom: 1px solid transparent; }
 .editorial-text a:hover { border-bottom-color: var(--acc); }
 
-.editorial-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; border-top: 1px solid var(--border); padding-top: 15px; }
-.filter-action-btn { background: var(--acc); color: var(--bg); border: none; padding: 10px 20px; border-radius: 20px; font-weight: 700; cursor: pointer; }
-
-/* 5. News Grid & Karten (Einheitliche Bilder) */
-.section-title { font-size: 1.6rem; text-align: center; margin: 40px 0 25px; }
 .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-
-.card { 
-    background: var(--card); border: 1px solid var(--border); 
-    border-radius: var(--radius); overflow: hidden; 
-    display: flex; flex-direction: column; height: 100%; 
-}
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; height: 100%; transition: 0.2s; }
 .card:hover { transform: translateY(-3px); border-color: var(--acc); }
 
-/* Fix: Alle News-Bilder auf exakt gleiche Höhe */
 .img-container { width: 100%; aspect-ratio: 16 / 9; background: #000; overflow: hidden; }
 .img-container img { width: 100%; height: 100%; object-fit: cover; }
-
 .card-body { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
-.meta { font-size: 11px; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-
-/* News-Titel Optik */
 .card h3 { margin: 0 0 12px; font-size: 1.1rem; line-height: 1.4; flex-grow: 1; }
-.card h3 a { color: var(--text); }
 .card h3 a:hover { color: var(--acc); }
 
-/* 6. Footer & Profil */
-.profile-box-wrapper { margin-top: 50px; border-top: 1px solid var(--border); padding-top: 30px; }
-.profile-box { 
-    display: flex; align-items: center; gap: 15px; background: var(--card); 
-    padding: 12px 25px; border-radius: 50px; border: 1px solid var(--border); width: fit-content; margin: 0 auto; 
-}
+/* Footer & Profil */
+.profile-box { display: flex; align-items: center; gap: 15px; background: var(--card); padding: 12px 25px; border-radius: 50px; border: 1px solid var(--border); width: fit-content; margin: 40px auto; }
 .profile-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--acc); }
 
 .footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 12px; }
-.footer a { color: var(--muted); margin: 0 10px; }
-.footer a:hover { color: var(--acc); }
-
-/* Responsive */
-@media (max-width: 800px) {
-    .site-layout { flex-direction: column; padding: 0 15px; }
-    .sidebar-ad { display: none !important; }
-}
-@media (max-width: 600px) {
-    .header h1 { font-size: 1.8rem; }
-    .news-grid { grid-template-columns: 1fr; }
-    .profile-box { flex-direction: column; text-align: center; border-radius: var(--radius); }
-}
