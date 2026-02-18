@@ -34,11 +34,10 @@ def load_editorial():
 def generate_sitemap():
     now = datetime.datetime.now().strftime("%Y-%m-%d")
     pages = ["index.html", "ueber-uns.html", "impressum.html", "datenschutz.html"]
-    xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
-    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    for page in pages:
-        priority = "1.0" if page == "index.html" else "0.8"
-        xml += f'  <url>\n    <loc>{SITE_URL}/{page}</loc>\n    <lastmod>{now}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>{priority}</priority>\n  </url>\n'
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    for p in pages:
+        priority = "1.0" if p == "index.html" else "0.8"
+        xml += f'  <url><loc>{SITE_URL}/{p}</loc><lastmod>{now}</lastmod><changefreq>daily</changefreq><priority>{priority}</priority></url>\n'
     xml += '</urlset>'
     with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(xml)
 
@@ -86,9 +85,9 @@ def render_index(items, editorial):
         <section class="editorial-section">
             <div class="editorial-badge"><i class="fa-solid fa-star"></i> Tagesthema der Redaktion</div>
             <div class="editorial-card">
-                <h2 style="margin-bottom:20px;">{editorial.get('title', '...')}</h2>
+                <h2 style="margin-bottom:25px;">{editorial.get('title', '...')}</h2>
                 {video_embed}
-                <div style="margin-bottom:25px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px;">
+                <div style="margin-bottom:25px; padding:15px; background:rgba(255,255,255,0.03); border-radius:8px;">
                     {author_link}
                     <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;">Hinweis: Externer Videobeitrag.</p>
                 </div>
@@ -112,7 +111,7 @@ def render_index(items, editorial):
     main_content = ""
     for idx, src in enumerate(sorted_sources):
         carousel_id = f"carousel-{idx}"
-        cards_html = "".join([f'<article class="card" data-content="{it["title"].lower()}"><div class="img-container"><img src="{hero_default}" loading="lazy" alt=""></div><div class="card-body"><div class="meta">{datetime.datetime.fromisoformat(it["published_iso"]).strftime("%d.%m. • %H:%M")}</div><h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3><div class="share-bar" style="margin-top:auto; padding-top:15px; border-top:1px solid rgba(255,255,255,0.05); text-align:center;"><button class="toggle-btn" style="margin:0; width:100%;" onclick="copyToClipboard(\'{it["url"]}\')">Link kopieren</button></div></div></article>' for it in grouped[src]])
+        cards_html = "".join([f'<article class="card" data-content="{it["title"].lower()}"><div class="img-container"><img src="{hero_default}" loading="lazy" alt=""></div><div class="card-body"><div class="meta">{datetime.datetime.fromisoformat(it["published_iso"]).strftime("%d.%m. • %H:%M")}</div><h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3><div class="share-bar" style="margin-top:auto; padding-top:15px; border-top:1px solid rgba(255,255,255,0.05); text-align:center;"><button class="toggle-btn" style="margin:0; width:100%; border-radius:8px;" onclick="copyToClipboard(\'{it["url"]}\')">Link kopieren</button></div></div></article>' for it in grouped[src]])
         main_content += f"""<section class="source-section"><div class="source-header"><div class="source-title"><img src="https://www.google.com/s2/favicons?domain={grouped[src][0]['domain']}&sz=32" alt=""> {src}</div><div class="carousel-nav"><button class="nav-btn" onclick="scrollCarousel('{carousel_id}', -1)"><i class="fa-solid fa-chevron-left"></i></button><button class="nav-btn" onclick="scrollCarousel('{carousel_id}', 1)"><i class="fa-solid fa-chevron-right"></i></button></div></div><div class="carousel-wrapper"><div class="news-carousel" id="{carousel_id}">{cards_html}</div></div></section>"""
 
     return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
