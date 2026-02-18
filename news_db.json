@@ -81,6 +81,15 @@
     "image": "https://blogs.nvidia.com/wp-content/uploads/2026/02/NVIDIA-India-AI-Impact-Summit-Indias-Manufacturers-Drive-AI-Boom-scaled.jpg"
   },
   {
+    "id": "f90f6c272906",
+    "title": "GameHub will give Mac owners another imperfect way to play Windows games",
+    "url": "https://arstechnica.com/gaming/2026/02/gamehub-will-give-mac-owners-another-imperfect-way-to-play-windows-games/",
+    "source": "Ars Technica",
+    "published_iso": "2026-02-17T22:45:07+00:00",
+    "domain": "arstechnica.com",
+    "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/02/gamehub-1152x648-1771366661.png"
+  },
+  {
     "id": "dfb934804fc9",
     "title": "Our 2026 Responsible AI Progress Report",
     "url": "https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/",
@@ -88,6 +97,24 @@
     "published_iso": "2026-02-17T22:30:00+00:00",
     "domain": "blog.google",
     "image": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Stocksy_7137793.max-600x600.format-webp.webp"
+  },
+  {
+    "id": "d96b92a7f71f",
+    "title": "AI Data Centers Are Now Spiking Hard Drive Prices",
+    "url": "https://futurism.com/artificial-intelligence/ai-data-centers-spiking-hard-drive-prices",
+    "source": "Futurism",
+    "published_iso": "2026-02-17T21:06:16+00:00",
+    "domain": "futurism.com",
+    "image": "https://futurism.com/wp-content/uploads/2026/02/ai-data-centers-spiking-hard-drive-prices.jpg?quality=85"
+  },
+  {
+    "id": "4514dbd840e9",
+    "title": "Password managers' promise that they can't see your vaults isn't always true",
+    "url": "https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/",
+    "source": "Ars Technica",
+    "published_iso": "2026-02-17T20:43:01+00:00",
+    "domain": "arstechnica.com",
+    "image": "https://cdn.arstechnica.net/wp-content/uploads/2022/07/password-login-1000x648.jpeg"
   },
   {
     "id": "bb23abe59cf5",
@@ -99,6 +126,60 @@
     "image": ""
   },
   {
+    "id": "1b834acc8043",
+    "title": "It Turns Out That Constantly Telling Workers They’re About to Be Replaced by AI Has Grim Psychological Effects",
+    "url": "https://futurism.com/artificial-intelligence/ai-effects-workers-psychological",
+    "source": "Futurism",
+    "published_iso": "2026-02-17T20:08:26+00:00",
+    "domain": "futurism.com",
+    "image": "https://futurism.com/wp-content/uploads/2026/02/ai-effects-workers-psychological.jpg?quality=85"
+  },
+  {
+    "id": "1169e7c031d5",
+    "title": "Pentagon Issues Threat to Anthropic",
+    "url": "https://futurism.com/artificial-intelligence/pentagon-issues-threat-anthropic",
+    "source": "Futurism",
+    "published_iso": "2026-02-17T19:09:53+00:00",
+    "domain": "futurism.com",
+    "image": "https://futurism.com/wp-content/uploads/2026/02/pentagon-issues-threat-anthropic.jpg?quality=85"
+  },
+  {
+    "id": "41c4c7c20697",
+    "title": "Stephen Colbert says CBS forbid interview of Democrat because of FCC threat",
+    "url": "https://arstechnica.com/tech-policy/2026/02/stephen-colbert-says-cbs-forbid-interview-of-democrat-because-of-fcc-threat/",
+    "source": "Ars Technica",
+    "published_iso": "2026-02-17T19:01:05+00:00",
+    "domain": "arstechnica.com",
+    "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/02/stephen-colbert-1152x648-1771352733.jpg"
+  },
+  {
+    "id": "071477d3e502",
+    "title": "Most VMware users still \"actively reducing their VMware footprint,\" survey finds",
+    "url": "https://arstechnica.com/information-technology/2026/02/most-vmware-users-still-actively-reducing-their-vmware-footprint-survey-finds/",
+    "source": "Ars Technica",
+    "published_iso": "2026-02-17T18:38:10+00:00",
+    "domain": "arstechnica.com",
+    "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/02/GettyImages-2188662122-1024x648.jpg"
+  },
+  {
+    "id": "03b747592ad3",
+    "title": "What happens to a car when the company behind its software goes under?",
+    "url": "https://arstechnica.com/cars/2026/02/what-happens-to-a-car-when-the-company-behind-its-software-goes-under/",
+    "source": "Ars Technica",
+    "published_iso": "2026-02-17T18:15:31+00:00",
+    "domain": "arstechnica.com",
+    "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/02/GettyImages-1238829734-1152x648.jpg"
+  },
+  {
+    "id": "c5c8aaa99b07",
+    "title": "Chinese Robots Can Now Run Up Walls",
+    "url": "https://futurism.com/robots-and-machines/robots-run-up-walls",
+    "source": "Futurism",
+    "published_iso": "2026-02-17T18:10:21+00:00",
+    "domain": "futurism.com",
+    "image": "https://futurism.com/wp-content/uploads/2026/02/robots-run-up-walls.jpg?quality=85"
+  },
+  {
     "id": "fe1eb3068279",
     "title": "Anthropic releases Sonnet 4.6",
     "url": "https://techcrunch.com/2026/02/17/anthropic-releases-sonnet-4-6/",
@@ -108,6 +189,15 @@
     "image": ""
   },
   {
+    "id": "64893cf8b24f",
+    "title": "RAM shortage hits Valve's four-year-old Steam Deck, now available \"intermittently\"",
+    "url": "https://arstechnica.com/gadgets/2026/02/valves-steam-deck-intermittently-out-of-stock-as-ram-shortage-drags-on/",
+    "source": "Ars Technica",
+    "published_iso": "2026-02-17T17:56:14+00:00",
+    "domain": "arstechnica.com",
+    "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/02/press_oled_orb-1-1152x648.jpeg"
+  },
+  {
     "id": "abbb0c744962",
     "title": "Mistral AI buys Koyeb in first acquisition to back its cloud ambitions",
     "url": "https://techcrunch.com/2026/02/17/mistral-ai-buys-koyeb-in-first-acquisition-to-back-its-cloud-ambitions/",
@@ -115,6 +205,15 @@
     "published_iso": "2026-02-17T17:22:09+00:00",
     "domain": "techcrunch.com",
     "image": ""
+  },
+  {
+    "id": "9c98d3ca8a9c",
+    "title": "FSD Tries to Drive Straight Into Lake",
+    "url": "https://futurism.com/advanced-transport/fsd-lake",
+    "source": "Futurism",
+    "published_iso": "2026-02-17T17:21:36+00:00",
+    "domain": "futurism.com",
+    "image": "https://futurism.com/wp-content/uploads/2026/02/fsd-lake.jpg?quality=85"
   },
   {
     "id": "5766acb5c5e4",
@@ -142,6 +241,15 @@
     "published_iso": "2026-02-17T16:30:43+00:00",
     "domain": "techcrunch.com",
     "image": ""
+  },
+  {
+    "id": "9a6d076d0bc3",
+    "title": "Meta Patented AI That Takes Over Your Account When You Die, Keeps Posting Forever",
+    "url": "https://futurism.com/future-society/meta-patented-ai-die-keeps-posting",
+    "source": "Futurism",
+    "published_iso": "2026-02-17T16:26:02+00:00",
+    "domain": "futurism.com",
+    "image": "https://futurism.com/wp-content/uploads/2026/02/meta-patented-ai-die-keeps-posting.jpg?quality=85"
   },
   {
     "id": "22fec2704805",
