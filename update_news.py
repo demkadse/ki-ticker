@@ -144,7 +144,7 @@ def render_index(items, editorial):
             <div id="noResults" class="no-results-msg"><i class="fa-solid fa-face-frown"></i> Keine Nachrichten gefunden.</div>
             <div class="news-grid">{html_content}</div>
             <div class="profile-box"><img src="profil.jpg" alt="Dennis M. Böhm" class="profile-img" onerror="this.src='{hero_default}'"><div><strong>Redaktion: Dennis M. Böhm</strong><p>Fachinformatiker • KI‑Kritiker</p></div></div>
-            <footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a></p></footer>
+            <footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
         </main>
         <aside class="sidebar-ad right"><ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_RIGHT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></aside>
     </div>
