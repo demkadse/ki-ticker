@@ -23,7 +23,7 @@ FEEDS = [
     ("Futurism", "https://futurism.com/feed"),
     ("VentureBeat", "https://venturebeat.com/category/ai/feed/"),
     ("TechCrunch", "https://techcrunch.com/category/artificial-intelligence/feed/"),
-    ("arXiv", "https://export.arxiv.org/rss/cs.AI"),
+    ("arXiv", "https://export.arxiv.org/rss/cs.CS"),
     ("OpenAI", "https://openai.com/news/rss.xml"),
     ("Google AI", "https://blog.google/technology/ai/rss/"),
     ("AWS ML Blog", "https://aws.amazon.com/blogs/machine-learning/feed/"),
@@ -52,16 +52,9 @@ def get_youtube_id(url):
         if parsed.path.startswith(('/embed/', '/v/')): return parsed.path.split('/')[2]
     return None
 
-def save_db(data):
-    with open(DB_FILE, "w", encoding="utf-8") as f: json.dump(data[:500], f, ensure_ascii=False, indent=2)
-
 def generate_sitemap():
     now = datetime.datetime.now().strftime("%Y-%m-%d")
-    xml = f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>{SITE_URL}/index.html</loc><lastmod>{now}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>{SITE_URL}/ueber-uns.html</loc><lastmod>{now}</lastmod><priority>0.5</priority></url>
-</urlset>"""
+    xml = f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{SITE_URL}/index.html</loc><lastmod>{now}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url><url><loc>{SITE_URL}/ueber-uns.html</loc><lastmod>{now}</lastmod></url></urlset>'
     with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(xml)
 
 def fetch_feed(feed_info):
@@ -74,22 +67,17 @@ def fetch_feed(feed_info):
             link = (e.get("link") or "").strip()
             ts = e.get("published_parsed") or e.get("updated_parsed")
             dt = datetime.datetime.fromtimestamp(time.mktime(ts), datetime.timezone.utc) if ts else datetime.datetime.now(datetime.timezone.utc)
-            out.append({
-                "title": e.get("title", "").strip(), "url": link, "source": name, 
-                "published_iso": dt.isoformat(), "domain": urlparse(link).netloc.replace("www.", "")
-            })
+            out.append({"title": e.get("title", "").strip(), "url": link, "source": name, "published_iso": dt.isoformat(), "domain": urlparse(link).netloc.replace("www.", "")})
         return out
     except: return []
 
 def render_index(items, editorial):
     now_dt = datetime.datetime.now(datetime.timezone.utc)
     hero_default = f"{HERO_BASE}&w=800"
-    
     grouped = {}
     for it in items:
         if it["source"] not in grouped: grouped[it["source"]] = []
         if len(grouped[it["source"]]) < 10: grouped[it["source"]].append(it)
-    
     sorted_sources = sorted(grouped.keys(), key=lambda s: grouped[s][0]["published_iso"], reverse=True)
 
     editorial_html = ""
@@ -104,10 +92,8 @@ def render_index(items, editorial):
                 {video_embed}
                 <div class="editorial-text">{editorial.get('content', '')}</div>
                 <div class="editorial-footer">
-                    <button class="filter-action-btn" onclick="applySearch('{editorial.get('search_term','')}');">
-                        <i class="fa-solid fa-magnifying-glass"></i> Passende News finden
-                    </button>
-                    <div class="editorial-date">Stand: {editorial.get('date', '')}</div>
+                    <button class="filter-action-btn" onclick="applySearch('{editorial.get('search_term','')}');"><i class="fa-solid fa-magnifying-glass"></i> Passende News finden</button>
+                    <div style="font-size:0.8rem; color:var(--muted); margin-top:10px;">Stand: {editorial.get('date', '')}</div>
                 </div>
             </div>
         </section>"""
@@ -119,76 +105,20 @@ def render_index(items, editorial):
         source_domain = grouped[src][0]['domain']
         for it in grouped[src]:
             dt = datetime.datetime.fromisoformat(it["published_iso"])
-            cards_html += f"""
-            <article class="card" data-content="{it["title"].lower()}">
-              <div class="img-container"><img src="{hero_default}" alt="" loading="lazy"></div>
-              <div class="card-body">
-                <div class="meta">{dt.strftime("%d.%m. • %H:%M")}</div>
-                <h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3>
-                <div class="share-bar"><button onclick="copyToClipboard('{it['url']}')"><i class="fa-solid fa-link"></i> Link</button></div>
-              </div>
-            </article>"""
+            cards_html += f'<article class="card" data-content="{it["title"].lower()}"><div class="img-container"><img src="{hero_default}" loading="lazy" alt=""></div><div class="card-body"><div style="font-size:10px; color:var(--muted); margin-bottom:8px;">{dt.strftime("%d.%m. • %H:%M")}</div><h3><a href="{it["url"]}" target="_blank">{it["title"]}</a></h3><div class="share-bar"><button onclick="copyToClipboard(\'{it["url"]}\')"><i class="fa-solid fa-link"></i> Link</button></div></div></article>'
         
-        cards_html += f"""
-        <article class="card deep-dive-card">
-            <div class="card-body" style="justify-content:center; align-items:center;">
-                <p style="margin-bottom:15px; font-weight:700; color:var(--acc);">Lust auf den Deep-Dive?</p>
-                <a href="https://{source_domain}" target="_blank" class="deep-dive-btn">
-                    Alle Artikel direkt bei {src} <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-        </article>"""
+        cards_html += f'<article class="card" style="border:1px dashed var(--acc); justify-content:center; align-items:center; text-align:center; padding:20px; background:linear-gradient(145deg, #1e293b, #0a1428);"><div class="card-body" style="justify-content:center;"><p style="font-weight:700; color:var(--acc); margin-bottom:15px;">Lust auf den Deep-Dive?</p><a href="https://{source_domain}" target="_blank" class="filter-action-btn" style="padding:8px 15px; font-size:0.8rem;">Alle Artikel bei {src} <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></article>'
 
-        main_content += f"""
-        <section class="source-section">
-            <div class="source-title"><img src="https://www.google.com/s2/favicons?domain={source_domain}&sz=32" alt="">{src}</div>
-            <div class="carousel-wrapper">
-                <button class="nav-btn left" onclick="scrollCarousel('{carousel_id}', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                <div class="news-carousel" id="{carousel_id}">{cards_html}</div>
-                <button class="nav-btn right" onclick="scrollCarousel('{carousel_id}', 1)"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-        </section>"""
+        main_content += f'<section class="source-section"><div class="source-title"><img src="https://www.google.com/s2/favicons?domain={source_domain}&sz=32" alt=""> {src}</div><div class="carousel-wrapper"><button class="nav-btn left" onclick="scrollCarousel(\'{carousel_id}\', -1)"><i class="fa-solid fa-chevron-left"></i></button><div class="news-carousel" id="{carousel_id}">{cards_html}</div><button class="nav-btn right" onclick="scrollCarousel(\'{carousel_id}\', 1)"><i class="fa-solid fa-chevron-right"></i></button></div></section>'
 
-    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{SITE_TITLE}</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v={int(time.time())}"></head>
-    <body class="dark-mode"><div class="site-layout">
-        <aside class="sidebar-ad left"></aside>
-        <main class="container">
-            <header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>
-            {editorial_html}
-            {main_content}
-            <footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
-        </main>
-        <aside class="sidebar-ad right"></aside>
-    </div>
-    <script>
-        function scrollCarousel(id, direction) {{
-            const c = document.getElementById(id);
-            const scrollAmount = c.offsetWidth * 0.8;
-            c.scrollBy({{ left: direction * scrollAmount, behavior: 'smooth' }});
-        }}
-        function filterNews(t){{
-            const v = t.toLowerCase();
-            document.querySelectorAll('.card').forEach(el => {{
-                if(!el.classList.contains('deep-dive-card')) {{
-                    el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none';
-                }}
-            }});
-        }}
-        function applySearch(word) {{ document.getElementById('searchInput').value = word; filterNews(word); }}
-        document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value);
-        function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Kopiert!'));}}
-    </script></body></html>"""
+    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"></head><body class="dark-mode"><div class="site-layout"><aside class="sidebar-ad left"></aside><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div></header>{editorial_html}{main_content}<footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main><aside class="sidebar-ad right"></aside></div><script>function scrollCarousel(id, dir) {{ const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({{ left: dir * amount, behavior: 'smooth' }}); }} function filterNews(t){{ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => {{ if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }}); }} document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Kopiert!'));}}</script></body></html>"""
 
 def main():
     db = load_db(); editorial = load_editorial()
     with ThreadPoolExecutor(max_workers=11) as ex: res = list(ex.map(fetch_feed, FEEDS))
     items = [i for r in res for i in r]
     raw_sorted = sorted(items, key=lambda x: x["published_iso"], reverse=True)
-    save_db(raw_sorted); generate_sitemap()
+    generate_sitemap()
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(raw_sorted, editorial))
 
 if __name__ == "__main__": main()
