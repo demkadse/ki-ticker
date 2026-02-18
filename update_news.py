@@ -61,6 +61,15 @@ def save_db(data):
     filtered = [i for i in data if datetime.datetime.fromisoformat(i["published_iso"]) > cutoff]
     with open(DB_FILE, "w", encoding="utf-8") as f: json.dump(filtered[:500], f, ensure_ascii=False, indent=2)
 
+def generate_sitemap():
+    now = datetime.datetime.now().strftime("%Y-%m-%d")
+    xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{SITE_URL}/index.html</loc><lastmod>{now}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>{SITE_URL}/ueber-uns.html</loc><lastmod>{now}</lastmod><priority>0.5</priority></url>
+</urlset>"""
+    with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(xml)
+
 def extract_image(e):
     ignore = ["favicon", "logo", "icon", "avatar", "badge"]
     for tag in ["media_content", "media_thumbnail", "links"]:
@@ -133,7 +142,10 @@ def render_index(items, editorial):
         if (idx + 1) % 12 == 0:
             html_content += f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_FEED}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
 
-    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
+    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v={int(time.time())}"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
     <body class="dark-mode">
     <div class="site-layout">
         <aside class="sidebar-ad left"><ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_LEFT}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></aside>
@@ -169,6 +181,7 @@ def main():
         src = it["source"]; source_counts[src] = source_counts.get(src, 0) + 1
         if source_counts[src] <= MAX_PER_SOURCE: final_items.append(it)
     save_db(final_items)
+    generate_sitemap()
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(final_items, editorial))
 
 if __name__ == "__main__": main()
