@@ -82,7 +82,7 @@ def render_index(items, editorial):
         if len(grouped[it["source"]]) < 10: grouped[it["source"]].append(it)
     sorted_sources = sorted(grouped.keys(), key=lambda s: grouped[s][0]["published_iso"], reverse=True)
 
-    # Dynamische Kategorie-Buttons basierend auf den vorhandenen Quellen
+    # Dynamische Kategorie-Buttons
     cat_buttons = ""
     for src in sorted_sources:
         cat_buttons += f'<button class="nav-btn category-btn" onclick="applySearch(\'{src}\')">{src}</button>'
@@ -111,7 +111,9 @@ def render_index(items, editorial):
                 <div class="editorial-footer-area">
                     <div class="sources-box-compact">
                         <strong>Quellen:</strong>
-                        <div class="editorial-sources-compact">{editorial.get('content', '')}</div>
+                        <div class="editorial-sources-list">
+                            {editorial.get('content', '')}
+                        </div>
                     </div>
                     
                     <button class="filter-action-btn-styled" onclick="applySearch('{editorial.get('search_term','')}');">
