@@ -114,6 +114,8 @@ def render_index(items, editorial):
     hero_default = f"{HERO_BASE}&w=1200"
 
     editorial_html = ""
+    editorial_schema = None
+    
     if editorial:
         yt_id = get_youtube_id(editorial.get('video_url'))
         author_link = f'<a href="{editorial.get("author_url")}" target="_blank" class="author-vid-link">→ Zum Kanal des Video-Urhebers</a>' if editorial.get('author_url') else ""
@@ -132,13 +134,15 @@ def render_index(items, editorial):
             </div>
             """
         
-        filter_word = editorial.get('title', '').split(' ')[0].replace("'", "").strip()
+        # Filter-Wort Logik (bereinigt)
+        raw_title = editorial.get('title', '')
+        filter_word = re.sub(r"[^a-zA-Z0-9\s]", "", raw_title).split(' ')[0]
         
         editorial_html = f"""
         <section class="editorial-section">
             <div class="editorial-badge">Tagesthema der Redaktion</div>
             <div class="editorial-card">
-                <h2>{editorial.get('title', 'Titel wird geladen...')}</h2>
+                <h2>{raw_title}</h2>
                 {video_embed}
                 <div class="editorial-text">{editorial.get('content', '')}</div>
                 <div class="editorial-footer">
@@ -148,6 +152,15 @@ def render_index(items, editorial):
             </div>
         </section>
         """
+        
+        # Schema für Editorial
+        editorial_schema = {
+            "@type": "OpinionNewsArticle",
+            "headline": raw_title,
+            "datePublished": now_dt.isoformat(),
+            "author": {"@type": "Person", "name": "Dennis M. Böhm"},
+            "description": editorial.get('content', '')[:160]
+        }
 
     schema_items = []
     html_content = ""
@@ -194,10 +207,22 @@ def render_index(items, editorial):
         if (idx + 1) % 12 == 0:
             html_content += f'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="auto" data-full-width-responsive="true" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_FEED}"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></div>'
 
-    schema_json = json.dumps({"@context": "https://schema.org", "@type": "ItemList", "itemListElement": schema_items}, ensure_ascii=False)
+    # Kombiniertes Schema
+    graph = [{"@context": "https://schema.org", "@type": "ItemList", "itemListElement": schema_items}]
+    if editorial_schema: graph.append(editorial_schema)
+    schema_json = json.dumps(graph, ensure_ascii=False)
 
     return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>{SITE_TITLE}</title>
+    <meta name="description" content="Täglich aktuelle KI‑Nachrichten kuratiert und analysiert von Dennis M. Böhm.">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{SITE_URL}">
+    <meta property="og:title" content="{SITE_TITLE} - KI‑News">
+    <meta property="og:description" content="Der Kompass durch die Welt der Künstlichen Intelligenz.">
+    <meta property="og:image" content="{hero_default}">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css?v={int(time.time())}">
     <script type="application/ld+json">{schema_json}</script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-{ADSENSE_PUB}" crossorigin="anonymous"></script></head>
@@ -219,6 +244,8 @@ def render_index(items, editorial):
 
             {editorial_html}
 
+            <h2 class="section-title">KI-Nachrichten aus aller Welt</h2>
+
             <div class="news-grid">{html_content}</div>
             
             <div class="profile-box-wrapper">
@@ -231,7 +258,13 @@ def render_index(items, editorial):
                 </div>
             </div>
 
-            <footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer>
+            <footer class="footer">
+                <p>&copy; {now_dt.year} KI‑Ticker | 
+                   <a href="ueber-uns.html">Über uns</a> | 
+                   <a href="impressum.html">Impressum</a> | 
+                   <a href="datenschutz.html">Datenschutz</a>
+                </p>
+            </footer>
         </main>
         <aside class="sidebar-ad right">
             <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-{ADSENSE_PUB}" data-ad-slot="{ADSENSE_SLOT_RIGHT}"></ins>
