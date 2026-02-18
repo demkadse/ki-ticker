@@ -52,11 +52,6 @@ def get_youtube_id(url):
         if parsed.path.startswith(('/embed/', '/v/')): return parsed.path.split('/')[2]
     return None
 
-def generate_sitemap():
-    now = datetime.datetime.now().strftime("%Y-%m-%d")
-    xml = f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{SITE_URL}/index.html</loc><lastmod>{now}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url><url><loc>{SITE_URL}/ueber-uns.html</loc><lastmod>{now}</lastmod></url></urlset>'
-    with open("sitemap.xml", "w", encoding="utf-8") as f: f.write(xml)
-
 def fetch_feed(feed_info):
     name, url = feed_info
     try:
@@ -102,7 +97,13 @@ def render_index(items, editorial):
                     {author_link}
                     <p style="font-size:0.75rem; color:var(--muted); margin-top:5px;">Hinweis: Externer Videobeitrag.</p>
                 </div>
-                <div class="editorial-text">{editorial.get('description', '')}</div>
+                
+                <div class="editorial-expand-wrapper" id="editorialWrapper">
+                    <div class="editorial-text">{editorial.get('description', '')}</div>
+                    <div class="read-more-overlay"></div>
+                </div>
+                <button class="toggle-btn" id="toggleBtn" onclick="toggleEditorial()">Vollständige Analyse lesen</button>
+
                 <div class="editorial-footer-area">
                     <div class="sources-box-compact">
                         <strong>Quellen:</strong>
@@ -148,7 +149,7 @@ def render_index(items, editorial):
             <div class="carousel-wrapper"><div class="news-carousel" id="{carousel_id}">{cards_html}</div></div>
         </section>"""
 
-    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"></head><body class="dark-mode"><div class="site-layout"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div>{category_html}</header>{editorial_html}{main_content}<footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main></div><script>function scrollCarousel(id, dir) {{ const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({{ left: dir * amount, behavior: 'smooth' }}); }} function filterNews(t){{ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => {{ if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }}); }} function applySearch(word) {{ document.getElementById('searchInput').value = word; filterNews(word); window.scrollTo({{top: 0, behavior: 'smooth'}}); }} document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}}</script></body></html>"""
+    return f"""<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{SITE_TITLE}</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="style.css?v={int(time.time())}"></head><body class="dark-mode"><div class="site-layout"><main class="container"><header class="header"><h1>KI‑Ticker</h1><div class="search-wrapper"><input type="text" id="searchInput" placeholder="Feed durchsuchen..."></div>{category_html}</header>{editorial_html}{main_content}<footer class="footer"><p>&copy; {now_dt.year} KI‑Ticker | <a href="ueber-uns.html">Über uns</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p></footer></main></div><script>function scrollCarousel(id, dir) {{ const c = document.getElementById(id); const amount = c.offsetWidth * 0.8; c.scrollBy({{ left: dir * amount, behavior: 'smooth' }}); }} function filterNews(t){{ const v = t.toLowerCase(); document.querySelectorAll('.card').forEach(el => {{ if(el.getAttribute('data-content')) el.style.display = el.getAttribute('data-content').includes(v) ? 'flex' : 'none'; }}); }} function toggleEditorial() {{ const w = document.getElementById('editorialWrapper'); const b = document.getElementById('toggleBtn'); w.classList.toggle('expanded'); b.innerText = w.classList.contains('expanded') ? 'Weniger anzeigen' : 'Vollständige Analyse lesen'; }} function applySearch(word) {{ document.getElementById('searchInput').value = word; filterNews(word); window.scrollTo({{top: 0, behavior: 'smooth'}}); }} document.getElementById('searchInput').oninput=(e)=>filterNews(e.target.value); function copyToClipboard(t){{navigator.clipboard.writeText(t).then(()=>alert('Link kopiert!'));}}</script></body></html>"""
 
 # --- STEUERUNG VON HAUPTPROZESS ---
 def main():
@@ -156,7 +157,6 @@ def main():
     with ThreadPoolExecutor(max_workers=11) as ex: res = list(ex.map(fetch_feed, FEEDS))
     items = [i for r in res for i in r]
     raw_sorted = sorted(items, key=lambda x: x["published_iso"], reverse=True)
-    generate_sitemap()
     with open("index.html", "w", encoding="utf-8") as f: f.write(render_index(raw_sorted, editorial))
 
 if __name__ == "__main__": main()

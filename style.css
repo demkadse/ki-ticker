@@ -31,15 +31,23 @@ a:hover { filter: brightness(1.2); text-decoration: underline; }
 .editorial-badge { display: inline-block; background: var(--acc); color: var(--bg); padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; }
 .video-container { width: 100%; max-width: 960px; margin: 0 auto 25px; aspect-ratio: 16 / 9; background: #000; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
 .video-container iframe { width: 100%; height: 100%; border: 0; }
-.editorial-text { font-size: 1.15rem; line-height: 1.8; color: var(--text); margin-bottom: 40px; white-space: pre-wrap; }
+
+/* --- STEUERUNG VON AUSKLAPP-MECHANIK --- */
+.editorial-expand-wrapper { position: relative; max-height: 180px; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+.editorial-expand-wrapper.expanded { max-height: 2000px; }
+.editorial-text { font-size: 1.1rem; line-height: 1.8; color: var(--text); white-space: pre-wrap; margin-bottom: 20px; }
+.read-more-overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(transparent, #151c2e); pointer-events: none; transition: 0.3s; }
+.editorial-expand-wrapper.expanded .read-more-overlay { opacity: 0; }
+
+.toggle-btn { background: transparent; border: 1px solid var(--acc); color: var(--acc); padding: 8px 20px; border-radius: 20px; cursor: pointer; margin: 15px auto; display: block; font-weight: 600; font-size: 0.85rem; transition: 0.2s; }
+.toggle-btn:hover { background: var(--acc); color: var(--bg); }
 
 /* --- STEUERUNG VON QUELLEN-BOX --- */
 .editorial-footer-area { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
 .sources-box-compact { flex: 1; text-align: left; }
 .sources-box-compact strong { display: block; color: var(--muted); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
 .editorial-sources-list { font-size: 0.8rem; display: flex; flex-direction: column; gap: 4px; }
-.editorial-sources-list a { color: var(--acc); opacity: 0.8; display: block; }
-.filter-action-btn-styled { background: var(--acc); color: var(--bg); border: none; padding: 12px 24px; border-radius: 30px; font-weight: 700; cursor: pointer; transition: 0.3s; white-space: nowrap; }
+.filter-action-btn-styled { background: var(--acc); color: var(--bg); border: none; padding: 12px 24px; border-radius: 30px; font-weight: 700; cursor: pointer; transition: 0.3s; }
 
 /* --- STEUERUNG VON CAROUSEL-HEADER --- */
 .source-section { margin-bottom: 60px; width: 100%; }
@@ -48,20 +56,16 @@ a:hover { filter: brightness(1.2); text-decoration: underline; }
 .source-title img { width: 24px; height: 24px; border-radius: 4px; }
 .carousel-nav { display: flex; gap: 12px; }
 .nav-btn { width: 42px; height: 42px; border-radius: 50%; background: var(--card); color: var(--acc); border: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
-.nav-btn:hover { background: var(--acc); color: var(--bg); border-color: var(--acc); }
 
 /* --- STEUERUNG VON KARTEN --- */
 .news-carousel { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 30px; scrollbar-width: none; scroll-behavior: smooth; }
-.news-carousel::-webkit-scrollbar { display: none; }
 .card { flex: 0 0 340px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; height: 460px; transition: 0.3s; }
 .card:hover { border-color: var(--acc); transform: translateY(-5px); }
 .img-container { width: 100%; height: 190px; background: #000; overflow: hidden; }
 .img-container img { width: 100%; height: 100%; object-fit: cover; }
 .card-body { padding: 22px; display: flex; flex-direction: column; flex-grow: 1; }
 .card h3 { font-size: 1.05rem; margin-bottom: 15px; line-height: 1.45; font-weight: 600; flex-grow: 1; overflow: hidden; }
-.meta { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
 .share-bar { margin-top: auto; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.05); }
 .card-link-btn { display: inline-flex; align-items: center; gap: 8px; background: rgba(56, 189, 248, 0.1); color: var(--acc); border: 1px solid var(--acc); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 700; }
 
-/* --- STEUERUNG VON FOOTER --- */
 .footer { padding: 80px 0; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 60px; }
