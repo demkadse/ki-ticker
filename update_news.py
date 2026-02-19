@@ -142,8 +142,19 @@ def render_html(items, editorial):
                 </div>
             </article>"""
             
+            # Ad-Card einfügen nach dem ersten Artikel
             if i == 0:
                 cards += ad_fake_card
+        
+        # URHEBER-KARTE am Ende des Karussells anfügen
+        cards += f"""
+        <article class="news-card" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #1e293b, #151c2e); border: 1px solid var(--accent);">
+            <div style="text-align: center; padding: 20px; width: 100%;">
+                <img src="https://www.google.com/s2/favicons?domain={domain}&sz=128" style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px auto; object-fit: contain; background: transparent; border: none;">
+                <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 15px;">Alle News von<br>{source}</h3>
+                <a href="https://{domain}" target="_blank" class="nav-btn" style="display: inline-block;">Zur Quelle</a>
+            </div>
+        </article>"""
         
         feeds_html += f"""
         <section class="news-section" id="feed-{idx}">
