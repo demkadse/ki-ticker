@@ -5,7 +5,6 @@ import os, time, datetime, json, requests, feedparser
 from urllib.parse import urlparse, parse_qs
 from concurrent.futures import ThreadPoolExecutor
 
-# --- CONFIG ---
 SITE_TITLE = "KI‑Ticker"
 SITE_URL = "https://ki-ticker.boehmonline.space"
 EDITORIAL_FILE = "editorial.json"
@@ -68,26 +67,15 @@ def render_html(items, editorial):
     sorted_sources = sorted(grouped.keys(), key=lambda s: grouped[s][0]["pub"] if grouped[s] else 0, reverse=True)
     nav_buttons = "".join([f'<button class="nav-btn" onclick="filterFeed(\'{s}\')">{s}</button>' for s in sorted_sources])
 
-    # Editorial Box
     editorial_html = ""
     if editorial:
         yt_url = editorial.get('video_url', '')
         yt_id = parse_qs(urlparse(yt_url).query).get('v', [None])[0]
-        
-        # Urheber-Info extrahieren (Fallback auf Video-Link wenn keine Author-URL im JSON)
         author_url = editorial.get('author_url', yt_url)
         author_name = editorial.get('author_name', 'Externer Quelle')
         
         video_embed = f'<div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/{yt_id}" allowfullscreen></iframe></div>' if yt_id else ""
-        
-        # Der neue Disclaimer Block
-        disclaimer_html = f"""
-        <div class="video-meta">
-            Hinweis: Das oben eingebundene Video ist ein externer Inhalt von <a href="{author_url}" target="_blank">{author_name}</a>. 
-            Es dient der kontextuellen Vertiefung. Die redaktionelle Verantwortung für das Video liegt beim Urheber.
-        </div>
-        """ if yt_id else ""
-
+        disclaimer_html = f'<div class="video-meta">Hinweis: Das oben eingebundene Video ist ein externer Inhalt von <a href="{author_url}" target="_blank">{author_name}</a>. Es dient der kontextuellen Vertiefung. Die redaktionelle Verantwortung für das Video liegt beim Urheber.</div>' if yt_id else ""
         sources_text = editorial.get('content', '')
         
         editorial_html = f"""
@@ -100,12 +88,50 @@ def render_html(items, editorial):
             <div class="editorial-sources"><strong>Quellen:</strong> {sources_text}</div>
         </article>"""
 
-    # News Feeds
+    push_script = "<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>"
+    
+    ad_skyscraper_left = f"""
+    <div class="ad-skyscraper ad-skyscraper--left">
+        <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-2616688648278798" data-ad-slot="3499497230"></ins>
+        {push_script}
+    </div>"""
+    
+    ad_skyscraper_right = f"""
+    <div class="ad-skyscraper ad-skyscraper--right">
+        <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8513926860"></ins>
+        {push_script}
+    </div>"""
+    
+    ad_horizontal_top = f"""
+    <div class="ad-horizontal">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2616688648278798" data-ad-slot="8395864605" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        {push_script}
+    </div>"""
+    
+    ad_horizontal_bottom = f"""
+    <div class="ad-horizontal">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2616688648278798" data-ad-slot="2344297858" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        {push_script}
+    </div>"""
+    
+    # Inline-Styles durch CSS-Klassen ersetzt
+    ad_fake_card = f"""
+    <article class="news-card ad-card">
+        <div class="ad-card-inner">
+            <span class="ad-badge">Anzeige</span>
+            <div class="ad-content">
+                <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2616688648278798" data-ad-slot="3657379526"></ins>
+                {push_script}
+            </div>
+        </div>
+    </article>"""
+
     feeds_html = ""
     for idx, source in enumerate(sorted_sources):
         cards = ""
         domain = grouped[source][0]['domain']
-        for item in grouped[source]:
+        
+        for i, item in enumerate(grouped[source]):
             date_str = item["pub"].strftime("%d.%m. %H:%M")
             cards += f"""
             <article class="news-card" data-src="{source}">
@@ -116,6 +142,9 @@ def render_html(items, editorial):
                     <button class="copy-btn" onclick="copyLink('{item['url']}')">Link kopieren</button>
                 </div>
             </article>"""
+            
+            if i == 0:
+                cards += ad_fake_card
         
         feeds_html += f"""
         <section class="news-section" id="feed-{idx}">
@@ -140,8 +169,12 @@ def render_html(items, editorial):
     <title>{SITE_TITLE}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css?v={int(time.time())}">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2616688648278798" crossorigin="anonymous"></script>
     </head><body>
     
+    {ad_skyscraper_left}
+    {ad_skyscraper_right}
+
     <header id="siteHeader">
         <h1>{SITE_TITLE}</h1>
         <div class="search-wrapper"><input type="text" id="searchInput" placeholder="News filtern..."></div>
@@ -152,7 +185,12 @@ def render_html(items, editorial):
     </header>
 
     <div class="main-container">
-        <main>{editorial_html}<div id="feedContainer">{feeds_html}</div></main>
+        <main>
+            {editorial_html}
+            {ad_horizontal_top}
+            <div id="feedContainer">{feeds_html}</div>
+            {ad_horizontal_bottom}
+        </main>
     </div>
 
     <footer class="site-footer">
@@ -183,6 +221,7 @@ def render_html(items, editorial):
     searchInput.addEventListener('input', (e) => {{
         const term = e.target.value.toLowerCase();
         document.querySelectorAll('.news-card').forEach(card => {{
+            if(card.classList.contains('ad-card')) return;
             const txt = card.innerText.toLowerCase();
             card.style.display = txt.includes(term) ? 'flex' : 'none';
         }});

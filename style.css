@@ -79,7 +79,58 @@ a:hover { color: var(--accent); }
 }
 .nav-btn:hover { background: var(--accent); color: var(--bg-color); transform: translateY(-2px); }
 
-/* --- 3. LAYOUT --- */
+/* --- 3. WERBEFLÄCHEN (ADS) --- */
+.ad-skyscraper {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+.ad-skyscraper--left { left: 10px; }
+.ad-skyscraper--right { right: 10px; }
+
+@media (max-width: 1599px) {
+    .ad-skyscraper { display: none; }
+}
+
+.ad-horizontal {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 60px auto;
+    display: block; /* AdSense Safe-Mode */
+    text-align: center;
+}
+
+.ad-card-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.ad-badge {
+    background-color: #334155;
+    color: #cbd5e1;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.ad-content { margin-top: 10px; }
+
+/* --- 4. LAYOUT & EDITORIAL --- */
 .main-container { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
 
 .editorial-box {
@@ -87,7 +138,7 @@ a:hover { color: var(--accent); }
     border: 1px solid var(--accent);
     border-radius: 16px;
     padding: 40px;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
@@ -109,7 +160,6 @@ a:hover { color: var(--accent); }
 }
 .video-container iframe { width: 100%; height: 100%; border: 0; }
 
-/* NEU: Styling für den Video-Urheber-Hinweis */
 .video-meta {
     font-size: 0.85rem;
     color: var(--text-muted);
@@ -122,8 +172,9 @@ a:hover { color: var(--accent); }
 
 .editorial-text { font-size: 1.15rem; line-height: 1.8; color: #e2e8f0; white-space: pre-wrap; }
 .editorial-sources { border-top: 1px solid var(--border); padding-top: 20px; font-size: 0.9rem; color: var(--text-muted); }
+.editorial-sources a { color: var(--accent); }
 
-/* --- 4. NEWS KARUSSELL --- */
+/* --- 5. NEWS KARUSSELL --- */
 .news-section { margin-bottom: 80px; }
 
 .section-header {
@@ -177,7 +228,7 @@ a:hover { color: var(--accent); }
     flex-direction: column;
     transition: transform 0.2s;
 }
-.news-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+.news-card:not(.ad-card):hover { transform: translateY(-5px); border-color: var(--accent); }
 
 .news-card img { width: 100%; height: 180px; object-fit: cover; background: #000; border-bottom: 1px solid var(--border); }
 .card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
@@ -190,6 +241,6 @@ a:hover { color: var(--accent); }
 }
 .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-/* --- 5. FOOTER --- */
+/* --- 6. FOOTER --- */
 .site-footer { text-align: center; padding: 80px 0; border-top: 1px solid var(--border); color: var(--text-muted); }
 .footer-links a { margin: 0 15px; color: var(--text-muted); }
