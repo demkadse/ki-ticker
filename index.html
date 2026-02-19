@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>KI‑Ticker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1771466146">
+    <link rel="stylesheet" href="style.css?v=1771471012">
     </head><body>
     
     <header id="siteHeader">
@@ -11,7 +11,7 @@
         <div class="search-wrapper"><input type="text" id="searchInput" placeholder="News filtern..."></div>
         <div class="nav-wrapper">
             <button class="nav-btn" onclick="resetFilter()">Alle Anzeigen</button>
-            <button class="nav-btn" onclick="filterFeed('TechCrunch')">TechCrunch</button><button class="nav-btn" onclick="filterFeed('Futurism')">Futurism</button><button class="nav-btn" onclick="filterFeed('Ars Technica')">Ars Technica</button><button class="nav-btn" onclick="filterFeed('Google AI')">Google AI</button><button class="nav-btn" onclick="filterFeed('arXiv')">arXiv</button><button class="nav-btn" onclick="filterFeed('NVIDIA Blog')">NVIDIA Blog</button><button class="nav-btn" onclick="filterFeed('OpenAI')">OpenAI</button><button class="nav-btn" onclick="filterFeed('VentureBeat')">VentureBeat</button>
+            <button class="nav-btn" onclick="filterFeed('TechCrunch')">TechCrunch</button><button class="nav-btn" onclick="filterFeed('Futurism')">Futurism</button><button class="nav-btn" onclick="filterFeed('OpenAI')">OpenAI</button><button class="nav-btn" onclick="filterFeed('Ars Technica')">Ars Technica</button><button class="nav-btn" onclick="filterFeed('Google AI')">Google AI</button><button class="nav-btn" onclick="filterFeed('arXiv')">arXiv</button><button class="nav-btn" onclick="filterFeed('NVIDIA Blog')">NVIDIA Blog</button><button class="nav-btn" onclick="filterFeed('VentureBeat')">VentureBeat</button>
         </div>
     </header>
 
@@ -225,8 +225,8 @@ Das Kernproblem bezeichnen Forscher als **'Model Collapse'**. Da LLMs auf Intern
         <section class="news-section" id="feed-2">
             <div class="section-header">
                 <div class="section-title-group">
-                    <img src="https://www.google.com/s2/favicons?domain=arstechnica.com&sz=64" class="section-icon">
-                    <h2 class="section-title">Ars Technica</h2>
+                    <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" class="section-icon">
+                    <h2 class="section-title">OpenAI</h2>
                 </div>
                 <div class="section-controls">
                     <button class="control-btn" onclick="scrollCarousel('track-2', -1)"><i class="fa-solid fa-chevron-left"></i></button>
@@ -234,6 +234,101 @@ Das Kernproblem bezeichnen Forscher als **'Model Collapse'**. Da LLMs auf Intern
                 </div>
             </div>
             <div class="carousel-track" id="track-2">
+                
+            <article class="news-card" data-src="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
+                <div class="card-body">
+                    <div class="card-meta">18.02. 21:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/openai-for-india" target="_blank">Introducing OpenAI for India</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/openai-for-india')">Link kopieren</button>
+                </div>
+            </article>
+            <article class="news-card" data-src="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
+                <div class="card-body">
+                    <div class="card-meta">13.02. 11:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/new-result-theoretical-physics" target="_blank">GPT-5.2 derives a new result in theoretical physics</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/new-result-theoretical-physics')">Link kopieren</button>
+                </div>
+            </article>
+            <article class="news-card" data-src="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
+                <div class="card-body">
+                    <div class="card-meta">13.02. 10:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt" target="_blank">Introducing Lockdown Mode and Elevated Risk labels in ChatGPT</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt')">Link kopieren</button>
+                </div>
+            </article>
+            <article class="news-card" data-src="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
+                <div class="card-body">
+                    <div class="card-meta">13.02. 09:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/scaling-social-science-research" target="_blank">Scaling social science research</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/scaling-social-science-research')">Link kopieren</button>
+                </div>
+            </article>
+            <article class="news-card" data-src="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
+                <div class="card-body">
+                    <div class="card-meta">13.02. 09:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/beyond-rate-limits" target="_blank">Beyond rate limits: scaling access to Codex and Sora</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/beyond-rate-limits')">Link kopieren</button>
+                </div>
+            </article>
+            <article class="news-card" data-src="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
+                <div class="card-body">
+                    <div class="card-meta">12.02. 10:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark" target="_blank">Introducing GPT-5.3-Codex-Spark</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/introducing-gpt-5-3-codex-spark')">Link kopieren</button>
+                </div>
+            </article>
+            <article class="news-card" data-src="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
+                <div class="card-body">
+                    <div class="card-meta">11.02. 09:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/harness-engineering" target="_blank">Harness engineering: leveraging Codex in an agent-first world</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/harness-engineering')">Link kopieren</button>
+                </div>
+            </article>
+            <article class="news-card" data-src="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
+                <div class="card-body">
+                    <div class="card-meta">09.02. 11:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/testing-ads-in-chatgpt" target="_blank">Testing ads in ChatGPT</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/testing-ads-in-chatgpt')">Link kopieren</button>
+                </div>
+            </article>
+            <article class="news-card" data-src="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
+                <div class="card-body">
+                    <div class="card-meta">09.02. 11:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/bringing-chatgpt-to-genaimil" target="_blank">Bringing ChatGPT to GenAI.mil</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/bringing-chatgpt-to-genaimil')">Link kopieren</button>
+                </div>
+            </article>
+            <article class="news-card" data-src="OpenAI">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
+                <div class="card-body">
+                    <div class="card-meta">06.02. 10:00</div>
+                    <h3 class="card-title"><a href="https://openai.com/index/our-approach-to-localization" target="_blank">Making AI work for everyone, everywhere: our approach to localization</a></h3>
+                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/our-approach-to-localization')">Link kopieren</button>
+                </div>
+            </article>
+            </div>
+        </section>
+        <section class="news-section" id="feed-3">
+            <div class="section-header">
+                <div class="section-title-group">
+                    <img src="https://www.google.com/s2/favicons?domain=arstechnica.com&sz=64" class="section-icon">
+                    <h2 class="section-title">Ars Technica</h2>
+                </div>
+                <div class="section-controls">
+                    <button class="control-btn" onclick="scrollCarousel('track-3', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="control-btn" onclick="scrollCarousel('track-3', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="carousel-track" id="track-3">
                 
             <article class="news-card" data-src="Ars Technica">
                 <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
@@ -317,18 +412,18 @@ Das Kernproblem bezeichnen Forscher als **'Model Collapse'**. Da LLMs auf Intern
             </article>
             </div>
         </section>
-        <section class="news-section" id="feed-3">
+        <section class="news-section" id="feed-4">
             <div class="section-header">
                 <div class="section-title-group">
                     <img src="https://www.google.com/s2/favicons?domain=blog.google&sz=64" class="section-icon">
                     <h2 class="section-title">Google AI</h2>
                 </div>
                 <div class="section-controls">
-                    <button class="control-btn" onclick="scrollCarousel('track-3', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="control-btn" onclick="scrollCarousel('track-3', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="control-btn" onclick="scrollCarousel('track-4', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="control-btn" onclick="scrollCarousel('track-4', 1)"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-track" id="track-3">
+            <div class="carousel-track" id="track-4">
                 
             <article class="news-card" data-src="Google AI">
                 <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
@@ -412,18 +507,18 @@ Das Kernproblem bezeichnen Forscher als **'Model Collapse'**. Da LLMs auf Intern
             </article>
             </div>
         </section>
-        <section class="news-section" id="feed-4">
+        <section class="news-section" id="feed-5">
             <div class="section-header">
                 <div class="section-title-group">
                     <img src="https://www.google.com/s2/favicons?domain=arxiv.org&sz=64" class="section-icon">
                     <h2 class="section-title">arXiv</h2>
                 </div>
                 <div class="section-controls">
-                    <button class="control-btn" onclick="scrollCarousel('track-4', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="control-btn" onclick="scrollCarousel('track-4', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="control-btn" onclick="scrollCarousel('track-5', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="control-btn" onclick="scrollCarousel('track-5', 1)"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-track" id="track-4">
+            <div class="carousel-track" id="track-5">
                 
             <article class="news-card" data-src="arXiv">
                 <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
@@ -507,18 +602,18 @@ Das Kernproblem bezeichnen Forscher als **'Model Collapse'**. Da LLMs auf Intern
             </article>
             </div>
         </section>
-        <section class="news-section" id="feed-5">
+        <section class="news-section" id="feed-6">
             <div class="section-header">
                 <div class="section-title-group">
                     <img src="https://www.google.com/s2/favicons?domain=blogs.nvidia.com&sz=64" class="section-icon">
                     <h2 class="section-title">NVIDIA Blog</h2>
                 </div>
                 <div class="section-controls">
-                    <button class="control-btn" onclick="scrollCarousel('track-5', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="control-btn" onclick="scrollCarousel('track-5', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="control-btn" onclick="scrollCarousel('track-6', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="control-btn" onclick="scrollCarousel('track-6', 1)"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div class="carousel-track" id="track-5">
+            <div class="carousel-track" id="track-6">
                 
             <article class="news-card" data-src="NVIDIA Blog">
                 <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
@@ -598,101 +693,6 @@ Das Kernproblem bezeichnen Forscher als **'Model Collapse'**. Da LLMs auf Intern
                     <div class="card-meta">04.02. 16:00</div>
                     <h3 class="card-title"><a href="https://blogs.nvidia.com/blog/ai-agents-intelligent-document-processing/" target="_blank">Nemotron Labs: How AI Agents Are Turning Documents Into Real-Time Business Intelligence</a></h3>
                     <button class="copy-btn" onclick="copyLink('https://blogs.nvidia.com/blog/ai-agents-intelligent-document-processing/')">Link kopieren</button>
-                </div>
-            </article>
-            </div>
-        </section>
-        <section class="news-section" id="feed-6">
-            <div class="section-header">
-                <div class="section-title-group">
-                    <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" class="section-icon">
-                    <h2 class="section-title">OpenAI</h2>
-                </div>
-                <div class="section-controls">
-                    <button class="control-btn" onclick="scrollCarousel('track-6', -1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="control-btn" onclick="scrollCarousel('track-6', 1)"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
-            </div>
-            <div class="carousel-track" id="track-6">
-                
-            <article class="news-card" data-src="OpenAI">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
-                <div class="card-body">
-                    <div class="card-meta">13.02. 11:00</div>
-                    <h3 class="card-title"><a href="https://openai.com/index/new-result-theoretical-physics" target="_blank">GPT-5.2 derives a new result in theoretical physics</a></h3>
-                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/new-result-theoretical-physics')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-src="OpenAI">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
-                <div class="card-body">
-                    <div class="card-meta">13.02. 10:00</div>
-                    <h3 class="card-title"><a href="https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt" target="_blank">Introducing Lockdown Mode and Elevated Risk labels in ChatGPT</a></h3>
-                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-src="OpenAI">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
-                <div class="card-body">
-                    <div class="card-meta">13.02. 09:00</div>
-                    <h3 class="card-title"><a href="https://openai.com/index/beyond-rate-limits" target="_blank">Beyond rate limits: scaling access to Codex and Sora</a></h3>
-                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/beyond-rate-limits')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-src="OpenAI">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
-                <div class="card-body">
-                    <div class="card-meta">13.02. 09:00</div>
-                    <h3 class="card-title"><a href="https://openai.com/index/scaling-social-science-research" target="_blank">Scaling social science research</a></h3>
-                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/scaling-social-science-research')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-src="OpenAI">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
-                <div class="card-body">
-                    <div class="card-meta">12.02. 10:00</div>
-                    <h3 class="card-title"><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark" target="_blank">Introducing GPT-5.3-Codex-Spark</a></h3>
-                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/introducing-gpt-5-3-codex-spark')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-src="OpenAI">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
-                <div class="card-body">
-                    <div class="card-meta">11.02. 09:00</div>
-                    <h3 class="card-title"><a href="https://openai.com/index/harness-engineering" target="_blank">Harness engineering: leveraging Codex in an agent-first world</a></h3>
-                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/harness-engineering')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-src="OpenAI">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
-                <div class="card-body">
-                    <div class="card-meta">09.02. 11:00</div>
-                    <h3 class="card-title"><a href="https://openai.com/index/testing-ads-in-chatgpt" target="_blank">Testing ads in ChatGPT</a></h3>
-                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/testing-ads-in-chatgpt')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-src="OpenAI">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
-                <div class="card-body">
-                    <div class="card-meta">09.02. 11:00</div>
-                    <h3 class="card-title"><a href="https://openai.com/index/bringing-chatgpt-to-genaimil" target="_blank">Bringing ChatGPT to GenAI.mil</a></h3>
-                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/bringing-chatgpt-to-genaimil')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-src="OpenAI">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
-                <div class="card-body">
-                    <div class="card-meta">06.02. 10:00</div>
-                    <h3 class="card-title"><a href="https://openai.com/index/our-approach-to-localization" target="_blank">Making AI work for everyone, everywhere: our approach to localization</a></h3>
-                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/our-approach-to-localization')">Link kopieren</button>
-                </div>
-            </article>
-            <article class="news-card" data-src="OpenAI">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" loading="lazy">
-                <div class="card-body">
-                    <div class="card-meta">05.02. 11:00</div>
-                    <h3 class="card-title"><a href="https://openai.com/index/gpt-5-lowers-protein-synthesis-cost" target="_blank">GPT-5 lowers the cost of cell-free protein synthesis</a></h3>
-                    <button class="copy-btn" onclick="copyLink('https://openai.com/index/gpt-5-lowers-protein-synthesis-cost')">Link kopieren</button>
                 </div>
             </article>
             </div>
