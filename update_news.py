@@ -114,7 +114,6 @@ def render_html(items, editorial):
         {push_script}
     </div>"""
     
-    # Inline-Styles durch CSS-Klassen ersetzt
     ad_fake_card = f"""
     <article class="news-card ad-card">
         <div class="ad-card-inner">
