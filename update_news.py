@@ -84,7 +84,11 @@ def render_html(items, editorial):
             <h2 style="font-size:2rem; margin-bottom:20px; color:#fff;">{editorial.get('title')}</h2>
             {video_embed}
             {disclaimer_html}
-            <div class="editorial-text">{editorial.get('description')}</div>
+            <div class="editorial-text-container" id="editorialText">
+                <div class="editorial-text">{editorial.get('description')}</div>
+                <div class="editorial-text-fade"></div>
+            </div>
+            <button class="nav-btn read-more-btn" id="readMoreBtn" onclick="toggleEditorial()">Mehr lesen</button>
             <div class="editorial-sources"><strong>Quellen:</strong> {sources_text}</div>
         </article>"""
 
@@ -213,6 +217,17 @@ def render_html(items, editorial):
     </footer>
 
     <script>
+    function toggleEditorial() {{
+        const container = document.getElementById('editorialText');
+        const btn = document.getElementById('readMoreBtn');
+        container.classList.toggle('expanded');
+        if(container.classList.contains('expanded')) {{
+            btn.innerText = 'Weniger anzeigen';
+        }} else {{
+            btn.innerText = 'Mehr lesen';
+        }}
+    }}
+
     function scrollCarousel(id, direction) {{
         const container = document.getElementById(id);
         const scrollAmount = 345;
