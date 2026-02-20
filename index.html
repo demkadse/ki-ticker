@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>KI‑Ticker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1771572893">
+    <link rel="stylesheet" href="style.css?v=1771573638">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2616688648278798" crossorigin="anonymous"></script>
     </head><body>
     
@@ -35,11 +35,15 @@
             <h2 style="font-size:2rem; margin-bottom:20px; color:#fff;">KI-Agenten im Büro: Vom smarten Werkzeug zum autonomen Kollegen?</h2>
             <div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/F8NKVhkZZWI" allowfullscreen></iframe></div>
             <div class="video-meta">Hinweis: Das oben eingebundene Video ist ein externer Inhalt von <a href="https://www.youtube.com/@IBMTechnology" target="_blank">IBM Technology</a>. Es dient der kontextuellen Vertiefung. Die redaktionelle Verantwortung für das Video liegt beim Urheber.</div>
-            <div class="editorial-text">Wir stehen an der Schwelle zur nächsten Evolution der künstlichen Intelligenz: dem Sprung von generativer KI zu agentenbasierter KI (Agentic AI). Bisher waren Tools wie ChatGPT reaktive Werkzeuge – wir stellen eine Frage, die Maschine antwortet. KI-Agenten hingegen handeln autonom. Sie erhalten ein übergeordnetes Ziel, brechen dieses in logische Teilschritte herunter und führen sie über verschiedene Software-Grenzen hinweg selbstständig aus.
+            <div class="editorial-text-container" id="editorialText">
+                <div class="editorial-text">Wir stehen an der Schwelle zur nächsten Evolution der künstlichen Intelligenz: dem Sprung von generativer KI zu agentenbasierter KI (Agentic AI). Bisher waren Tools wie ChatGPT reaktive Werkzeuge – wir stellen eine Frage, die Maschine antwortet. KI-Agenten hingegen handeln autonom. Sie erhalten ein übergeordnetes Ziel, brechen dieses in logische Teilschritte herunter und führen sie über verschiedene Software-Grenzen hinweg selbstständig aus.
 
 Stellen Sie sich folgendes Szenario vor: Ein KI-Agent überwacht Ihren Posteingang, erkennt eine komplexe Kundenreklamation, gleicht die Historie im CRM-System ab, leitet eigenständig eine Kulanzbuchung im ERP-System in die Wege und verfasst die finale Antwort-E-Mail. Das verspricht beispiellose Effizienzgewinne für Unternehmen, wirft jedoch fundamentale strukturelle Fragen auf.
 
 Wo verläuft die Grenze zwischen effizienter Delegation und gefährlichem Kontrollverlust? Wenn die Maschine eigenständig entscheidet und interagiert, verschiebt sich unsere berufliche Rolle massiv: Vom 'Human in the loop' (dem Ausführenden) zum 'Human on the loop' (dem Überwachenden und Orchestrierenden). Unternehmen müssen jetzt dringend klären, wie Haftung, Vertrauensgrenzen und Qualitätssicherung in einer Arbeitswelt aussehen, in der unsere effizientesten 'Kollegen' aus Code bestehen. Die Fähigkeit, digitale Agenten-Schwärme zu managen, wird zur kritischsten Führungskompetenz dieses Jahrzehnts.</div>
+                <div class="editorial-text-fade"></div>
+            </div>
+            <button class="nav-btn read-more-btn" id="readMoreBtn" onclick="toggleEditorial()">Mehr lesen</button>
             <div class="editorial-sources"><strong>Quellen:</strong> <a href='https://www.gartner.com/en/articles/top-technology-trends-agentic-ai' target='_blank'>Gartner: Top Strategic Tech Trends - Agentic AI</a><br><a href='https://www.forbes.com/sites/bernardmarr/2024/04/24/what-are-ai-agents-and-why-are-they-the-next-big-thing-in-ai/' target='_blank'>Forbes: Why AI Agents Are The Next Big Thing</a></div>
         </article>
             
@@ -930,6 +934,17 @@ Wo verläuft die Grenze zwischen effizienter Delegation und gefährlichem Kontro
     </footer>
 
     <script>
+    function toggleEditorial() {
+        const container = document.getElementById('editorialText');
+        const btn = document.getElementById('readMoreBtn');
+        container.classList.toggle('expanded');
+        if(container.classList.contains('expanded')) {
+            btn.innerText = 'Weniger anzeigen';
+        } else {
+            btn.innerText = 'Mehr lesen';
+        }
+    }
+
     function scrollCarousel(id, direction) {
         const container = document.getElementById(id);
         const scrollAmount = 345;
